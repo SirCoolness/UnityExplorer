@@ -1,0 +1,16 @@
+﻿import "google/protobuf/descriptor.proto";
+
+extend google.protobuf.MethodOptions {
+  optional int32 method_id = 50000;
+}
+
+message CommandRequest {
+  required int32 tracker = 1; // A unique tracker for 
+  required int32 data_id = 2; // A identifier for request data type and response data type
+  optional bytes data = 3;
+}
+
+message CommandResponse {
+  required int32 tracker = 1;
+  optional bytes data = 2;
+}
