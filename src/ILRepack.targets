@@ -7,6 +7,7 @@
             <InputAssemblies Include="$(OutputPath)$(AssemblyName).dll" />
             <InputAssemblies Include="..\lib\mcs-unity\mcs\bin\Release\mcs.dll" />
             <InputAssemblies Include="packages\ini-parser.2.5.2\lib\net20\INIFileParser.dll" />
+            <InputAssemblies Include="packages\Google.Protobuf.3.17.2\lib\net45\Google.Protobuf.dll" />
         </ItemGroup>
 
         <!-- MonoMod for MelonLoader 0.3.0 -->
