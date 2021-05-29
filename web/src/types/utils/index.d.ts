@@ -1,5 +1,5 @@
 import { AsyncActionThunk } from '@magento/peregrine/lib/util/bindActionCreators';
-import {ComponentProps, FC, HTMLProps} from 'react';
+import {FC} from 'react';
 import { Action, ActionCreator } from 'typesafe-actions';
 import {State} from "../../Store";
 

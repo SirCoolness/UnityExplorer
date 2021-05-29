@@ -4,7 +4,7 @@ import { bindActionCreators as bindActionCreatorsNonRecursive } from 'redux';
 import {
     BoundActionsRecursive,
     UnboundActionsRecursive
-} from '../types/utils/index';
+} from '../types/utils';
 
 /**
  *
