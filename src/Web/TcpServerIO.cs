@@ -5,14 +5,16 @@ namespace UnityExplorer.Web
 {
     public class TcpServerIO
     {
+        public static TcpServer Server = new TcpServer();
         private static bool Running = false;
-        private static TcpServer Server = new TcpServer();
 
         public static void Start()
         {
             if (Running)
                 throw new Exception("Already Running");
             Running = true;
+            
+            ProtocolManager.Listen(Server);
             
 #if ML
             MelonLoader.MelonCoroutines.Start(Reader());

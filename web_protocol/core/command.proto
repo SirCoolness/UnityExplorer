@@ -4,16 +4,4 @@ import public "google/protobuf/descriptor.proto";
 
 extend google.protobuf.MessageOptions {
   int32 data_id = 50000;
-  bool had_data = 50001;
-}
-
-message CommandRequest {
-  int32 tracker = 1; // A unique tracker for 
-  int32 data_id = 2; // A identifier for request data type and response data type
-  optional bytes data = 3;
-}
-
-message CommandResponse {
-  int32 tracker = 1;
-  optional bytes data = 2;
 }

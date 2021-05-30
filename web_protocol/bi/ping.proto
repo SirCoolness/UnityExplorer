@@ -4,12 +4,10 @@ import "core/command.proto";
 
 message PingRequest {
   option (data_id) = 0;
-  option (had_data) = true;
   string message = 1;
 }
 
 message PingResponse {
   option (data_id) = 0;
-  option (had_data) = true;
   string message = 1;
 }

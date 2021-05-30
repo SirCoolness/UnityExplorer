@@ -8,7 +8,7 @@ using MelonLoader;
 
 namespace UnityExplorer.Web
 {
-    internal class TcpServer
+    public class TcpServer
     {
         internal static Mutex IOManager = new Mutex();
         
@@ -18,10 +18,13 @@ namespace UnityExplorer.Web
         private Thread Thread;
 
         internal static Mutex LogIO = new Mutex();
-        public static Queue<object> Logs = new Queue<object>();
+        internal static Queue<object> Logs = new Queue<object>();
 
         internal static Mutex ClientIO = new Mutex(); 
-        private List<WebSocketSession> Clients = new List<WebSocketSession>();
+        public readonly List<WebSocketSession> Clients = new List<WebSocketSession>();
+        
+        public event EventHandler<WebSocketSession> ClientConnected;
+        public event EventHandler<WebSocketSession> ClientDisconnected;
 
         public void Start()
         {
@@ -52,11 +55,11 @@ namespace UnityExplorer.Web
                 // Perform a blocking call to accept requests.
                 // You could also use server.AcceptSocket() here.
                 TcpClient client = server.AcceptTcpClient();
-                ClientConnected(client);
+                OnClientConnected(client);
             }
         }
 
-        private void ClientConnected(TcpClient client)
+        private void OnClientConnected(TcpClient client)
         {
             var session = new WebSocketSession(client);
 
@@ -64,20 +67,23 @@ namespace UnityExplorer.Web
             Clients.Add(session);
             ClientIO.ReleaseMutex();
 
-            session.Disconnected += ClientDisconnected;
+            session.Disconnected += OnClientDisconnected;
             
             WriteLogSafe($"{session.Id} | Connected!");
+            ClientConnected?.Invoke(this, session);
             session.Start();
         }
 
-        internal void ClientDisconnected(object sender, WebSocketSession session)
+        private void OnClientDisconnected(object sender, WebSocketSession session)
         {
             WriteLogSafe($"{session.Id} | Disconnected!");
+            
+            ClientDisconnected?.Invoke(this, session);
             
             ClientIO.WaitOne();
             Clients.Remove(session);
             ClientIO.ReleaseMutex();
-            
+
             session.Dispose();
         }
 

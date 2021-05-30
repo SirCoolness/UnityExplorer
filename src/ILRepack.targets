@@ -9,6 +9,9 @@
             <InputAssemblies Include="packages\ini-parser.2.5.2\lib\net20\INIFileParser.dll" />
             <InputAssemblies Include="packages\Google.Protobuf.3.17.2\lib\net45\Google.Protobuf.dll" />
             <InputAssemblies Include="packages\System.Net.Sockets.4.3.0\lib\net46\System.Net.Sockets.dll" />
+            <InputAssemblies Include="packages\System.Memory.4.5.4\lib\net461\System.Memory.dll" />
+            <InputAssemblies Include="packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll" />
+            <InputAssemblies Include="packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll" />
         </ItemGroup>
 
         <!-- MonoMod for MelonLoader 0.3.0 -->

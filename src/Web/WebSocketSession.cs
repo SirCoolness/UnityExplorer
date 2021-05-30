@@ -27,7 +27,7 @@ namespace UnityExplorer.Web
         public event EventHandler<Exception> Error;
         public event EventHandler<byte[]> AnyMessageReceived;
         public event EventHandler<string> TextMessageReceived;
-        public event EventHandler<string> BinaryMessageReceived;
+        public event EventHandler<byte[]> BinaryMessageReceived;
 
         public WebSocketSession(TcpClient client)
         {
@@ -210,7 +210,7 @@ namespace UnityExplorer.Web
                             break;
                         case 0x2:
                             AnyMessageReceived?.Invoke(session, message);
-                            BinaryMessageReceived?.Invoke(session, Encoding.UTF8.GetString(message));
+                            BinaryMessageReceived?.Invoke(session, message);
                             break;
                         case 0x8:
                             Close();
