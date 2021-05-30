@@ -21,9 +21,12 @@ const entryFiles = Object.values(glob.sync(protodir+'/**/*.proto').reduce((previ
     if (!fs.existsSync(outputDir))
         fs.mkdirSync(outputDir, { recursive: true });
 
+    const requestSchema = [];
+
     for (const spath of entryFiles) {
         const contents = fs.readFileSync(spath);
-        const js = await pbjsLoader(contents);
+        const js = await pbjsLoader(contents, ['-t', 'static-module', '-w', 'commonjs', '-']);
+        requestSchema.push(JSON.parse(await pbjsLoader(contents, ['-t', 'json', '-'])));
         const ts = await pbtsLoader(js);
 
         const baseName = path.basename(spath).split('.').slice(0, -1).join('.')
@@ -36,6 +39,15 @@ const entryFiles = Object.values(glob.sync(protodir+'/**/*.proto').reduce((previ
         fs.writeFileSync(outputFile + ".js", js);
         fs.writeFileSync(outputFile + ".d.ts", ts);
     }
+
+    fs.writeFileSync(path.resolve(outputDir, "RequestSchema.tsx"), `export const RequestSchema = ${JSON.stringify(
+        requestSchema.reduce((add, item) => ({
+            ...add,
+            ...item.nested
+        }), {}),
+        undefined,
+        "\t"
+    )};`);
 
     process.exit(0);
     return undefined

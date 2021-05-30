@@ -1,12 +1,11 @@
 const pbjs = require('protobufjs/cli/pbjs');
 
-module.exports = function (source) {
+module.exports = function (source, args) {
     return new Promise((resolve, reject) => {
         const srcListenData = [...process.stdin.listeners("data")]
         const srcListenEnd = [...process.stdin.listeners("end")]
 
-        pbjs.main(['-t', 'json', '-w', 'commonjs', '-'],(err, output) => {
-            console.log(output)
+        pbjs.main(args,(err, output) => {
             if (err)
                 reject(err);
             resolve(output);
