@@ -27,7 +27,7 @@ namespace UnityExplorer.Web
 
             // var parser = new MessageParser<PingRequest>(() => new PingRequest());
             // TcpServer.WriteLogSafe($"{command} {hasData}");
-            // var parsed = parser.ParseFrom(message, 6, message.Length - 6);
+            // var parsed = parser.ParseFrom(message, 5, message.Length - 5);
             // TcpServer.WriteLogSafe(parsed.Message);
             // foreach (var uninterpretedOption in PingRequest.Descriptor.GetOptions().UninterpretedOption)
             // {
