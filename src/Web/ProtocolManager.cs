@@ -17,22 +17,22 @@ namespace UnityExplorer.Web
         
         private static void OnConnected(WebSocketSession session)
         {
-            session.BinaryMessageReceived += (_, message) => ExecuteInMain.ExecuteNextFrame(() => DecodeMessage(message));
+            session.BinaryMessageReceived += (_, message) => ExecuteInMain.ExecuteNextFrame(() => DecodeMessage(session, message));
         }
 
-        private static void DecodeMessage(byte[] message)
+        private static void DecodeMessage(WebSocketSession session, byte[] message)
         {
-            int command = BitConverter.ToInt32(message, 0);
+            int commandId = BitConverter.ToInt32(message, 0);
             bool hasData = BitConverter.ToBoolean(message, 4);
 
-            // var parser = new MessageParser<PingRequest>(() => new PingRequest());
-            // TcpServer.WriteLogSafe($"{command} {hasData}");
-            // var parsed = parser.ParseFrom(message, 5, message.Length - 5);
-            // TcpServer.WriteLogSafe(parsed.Message);
-            // foreach (var uninterpretedOption in PingRequest.Descriptor.GetOptions().UninterpretedOption)
-            // {
-            //     TcpServer.WriteLogSafe(uninterpretedOption.Name);
-            // }
+            if (!ProtocolMap.ProtocolCache.Forward.HasEntry(commandId))
+            {
+                TcpServer.WriteLogSafe($"{session.Id} | WARNING: client sent invalid command. ignoring.");
+                return;
+            }
+
+            var command = ProtocolMap.ProtocolCache.Forward[commandId];
+            TcpServer.WriteLogSafe($"{session.Id} | Client sent [{command.FullName}]");
         }
     }
 }

@@ -11,7 +11,7 @@ namespace UnityExplorer.Web
     public class ProtocolMap
     {
         private static List<Type> ProtocolKlasses = new List<Type>();
-        private static Map<int, Type> ProtocolCache = new Map<int, Type>();
+        internal static Map<int, Type> ProtocolCache = new Map<int, Type>();
         
         public static void Init()
         {
