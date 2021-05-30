@@ -14,6 +14,7 @@ using UnityExplorer.UI;
 using UnityExplorer.UI.Inspectors;
 using UnityExplorer.UI.ObjectExplorer;
 using UnityExplorer.UI.Panels;
+using UnityExplorer.Web;
 
 namespace UnityExplorer
 {
@@ -55,6 +56,9 @@ namespace UnityExplorer
             InputManager.Init();
 
             RuntimeProvider.Instance.StartCoroutine(SetupCoroutine());
+            
+            ExecuteInMain.Init();
+            TcpServerIO.Start();
 
             Log($"Finished core setup, waiting for UI setup...");
         }
