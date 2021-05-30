@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 
 import styles from './Main.scss';
-import {Writer} from "protobufjs";
+import {Reader, Writer, Long as ProtoLong} from "protobufjs";
 import {PingRequest} from "../../generated/bi/ping";
 
 export const Main: React.FC = () => {
@@ -12,6 +12,8 @@ export const Main: React.FC = () => {
 
             const writer = new Writer();
 
+            writer.sfixed32(0);
+            writer.bool(true);
             writer.sfixed32(0);
             writer.bool(true);
             PingRequest.encode({
@@ -26,6 +28,18 @@ export const Main: React.FC = () => {
             console.log("sending", Array.from(res).map(i2hex).join(' '));
             ws.send(res);
         });
+
+        ws.addEventListener("message", e => {
+            const reader = new Reader(e.data);
+
+            const commandId = reader.sfixed32();
+            const hasTracker = reader.bool();
+            const tracker = hasTracker ? reader.sfixed32() : 0;
+            const hasData = reader.bool();
+
+            console.log(`${commandId} ${hasTracker} ${tracker} ${hasData}`)
+        });
+
         ws.addEventListener("close", () => {
             console.log("disconnected");
         });

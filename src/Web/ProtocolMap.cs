@@ -12,6 +12,9 @@ namespace UnityExplorer.Web
     {
         private static List<Type> ProtocolKlasses = new List<Type>();
         internal static Map<int, Type> ProtocolCache = new Map<int, Type>();
+
+        internal static Dictionary<Type, ProtocolAttributes> ProtocolAttributes =
+            new Dictionary<Type, ProtocolAttributes>();
         
         public static void Init()
         {
@@ -43,6 +46,7 @@ namespace UnityExplorer.Web
                     continue;
                 }
                 ProtocolCache.Add(ID, protocolKlass);
+                AddProtocolMessage(protocolKlass);
             }
         }
 
@@ -58,5 +62,41 @@ namespace UnityExplorer.Web
 
             return (MessageDescriptor) getter.Invoke(null, null);
         }
+
+        private static MessageParser GetParser(Type type)
+        {
+            var f = type.GetProperty("Parser", BindingFlags.Public | BindingFlags.Static);
+            if (f == null)
+                return null;
+
+            var getter = f.GetGetMethod();
+            if (getter == null)
+                return null;
+
+            return (MessageParser) getter.Invoke(null, null);
+        }
+
+        private static void AddProtocolMessage(Type type)
+        {
+            var descriptor = GetDescriptor(type);
+            var parser = GetParser(type);
+            
+            if (descriptor.IsNullOrDestroyed() || parser.IsNullOrDestroyed())
+                return;
+            
+            ProtocolAttributes.Add(type, new ProtocolAttributes
+            {
+                Descriptor = descriptor,
+                Parser = parser,
+                HasData = descriptor.Fields.InDeclarationOrder().Count > 0
+            });
+        }
+    }
+
+    public class ProtocolAttributes
+    {
+        public MessageParser Parser { get; internal set; }
+        public MessageDescriptor Descriptor { get; internal set; }
+        public bool HasData { get; internal set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -28,6 +29,9 @@ namespace UnityExplorer.Web
         public event EventHandler<byte[]> AnyMessageReceived;
         public event EventHandler<string> TextMessageReceived;
         public event EventHandler<byte[]> BinaryMessageReceived;
+
+        private Mutex MessageQueueLock = new Mutex();
+        private Queue<MessageArgs> MessageQueue = new Queue<MessageArgs>();
 
         public WebSocketSession(TcpClient client)
         {
@@ -124,7 +128,11 @@ namespace UnityExplorer.Web
                     packet.Clear();
 
                     var ab = client.Available;
-                    if (ab == 0) continue;
+                    if (ab == 0)
+                    {
+                        MessageProcessQueue();
+                        continue;
+                    }
 
                     packet.Add((byte)stream.ReadByte());
                     var fin = (packet[0] & (1 << 7)) != 0;
@@ -234,6 +242,40 @@ namespace UnityExplorer.Web
             Client.Close();
         }
 
+        private void MessageProcessQueue()
+        {
+            MessageQueueLock.WaitOne();
+
+            if (MessageQueue.Count == 0)
+            {
+                MessageQueueLock.ReleaseMutex();
+                return;
+            }
+            
+            var queue = new Queue<MessageArgs>(MessageQueue.ToArray());
+            MessageQueue.Clear();
+            
+            MessageQueueLock.ReleaseMutex();
+            
+            foreach (var messageArgs in queue)
+            {
+                SendMessage(messageArgs.payload, messageArgs.isBinary, false);
+            }
+        }
+        
+        public void QueueMessage(byte[] payload, bool isBinary = false)
+        {
+            MessageQueueLock.WaitOne();
+            
+            MessageQueue.Enqueue(new MessageArgs
+            {
+                payload = payload,
+                isBinary = isBinary
+            });
+            
+            MessageQueueLock.ReleaseMutex();
+        }
+        
         public void SendMessage(string payload) => SendMessage(Client, payload, IsMasking);
         public void SendMessage(byte[] payload, bool isBinary = false) => SendMessage(Client, payload, isBinary, IsMasking);
 
@@ -330,6 +372,12 @@ namespace UnityExplorer.Web
 
             ((IDisposable)Client)?.Dispose();
             ClientStream?.Dispose();
+        }
+
+        private struct MessageArgs
+        {
+            public byte[] payload;
+            public bool isBinary;
         }
     }
 }
