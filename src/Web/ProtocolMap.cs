@@ -1,0 +1,62 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using Google.Protobuf;
+using Google.Protobuf.Reflection;
+using MelonLoader;
+
+namespace UnityExplorer.Web
+{
+    public class ProtocolMap
+    {
+        private static List<Type> ProtocolKlasses = new List<Type>();
+        private static Map<int, Type> ProtocolCache = new Map<int, Type>();
+        
+        public static void Init()
+        {
+            ProtocolKlasses = Assembly.GetAssembly(typeof(IMessage)).GetTypes().Where(type =>
+                {
+                    if (!type.GetInterfaces().Any(i =>
+                        i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IMessage<>)))
+                        return false;
+
+                    var descriptor = GetDescriptor(type);
+                    if (descriptor == null)
+                        return false;
+
+                    var options = descriptor.GetOptions();
+                    if ((options) == null)
+                        return false;
+                    
+                    return options.HasExtension(CommandExtensions.DataId);
+                }
+            ).ToList();
+
+            foreach (var protocolKlass in ProtocolKlasses)
+            {
+                var descriptor = GetDescriptor(protocolKlass);
+                var ID = descriptor.GetOptions().GetExtension(CommandExtensions.DataId);
+                if (ProtocolCache.Forward.HasEntry(ID))
+                {
+                    ExplorerCore.LogError($"{protocolKlass.FullName} (data_id) is a duplicate of {ProtocolCache.Forward[ID].FullName}. skipping");
+                    continue;
+                }
+                ProtocolCache.Add(ID, protocolKlass);
+            }
+        }
+
+        private static MessageDescriptor GetDescriptor(Type type)
+        {
+            var f = type.GetProperty("Descriptor", BindingFlags.Public | BindingFlags.Static);
+            if (f == null)
+                return null;
+
+            var getter = f.GetGetMethod();
+            if (getter == null)
+                return null;
+
+            return (MessageDescriptor) getter.Invoke(null, null);
+        }
+    }
+}

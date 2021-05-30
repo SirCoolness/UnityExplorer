@@ -8,6 +8,6 @@ message PingRequest {
 }
 
 message PingResponse {
-  option (data_id) = 0;
+  option (data_id) = 1;
   string message = 1;
 }

@@ -12,7 +12,7 @@ export const RequestSchema = {
 	},
 	"PingResponse": {
 		"options": {
-			"(data_id)": 0
+			"(data_id)": 1
 		},
 		"fields": {
 			"message": {
