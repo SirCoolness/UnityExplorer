@@ -393,7 +393,7 @@
     <Compile Include="UI\Widgets\TransformTree\TransformCell.cs" />
     <Compile Include="UI\Widgets\TransformTree\TransformTree.cs" />
     <Compile Include="Web\ExecuteInMain.cs" />
-    <Compile Include="Web\TcpClientHandle.cs" />
+    <Compile Include="Web\WebSocketSession.cs" />
     <Compile Include="Web\TcpServer.cs" />
     <Compile Include="Web\TcpServerIO.cs" />
     <EmbeddedResource Include="Resources\*" />

@@ -21,7 +21,7 @@ namespace UnityExplorer.Web
         public static Queue<object> Logs = new Queue<object>();
 
         internal static Mutex ClientIO = new Mutex(); 
-        private List<TcpClientHandle> Clients = new List<TcpClientHandle>();
+        private List<WebSocketSession> Clients = new List<WebSocketSession>();
 
         public void Start()
         {
@@ -58,22 +58,27 @@ namespace UnityExplorer.Web
 
         private void ClientConnected(TcpClient client)
         {
-            var handle = new TcpClientHandle(client, ClientDisconnected);
+            var session = new WebSocketSession(client);
 
             ClientIO.WaitOne();
-            Clients.Add(handle);
+            Clients.Add(session);
             ClientIO.ReleaseMutex();
+
+            session.Disconnected += ClientDisconnected;
             
-            handle.Start();
-            
-            WriteLogSafe("Connected!");
+            WriteLogSafe($"{session.Id} | Connected!");
+            session.Start();
         }
 
-        internal void ClientDisconnected(TcpClientHandle client)
+        internal void ClientDisconnected(object sender, WebSocketSession session)
         {
+            WriteLogSafe($"{session.Id} | Disconnected!");
+            
             ClientIO.WaitOne();
-            Clients.Remove(client);
+            Clients.Remove(session);
             ClientIO.ReleaseMutex();
+            
+            session.Dispose();
         }
 
         internal static void WriteLogSafe(object message)
