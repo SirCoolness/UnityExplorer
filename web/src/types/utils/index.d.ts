@@ -1,4 +1,3 @@
-import { AsyncActionThunk } from '@magento/peregrine/lib/util/bindActionCreators';
 import {FC} from 'react';
 import { Action, ActionCreator } from 'typesafe-actions';
 import {State} from "../../Store";
@@ -32,7 +31,7 @@ export type MakeOptionalRecursive<T> =
     }>;
 
 type UnboundActionsRecursive = {
-    [key: string]: UnboundActionsRecursive | ActionCreator | AsyncActionThunk<any, any>;
+    [key: string]: UnboundActionsRecursive | ActionCreator | ThunkAction<any, any, any>;
 }
 
 type AsyncReturnType<T extends (...args: any) => any> =
@@ -43,8 +42,8 @@ type AsyncReturnType<T extends (...args: any) => any> =
 export type BoundActionsRecursive<TSource extends UnboundActionsRecursive> = {
     [P in keyof TSource]: TSource[P] extends UnboundActionsRecursive
         ? BoundActionsRecursive<TSource[P]>
-        : TSource[P] extends AsyncActionThunk<any, any>
-            ? (...args: Parameters<TSource[P]>) => Promise<AsyncReturnType<ReturnType<TSource[P]>>>
+        : TSource[P] extends ThunkAction<any, any, any>
+            ? (...args: Parameters<TSource[P]>) => Promise<Unwrap<ReturnType<TSource[P]>>>
             : TSource[P] extends ActionCreator
                 ? (...args: Parameters<TSource[P]>) => void
                 : any;
