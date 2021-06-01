@@ -1,5 +1,3 @@
-type TrackerMap = {};
-
 export class MutationManager {
     private lastTracker: number;
     private activeTrackers: Record<number, (data: any) => void>;
@@ -20,6 +18,6 @@ export class MutationManager {
     }
 
     public isAvailable: (tracker: number) => boolean = tracker => {
-        return this.activeTrackers.hasOwnProperty.call(this.activeTrackers.hasOwnProperty, tracker);
+        return this.activeTrackers.hasOwnProperty(tracker);
     }
 }

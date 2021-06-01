@@ -119,7 +119,7 @@ export class SignalHandler implements Handlers {
 
         if (isMutation) {
             writer.bool((TrackerOrigin as unknown) as boolean);
-            writer.sfixed32((TrackerOrigin as unknown) as number);
+            writer.sfixed32((tracker as unknown) as number);
         }
 
         writer.bool(data.HasData);

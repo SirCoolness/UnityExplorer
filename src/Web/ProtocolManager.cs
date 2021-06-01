@@ -31,7 +31,7 @@ namespace UnityExplorer.Web
         {
             int commandId = BitConverter.ToInt32(message, 0);
             bool useTracker = BitConverter.ToBoolean(message, 4);
-            TrackerOrigin origin = useTracker && BitConverter.ToBoolean(message, 5) ? TrackerOrigin.Server : TrackerOrigin.Client;
+            TrackerOrigin origin = useTracker && BitConverter.ToBoolean(message, 5) ? TrackerOrigin.Client : TrackerOrigin.Server;
             int tracker = useTracker ? BitConverter.ToInt32(message, 6) : 0;
 
             bool hasData = BitConverter.ToBoolean(message, useTracker ? 10 : 5);
@@ -45,7 +45,7 @@ namespace UnityExplorer.Web
 
             var command = ProtocolMap.ProtocolCache.Forward[commandId];
             
-            TcpServer.WriteLogSafe($"{session.Id} | Recieved [{BitConverter.ToString(message)}]");
+            TcpServer.WriteLogSafe($"{session.Id} | Recieved [{BitConverter.ToString(message)}] [{origin.ToString()}]");
             
             if (command == typeof(PingRequest))
                 WriteMessage(session, new PingResponse
