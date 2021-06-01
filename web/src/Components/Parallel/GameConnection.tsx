@@ -5,7 +5,7 @@ export const GameConnection: React.FC = () => {
     const { api } = useGameConnectionContext();
 
     const main = useCallback(async () => {
-        api.TryConnecting("ws://127.0.0.1:6126");
+        await api.TryConnecting("ws://127.0.0.1:6126");
     }, []);
 
     useEffect(() => {
