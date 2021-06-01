@@ -1,6 +1,7 @@
 import {FC} from 'react';
 import { Action, ActionCreator } from 'typesafe-actions';
 import {State} from "../../Store";
+import {AnyProto} from "../../generated/ProtobufCommon";
 
 export type FixDefaults<
     T extends FC<any>,
@@ -66,6 +67,11 @@ type Unwrap<T> = T extends (infer U)[] ? U : T
 export type SerializeTypes<TSource extends object, TKeys = TSource[keyof TSource]> = TKeys extends object ? SerializeTypes<TKeys> : TKeys;
 
 export type Dispatch = <TArgs>(args: TArgs) => TArgs extends Action ? void : TArgs extends ReturnType<ThunkAction<any, any, any>> ? ReturnType<TArgs> : unknown;
+
+export type DispatchSignalMutation = <TRequest extends AnyProto, TResponse extends AnyProto>(buff: TRequest) => Promise<TResponse>;
+export type DispatchSignal = <TRequest extends AnyProto>(buff: TRequest) => void;
+
+export type SignalAction<TSignal extends AnyProto, TReturn extends AnyProto = void, TState = State> = (signal: TSignal) => (isTracked: boolean, dispatchSignal: DispatchSignal, dispatchMutation: DispatchSignalMutation) => ReturnType<ThunkAction<TSignal, TReturn, TState>>;
 
 export type ThunkAction<TArgs, TReturn = void, TState = State> = (args: TArgs) => (dispatch: Dispatch, getState: () => TState) => Promise<TReturn>;
 

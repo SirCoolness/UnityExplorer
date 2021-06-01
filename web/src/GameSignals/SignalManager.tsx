@@ -3,9 +3,11 @@ import {AnyProto} from "../generated/ProtobufCommon";
 import {SignalHandler, TrackerOrigin} from "./SignalHandler";
 import {MutationManager} from "./MutationManager";
 import Timeout = NodeJS.Timeout;
+import {SignalStore} from "./SignalStore";
 
 export class SignalManager {
     public store: Store<State>;
+    public signals: SignalStore;
 
     private isDisposing: boolean;
     private handle?: SignalHandler = undefined;
@@ -16,6 +18,7 @@ export class SignalManager {
         this.isDisposing = false;
         this.store = store;
         this.mutationManager = new MutationManager();
+        this.signals = new SignalStore(this);
     }
 
     public async Connect(ip: string): Promise<void> {
@@ -23,14 +26,13 @@ export class SignalManager {
             await this.handle.Dispose();
 
         this.handle = new SignalHandler(this, ip, {
-            OnSignalReceived: this.HandleSignal,
+            OnSignalReceived: this.signals.SignalReceived,
             OnMutationReceived: this.HandleMutationResponse
         });
         await this.handle.Connect();
     }
 
-    public async DisposeHandle()
-    {
+    public async DisposeHandle() {
         if (this.isDisposing)
             return;
 
@@ -89,15 +91,8 @@ export class SignalManager {
             return;
         }
 
-        this.HandleMutationResponseServer(buff, tracker)
-    }
-
-    private HandleMutationResponseServer(buff: AnyProto, tracker: number) {
-
-    }
-
-    private HandleSignal(buff: AnyProto) {
-
+        // server response
+        this.signals.SignalReceived(buff, tracker);
     }
 }
 
