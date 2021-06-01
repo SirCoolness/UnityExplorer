@@ -26,6 +26,20 @@ namespace UnityExplorer.Web
             ActionsQueue.Enqueue(callback);
             QueueIO.ReleaseMutex();
         }
+
+        public static void HandleError(Action callback)
+        {
+            try
+            {
+                callback();
+            }
+            catch (Exception e)
+            {
+                QueueIO.WaitOne();
+                ActionsQueue.Enqueue(callback);
+                QueueIO.ReleaseMutex();
+            }
+        }
         
         private static IEnumerator Update()
         {

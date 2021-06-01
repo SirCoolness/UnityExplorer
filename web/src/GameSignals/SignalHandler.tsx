@@ -48,7 +48,7 @@ export class SignalHandler implements Handlers {
             return;
 
         this.ws = state.GameConnection.socket;
-        this.ws?.addEventListener("message", this.OnMessage, { });
+        this.ws?.addEventListener("message", e => this.OnMessage(e).finally(), { });
     }
 
     public Dispose: () => Promise<void> = async () => {
@@ -76,7 +76,7 @@ export class SignalHandler implements Handlers {
     }
 
     private OnMessage: (e: WebSocketEventMap['message']) => Promise<void> = async e => {
-        const data = await e.data.arrayBuffer();
+        const data = new Uint8Array(await (e.data as Blob).arrayBuffer());
 
         console.log("RECEIVED", Debug.DebugBuff(data));
 
@@ -118,8 +118,8 @@ export class SignalHandler implements Handlers {
         writer.bool(isMutation);
 
         if (isMutation) {
-            writer.sfixed32((TrackerOrigin as unknown) as number);
             writer.bool((TrackerOrigin as unknown) as boolean);
+            writer.sfixed32((TrackerOrigin as unknown) as number);
         }
 
         writer.bool(data.HasData);

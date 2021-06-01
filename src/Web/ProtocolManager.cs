@@ -24,7 +24,7 @@ namespace UnityExplorer.Web
         
         private static void OnConnected(WebSocketSession session)
         {
-            session.BinaryMessageReceived += (_, message) => ExecuteInMain.ExecuteNextFrame(() => DecodeMessage(session, message));
+            session.BinaryMessageReceived += (_, message) => ExecuteInMain.HandleError(() => DecodeMessage(session, message));
         }
 
         private static void DecodeMessage(WebSocketSession session, byte[] message)
@@ -44,7 +44,8 @@ namespace UnityExplorer.Web
             }
 
             var command = ProtocolMap.ProtocolCache.Forward[commandId];
-            TcpServer.WriteLogSafe($"{session.Id} | Client sent [{command.FullName}]");
+            
+            TcpServer.WriteLogSafe($"{session.Id} | Recieved [{BitConverter.ToString(message)}]");
             
             if (command == typeof(PingRequest))
                 WriteMessage(session, new PingResponse
@@ -65,29 +66,28 @@ namespace UnityExplorer.Web
                 return;
             }
             
-            using (var streamRaw = new MemoryStream())
+            var streamRaw = new MemoryStream();
+
+            streamRaw.Write(BitConverter.GetBytes(ProtocolMap.ProtocolCache.Reverse[type]), 0, 4);
+            streamRaw.Write(BitConverter.GetBytes(useTracker), 0, 1);
+            
+            if (useTracker)
             {
-                var stream = new CodedOutputStream(streamRaw);
-                
-                stream.WriteInt32(ProtocolMap.ProtocolCache.Reverse[type]);
-                stream.WriteBool(useTracker);
-                if (useTracker)
-                {
-                    stream.WriteBool(Convert.ToBoolean(origin));
-                    stream.WriteInt32(tracker);
-                }
-                stream.WriteBool(ProtocolMap.ProtocolAttributes[type].HasData);
-
-                data.WriteTo(stream);
-                
-                stream.Flush();
-
-                streamRaw.Seek(0, SeekOrigin.Begin);
-                var res = streamRaw.ToArray();
-                TcpServer.WriteLogSafe($"[{res.Length}, {stream.Position}, {ProtocolMap.ProtocolAttributes[type].HasData}] Sending: {BitConverter.ToString(res)}");
-                // session.SendMessage(res, true);
-                session.QueueMessage(res, true);
+                streamRaw.Write(BitConverter.GetBytes(Convert.ToBoolean(origin)), 0, 1);
+                streamRaw.Write(BitConverter.GetBytes(tracker), 0, 4);
             }
+            
+            streamRaw.Write(BitConverter.GetBytes(ProtocolMap.ProtocolAttributes[type].HasData), 0, 1);
+            
+            data.WriteTo(streamRaw);
+
+            // streamRaw.Seek(0, SeekOrigin.Begin);
+            // streamRaw.GetBuffer();
+            var res = streamRaw.ToArray();
+            TcpServer.WriteLogSafe($"{session.Id} | Sending: {BitConverter.ToString(res)}");
+            // session.SendMessage(res, true);
+            session.QueueMessage(res, true);
+            streamRaw.Dispose();
         }
     }
 }
