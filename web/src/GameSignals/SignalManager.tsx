@@ -2,7 +2,6 @@ import {State, Store} from "../Store";
 import {AnyProto} from "../generated/ProtobufCommon";
 import {SignalHandler, TrackerOrigin} from "./SignalHandler";
 import {MutationManager} from "./MutationManager";
-import Timeout = NodeJS.Timeout;
 import {SignalStore} from "./SignalStore";
 import {RootSignals} from "./Signals";
 
@@ -63,7 +62,7 @@ export class SignalManager {
 
             const status: {
                 cancelled: boolean,
-                timer: Timeout | null
+                timer: NodeJS.Timeout | null
             } = {
                 cancelled: false,
                 timer: null
