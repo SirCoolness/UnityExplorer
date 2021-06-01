@@ -25,7 +25,7 @@ export class SignalManager {
         }
     }
 
-    public async Connect(ip: string): Promise<void> {
+    public Connect: (ip: string) => Promise<void> = async ip => {
         if (this.handle)
             await this.handle.Dispose();
 
@@ -36,7 +36,7 @@ export class SignalManager {
         await this.handle.Connect();
     }
 
-    public async DisposeHandle() {
+    public DisposeHandle: () => Promise<void> = async () => {
         if (this.isDisposing)
             return;
 
@@ -48,14 +48,14 @@ export class SignalManager {
         this.isDisposing = false;
     }
 
-    public Dispatch(buff: AnyProto): void {
+    public Dispatch: (buff: AnyProto) => void = buff => {
         if (!this.handle)
             throw new Error("Handle inactive");
 
         this.handle.SendMessage(buff);
     }
 
-    public Mutation<TRequest extends AnyProto, TResponse extends AnyProto>(buff: TRequest): Promise<TResponse> {
+    public Mutation: <TRequest extends AnyProto, TResponse extends AnyProto>(buff: TRequest) => Promise<TResponse> = async buff => {
         return new Promise((resolve, reject) => {
             if (!this.handle)
                 return reject("Handle inactive");
@@ -85,7 +85,7 @@ export class SignalManager {
         });
     }
 
-    private HandleMutationResponse(buff: AnyProto, tracker: number, origin: TrackerOrigin) {
+    private HandleMutationResponse: (buff: AnyProto, tracker: number, origin: TrackerOrigin) => void = (buff, tracker, origin) => {
         if (origin === TrackerOrigin.Client)
         {
             if (!this.mutationManager.isAvailable(tracker))

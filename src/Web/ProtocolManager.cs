@@ -84,7 +84,7 @@ namespace UnityExplorer.Web
 
                 streamRaw.Seek(0, SeekOrigin.Begin);
                 var res = streamRaw.ToArray();
-                TcpServer.WriteLogSafe($"[{res.Length}, {stream.Position}] Sending: {BitConverter.ToString(res)}");
+                TcpServer.WriteLogSafe($"[{res.Length}, {stream.Position}, {ProtocolMap.ProtocolAttributes[type].HasData}] Sending: {BitConverter.ToString(res)}");
                 // session.SendMessage(res, true);
                 session.QueueMessage(res, true);
             }

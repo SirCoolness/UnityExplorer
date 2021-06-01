@@ -9,20 +9,17 @@ export class MutationManager {
         this.activeTrackers = {};
     }
 
-    public consumeTracker(callback: (data: any) => void): number
-    {
+    public consumeTracker: (callback: (data: any) => void) => number = callback => {
         this.activeTrackers[++this.lastTracker] = callback;
         return this.lastTracker;
     }
 
-    public trackerResponded(tracker: number, data: any)
-    {
+    public trackerResponded: (tracker: number, data: any) => void = (tracker, data) => {
         this.activeTrackers[tracker](data);
         delete this.activeTrackers[tracker];
     }
 
-    public isAvailable(tracker: number)
-    {
+    public isAvailable: (tracker: number) => boolean = tracker => {
         return this.activeTrackers.hasOwnProperty.call(this.activeTrackers.hasOwnProperty, tracker);
     }
 }

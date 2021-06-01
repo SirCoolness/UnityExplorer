@@ -4,7 +4,9 @@ import {useStore} from "react-redux";
 import {SignalManager} from "../../GameSignals/SignalManager";
 import {State, Store} from "../../Store";
 
-type GameSignalContext = SignalManager;
+type GameSignalContext = {
+    value: SignalManager
+};
 
 const Context = React.createContext<GameSignalContext | void>(undefined);
 
@@ -15,15 +17,15 @@ export const GameSignalContextProvider: React.FC = props => {
 
     const main = useCallback(async () => {
         await signalProvider.Connect("ws://127.0.0.1:6126");
-    }, []);
+    }, [signalProvider]);
 
     useEffect(() => {
         main().finally();
     }, [main]);
 
-    return <Context.Provider value={signalProvider}>
+    return <Context.Provider value={{ value: signalProvider }}>
         {props.children}
     </Context.Provider>;
 };
 
-export const useGameSignal: () => GameSignalContext = () => React.useContext(Context) as GameSignalContext;
+export const useGameSignal: () => SignalManager = () => (React.useContext(Context) as GameSignalContext).value;

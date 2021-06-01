@@ -2,7 +2,7 @@ import {SignalManager} from "./SignalManager";
 import {Dispatch} from "../types/utils";
 import {TryConnecting} from "../Store/Modules/GameConnection/AsyncActions";
 import {State} from "../Store";
-import {AnyProto, Protomap} from "../generated/ProtobufCommon";
+import {AnyProto, ProtocolAttribute, Protomap} from "../generated/ProtobufCommon";
 import {Reader, Writer} from "protobufjs";
 import {Debug} from "./Debug";
 
@@ -40,7 +40,7 @@ export class SignalHandler implements Handlers {
                 this[key] = handlers[key];
     }
 
-    public async Connect() {
+    public Connect: () => Promise<void> = async () => {
         await this.dispatch(TryConnecting(this.ip));
 
         const state = this.getState();
@@ -48,10 +48,10 @@ export class SignalHandler implements Handlers {
             return;
 
         this.ws = state.GameConnection.socket;
-        this.ws?.addEventListener("message", this.OnMessage);
+        this.ws?.addEventListener("message", this.OnMessage, { });
     }
 
-    public async Dispose() {
+    public Dispose: () => Promise<void> = async () => {
         if (this.isDisposing)
             return;
 
@@ -67,18 +67,20 @@ export class SignalHandler implements Handlers {
         await this.manager.DisposeHandle();
     }
 
-    public SendMessage(buff: AnyProto)
-    {
+    public SendMessage: (buff: AnyProto) => void = buff => {
         this.Internal_SendMessage(buff);
     }
 
-    public SendMutation(buff: AnyProto, tracker: number, origin: TrackerOrigin)
-    {
+    public SendMutation: (buff: AnyProto, tracker: number, origin: TrackerOrigin) => void = (buff, tracker, origin) => {
         this.Internal_SendMessage(buff, tracker, origin);
     }
 
-    private OnMessage(e: WebSocketEventMap['message']): void {
-        const reader = new Reader(e.data);
+    private OnMessage: (e: WebSocketEventMap['message']) => Promise<void> = async e => {
+        const data = await e.data.arrayBuffer();
+
+        console.log("RECEIVED", Debug.DebugBuff(data));
+
+        const reader = new Reader(data);
 
         const commandId = reader.sfixed32();
 
@@ -98,12 +100,12 @@ export class SignalHandler implements Handlers {
         if (hasTracker)
             return this.OnMutationReceived(message, tracker, origin);
         else
-            return this.OnMessage(message)
+            return this.OnSignalReceived(message)
     }
 
-    private Internal_SendMessage(buff: AnyProto, tracker?: number, origin?: TrackerOrigin)
-    {
-        this.Validate(buff);
+    private Internal_SendMessage: (buff: AnyProto, tracker?: number, origin?: TrackerOrigin) => void = (buff, tracker, origin) => {
+        if (!this.ws)
+            throw new Error("Invalid Socket");
 
         const writer = new Writer();
         const isMutation = tracker !== undefined;
@@ -129,19 +131,13 @@ export class SignalHandler implements Handlers {
         const res = writer.finish();
         (this.ws as WebSocket).send(res);
 
-        Debug.Log(res);
+        console.log("SENDING", Debug.DebugBuff(res));
     }
 
-    private static ResolveBuffId(buff: AnyProto) {
+    private static ResolveBuffId: (buff: AnyProto) => ProtocolAttribute | undefined = buff => {
         return Protomap.ProtocolAttributes.get(buff.constructor);
     }
 
-    private Validate(buff: AnyProto) {
-        if (!this.ws || !buff.hasOwnProperty.call(buff, "encode"))
-            throw new Error("Invalid Status");
-    }
-
-    OnMutationReceived(buff: AnyProto, tracker: number, origin: TrackerOrigin): void { }
-
-    OnSignalReceived(buff: AnyProto): void { }
+    OnMutationReceived: (buff: AnyProto, tracker: number, origin: TrackerOrigin) => void = () => {}
+    OnSignalReceived: (buff: AnyProto) => void = () => {}
 }

@@ -4,9 +4,11 @@ import styles from './Main.scss';
 import {Reader, Writer, Long as ProtoLong} from "protobufjs";
 import {PingRequest} from "../../generated/bi/ping";
 import {useGameConnectionContext} from "../Context/Redux/GameConnection";
+import {useGameSignal} from "../Context/GameSignalContext";
 
 export const Main: React.FC = () => {
     const { state } = useGameConnectionContext();
+    const { Mutation } = useGameSignal();
     // useEffect(() => {
     //     const ws = new WebSocket("ws://127.0.0.1:6126");
     //     ws.addEventListener("open", () => {
@@ -53,5 +55,8 @@ export const Main: React.FC = () => {
             <br/>
         </>}
         <span>{state.connected ? "connected" : state.isConnecting ? "connecting" : "not connected"}</span>
+        {state.connected && <button onClick={() => Mutation(new PingRequest({
+            message: "Beans"
+        }))}>ping</button> }
     </div>;
 }

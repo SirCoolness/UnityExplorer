@@ -15,7 +15,7 @@ export class SignalStore {
     }
 
     // tracker should only be a server tracker
-    public SignalReceived(buff: AnyProto, tracker?: number) {
+    public SignalReceived: (buff: AnyProto, tracker?: number) => void = (buff, tracker) => {
         const isTracked = tracker !== undefined;
 
         if (!this.listeners.has(buff.constructor))
@@ -34,7 +34,7 @@ export class SignalStore {
         });
     }
 
-    public RegisterListeners(listeners: SignalMap) {
+    public RegisterListeners: (listeners: SignalMap) => void = listeners => {
         for (const listener of listeners) {
             if (!this.listeners.has(listener[0]))
                 this.listeners.set(listener[0], new Set());
@@ -43,7 +43,7 @@ export class SignalStore {
         }
     }
 
-    public UnregisterListeners(listeners: SignalMap) {
+    public UnregisterListeners: (listeners: SignalMap) => void = listeners => {
         for (const listener of listeners) {
             if (!this.listeners.has(listener[0]))
                 continue;
