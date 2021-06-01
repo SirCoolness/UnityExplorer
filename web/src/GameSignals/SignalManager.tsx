@@ -4,13 +4,14 @@ import {SignalHandler, TrackerOrigin} from "./SignalHandler";
 import {MutationManager} from "./MutationManager";
 import Timeout = NodeJS.Timeout;
 import {SignalStore} from "./SignalStore";
+import {RootSignals} from "./Signals";
 
 export class SignalManager {
     public store: Store<State>;
     public signals: SignalStore;
+    public handle?: SignalHandler = undefined;
 
     private isDisposing: boolean;
-    private handle?: SignalHandler = undefined;
     private mutationManager: MutationManager;
     private static timeLimit = 60000; // 60 seconds
 
@@ -19,6 +20,10 @@ export class SignalManager {
         this.store = store;
         this.mutationManager = new MutationManager();
         this.signals = new SignalStore(this);
+
+        for (const sigMap of RootSignals) {
+            this.signals.RegisterListeners(sigMap);
+        }
     }
 
     public async Connect(ip: string): Promise<void> {

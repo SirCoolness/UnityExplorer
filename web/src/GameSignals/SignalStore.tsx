@@ -1,14 +1,17 @@
 import {SignalManager} from "./SignalManager";
 import {AnyProto} from "../generated/ProtobufCommon";
 import {SignalAction} from "../types/utils";
+import {TrackerOrigin} from "./SignalHandler";
+
+export type SignalMap = [Function, SignalAction<any, any>][];
 
 export class SignalStore {
     private manager: SignalManager;
-    private listeners: Map<Function, Set<SignalAction<any>>>;
+    private listeners: Map<Function, Set<SignalAction<any, any>>>;
 
     public constructor(manager: SignalManager) {
         this.manager = manager;
-        this.listeners = new Map<Function, Set<SignalAction<any>>>();
+        this.listeners = new Map<Function, Set<SignalAction<any, any>>>();
     }
 
     // tracker should only be a server tracker
@@ -19,10 +22,19 @@ export class SignalStore {
             return;
 
         const listeners = this.listeners.get(buff.constructor) as Set<SignalAction<any>>;
-        listeners.forEach(listener => this.manager.store.dispatch(listener(buff)(isTracked, this.manager.Dispatch, this.manager.Mutation)));
+        listeners.forEach(listener => {
+            const res = this.manager.store.dispatch(listener(buff)(isTracked, this.manager.Dispatch, this.manager.Mutation));
+            if (isTracked)
+                res.then(data => {
+                    if (!this.manager.handle)
+                        throw new Error("Missing handle");
+
+                    this.manager.handle.SendMutation((data as unknown) as AnyProto, (tracker as unknown) as number, TrackerOrigin.Server);
+                })
+        });
     }
 
-    public RegisterListeners(listeners: [Function, SignalAction<any>][]) {
+    public RegisterListeners(listeners: SignalMap) {
         for (const listener of listeners) {
             if (!this.listeners.has(listener[0]))
                 this.listeners.set(listener[0], new Set());
@@ -31,7 +43,7 @@ export class SignalStore {
         }
     }
 
-    public UnregisterListeners(listeners: [Function, SignalAction<any>][]) {
+    public UnregisterListeners(listeners: SignalMap) {
         for (const listener of listeners) {
             if (!this.listeners.has(listener[0]))
                 continue;
