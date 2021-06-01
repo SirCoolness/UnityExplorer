@@ -1,8 +1,10 @@
 import React from "react";
 import { CombinedRedux } from "../Context/CombinedRedux";
+import { GameSignalContextProvider } from "../Context/GameSignalContext";
 
 const contextProviders: Array<React.FC> = [
-    CombinedRedux
+    CombinedRedux,
+    GameSignalContextProvider
 ];
 
 export const GlobalContext: React.FC = props => <React.Fragment>
