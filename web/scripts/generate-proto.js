@@ -69,7 +69,7 @@ const writeGeneratedTypes = (outputDir, generatedTypes) => {
     if (mergedTypes.length !== 0)
     {
         out += "\n";
-        out += "export type AllProto = ";
+        out += "export type AnyProto = ";
         for (const mType of mergedTypes) {
             out += `\n\t| ${mType}`;
         }
@@ -149,8 +149,6 @@ export class Protomap {
         fs.writeFileSync(outputFile + ".js", js);
         fs.writeFileSync(outputFile + ".d.ts", ts);
     }
-
-    console.log(generatedTypes)
 
     fs.writeFileSync(path.resolve(outputDir, "RequestSchema.tsx"), `export const RequestSchema = ${JSON.stringify(
         requestSchema.reduce((add, item) => ({

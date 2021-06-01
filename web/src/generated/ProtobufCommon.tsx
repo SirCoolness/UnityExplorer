@@ -1,6 +1,6 @@
 import { IPingRequest, IPingResponse, PingRequest, PingResponse } from "./bi/ping";
 
-export type AllProto = 
+export type AnyProto = 
 	| IPingRequest
 	| IPingResponse;
 
