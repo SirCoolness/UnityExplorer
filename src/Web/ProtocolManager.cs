@@ -7,6 +7,12 @@ namespace UnityExplorer.Web
 {
     public class ProtocolManager
     {
+        public enum TrackerOrigin: byte
+        {
+            Client = 0,
+            Server = 1
+        }
+        
         private static TcpServer Server;
         
         public static void Listen(TcpServer server)
@@ -25,10 +31,11 @@ namespace UnityExplorer.Web
         {
             int commandId = BitConverter.ToInt32(message, 0);
             bool useTracker = BitConverter.ToBoolean(message, 4);
-            int tracker = useTracker ? BitConverter.ToInt32(message, 5) : 0;
-            bool hasData = BitConverter.ToBoolean(message, useTracker ? 9 : 5);
+            TrackerOrigin origin = useTracker && BitConverter.ToBoolean(message, 5) ? TrackerOrigin.Server : TrackerOrigin.Client;
+            int tracker = useTracker ? BitConverter.ToInt32(message, 6) : 0;
 
-            int headersLen = useTracker ? 6 : 10;
+            bool hasData = BitConverter.ToBoolean(message, useTracker ? 10 : 5);
+            int headersLen = useTracker ? 6 : 11;
 
             if (!ProtocolMap.ProtocolCache.Forward.HasEntry(commandId))
             {
@@ -39,13 +46,17 @@ namespace UnityExplorer.Web
             var command = ProtocolMap.ProtocolCache.Forward[commandId];
             TcpServer.WriteLogSafe($"{session.Id} | Client sent [{command.FullName}]");
             
-            WriteMessage(session, new PingResponse
-            {
-                Message = session.Id
-            });
+            if (command == typeof(PingRequest))
+                WriteMessage(session, new PingResponse
+                {
+                    Message = session.Id
+                }, tracker, origin);
         }
-
-        public static void WriteMessage(WebSocketSession session, IMessage data, Int32 tracker = -1)
+        
+        public static void WriteMessage(WebSocketSession session, IMessage data, Int32 tracker, TrackerOrigin origin)
+            => WriteMessage(session, data, tracker, origin, true);
+        
+        public static void WriteMessage(WebSocketSession session, IMessage data, [Optional] Int32 tracker, [Optional] TrackerOrigin origin, bool useTracker = false)
         {
             var type = data.GetType();
             if (!ProtocolMap.ProtocolCache.Reverse.HasEntry(type))
@@ -54,8 +65,6 @@ namespace UnityExplorer.Web
                 return;
             }
             
-            var useTracker = tracker != -1;
-            
             using (var streamRaw = new MemoryStream())
             {
                 var stream = new CodedOutputStream(streamRaw);
@@ -63,7 +72,10 @@ namespace UnityExplorer.Web
                 stream.WriteInt32(ProtocolMap.ProtocolCache.Reverse[type]);
                 stream.WriteBool(useTracker);
                 if (useTracker)
+                {
+                    stream.WriteBool(Convert.ToBoolean(origin));
                     stream.WriteInt32(tracker);
+                }
                 stream.WriteBool(ProtocolMap.ProtocolAttributes[type].HasData);
 
                 data.WriteTo(stream);

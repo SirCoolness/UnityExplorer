@@ -98,6 +98,12 @@ const writeGeneratedTypes = (outputDir, generatedTypes) => {
 
         out += "" +
 `
+interface ProtocolAttribute {
+    HasData: boolean;
+    DataId: number;
+    Klass: Function;
+}
+
 export class Protomap {
     public static Forward: Record<number, Function> = {
         ${mappedIds.map(item => `${item.schema.options["(data_id)"]}: ${item.type.name}.constructor`).join(",\n\t\t")}
@@ -105,6 +111,10 @@ export class Protomap {
     
     public static Reverse: Map<Function, number> = new Map([
         ${mappedIds.map(item => `[${item.type.name}.constructor, ${item.schema.options["(data_id)"]}]`).join(",\n\t\t")}
+    ]);
+    
+    public static ProtocolAttributes: Map<Function, ProtocolAttribute> = new Map([
+        ${mappedIds.map(item => `[${item.type.name}.constructor, { HasData: ${Object.keys(item.schema.fields) > 0}, DataId: ${item.schema.options["(data_id)"]}, Klass: ${item.type.name} }]`).join(",\n\t\t")}
     ]);
 }
 `;
