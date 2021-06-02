@@ -12,22 +12,8 @@ namespace UnityExplorer.Web
             Client = 0,
             Server = 1
         }
-        
-        private static TcpServer Server;
-        
-        public static void Listen(TcpServer server)
-        {
-            Server = server;
 
-            server.ClientConnected += (_, client) => OnConnected(client.Session);
-        }
-        
-        private static void OnConnected(WebSocketSession session)
-        {
-            session.BinaryMessageReceived += (_, message) => ExecuteInMain.HandleError(() => DecodeMessage(session, message));
-        }
-
-        private static void DecodeMessage(WebSocketSession session, byte[] message)
+        private static void DecodeMessage(WebClient client, byte[] message)
         {
             int commandId = BitConverter.ToInt32(message, 0);
             bool useTracker = BitConverter.ToBoolean(message, 4);
@@ -39,44 +25,55 @@ namespace UnityExplorer.Web
 
             if (!ProtocolMap.ProtocolCache.Forward.HasEntry(commandId))
             {
-                TcpServer.WriteLogSafe($"{session.Id} | WARNING: client sent invalid command. ignoring.");
+                TcpServer.WriteLogSafe($"{client.Session.Id} | WARNING: client sent invalid command. ignoring.");
                 return;
             }
 
-            var command = ProtocolMap.ProtocolCache.Forward[commandId];
+            TcpServer.WriteLogSafe($"{client.Session.Id} | Recieved [{BitConverter.ToString(message)}]");
             
-            TcpServer.WriteLogSafe($"{session.Id} | Recieved [{BitConverter.ToString(message)}] [{origin.ToString()}]");
-            
-            if (origin != TrackerOrigin.Client)
-                return;
+            var command = hasData ? SignalReceived.BuildSignal(commandId, ref message, headersLen) : null;
+            SignalReceived.OnSignalReceived(client, command, useTracker, tracker, origin);
 
-            if (command == typeof(PingRequest))
-            {
-                WriteMessage(session, new PingResponse
-                {
-                    Message = session.Id
-                }, tracker, origin);
-            
-                WriteMessage(session, new PingRequest
-                {
-                    Message = session.Id
-                }, 0, TrackerOrigin.Server);
-            } else if (command == typeof(PingResponse))
-            {
-                TcpServer.WriteLogSafe(headersLen);
-                TcpServer.WriteLogSafe($"{session.Id} | PONG [{PingResponse.Parser.ParseFrom(message, headersLen, message.Length - headersLen)}]");
-            }
+            // if (origin != TrackerOrigin.Client)
+            //     return;
+            //
+            // if (command == typeof(PingRequest))
+            // {
+            //     WriteMessage(session, new PingResponse
+            //     {
+            //         Message = session.Id
+            //     }, tracker, origin);
+            //
+            //     WriteMessage(session, new PingRequest
+            //     {
+            //         Message = session.Id
+            //     }, 0, TrackerOrigin.Server);
+            // } else if (command == typeof(PingResponse))
+            // {
+            //     TcpServer.WriteLogSafe(headersLen);
+            //     TcpServer.WriteLogSafe($"{session.Id} | PONG [{PingResponse.Parser.ParseFrom(message, headersLen, message.Length - headersLen)}]");
+            // }
         }
+
+        public static void Listen(TcpServer server)
+        {
+            server.ClientConnected += (_, client) => OnConnected(client);
+        }
+
+        private static void OnConnected(WebClient client)
+        {
+            client.Session.BinaryMessageReceived += (_, message) => ExecuteInMain.HandleError(() => DecodeMessage(client, message));
+        }
+
+        public static void WriteMessage(WebClient client, IMessage data, Int32 tracker, TrackerOrigin origin)
+            => WriteMessage(client, data, tracker, origin, true);
         
-        public static void WriteMessage(WebSocketSession session, IMessage data, Int32 tracker, TrackerOrigin origin)
-            => WriteMessage(session, data, tracker, origin, true);
-        
-        public static void WriteMessage(WebSocketSession session, IMessage data, [Optional] Int32 tracker, [Optional] TrackerOrigin origin, bool useTracker = false)
+        public static void WriteMessage(WebClient client, IMessage data, [Optional] Int32 tracker, [Optional] TrackerOrigin origin, bool useTracker = false)
         {
             var type = data.GetType();
             if (!ProtocolMap.ProtocolCache.Reverse.HasEntry(type))
             {
-                TcpServer.WriteLogSafe($"{session.Id} | WARNING: attempted to send invalid command. ignoring.");
+                TcpServer.WriteLogSafe($"{client.Session.Id} | WARNING: attempted to send invalid command. ignoring.");
                 return;
             }
             
@@ -96,8 +93,8 @@ namespace UnityExplorer.Web
             data.WriteTo(streamRaw);
 
             var res = streamRaw.ToArray();
-            TcpServer.WriteLogSafe($"{session.Id} | Sending: {BitConverter.ToString(res)}");
-            session.QueueMessage(res, true);
+            TcpServer.WriteLogSafe($"{client.Session.Id} | Sending: {BitConverter.ToString(res)}");
+            client.Session.QueueMessage(res, true);
             streamRaw.Dispose();
         }
     }

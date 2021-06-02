@@ -39,6 +39,9 @@ namespace UnityExplorer.Web
                 {
                     if (mParams[0].ParameterType != typeof(WebClient) || mParams[1].ParameterType != customAttr.Signal)
                         throw new Exception($"{type.DeclaringType.FullName} : {type} : Invalid Parameters");
+
+                    useClient = true;
+                    useData = true;
                 }
                 else 
                     foreach (var parameterInfo in mParams)
