@@ -8,7 +8,7 @@ using MelonLoader;
 
 namespace UnityExplorer.Web
 {
-    public class ProtocolMap
+    public static class ProtocolMap
     {
         private static List<Type> ProtocolKlasses = new List<Type>();
         internal static Map<int, Type> ProtocolCache = new Map<int, Type>();
@@ -16,7 +16,7 @@ namespace UnityExplorer.Web
         internal static Dictionary<Type, ProtocolAttributes> ProtocolAttributes =
             new Dictionary<Type, ProtocolAttributes>();
         
-        public static void Init()
+        static ProtocolMap()
         {
             ProtocolKlasses = Assembly.GetAssembly(typeof(IMessage)).GetTypes().Where(type =>
                 {
@@ -90,6 +90,11 @@ namespace UnityExplorer.Web
                 Parser = parser,
                 HasData = descriptor.Fields.InDeclarationOrder().Count > 0
             });
+        }
+        
+        public static bool VerifySignal(Type signal)
+        {
+            return ProtocolCache.Reverse.HasEntry(signal);
         }
     }
 

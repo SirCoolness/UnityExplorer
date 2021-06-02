@@ -58,7 +58,9 @@ namespace UnityExplorer
             RuntimeProvider.Instance.StartCoroutine(SetupCoroutine());
             
             ExecuteInMain.Init();
-            ProtocolMap.Init();
+            // ProtocolMap.Init();
+            RequestHandlers.Init();
+            
             TcpServerIO.Start();
 
             Log($"Finished core setup, waiting for UI setup...");
