@@ -5,10 +5,14 @@ using System.Reflection;
 
 namespace UnityExplorer.Web
 {
-    public class RequestHandlers
+    public class SignalMap
     {
-        public static Dictionary<Type, List<WebSignalProperties>>
+        public readonly static Dictionary<Type, List<WebSignalProperties>>
             SignalHandlers = new Dictionary<Type, List<WebSignalProperties>>();
+        
+        public readonly static Dictionary<Type, WebSignalProperties>
+            MutationHandlers = new Dictionary<Type, WebSignalProperties>();
+
         
         public static void Init()
         {
@@ -45,6 +49,25 @@ namespace UnityExplorer.Web
                         if (mParams[1].ParameterType == customAttr.Signal)
                             useData = true;
                     }
+
+                if (isValidReturn)
+                {
+                    if (!MutationHandlers.ContainsKey(customAttr.Signal))
+                    {
+                        MutationHandlers[customAttr.Signal] = new WebSignalProperties
+                        {
+                            RequestData = customAttr.Signal,
+                            ResponseData = isValidReturn ? type.ReturnType : null,
+                            Target = type,
+                            CanUseResponse = isValidReturn,
+                            UseClient = useClient,
+                            UseData = useData
+                        };
+                        continue;
+                    }
+                    
+                    ExplorerCore.LogWarning($"{type.DeclaringType.FullName} : {type} : Mutation handle already registered");
+                }
                 
                 SignalHandlers[customAttr.Signal].Add(new WebSignalProperties
                 {

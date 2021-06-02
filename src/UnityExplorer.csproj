@@ -393,11 +393,12 @@
     <Compile Include="UI\Widgets\TransformTree\TransformCell.cs" />
     <Compile Include="UI\Widgets\TransformTree\TransformTree.cs" />
     <Compile Include="Web\Helper\ProtocolMap.cs" />
-    <Compile Include="Web\Helper\RequestHandlers.cs" />
+    <Compile Include="Web\Helper\SignalMap.cs" />
     <Compile Include="Web\Helper\WebSignalAttribute.cs" />
     <Compile Include="Web\Helper\WebSignalProperties.cs" />
     <Compile Include="Web\ProtocolManager.cs" />
     <Compile Include="Web\Services\ExecuteInMain.cs" />
+    <Compile Include="Web\Services\SignalReceived.cs" />
     <Compile Include="Web\Services\WebClient.cs" />
     <Compile Include="Web\Services\WebSocketSession.cs" />
     <Compile Include="Web\Test.cs" />

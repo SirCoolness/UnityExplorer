@@ -59,7 +59,7 @@ namespace UnityExplorer
             
             ExecuteInMain.Init();
             // ProtocolMap.Init();
-            RequestHandlers.Init();
+            SignalMap.Init();
             
             TcpServerIO.Start();
 
