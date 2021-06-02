@@ -61,7 +61,8 @@ namespace UnityExplorer.Web
                             Target = type,
                             CanUseResponse = isValidReturn,
                             UseClient = useClient,
-                            UseData = useData
+                            UseData = useData,
+                            HandleInMain = customAttr.HandleInMain
                         };
                         continue;
                     }
@@ -76,7 +77,8 @@ namespace UnityExplorer.Web
                     Target = type,
                     CanUseResponse = isValidReturn,
                     UseClient = useClient,
-                    UseData = useData
+                    UseData = useData,
+                    HandleInMain = customAttr.HandleInMain
                 }); 
             }
         }

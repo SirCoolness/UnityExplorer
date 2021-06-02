@@ -13,5 +13,7 @@ namespace UnityExplorer.Web
         public bool UseClient;
         public bool UseData;
         public bool CanUseResponse;
+
+        public bool HandleInMain;
     }
 }
