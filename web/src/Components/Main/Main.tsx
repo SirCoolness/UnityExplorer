@@ -1,7 +1,6 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 
 import styles from './Main.scss';
-import {Reader, Writer, Long as ProtoLong} from "protobufjs";
 import {PingRequest} from "../../generated/bi/ping";
 import {useGameConnectionContext} from "../Context/Redux/GameConnection";
 import {useGameSignal} from "../Context/GameSignalContext";
