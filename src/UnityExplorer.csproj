@@ -396,6 +396,7 @@
     <Compile Include="Web\Map.cs" />
     <Compile Include="Web\ProtocolManager.cs" />
     <Compile Include="Web\ProtocolMap.cs" />
+    <Compile Include="Web\WebClient.cs" />
     <Compile Include="Web\WebSocketSession.cs" />
     <Compile Include="Web\TcpServer.cs" />
     <Compile Include="Web\TcpServerIO.cs" />

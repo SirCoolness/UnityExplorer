@@ -19,7 +19,7 @@ namespace UnityExplorer.Web
         {
             Server = server;
 
-            server.ClientConnected += (_, session) => OnConnected(session);
+            server.ClientConnected += (_, client) => OnConnected(client.Session);
         }
         
         private static void OnConnected(WebSocketSession session)
@@ -95,11 +95,8 @@ namespace UnityExplorer.Web
             
             data.WriteTo(streamRaw);
 
-            // streamRaw.Seek(0, SeekOrigin.Begin);
-            // streamRaw.GetBuffer();
             var res = streamRaw.ToArray();
             TcpServer.WriteLogSafe($"{session.Id} | Sending: {BitConverter.ToString(res)}");
-            // session.SendMessage(res, true);
             session.QueueMessage(res, true);
             streamRaw.Dispose();
         }

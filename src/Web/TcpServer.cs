@@ -21,10 +21,10 @@ namespace UnityExplorer.Web
         internal static Queue<object> Logs = new Queue<object>();
 
         internal static Mutex ClientIO = new Mutex(); 
-        public readonly List<WebSocketSession> Clients = new List<WebSocketSession>();
+        public readonly List<WebClient> Clients = new List<WebClient>();
         
-        public event EventHandler<WebSocketSession> ClientConnected;
-        public event EventHandler<WebSocketSession> ClientDisconnected;
+        public event EventHandler<WebClient> ClientConnected;
+        public event EventHandler<WebClient> ClientDisconnected;
 
         public void Start()
         {
@@ -59,32 +59,33 @@ namespace UnityExplorer.Web
             }
         }
 
-        private void OnClientConnected(TcpClient client)
+        private void OnClientConnected(TcpClient session)
         {
-            var session = new WebSocketSession(client);
+            var client = new WebClient(session);
 
             ClientIO.WaitOne();
-            Clients.Add(session);
+            Clients.Add(client);
             ClientIO.ReleaseMutex();
 
-            session.Disconnected += OnClientDisconnected;
+            client.Disconnected += OnClientDisconnected;
             
-            WriteLogSafe($"{session.Id} | Connected!");
-            ClientConnected?.Invoke(this, session);
-            session.Start();
+            WriteLogSafe($"{client.Session.Id} | Connected!");
+            ClientConnected?.Invoke(this, client);
+            
+            client.Start();
         }
 
-        private void OnClientDisconnected(object sender, WebSocketSession session)
+        private void OnClientDisconnected(object sender, WebClient client)
         {
-            WriteLogSafe($"{session.Id} | Disconnected!");
+            WriteLogSafe($"{client.Session.Id} | Disconnected!");
             
-            ClientDisconnected?.Invoke(this, session);
+            ClientDisconnected?.Invoke(this, client);
             
             ClientIO.WaitOne();
-            Clients.Remove(session);
+            Clients.Remove(client);
             ClientIO.ReleaseMutex();
 
-            session.Dispose();
+            client.Dispose();
         }
 
         internal static void WriteLogSafe(object message)
