@@ -95,7 +95,7 @@ export class SignalHandler implements Handlers {
 
         const message = (commandInfo.Klass as any).decode(reader);
 
-        console.log(`${commandId} ${hasTracker} ${TrackerOrigin[origin]} ${tracker} ${hasData}`)
+        // console.log(`${commandId} ${hasTracker} ${TrackerOrigin[origin]} ${tracker} ${hasData}`)
 
         if (hasTracker)
             return this.OnMutationReceived(message, tracker, origin);
@@ -126,7 +126,7 @@ export class SignalHandler implements Handlers {
 
         if (data.HasData)
             //@ts-ignore
-            buff.encode(buff, writer);
+            data.Klass.encode(buff, writer);
 
         const res = writer.finish();
         (this.ws as WebSocket).send(res);

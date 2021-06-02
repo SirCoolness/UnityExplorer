@@ -22,7 +22,7 @@ export class Protomap {
     ]);
     
     public static ProtocolAttributes: Map<Function, ProtocolAttribute> = new Map([
-        [PingRequest.prototype.constructor, { HasData: false, DataId: 0, Klass: PingRequest }],
-		[PingResponse.prototype.constructor, { HasData: false, DataId: 1, Klass: PingResponse }]
+        [PingRequest.prototype.constructor, { HasData: true, DataId: 0, Klass: PingRequest }],
+		[PingResponse.prototype.constructor, { HasData: true, DataId: 1, Klass: PingResponse }]
     ]);
 }

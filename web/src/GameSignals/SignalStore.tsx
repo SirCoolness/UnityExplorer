@@ -22,6 +22,7 @@ export class SignalStore {
             return;
 
         const listeners = this.listeners.get(buff.constructor) as Set<SignalAction<any>>;
+
         listeners.forEach(listener => {
             const res = this.manager.store.dispatch(listener(buff)(isTracked, this.manager.Dispatch, this.manager.Mutation));
             if (isTracked)

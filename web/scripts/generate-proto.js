@@ -114,7 +114,7 @@ export class Protomap {
     ]);
     
     public static ProtocolAttributes: Map<Function, ProtocolAttribute> = new Map([
-        ${mappedIds.map(item => `[${item.type.name}.prototype.constructor, { HasData: ${Object.keys(item.schema.fields) > 0}, DataId: ${item.schema.options["(data_id)"]}, Klass: ${item.type.name} }]`).join(",\n\t\t")}
+        ${mappedIds.map(item => `[${item.type.name}.prototype.constructor, { HasData: ${Object.keys(item.schema.fields).length > 0}, DataId: ${item.schema.options["(data_id)"]}, Klass: ${item.type.name} }]`).join(",\n\t\t")}
     ]);
 }
 `;

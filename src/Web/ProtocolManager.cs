@@ -35,7 +35,7 @@ namespace UnityExplorer.Web
             int tracker = useTracker ? BitConverter.ToInt32(message, 6) : 0;
 
             bool hasData = BitConverter.ToBoolean(message, useTracker ? 10 : 5);
-            int headersLen = useTracker ? 6 : 11;
+            int headersLen = useTracker ? 11 : 6;
 
             if (!ProtocolMap.ProtocolCache.Forward.HasEntry(commandId))
             {
@@ -47,11 +47,25 @@ namespace UnityExplorer.Web
             
             TcpServer.WriteLogSafe($"{session.Id} | Recieved [{BitConverter.ToString(message)}] [{origin.ToString()}]");
             
+            if (origin != TrackerOrigin.Client)
+                return;
+
             if (command == typeof(PingRequest))
+            {
                 WriteMessage(session, new PingResponse
                 {
                     Message = session.Id
                 }, tracker, origin);
+            
+                WriteMessage(session, new PingRequest
+                {
+                    Message = session.Id
+                }, 0, TrackerOrigin.Server);
+            } else if (command == typeof(PingResponse))
+            {
+                TcpServer.WriteLogSafe(headersLen);
+                TcpServer.WriteLogSafe($"{session.Id} | PONG [{PingResponse.Parser.ParseFrom(message, headersLen, message.Length - headersLen)}]");
+            }
         }
         
         public static void WriteMessage(WebSocketSession session, IMessage data, Int32 tracker, TrackerOrigin origin)
