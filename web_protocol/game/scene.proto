@@ -26,3 +26,8 @@ service Scene {
     option (method.Sender) = CLIENT;
   };
 }
+
+message TestDispatch {
+  option (message.CmdID) = 1;
+  option (message.Sender) = CLIENT;
+}

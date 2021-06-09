@@ -1,0 +1,7 @@
+﻿syntax = "proto3";
+
+enum Direction {
+  CLIENT = 0;
+  SERVER = 1;
+  BOTH   = 2;
+}

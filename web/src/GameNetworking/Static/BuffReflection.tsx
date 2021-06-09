@@ -1,7 +1,8 @@
 import '../../generated/Reflection';
 import * as Buffs from '../../generated/Buffs';
+import {Direction} from '../../generated/Buffs';
 
-import pbjs, {roots, Type, Service, ReflectionObject, Namespace, NamespaceBase, Method} from 'protobufjs';
+import pbjs, {Method, Namespace, NamespaceBase, ReflectionObject, roots, Service, Type} from 'protobufjs';
 import {LookupObject} from "../../Util/LookupObject";
 import {BuffReflection} from "./Internal_BuffReflection";
 import {GetType} from "../../Util/GetType";
@@ -13,6 +14,7 @@ class BuffReflectionHelper {
     private static isLoaded = false;
 
     private static methodOptionKeys = ["(method.CmdID)", "(method.Sender)"];
+    private static messageOptionKeys = ["(message.CmdID)", "(message.Sender)"];
 
     private static Load: () => void = () => {
         if (BuffReflectionHelper.isLoaded)
@@ -50,13 +52,18 @@ class BuffReflectionHelper {
     private static HandleType: (t: Type) => void = t => {
         if (BuffReflectionHelper.IsMethod(t))
         {
-            const mid = t.getOption("(method.CmdID)");
-            if (!BuffReflectionHelper.reflection.DispatchTypesById.hasOwnProperty(mid))
+            const mid = t.getOption("(message.CmdID)");
+            const direction = BuffReflectionHelper.ParseDirection(t.getOption("(message.Sender)"));
+
+            if (direction === Direction.CLIENT || direction === Direction.BOTH)
             {
-                BuffReflectionHelper.reflection.DispatchTypesById[mid] = t;
-                BuffReflectionHelper.reflection.DispatchTypes.set(GetType(LookupObject(t.fullName, Buffs)), t);
-            } else {
-                console.error(`Cannot register [${t.fullName}]: \"(method.CmdID)\" ${mid} is already registered to [${BuffReflectionHelper.reflection.DispatchTypesById[mid].fullName}].`);
+                if (!BuffReflectionHelper.reflection.DispatchTypesById.hasOwnProperty(mid))
+                {
+                    BuffReflectionHelper.reflection.DispatchTypesById[mid] = t;
+                    BuffReflectionHelper.reflection.DispatchTypes.set(GetType(LookupObject(t.fullName, Buffs)), t);
+                } else {
+                    console.error(`Cannot register [${t.fullName}]: \"(message.CmdID)\" ${mid} is already registered to [${BuffReflectionHelper.reflection.DispatchTypesById[mid].fullName}].`);
+                }
             }
         }
 
@@ -67,8 +74,8 @@ class BuffReflectionHelper {
         if (!BuffReflectionHelper.IsMethod(method))
             return false;
 
-        const direction = (Buffs.method.Direction[method.getOption("(method.Sender)")] as unknown) as Buffs.method.Direction;
-        if (direction !== Buffs.method.Direction.CLIENT && direction !== Buffs.method.Direction.BOTH)
+        const direction = BuffReflectionHelper.ParseDirection(method.getOption("(method.Sender)"));
+        if (direction !== Buffs.Direction.CLIENT && direction !== Buffs.Direction.BOTH)
             return false;
 
         const mid = method.getOption("(method.CmdID)");
@@ -84,11 +91,16 @@ class BuffReflectionHelper {
     }
 
     private static IsMethod: (t: ReflectionObject) => boolean = t => {
-        for (const key of BuffReflectionHelper.methodOptionKeys)
+        const keys = t instanceof Type ? BuffReflectionHelper.messageOptionKeys : BuffReflectionHelper.methodOptionKeys;
+
+        for (const key of keys)
             if (!t.options?.hasOwnProperty(key))
                 return false;
+
         return true;
     }
+
+    private static ParseDirection: (t: string) => Buffs.Direction = t => (Buffs.Direction[t as any] as unknown) as Buffs.Direction;
 }
 
 BuffReflectionHelper['Load']();

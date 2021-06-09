@@ -1,3 +1,10 @@
 ﻿syntax = "proto3";
 import "google/protobuf/descriptor.proto";
+import "core/direction.proto";
+
 package message;
+
+extend google.protobuf.MessageOptions {
+  int32 CmdID = 50000;
+  Direction Sender = 50001;
+}

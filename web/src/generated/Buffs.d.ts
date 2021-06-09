@@ -1,4 +1,11 @@
 import * as $protobuf from "protobufjs";
+/** Direction enum. */
+export enum Direction {
+    CLIENT = 0,
+    SERVER = 1,
+    BOTH = 2
+}
+
 /** Namespace core. */
 export namespace core {
 
@@ -1694,6 +1701,12 @@ export namespace google {
 
             /** MessageOptions uninterpreted_option */
             uninterpreted_option?: (google.protobuf.IUninterpretedOption[]|null);
+
+            /** MessageOptions .message.CmdID */
+            ".message.CmdID"?: (number|null);
+
+            /** MessageOptions .message.Sender */
+            ".message.Sender"?: (Direction|null);
         }
 
         /** Represents a MessageOptions. */
@@ -2331,7 +2344,7 @@ export namespace google {
             ".method.CmdID"?: (number|null);
 
             /** MethodOptions .method.Sender */
-            ".method.Sender"?: (method.Direction|null);
+            ".method.Sender"?: (Direction|null);
         }
 
         /** Represents a MethodOptions. */
@@ -3055,30 +3068,6 @@ export namespace google {
     }
 }
 
-/** Namespace method. */
-export namespace method {
-
-    /** Direction enum. */
-    enum Direction {
-        CLIENT = 0,
-        SERVER = 1,
-        BOTH = 2
-    }
-}
-
-/** Properties of a Transform. */
-export interface ITransform {
-
-    /** Transform instanceID */
-    instanceID?: (number|null);
-
-    /** Transform root */
-    root?: (number|null);
-
-    /** Transform name */
-    name?: (string|null);
-}
-
 /** Represents a Transform. */
 export class Transform implements ITransform {
 
@@ -3168,13 +3157,6 @@ export class Transform implements ITransform {
     public toJSON(): { [k: string]: any };
 }
 
-/** Properties of a SceneFindRequest. */
-export interface ISceneFindRequest {
-
-    /** SceneFindRequest path */
-    path?: (string|null);
-}
-
 /** Represents a SceneFindRequest. */
 export class SceneFindRequest implements ISceneFindRequest {
 
@@ -3256,13 +3238,6 @@ export class SceneFindRequest implements ISceneFindRequest {
      * @returns JSON object
      */
     public toJSON(): { [k: string]: any };
-}
-
-/** Properties of a SceneFindResponse. */
-export interface ISceneFindResponse {
-
-    /** SceneFindResponse children */
-    children?: (ITransform[]|null);
 }
 
 /** Represents a SceneFindResponse. */
@@ -3412,4 +3387,84 @@ export namespace Scene {
      * @param [response] SceneFindResponse
      */
     type SceneFindChildrenCallback = (error: (Error|null), response?: SceneFindResponse) => void;
+}
+
+/** Represents a TestDispatch. */
+export class TestDispatch implements ITestDispatch {
+
+    /**
+     * Constructs a new TestDispatch.
+     * @param [properties] Properties to set
+     */
+    constructor(properties?: ITestDispatch);
+
+    /**
+     * Creates a new TestDispatch instance using the specified properties.
+     * @param [properties] Properties to set
+     * @returns TestDispatch instance
+     */
+    public static create(properties?: ITestDispatch): TestDispatch;
+
+    /**
+     * Encodes the specified TestDispatch message. Does not implicitly {@link TestDispatch.verify|verify} messages.
+     * @param message TestDispatch message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encode(message: ITestDispatch, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Encodes the specified TestDispatch message, length delimited. Does not implicitly {@link TestDispatch.verify|verify} messages.
+     * @param message TestDispatch message or plain object to encode
+     * @param [writer] Writer to encode to
+     * @returns Writer
+     */
+    public static encodeDelimited(message: ITestDispatch, writer?: $protobuf.Writer): $protobuf.Writer;
+
+    /**
+     * Decodes a TestDispatch message from the specified reader or buffer.
+     * @param reader Reader or buffer to decode from
+     * @param [length] Message length if known beforehand
+     * @returns TestDispatch
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): TestDispatch;
+
+    /**
+     * Decodes a TestDispatch message from the specified reader or buffer, length delimited.
+     * @param reader Reader or buffer to decode from
+     * @returns TestDispatch
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): TestDispatch;
+
+    /**
+     * Verifies a TestDispatch message.
+     * @param message Plain object to verify
+     * @returns `null` if valid, otherwise the reason why it is not
+     */
+    public static verify(message: { [k: string]: any }): (string|null);
+
+    /**
+     * Creates a TestDispatch message from a plain object. Also converts values to their respective internal types.
+     * @param object Plain object
+     * @returns TestDispatch
+     */
+    public static fromObject(object: { [k: string]: any }): TestDispatch;
+
+    /**
+     * Creates a plain object from a TestDispatch message. Also converts values to other types if specified.
+     * @param message TestDispatch
+     * @param [options] Conversion options
+     * @returns Plain object
+     */
+    public static toObject(message: TestDispatch, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+    /**
+     * Converts this TestDispatch to JSON.
+     * @returns JSON object
+     */
+    public toJSON(): { [k: string]: any };
 }

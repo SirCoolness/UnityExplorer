@@ -5,6 +5,13 @@ var $protobuf = require("protobufjs/light");
 
 var $root = ($protobuf.roots["default"] || ($protobuf.roots["default"] = new $protobuf.Root()))
 .addJSON({
+  Direction: {
+    values: {
+      CLIENT: 0,
+      SERVER: 1,
+      BOTH: 2
+    }
+  },
   core: {
     nested: {
       RPCDetails: {
@@ -47,7 +54,20 @@ var $root = ($protobuf.roots["default"] || ($protobuf.roots["default"] = new $pr
       }
     }
   },
-  message: {},
+  message: {
+    nested: {
+      CmdID: {
+        type: "int32",
+        id: 50000,
+        extend: "google.protobuf.MessageOptions"
+      },
+      Sender: {
+        type: "Direction",
+        id: 50001,
+        extend: "google.protobuf.MessageOptions"
+      }
+    }
+  },
   google: {
     nested: {
       protobuf: {
@@ -785,13 +805,6 @@ var $root = ($protobuf.roots["default"] || ($protobuf.roots["default"] = new $pr
   },
   method: {
     nested: {
-      Direction: {
-        values: {
-          CLIENT: 0,
-          SERVER: 1,
-          BOTH: 2
-        }
-      },
       CmdID: {
         type: "int32",
         id: 50000,
@@ -873,6 +886,13 @@ var $root = ($protobuf.roots["default"] || ($protobuf.roots["default"] = new $pr
         ]
       }
     }
+  },
+  TestDispatch: {
+    options: {
+      "(message.CmdID)": 1,
+      "(message.Sender)": "CLIENT"
+    },
+    fields: {}
   }
 });
 

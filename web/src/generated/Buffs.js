@@ -9,6 +9,22 @@ var $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.ut
 // Exported root namespace
 var $root = $protobuf.roots["default"] || ($protobuf.roots["default"] = {});
 
+/**
+ * Direction enum.
+ * @exports Direction
+ * @enum {number}
+ * @property {number} CLIENT=0 CLIENT value
+ * @property {number} SERVER=1 SERVER value
+ * @property {number} BOTH=2 BOTH value
+ */
+$root.Direction = (function() {
+    var valuesById = {}, values = Object.create(valuesById);
+    values[valuesById[0] = "CLIENT"] = 0;
+    values[valuesById[1] = "SERVER"] = 1;
+    values[valuesById[2] = "BOTH"] = 2;
+    return values;
+})();
+
 $root.core = (function() {
 
     /**
@@ -4686,6 +4702,8 @@ $root.google = (function() {
              * @property {boolean|null} [deprecated] MessageOptions deprecated
              * @property {boolean|null} [map_entry] MessageOptions map_entry
              * @property {Array.<google.protobuf.IUninterpretedOption>|null} [uninterpreted_option] MessageOptions uninterpreted_option
+             * @property {number|null} [".message.CmdID"] MessageOptions .message.CmdID
+             * @property {Direction|null} [".message.Sender"] MessageOptions .message.Sender
              */
 
             /**
@@ -4745,6 +4763,22 @@ $root.google = (function() {
             MessageOptions.prototype.uninterpreted_option = $util.emptyArray;
 
             /**
+             * MessageOptions .message.CmdID.
+             * @member {number} .message.CmdID
+             * @memberof google.protobuf.MessageOptions
+             * @instance
+             */
+            MessageOptions.prototype[".message.CmdID"] = 0;
+
+            /**
+             * MessageOptions .message.Sender.
+             * @member {Direction} .message.Sender
+             * @memberof google.protobuf.MessageOptions
+             * @instance
+             */
+            MessageOptions.prototype[".message.Sender"] = 0;
+
+            /**
              * Creates a new MessageOptions instance using the specified properties.
              * @function create
              * @memberof google.protobuf.MessageOptions
@@ -4779,6 +4813,10 @@ $root.google = (function() {
                 if (message.uninterpreted_option != null && message.uninterpreted_option.length)
                     for (var i = 0; i < message.uninterpreted_option.length; ++i)
                         $root.google.protobuf.UninterpretedOption.encode(message.uninterpreted_option[i], writer.uint32(/* id 999, wireType 2 =*/7994).fork()).ldelim();
+                if (message[".message.CmdID"] != null && Object.hasOwnProperty.call(message, ".message.CmdID"))
+                    writer.uint32(/* id 50000, wireType 0 =*/400000).int32(message[".message.CmdID"]);
+                if (message[".message.Sender"] != null && Object.hasOwnProperty.call(message, ".message.Sender"))
+                    writer.uint32(/* id 50001, wireType 0 =*/400008).int32(message[".message.Sender"]);
                 return writer;
             };
 
@@ -4829,6 +4867,12 @@ $root.google = (function() {
                         if (!(message.uninterpreted_option && message.uninterpreted_option.length))
                             message.uninterpreted_option = [];
                         message.uninterpreted_option.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
+                        break;
+                    case 50000:
+                        message[".message.CmdID"] = reader.int32();
+                        break;
+                    case 50001:
+                        message[".message.Sender"] = reader.int32();
                         break;
                     default:
                         reader.skipType(tag & 7);
@@ -4886,6 +4930,18 @@ $root.google = (function() {
                             return "uninterpreted_option." + error;
                     }
                 }
+                if (message[".message.CmdID"] != null && message.hasOwnProperty(".message.CmdID"))
+                    if (!$util.isInteger(message[".message.CmdID"]))
+                        return ".message.CmdID: integer expected";
+                if (message[".message.Sender"] != null && message.hasOwnProperty(".message.Sender"))
+                    switch (message[".message.Sender"]) {
+                    default:
+                        return ".message.Sender: enum value expected";
+                    case 0:
+                    case 1:
+                    case 2:
+                        break;
+                    }
                 return null;
             };
 
@@ -4919,6 +4975,22 @@ $root.google = (function() {
                         message.uninterpreted_option[i] = $root.google.protobuf.UninterpretedOption.fromObject(object.uninterpreted_option[i]);
                     }
                 }
+                if (object[".message.CmdID"] != null)
+                    message[".message.CmdID"] = object[".message.CmdID"] | 0;
+                switch (object[".message.Sender"]) {
+                case "CLIENT":
+                case 0:
+                    message[".message.Sender"] = 0;
+                    break;
+                case "SERVER":
+                case 1:
+                    message[".message.Sender"] = 1;
+                    break;
+                case "BOTH":
+                case 2:
+                    message[".message.Sender"] = 2;
+                    break;
+                }
                 return message;
             };
 
@@ -4942,6 +5014,8 @@ $root.google = (function() {
                     object.no_standard_descriptor_accessor = false;
                     object.deprecated = false;
                     object.map_entry = false;
+                    object[".message.CmdID"] = 0;
+                    object[".message.Sender"] = options.enums === String ? "CLIENT" : 0;
                 }
                 if (message.message_set_wire_format != null && message.hasOwnProperty("message_set_wire_format"))
                     object.message_set_wire_format = message.message_set_wire_format;
@@ -4956,6 +5030,10 @@ $root.google = (function() {
                     for (var j = 0; j < message.uninterpreted_option.length; ++j)
                         object.uninterpreted_option[j] = $root.google.protobuf.UninterpretedOption.toObject(message.uninterpreted_option[j], options);
                 }
+                if (message[".message.CmdID"] != null && message.hasOwnProperty(".message.CmdID"))
+                    object[".message.CmdID"] = message[".message.CmdID"];
+                if (message[".message.Sender"] != null && message.hasOwnProperty(".message.Sender"))
+                    object[".message.Sender"] = options.enums === String ? $root.Direction[message[".message.Sender"]] : message[".message.Sender"];
                 return object;
             };
 
@@ -6316,7 +6394,7 @@ $root.google = (function() {
              * @property {boolean|null} [deprecated] MethodOptions deprecated
              * @property {Array.<google.protobuf.IUninterpretedOption>|null} [uninterpreted_option] MethodOptions uninterpreted_option
              * @property {number|null} [".method.CmdID"] MethodOptions .method.CmdID
-             * @property {method.Direction|null} [".method.Sender"] MethodOptions .method.Sender
+             * @property {Direction|null} [".method.Sender"] MethodOptions .method.Sender
              */
 
             /**
@@ -6361,7 +6439,7 @@ $root.google = (function() {
 
             /**
              * MethodOptions .method.Sender.
-             * @member {method.Direction} .method.Sender
+             * @member {Direction} .method.Sender
              * @memberof google.protobuf.MethodOptions
              * @instance
              */
@@ -6583,7 +6661,7 @@ $root.google = (function() {
                 if (message[".method.CmdID"] != null && message.hasOwnProperty(".method.CmdID"))
                     object[".method.CmdID"] = message[".method.CmdID"];
                 if (message[".method.Sender"] != null && message.hasOwnProperty(".method.Sender"))
-                    object[".method.Sender"] = options.enums === String ? $root.method.Direction[message[".method.Sender"]] : message[".method.Sender"];
+                    object[".method.Sender"] = options.enums === String ? $root.Direction[message[".method.Sender"]] : message[".method.Sender"];
                 return object;
             };
 
@@ -8242,22 +8320,6 @@ $root.method = (function() {
      */
     var method = {};
 
-    /**
-     * Direction enum.
-     * @name method.Direction
-     * @enum {number}
-     * @property {number} CLIENT=0 CLIENT value
-     * @property {number} SERVER=1 SERVER value
-     * @property {number} BOTH=2 BOTH value
-     */
-    method.Direction = (function() {
-        var valuesById = {}, values = Object.create(valuesById);
-        values[valuesById[0] = "CLIENT"] = 0;
-        values[valuesById[1] = "SERVER"] = 1;
-        values[valuesById[2] = "BOTH"] = 2;
-        return values;
-    })();
-
     return method;
 })();
 
@@ -8999,6 +9061,166 @@ $root.Scene = (function() {
      */
 
     return Scene;
+})();
+
+$root.TestDispatch = (function() {
+
+    /**
+     * Properties of a TestDispatch.
+     * @exports ITestDispatch
+     * @interface ITestDispatch
+     */
+
+    /**
+     * Constructs a new TestDispatch.
+     * @exports TestDispatch
+     * @classdesc Represents a TestDispatch.
+     * @implements ITestDispatch
+     * @constructor
+     * @param {ITestDispatch=} [properties] Properties to set
+     */
+    function TestDispatch(properties) {
+        if (properties)
+            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                if (properties[keys[i]] != null)
+                    this[keys[i]] = properties[keys[i]];
+    }
+
+    /**
+     * Creates a new TestDispatch instance using the specified properties.
+     * @function create
+     * @memberof TestDispatch
+     * @static
+     * @param {ITestDispatch=} [properties] Properties to set
+     * @returns {TestDispatch} TestDispatch instance
+     */
+    TestDispatch.create = function create(properties) {
+        return new TestDispatch(properties);
+    };
+
+    /**
+     * Encodes the specified TestDispatch message. Does not implicitly {@link TestDispatch.verify|verify} messages.
+     * @function encode
+     * @memberof TestDispatch
+     * @static
+     * @param {ITestDispatch} message TestDispatch message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    TestDispatch.encode = function encode(message, writer) {
+        if (!writer)
+            writer = $Writer.create();
+        return writer;
+    };
+
+    /**
+     * Encodes the specified TestDispatch message, length delimited. Does not implicitly {@link TestDispatch.verify|verify} messages.
+     * @function encodeDelimited
+     * @memberof TestDispatch
+     * @static
+     * @param {ITestDispatch} message TestDispatch message or plain object to encode
+     * @param {$protobuf.Writer} [writer] Writer to encode to
+     * @returns {$protobuf.Writer} Writer
+     */
+    TestDispatch.encodeDelimited = function encodeDelimited(message, writer) {
+        return this.encode(message, writer).ldelim();
+    };
+
+    /**
+     * Decodes a TestDispatch message from the specified reader or buffer.
+     * @function decode
+     * @memberof TestDispatch
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @param {number} [length] Message length if known beforehand
+     * @returns {TestDispatch} TestDispatch
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    TestDispatch.decode = function decode(reader, length) {
+        if (!(reader instanceof $Reader))
+            reader = $Reader.create(reader);
+        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.TestDispatch();
+        while (reader.pos < end) {
+            var tag = reader.uint32();
+            switch (tag >>> 3) {
+            default:
+                reader.skipType(tag & 7);
+                break;
+            }
+        }
+        return message;
+    };
+
+    /**
+     * Decodes a TestDispatch message from the specified reader or buffer, length delimited.
+     * @function decodeDelimited
+     * @memberof TestDispatch
+     * @static
+     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+     * @returns {TestDispatch} TestDispatch
+     * @throws {Error} If the payload is not a reader or valid buffer
+     * @throws {$protobuf.util.ProtocolError} If required fields are missing
+     */
+    TestDispatch.decodeDelimited = function decodeDelimited(reader) {
+        if (!(reader instanceof $Reader))
+            reader = new $Reader(reader);
+        return this.decode(reader, reader.uint32());
+    };
+
+    /**
+     * Verifies a TestDispatch message.
+     * @function verify
+     * @memberof TestDispatch
+     * @static
+     * @param {Object.<string,*>} message Plain object to verify
+     * @returns {string|null} `null` if valid, otherwise the reason why it is not
+     */
+    TestDispatch.verify = function verify(message) {
+        if (typeof message !== "object" || message === null)
+            return "object expected";
+        return null;
+    };
+
+    /**
+     * Creates a TestDispatch message from a plain object. Also converts values to their respective internal types.
+     * @function fromObject
+     * @memberof TestDispatch
+     * @static
+     * @param {Object.<string,*>} object Plain object
+     * @returns {TestDispatch} TestDispatch
+     */
+    TestDispatch.fromObject = function fromObject(object) {
+        if (object instanceof $root.TestDispatch)
+            return object;
+        return new $root.TestDispatch();
+    };
+
+    /**
+     * Creates a plain object from a TestDispatch message. Also converts values to other types if specified.
+     * @function toObject
+     * @memberof TestDispatch
+     * @static
+     * @param {TestDispatch} message TestDispatch
+     * @param {$protobuf.IConversionOptions} [options] Conversion options
+     * @returns {Object.<string,*>} Plain object
+     */
+    TestDispatch.toObject = function toObject() {
+        return {};
+    };
+
+    /**
+     * Converts this TestDispatch to JSON.
+     * @function toJSON
+     * @memberof TestDispatch
+     * @instance
+     * @returns {Object.<string,*>} JSON object
+     */
+    TestDispatch.prototype.toJSON = function toJSON() {
+        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+    };
+
+    return TestDispatch;
 })();
 
 module.exports = $root;
