@@ -23,6 +23,7 @@ export class GameNetworking {
     }
 
     private Bind: () => void = () => {
-
+        this.connection.OnMessage = this.message.OnMessage;
+        this.message['InternalSend'] = (e) => this.connection.SendMessage(e);
     }
 }

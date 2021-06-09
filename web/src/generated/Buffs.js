@@ -751,14 +751,14 @@ $root.google = (function() {
              * @property {string|null} [name] FileDescriptorProto name
              * @property {string|null} ["package"] FileDescriptorProto package
              * @property {Array.<string>|null} [dependency] FileDescriptorProto dependency
-             * @property {Array.<number>|null} [public_dependency] FileDescriptorProto public_dependency
-             * @property {Array.<number>|null} [weak_dependency] FileDescriptorProto weak_dependency
-             * @property {Array.<google.protobuf.IDescriptorProto>|null} [message_type] FileDescriptorProto message_type
-             * @property {Array.<google.protobuf.IEnumDescriptorProto>|null} [enum_type] FileDescriptorProto enum_type
+             * @property {Array.<number>|null} [publicDependency] FileDescriptorProto publicDependency
+             * @property {Array.<number>|null} [weakDependency] FileDescriptorProto weakDependency
+             * @property {Array.<google.protobuf.IDescriptorProto>|null} [messageType] FileDescriptorProto messageType
+             * @property {Array.<google.protobuf.IEnumDescriptorProto>|null} [enumType] FileDescriptorProto enumType
              * @property {Array.<google.protobuf.IServiceDescriptorProto>|null} [service] FileDescriptorProto service
              * @property {Array.<google.protobuf.IFieldDescriptorProto>|null} [extension] FileDescriptorProto extension
              * @property {google.protobuf.IFileOptions|null} [options] FileDescriptorProto options
-             * @property {google.protobuf.ISourceCodeInfo|null} [source_code_info] FileDescriptorProto source_code_info
+             * @property {google.protobuf.ISourceCodeInfo|null} [sourceCodeInfo] FileDescriptorProto sourceCodeInfo
              * @property {string|null} [syntax] FileDescriptorProto syntax
              */
 
@@ -772,10 +772,10 @@ $root.google = (function() {
              */
             function FileDescriptorProto(properties) {
                 this.dependency = [];
-                this.public_dependency = [];
-                this.weak_dependency = [];
-                this.message_type = [];
-                this.enum_type = [];
+                this.publicDependency = [];
+                this.weakDependency = [];
+                this.messageType = [];
+                this.enumType = [];
                 this.service = [];
                 this.extension = [];
                 if (properties)
@@ -809,36 +809,36 @@ $root.google = (function() {
             FileDescriptorProto.prototype.dependency = $util.emptyArray;
 
             /**
-             * FileDescriptorProto public_dependency.
-             * @member {Array.<number>} public_dependency
+             * FileDescriptorProto publicDependency.
+             * @member {Array.<number>} publicDependency
              * @memberof google.protobuf.FileDescriptorProto
              * @instance
              */
-            FileDescriptorProto.prototype.public_dependency = $util.emptyArray;
+            FileDescriptorProto.prototype.publicDependency = $util.emptyArray;
 
             /**
-             * FileDescriptorProto weak_dependency.
-             * @member {Array.<number>} weak_dependency
+             * FileDescriptorProto weakDependency.
+             * @member {Array.<number>} weakDependency
              * @memberof google.protobuf.FileDescriptorProto
              * @instance
              */
-            FileDescriptorProto.prototype.weak_dependency = $util.emptyArray;
+            FileDescriptorProto.prototype.weakDependency = $util.emptyArray;
 
             /**
-             * FileDescriptorProto message_type.
-             * @member {Array.<google.protobuf.IDescriptorProto>} message_type
+             * FileDescriptorProto messageType.
+             * @member {Array.<google.protobuf.IDescriptorProto>} messageType
              * @memberof google.protobuf.FileDescriptorProto
              * @instance
              */
-            FileDescriptorProto.prototype.message_type = $util.emptyArray;
+            FileDescriptorProto.prototype.messageType = $util.emptyArray;
 
             /**
-             * FileDescriptorProto enum_type.
-             * @member {Array.<google.protobuf.IEnumDescriptorProto>} enum_type
+             * FileDescriptorProto enumType.
+             * @member {Array.<google.protobuf.IEnumDescriptorProto>} enumType
              * @memberof google.protobuf.FileDescriptorProto
              * @instance
              */
-            FileDescriptorProto.prototype.enum_type = $util.emptyArray;
+            FileDescriptorProto.prototype.enumType = $util.emptyArray;
 
             /**
              * FileDescriptorProto service.
@@ -865,12 +865,12 @@ $root.google = (function() {
             FileDescriptorProto.prototype.options = null;
 
             /**
-             * FileDescriptorProto source_code_info.
-             * @member {google.protobuf.ISourceCodeInfo|null|undefined} source_code_info
+             * FileDescriptorProto sourceCodeInfo.
+             * @member {google.protobuf.ISourceCodeInfo|null|undefined} sourceCodeInfo
              * @memberof google.protobuf.FileDescriptorProto
              * @instance
              */
-            FileDescriptorProto.prototype.source_code_info = null;
+            FileDescriptorProto.prototype.sourceCodeInfo = null;
 
             /**
              * FileDescriptorProto syntax.
@@ -911,12 +911,12 @@ $root.google = (function() {
                 if (message.dependency != null && message.dependency.length)
                     for (var i = 0; i < message.dependency.length; ++i)
                         writer.uint32(/* id 3, wireType 2 =*/26).string(message.dependency[i]);
-                if (message.message_type != null && message.message_type.length)
-                    for (var i = 0; i < message.message_type.length; ++i)
-                        $root.google.protobuf.DescriptorProto.encode(message.message_type[i], writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
-                if (message.enum_type != null && message.enum_type.length)
-                    for (var i = 0; i < message.enum_type.length; ++i)
-                        $root.google.protobuf.EnumDescriptorProto.encode(message.enum_type[i], writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
+                if (message.messageType != null && message.messageType.length)
+                    for (var i = 0; i < message.messageType.length; ++i)
+                        $root.google.protobuf.DescriptorProto.encode(message.messageType[i], writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
+                if (message.enumType != null && message.enumType.length)
+                    for (var i = 0; i < message.enumType.length; ++i)
+                        $root.google.protobuf.EnumDescriptorProto.encode(message.enumType[i], writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
                 if (message.service != null && message.service.length)
                     for (var i = 0; i < message.service.length; ++i)
                         $root.google.protobuf.ServiceDescriptorProto.encode(message.service[i], writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
@@ -925,14 +925,14 @@ $root.google = (function() {
                         $root.google.protobuf.FieldDescriptorProto.encode(message.extension[i], writer.uint32(/* id 7, wireType 2 =*/58).fork()).ldelim();
                 if (message.options != null && Object.hasOwnProperty.call(message, "options"))
                     $root.google.protobuf.FileOptions.encode(message.options, writer.uint32(/* id 8, wireType 2 =*/66).fork()).ldelim();
-                if (message.source_code_info != null && Object.hasOwnProperty.call(message, "source_code_info"))
-                    $root.google.protobuf.SourceCodeInfo.encode(message.source_code_info, writer.uint32(/* id 9, wireType 2 =*/74).fork()).ldelim();
-                if (message.public_dependency != null && message.public_dependency.length)
-                    for (var i = 0; i < message.public_dependency.length; ++i)
-                        writer.uint32(/* id 10, wireType 0 =*/80).int32(message.public_dependency[i]);
-                if (message.weak_dependency != null && message.weak_dependency.length)
-                    for (var i = 0; i < message.weak_dependency.length; ++i)
-                        writer.uint32(/* id 11, wireType 0 =*/88).int32(message.weak_dependency[i]);
+                if (message.sourceCodeInfo != null && Object.hasOwnProperty.call(message, "sourceCodeInfo"))
+                    $root.google.protobuf.SourceCodeInfo.encode(message.sourceCodeInfo, writer.uint32(/* id 9, wireType 2 =*/74).fork()).ldelim();
+                if (message.publicDependency != null && message.publicDependency.length)
+                    for (var i = 0; i < message.publicDependency.length; ++i)
+                        writer.uint32(/* id 10, wireType 0 =*/80).int32(message.publicDependency[i]);
+                if (message.weakDependency != null && message.weakDependency.length)
+                    for (var i = 0; i < message.weakDependency.length; ++i)
+                        writer.uint32(/* id 11, wireType 0 =*/88).int32(message.weakDependency[i]);
                 if (message.syntax != null && Object.hasOwnProperty.call(message, "syntax"))
                     writer.uint32(/* id 12, wireType 2 =*/98).string(message.syntax);
                 return writer;
@@ -981,34 +981,34 @@ $root.google = (function() {
                         message.dependency.push(reader.string());
                         break;
                     case 10:
-                        if (!(message.public_dependency && message.public_dependency.length))
-                            message.public_dependency = [];
+                        if (!(message.publicDependency && message.publicDependency.length))
+                            message.publicDependency = [];
                         if ((tag & 7) === 2) {
                             var end2 = reader.uint32() + reader.pos;
                             while (reader.pos < end2)
-                                message.public_dependency.push(reader.int32());
+                                message.publicDependency.push(reader.int32());
                         } else
-                            message.public_dependency.push(reader.int32());
+                            message.publicDependency.push(reader.int32());
                         break;
                     case 11:
-                        if (!(message.weak_dependency && message.weak_dependency.length))
-                            message.weak_dependency = [];
+                        if (!(message.weakDependency && message.weakDependency.length))
+                            message.weakDependency = [];
                         if ((tag & 7) === 2) {
                             var end2 = reader.uint32() + reader.pos;
                             while (reader.pos < end2)
-                                message.weak_dependency.push(reader.int32());
+                                message.weakDependency.push(reader.int32());
                         } else
-                            message.weak_dependency.push(reader.int32());
+                            message.weakDependency.push(reader.int32());
                         break;
                     case 4:
-                        if (!(message.message_type && message.message_type.length))
-                            message.message_type = [];
-                        message.message_type.push($root.google.protobuf.DescriptorProto.decode(reader, reader.uint32()));
+                        if (!(message.messageType && message.messageType.length))
+                            message.messageType = [];
+                        message.messageType.push($root.google.protobuf.DescriptorProto.decode(reader, reader.uint32()));
                         break;
                     case 5:
-                        if (!(message.enum_type && message.enum_type.length))
-                            message.enum_type = [];
-                        message.enum_type.push($root.google.protobuf.EnumDescriptorProto.decode(reader, reader.uint32()));
+                        if (!(message.enumType && message.enumType.length))
+                            message.enumType = [];
+                        message.enumType.push($root.google.protobuf.EnumDescriptorProto.decode(reader, reader.uint32()));
                         break;
                     case 6:
                         if (!(message.service && message.service.length))
@@ -1024,7 +1024,7 @@ $root.google = (function() {
                         message.options = $root.google.protobuf.FileOptions.decode(reader, reader.uint32());
                         break;
                     case 9:
-                        message.source_code_info = $root.google.protobuf.SourceCodeInfo.decode(reader, reader.uint32());
+                        message.sourceCodeInfo = $root.google.protobuf.SourceCodeInfo.decode(reader, reader.uint32());
                         break;
                     case 12:
                         message.syntax = reader.string();
@@ -1077,36 +1077,36 @@ $root.google = (function() {
                         if (!$util.isString(message.dependency[i]))
                             return "dependency: string[] expected";
                 }
-                if (message.public_dependency != null && message.hasOwnProperty("public_dependency")) {
-                    if (!Array.isArray(message.public_dependency))
-                        return "public_dependency: array expected";
-                    for (var i = 0; i < message.public_dependency.length; ++i)
-                        if (!$util.isInteger(message.public_dependency[i]))
-                            return "public_dependency: integer[] expected";
+                if (message.publicDependency != null && message.hasOwnProperty("publicDependency")) {
+                    if (!Array.isArray(message.publicDependency))
+                        return "publicDependency: array expected";
+                    for (var i = 0; i < message.publicDependency.length; ++i)
+                        if (!$util.isInteger(message.publicDependency[i]))
+                            return "publicDependency: integer[] expected";
                 }
-                if (message.weak_dependency != null && message.hasOwnProperty("weak_dependency")) {
-                    if (!Array.isArray(message.weak_dependency))
-                        return "weak_dependency: array expected";
-                    for (var i = 0; i < message.weak_dependency.length; ++i)
-                        if (!$util.isInteger(message.weak_dependency[i]))
-                            return "weak_dependency: integer[] expected";
+                if (message.weakDependency != null && message.hasOwnProperty("weakDependency")) {
+                    if (!Array.isArray(message.weakDependency))
+                        return "weakDependency: array expected";
+                    for (var i = 0; i < message.weakDependency.length; ++i)
+                        if (!$util.isInteger(message.weakDependency[i]))
+                            return "weakDependency: integer[] expected";
                 }
-                if (message.message_type != null && message.hasOwnProperty("message_type")) {
-                    if (!Array.isArray(message.message_type))
-                        return "message_type: array expected";
-                    for (var i = 0; i < message.message_type.length; ++i) {
-                        var error = $root.google.protobuf.DescriptorProto.verify(message.message_type[i]);
+                if (message.messageType != null && message.hasOwnProperty("messageType")) {
+                    if (!Array.isArray(message.messageType))
+                        return "messageType: array expected";
+                    for (var i = 0; i < message.messageType.length; ++i) {
+                        var error = $root.google.protobuf.DescriptorProto.verify(message.messageType[i]);
                         if (error)
-                            return "message_type." + error;
+                            return "messageType." + error;
                     }
                 }
-                if (message.enum_type != null && message.hasOwnProperty("enum_type")) {
-                    if (!Array.isArray(message.enum_type))
-                        return "enum_type: array expected";
-                    for (var i = 0; i < message.enum_type.length; ++i) {
-                        var error = $root.google.protobuf.EnumDescriptorProto.verify(message.enum_type[i]);
+                if (message.enumType != null && message.hasOwnProperty("enumType")) {
+                    if (!Array.isArray(message.enumType))
+                        return "enumType: array expected";
+                    for (var i = 0; i < message.enumType.length; ++i) {
+                        var error = $root.google.protobuf.EnumDescriptorProto.verify(message.enumType[i]);
                         if (error)
-                            return "enum_type." + error;
+                            return "enumType." + error;
                     }
                 }
                 if (message.service != null && message.hasOwnProperty("service")) {
@@ -1132,10 +1132,10 @@ $root.google = (function() {
                     if (error)
                         return "options." + error;
                 }
-                if (message.source_code_info != null && message.hasOwnProperty("source_code_info")) {
-                    var error = $root.google.protobuf.SourceCodeInfo.verify(message.source_code_info);
+                if (message.sourceCodeInfo != null && message.hasOwnProperty("sourceCodeInfo")) {
+                    var error = $root.google.protobuf.SourceCodeInfo.verify(message.sourceCodeInfo);
                     if (error)
-                        return "source_code_info." + error;
+                        return "sourceCodeInfo." + error;
                 }
                 if (message.syntax != null && message.hasOwnProperty("syntax"))
                     if (!$util.isString(message.syntax))
@@ -1166,38 +1166,38 @@ $root.google = (function() {
                     for (var i = 0; i < object.dependency.length; ++i)
                         message.dependency[i] = String(object.dependency[i]);
                 }
-                if (object.public_dependency) {
-                    if (!Array.isArray(object.public_dependency))
-                        throw TypeError(".google.protobuf.FileDescriptorProto.public_dependency: array expected");
-                    message.public_dependency = [];
-                    for (var i = 0; i < object.public_dependency.length; ++i)
-                        message.public_dependency[i] = object.public_dependency[i] | 0;
+                if (object.publicDependency) {
+                    if (!Array.isArray(object.publicDependency))
+                        throw TypeError(".google.protobuf.FileDescriptorProto.publicDependency: array expected");
+                    message.publicDependency = [];
+                    for (var i = 0; i < object.publicDependency.length; ++i)
+                        message.publicDependency[i] = object.publicDependency[i] | 0;
                 }
-                if (object.weak_dependency) {
-                    if (!Array.isArray(object.weak_dependency))
-                        throw TypeError(".google.protobuf.FileDescriptorProto.weak_dependency: array expected");
-                    message.weak_dependency = [];
-                    for (var i = 0; i < object.weak_dependency.length; ++i)
-                        message.weak_dependency[i] = object.weak_dependency[i] | 0;
+                if (object.weakDependency) {
+                    if (!Array.isArray(object.weakDependency))
+                        throw TypeError(".google.protobuf.FileDescriptorProto.weakDependency: array expected");
+                    message.weakDependency = [];
+                    for (var i = 0; i < object.weakDependency.length; ++i)
+                        message.weakDependency[i] = object.weakDependency[i] | 0;
                 }
-                if (object.message_type) {
-                    if (!Array.isArray(object.message_type))
-                        throw TypeError(".google.protobuf.FileDescriptorProto.message_type: array expected");
-                    message.message_type = [];
-                    for (var i = 0; i < object.message_type.length; ++i) {
-                        if (typeof object.message_type[i] !== "object")
-                            throw TypeError(".google.protobuf.FileDescriptorProto.message_type: object expected");
-                        message.message_type[i] = $root.google.protobuf.DescriptorProto.fromObject(object.message_type[i]);
+                if (object.messageType) {
+                    if (!Array.isArray(object.messageType))
+                        throw TypeError(".google.protobuf.FileDescriptorProto.messageType: array expected");
+                    message.messageType = [];
+                    for (var i = 0; i < object.messageType.length; ++i) {
+                        if (typeof object.messageType[i] !== "object")
+                            throw TypeError(".google.protobuf.FileDescriptorProto.messageType: object expected");
+                        message.messageType[i] = $root.google.protobuf.DescriptorProto.fromObject(object.messageType[i]);
                     }
                 }
-                if (object.enum_type) {
-                    if (!Array.isArray(object.enum_type))
-                        throw TypeError(".google.protobuf.FileDescriptorProto.enum_type: array expected");
-                    message.enum_type = [];
-                    for (var i = 0; i < object.enum_type.length; ++i) {
-                        if (typeof object.enum_type[i] !== "object")
-                            throw TypeError(".google.protobuf.FileDescriptorProto.enum_type: object expected");
-                        message.enum_type[i] = $root.google.protobuf.EnumDescriptorProto.fromObject(object.enum_type[i]);
+                if (object.enumType) {
+                    if (!Array.isArray(object.enumType))
+                        throw TypeError(".google.protobuf.FileDescriptorProto.enumType: array expected");
+                    message.enumType = [];
+                    for (var i = 0; i < object.enumType.length; ++i) {
+                        if (typeof object.enumType[i] !== "object")
+                            throw TypeError(".google.protobuf.FileDescriptorProto.enumType: object expected");
+                        message.enumType[i] = $root.google.protobuf.EnumDescriptorProto.fromObject(object.enumType[i]);
                     }
                 }
                 if (object.service) {
@@ -1225,10 +1225,10 @@ $root.google = (function() {
                         throw TypeError(".google.protobuf.FileDescriptorProto.options: object expected");
                     message.options = $root.google.protobuf.FileOptions.fromObject(object.options);
                 }
-                if (object.source_code_info != null) {
-                    if (typeof object.source_code_info !== "object")
-                        throw TypeError(".google.protobuf.FileDescriptorProto.source_code_info: object expected");
-                    message.source_code_info = $root.google.protobuf.SourceCodeInfo.fromObject(object.source_code_info);
+                if (object.sourceCodeInfo != null) {
+                    if (typeof object.sourceCodeInfo !== "object")
+                        throw TypeError(".google.protobuf.FileDescriptorProto.sourceCodeInfo: object expected");
+                    message.sourceCodeInfo = $root.google.protobuf.SourceCodeInfo.fromObject(object.sourceCodeInfo);
                 }
                 if (object.syntax != null)
                     message.syntax = String(object.syntax);
@@ -1250,18 +1250,18 @@ $root.google = (function() {
                 var object = {};
                 if (options.arrays || options.defaults) {
                     object.dependency = [];
-                    object.message_type = [];
-                    object.enum_type = [];
+                    object.messageType = [];
+                    object.enumType = [];
                     object.service = [];
                     object.extension = [];
-                    object.public_dependency = [];
-                    object.weak_dependency = [];
+                    object.publicDependency = [];
+                    object.weakDependency = [];
                 }
                 if (options.defaults) {
                     object.name = "";
                     object["package"] = "";
                     object.options = null;
-                    object.source_code_info = null;
+                    object.sourceCodeInfo = null;
                     object.syntax = "";
                 }
                 if (message.name != null && message.hasOwnProperty("name"))
@@ -1273,15 +1273,15 @@ $root.google = (function() {
                     for (var j = 0; j < message.dependency.length; ++j)
                         object.dependency[j] = message.dependency[j];
                 }
-                if (message.message_type && message.message_type.length) {
-                    object.message_type = [];
-                    for (var j = 0; j < message.message_type.length; ++j)
-                        object.message_type[j] = $root.google.protobuf.DescriptorProto.toObject(message.message_type[j], options);
+                if (message.messageType && message.messageType.length) {
+                    object.messageType = [];
+                    for (var j = 0; j < message.messageType.length; ++j)
+                        object.messageType[j] = $root.google.protobuf.DescriptorProto.toObject(message.messageType[j], options);
                 }
-                if (message.enum_type && message.enum_type.length) {
-                    object.enum_type = [];
-                    for (var j = 0; j < message.enum_type.length; ++j)
-                        object.enum_type[j] = $root.google.protobuf.EnumDescriptorProto.toObject(message.enum_type[j], options);
+                if (message.enumType && message.enumType.length) {
+                    object.enumType = [];
+                    for (var j = 0; j < message.enumType.length; ++j)
+                        object.enumType[j] = $root.google.protobuf.EnumDescriptorProto.toObject(message.enumType[j], options);
                 }
                 if (message.service && message.service.length) {
                     object.service = [];
@@ -1295,17 +1295,17 @@ $root.google = (function() {
                 }
                 if (message.options != null && message.hasOwnProperty("options"))
                     object.options = $root.google.protobuf.FileOptions.toObject(message.options, options);
-                if (message.source_code_info != null && message.hasOwnProperty("source_code_info"))
-                    object.source_code_info = $root.google.protobuf.SourceCodeInfo.toObject(message.source_code_info, options);
-                if (message.public_dependency && message.public_dependency.length) {
-                    object.public_dependency = [];
-                    for (var j = 0; j < message.public_dependency.length; ++j)
-                        object.public_dependency[j] = message.public_dependency[j];
+                if (message.sourceCodeInfo != null && message.hasOwnProperty("sourceCodeInfo"))
+                    object.sourceCodeInfo = $root.google.protobuf.SourceCodeInfo.toObject(message.sourceCodeInfo, options);
+                if (message.publicDependency && message.publicDependency.length) {
+                    object.publicDependency = [];
+                    for (var j = 0; j < message.publicDependency.length; ++j)
+                        object.publicDependency[j] = message.publicDependency[j];
                 }
-                if (message.weak_dependency && message.weak_dependency.length) {
-                    object.weak_dependency = [];
-                    for (var j = 0; j < message.weak_dependency.length; ++j)
-                        object.weak_dependency[j] = message.weak_dependency[j];
+                if (message.weakDependency && message.weakDependency.length) {
+                    object.weakDependency = [];
+                    for (var j = 0; j < message.weakDependency.length; ++j)
+                        object.weakDependency[j] = message.weakDependency[j];
                 }
                 if (message.syntax != null && message.hasOwnProperty("syntax"))
                     object.syntax = message.syntax;
@@ -1335,13 +1335,13 @@ $root.google = (function() {
              * @property {string|null} [name] DescriptorProto name
              * @property {Array.<google.protobuf.IFieldDescriptorProto>|null} [field] DescriptorProto field
              * @property {Array.<google.protobuf.IFieldDescriptorProto>|null} [extension] DescriptorProto extension
-             * @property {Array.<google.protobuf.IDescriptorProto>|null} [nested_type] DescriptorProto nested_type
-             * @property {Array.<google.protobuf.IEnumDescriptorProto>|null} [enum_type] DescriptorProto enum_type
-             * @property {Array.<google.protobuf.DescriptorProto.IExtensionRange>|null} [extension_range] DescriptorProto extension_range
-             * @property {Array.<google.protobuf.IOneofDescriptorProto>|null} [oneof_decl] DescriptorProto oneof_decl
+             * @property {Array.<google.protobuf.IDescriptorProto>|null} [nestedType] DescriptorProto nestedType
+             * @property {Array.<google.protobuf.IEnumDescriptorProto>|null} [enumType] DescriptorProto enumType
+             * @property {Array.<google.protobuf.DescriptorProto.IExtensionRange>|null} [extensionRange] DescriptorProto extensionRange
+             * @property {Array.<google.protobuf.IOneofDescriptorProto>|null} [oneofDecl] DescriptorProto oneofDecl
              * @property {google.protobuf.IMessageOptions|null} [options] DescriptorProto options
-             * @property {Array.<google.protobuf.DescriptorProto.IReservedRange>|null} [reserved_range] DescriptorProto reserved_range
-             * @property {Array.<string>|null} [reserved_name] DescriptorProto reserved_name
+             * @property {Array.<google.protobuf.DescriptorProto.IReservedRange>|null} [reservedRange] DescriptorProto reservedRange
+             * @property {Array.<string>|null} [reservedName] DescriptorProto reservedName
              */
 
             /**
@@ -1355,12 +1355,12 @@ $root.google = (function() {
             function DescriptorProto(properties) {
                 this.field = [];
                 this.extension = [];
-                this.nested_type = [];
-                this.enum_type = [];
-                this.extension_range = [];
-                this.oneof_decl = [];
-                this.reserved_range = [];
-                this.reserved_name = [];
+                this.nestedType = [];
+                this.enumType = [];
+                this.extensionRange = [];
+                this.oneofDecl = [];
+                this.reservedRange = [];
+                this.reservedName = [];
                 if (properties)
                     for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                         if (properties[keys[i]] != null)
@@ -1392,36 +1392,36 @@ $root.google = (function() {
             DescriptorProto.prototype.extension = $util.emptyArray;
 
             /**
-             * DescriptorProto nested_type.
-             * @member {Array.<google.protobuf.IDescriptorProto>} nested_type
+             * DescriptorProto nestedType.
+             * @member {Array.<google.protobuf.IDescriptorProto>} nestedType
              * @memberof google.protobuf.DescriptorProto
              * @instance
              */
-            DescriptorProto.prototype.nested_type = $util.emptyArray;
+            DescriptorProto.prototype.nestedType = $util.emptyArray;
 
             /**
-             * DescriptorProto enum_type.
-             * @member {Array.<google.protobuf.IEnumDescriptorProto>} enum_type
+             * DescriptorProto enumType.
+             * @member {Array.<google.protobuf.IEnumDescriptorProto>} enumType
              * @memberof google.protobuf.DescriptorProto
              * @instance
              */
-            DescriptorProto.prototype.enum_type = $util.emptyArray;
+            DescriptorProto.prototype.enumType = $util.emptyArray;
 
             /**
-             * DescriptorProto extension_range.
-             * @member {Array.<google.protobuf.DescriptorProto.IExtensionRange>} extension_range
+             * DescriptorProto extensionRange.
+             * @member {Array.<google.protobuf.DescriptorProto.IExtensionRange>} extensionRange
              * @memberof google.protobuf.DescriptorProto
              * @instance
              */
-            DescriptorProto.prototype.extension_range = $util.emptyArray;
+            DescriptorProto.prototype.extensionRange = $util.emptyArray;
 
             /**
-             * DescriptorProto oneof_decl.
-             * @member {Array.<google.protobuf.IOneofDescriptorProto>} oneof_decl
+             * DescriptorProto oneofDecl.
+             * @member {Array.<google.protobuf.IOneofDescriptorProto>} oneofDecl
              * @memberof google.protobuf.DescriptorProto
              * @instance
              */
-            DescriptorProto.prototype.oneof_decl = $util.emptyArray;
+            DescriptorProto.prototype.oneofDecl = $util.emptyArray;
 
             /**
              * DescriptorProto options.
@@ -1432,20 +1432,20 @@ $root.google = (function() {
             DescriptorProto.prototype.options = null;
 
             /**
-             * DescriptorProto reserved_range.
-             * @member {Array.<google.protobuf.DescriptorProto.IReservedRange>} reserved_range
+             * DescriptorProto reservedRange.
+             * @member {Array.<google.protobuf.DescriptorProto.IReservedRange>} reservedRange
              * @memberof google.protobuf.DescriptorProto
              * @instance
              */
-            DescriptorProto.prototype.reserved_range = $util.emptyArray;
+            DescriptorProto.prototype.reservedRange = $util.emptyArray;
 
             /**
-             * DescriptorProto reserved_name.
-             * @member {Array.<string>} reserved_name
+             * DescriptorProto reservedName.
+             * @member {Array.<string>} reservedName
              * @memberof google.protobuf.DescriptorProto
              * @instance
              */
-            DescriptorProto.prototype.reserved_name = $util.emptyArray;
+            DescriptorProto.prototype.reservedName = $util.emptyArray;
 
             /**
              * Creates a new DescriptorProto instance using the specified properties.
@@ -1476,29 +1476,29 @@ $root.google = (function() {
                 if (message.field != null && message.field.length)
                     for (var i = 0; i < message.field.length; ++i)
                         $root.google.protobuf.FieldDescriptorProto.encode(message.field[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-                if (message.nested_type != null && message.nested_type.length)
-                    for (var i = 0; i < message.nested_type.length; ++i)
-                        $root.google.protobuf.DescriptorProto.encode(message.nested_type[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
-                if (message.enum_type != null && message.enum_type.length)
-                    for (var i = 0; i < message.enum_type.length; ++i)
-                        $root.google.protobuf.EnumDescriptorProto.encode(message.enum_type[i], writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
-                if (message.extension_range != null && message.extension_range.length)
-                    for (var i = 0; i < message.extension_range.length; ++i)
-                        $root.google.protobuf.DescriptorProto.ExtensionRange.encode(message.extension_range[i], writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
+                if (message.nestedType != null && message.nestedType.length)
+                    for (var i = 0; i < message.nestedType.length; ++i)
+                        $root.google.protobuf.DescriptorProto.encode(message.nestedType[i], writer.uint32(/* id 3, wireType 2 =*/26).fork()).ldelim();
+                if (message.enumType != null && message.enumType.length)
+                    for (var i = 0; i < message.enumType.length; ++i)
+                        $root.google.protobuf.EnumDescriptorProto.encode(message.enumType[i], writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
+                if (message.extensionRange != null && message.extensionRange.length)
+                    for (var i = 0; i < message.extensionRange.length; ++i)
+                        $root.google.protobuf.DescriptorProto.ExtensionRange.encode(message.extensionRange[i], writer.uint32(/* id 5, wireType 2 =*/42).fork()).ldelim();
                 if (message.extension != null && message.extension.length)
                     for (var i = 0; i < message.extension.length; ++i)
                         $root.google.protobuf.FieldDescriptorProto.encode(message.extension[i], writer.uint32(/* id 6, wireType 2 =*/50).fork()).ldelim();
                 if (message.options != null && Object.hasOwnProperty.call(message, "options"))
                     $root.google.protobuf.MessageOptions.encode(message.options, writer.uint32(/* id 7, wireType 2 =*/58).fork()).ldelim();
-                if (message.oneof_decl != null && message.oneof_decl.length)
-                    for (var i = 0; i < message.oneof_decl.length; ++i)
-                        $root.google.protobuf.OneofDescriptorProto.encode(message.oneof_decl[i], writer.uint32(/* id 8, wireType 2 =*/66).fork()).ldelim();
-                if (message.reserved_range != null && message.reserved_range.length)
-                    for (var i = 0; i < message.reserved_range.length; ++i)
-                        $root.google.protobuf.DescriptorProto.ReservedRange.encode(message.reserved_range[i], writer.uint32(/* id 9, wireType 2 =*/74).fork()).ldelim();
-                if (message.reserved_name != null && message.reserved_name.length)
-                    for (var i = 0; i < message.reserved_name.length; ++i)
-                        writer.uint32(/* id 10, wireType 2 =*/82).string(message.reserved_name[i]);
+                if (message.oneofDecl != null && message.oneofDecl.length)
+                    for (var i = 0; i < message.oneofDecl.length; ++i)
+                        $root.google.protobuf.OneofDescriptorProto.encode(message.oneofDecl[i], writer.uint32(/* id 8, wireType 2 =*/66).fork()).ldelim();
+                if (message.reservedRange != null && message.reservedRange.length)
+                    for (var i = 0; i < message.reservedRange.length; ++i)
+                        $root.google.protobuf.DescriptorProto.ReservedRange.encode(message.reservedRange[i], writer.uint32(/* id 9, wireType 2 =*/74).fork()).ldelim();
+                if (message.reservedName != null && message.reservedName.length)
+                    for (var i = 0; i < message.reservedName.length; ++i)
+                        writer.uint32(/* id 10, wireType 2 =*/82).string(message.reservedName[i]);
                 return writer;
             };
 
@@ -1547,37 +1547,37 @@ $root.google = (function() {
                         message.extension.push($root.google.protobuf.FieldDescriptorProto.decode(reader, reader.uint32()));
                         break;
                     case 3:
-                        if (!(message.nested_type && message.nested_type.length))
-                            message.nested_type = [];
-                        message.nested_type.push($root.google.protobuf.DescriptorProto.decode(reader, reader.uint32()));
+                        if (!(message.nestedType && message.nestedType.length))
+                            message.nestedType = [];
+                        message.nestedType.push($root.google.protobuf.DescriptorProto.decode(reader, reader.uint32()));
                         break;
                     case 4:
-                        if (!(message.enum_type && message.enum_type.length))
-                            message.enum_type = [];
-                        message.enum_type.push($root.google.protobuf.EnumDescriptorProto.decode(reader, reader.uint32()));
+                        if (!(message.enumType && message.enumType.length))
+                            message.enumType = [];
+                        message.enumType.push($root.google.protobuf.EnumDescriptorProto.decode(reader, reader.uint32()));
                         break;
                     case 5:
-                        if (!(message.extension_range && message.extension_range.length))
-                            message.extension_range = [];
-                        message.extension_range.push($root.google.protobuf.DescriptorProto.ExtensionRange.decode(reader, reader.uint32()));
+                        if (!(message.extensionRange && message.extensionRange.length))
+                            message.extensionRange = [];
+                        message.extensionRange.push($root.google.protobuf.DescriptorProto.ExtensionRange.decode(reader, reader.uint32()));
                         break;
                     case 8:
-                        if (!(message.oneof_decl && message.oneof_decl.length))
-                            message.oneof_decl = [];
-                        message.oneof_decl.push($root.google.protobuf.OneofDescriptorProto.decode(reader, reader.uint32()));
+                        if (!(message.oneofDecl && message.oneofDecl.length))
+                            message.oneofDecl = [];
+                        message.oneofDecl.push($root.google.protobuf.OneofDescriptorProto.decode(reader, reader.uint32()));
                         break;
                     case 7:
                         message.options = $root.google.protobuf.MessageOptions.decode(reader, reader.uint32());
                         break;
                     case 9:
-                        if (!(message.reserved_range && message.reserved_range.length))
-                            message.reserved_range = [];
-                        message.reserved_range.push($root.google.protobuf.DescriptorProto.ReservedRange.decode(reader, reader.uint32()));
+                        if (!(message.reservedRange && message.reservedRange.length))
+                            message.reservedRange = [];
+                        message.reservedRange.push($root.google.protobuf.DescriptorProto.ReservedRange.decode(reader, reader.uint32()));
                         break;
                     case 10:
-                        if (!(message.reserved_name && message.reserved_name.length))
-                            message.reserved_name = [];
-                        message.reserved_name.push(reader.string());
+                        if (!(message.reservedName && message.reservedName.length))
+                            message.reservedName = [];
+                        message.reservedName.push(reader.string());
                         break;
                     default:
                         reader.skipType(tag & 7);
@@ -1635,40 +1635,40 @@ $root.google = (function() {
                             return "extension." + error;
                     }
                 }
-                if (message.nested_type != null && message.hasOwnProperty("nested_type")) {
-                    if (!Array.isArray(message.nested_type))
-                        return "nested_type: array expected";
-                    for (var i = 0; i < message.nested_type.length; ++i) {
-                        var error = $root.google.protobuf.DescriptorProto.verify(message.nested_type[i]);
+                if (message.nestedType != null && message.hasOwnProperty("nestedType")) {
+                    if (!Array.isArray(message.nestedType))
+                        return "nestedType: array expected";
+                    for (var i = 0; i < message.nestedType.length; ++i) {
+                        var error = $root.google.protobuf.DescriptorProto.verify(message.nestedType[i]);
                         if (error)
-                            return "nested_type." + error;
+                            return "nestedType." + error;
                     }
                 }
-                if (message.enum_type != null && message.hasOwnProperty("enum_type")) {
-                    if (!Array.isArray(message.enum_type))
-                        return "enum_type: array expected";
-                    for (var i = 0; i < message.enum_type.length; ++i) {
-                        var error = $root.google.protobuf.EnumDescriptorProto.verify(message.enum_type[i]);
+                if (message.enumType != null && message.hasOwnProperty("enumType")) {
+                    if (!Array.isArray(message.enumType))
+                        return "enumType: array expected";
+                    for (var i = 0; i < message.enumType.length; ++i) {
+                        var error = $root.google.protobuf.EnumDescriptorProto.verify(message.enumType[i]);
                         if (error)
-                            return "enum_type." + error;
+                            return "enumType." + error;
                     }
                 }
-                if (message.extension_range != null && message.hasOwnProperty("extension_range")) {
-                    if (!Array.isArray(message.extension_range))
-                        return "extension_range: array expected";
-                    for (var i = 0; i < message.extension_range.length; ++i) {
-                        var error = $root.google.protobuf.DescriptorProto.ExtensionRange.verify(message.extension_range[i]);
+                if (message.extensionRange != null && message.hasOwnProperty("extensionRange")) {
+                    if (!Array.isArray(message.extensionRange))
+                        return "extensionRange: array expected";
+                    for (var i = 0; i < message.extensionRange.length; ++i) {
+                        var error = $root.google.protobuf.DescriptorProto.ExtensionRange.verify(message.extensionRange[i]);
                         if (error)
-                            return "extension_range." + error;
+                            return "extensionRange." + error;
                     }
                 }
-                if (message.oneof_decl != null && message.hasOwnProperty("oneof_decl")) {
-                    if (!Array.isArray(message.oneof_decl))
-                        return "oneof_decl: array expected";
-                    for (var i = 0; i < message.oneof_decl.length; ++i) {
-                        var error = $root.google.protobuf.OneofDescriptorProto.verify(message.oneof_decl[i]);
+                if (message.oneofDecl != null && message.hasOwnProperty("oneofDecl")) {
+                    if (!Array.isArray(message.oneofDecl))
+                        return "oneofDecl: array expected";
+                    for (var i = 0; i < message.oneofDecl.length; ++i) {
+                        var error = $root.google.protobuf.OneofDescriptorProto.verify(message.oneofDecl[i]);
                         if (error)
-                            return "oneof_decl." + error;
+                            return "oneofDecl." + error;
                     }
                 }
                 if (message.options != null && message.hasOwnProperty("options")) {
@@ -1676,21 +1676,21 @@ $root.google = (function() {
                     if (error)
                         return "options." + error;
                 }
-                if (message.reserved_range != null && message.hasOwnProperty("reserved_range")) {
-                    if (!Array.isArray(message.reserved_range))
-                        return "reserved_range: array expected";
-                    for (var i = 0; i < message.reserved_range.length; ++i) {
-                        var error = $root.google.protobuf.DescriptorProto.ReservedRange.verify(message.reserved_range[i]);
+                if (message.reservedRange != null && message.hasOwnProperty("reservedRange")) {
+                    if (!Array.isArray(message.reservedRange))
+                        return "reservedRange: array expected";
+                    for (var i = 0; i < message.reservedRange.length; ++i) {
+                        var error = $root.google.protobuf.DescriptorProto.ReservedRange.verify(message.reservedRange[i]);
                         if (error)
-                            return "reserved_range." + error;
+                            return "reservedRange." + error;
                     }
                 }
-                if (message.reserved_name != null && message.hasOwnProperty("reserved_name")) {
-                    if (!Array.isArray(message.reserved_name))
-                        return "reserved_name: array expected";
-                    for (var i = 0; i < message.reserved_name.length; ++i)
-                        if (!$util.isString(message.reserved_name[i]))
-                            return "reserved_name: string[] expected";
+                if (message.reservedName != null && message.hasOwnProperty("reservedName")) {
+                    if (!Array.isArray(message.reservedName))
+                        return "reservedName: array expected";
+                    for (var i = 0; i < message.reservedName.length; ++i)
+                        if (!$util.isString(message.reservedName[i]))
+                            return "reservedName: string[] expected";
                 }
                 return null;
             };
@@ -1729,44 +1729,44 @@ $root.google = (function() {
                         message.extension[i] = $root.google.protobuf.FieldDescriptorProto.fromObject(object.extension[i]);
                     }
                 }
-                if (object.nested_type) {
-                    if (!Array.isArray(object.nested_type))
-                        throw TypeError(".google.protobuf.DescriptorProto.nested_type: array expected");
-                    message.nested_type = [];
-                    for (var i = 0; i < object.nested_type.length; ++i) {
-                        if (typeof object.nested_type[i] !== "object")
-                            throw TypeError(".google.protobuf.DescriptorProto.nested_type: object expected");
-                        message.nested_type[i] = $root.google.protobuf.DescriptorProto.fromObject(object.nested_type[i]);
+                if (object.nestedType) {
+                    if (!Array.isArray(object.nestedType))
+                        throw TypeError(".google.protobuf.DescriptorProto.nestedType: array expected");
+                    message.nestedType = [];
+                    for (var i = 0; i < object.nestedType.length; ++i) {
+                        if (typeof object.nestedType[i] !== "object")
+                            throw TypeError(".google.protobuf.DescriptorProto.nestedType: object expected");
+                        message.nestedType[i] = $root.google.protobuf.DescriptorProto.fromObject(object.nestedType[i]);
                     }
                 }
-                if (object.enum_type) {
-                    if (!Array.isArray(object.enum_type))
-                        throw TypeError(".google.protobuf.DescriptorProto.enum_type: array expected");
-                    message.enum_type = [];
-                    for (var i = 0; i < object.enum_type.length; ++i) {
-                        if (typeof object.enum_type[i] !== "object")
-                            throw TypeError(".google.protobuf.DescriptorProto.enum_type: object expected");
-                        message.enum_type[i] = $root.google.protobuf.EnumDescriptorProto.fromObject(object.enum_type[i]);
+                if (object.enumType) {
+                    if (!Array.isArray(object.enumType))
+                        throw TypeError(".google.protobuf.DescriptorProto.enumType: array expected");
+                    message.enumType = [];
+                    for (var i = 0; i < object.enumType.length; ++i) {
+                        if (typeof object.enumType[i] !== "object")
+                            throw TypeError(".google.protobuf.DescriptorProto.enumType: object expected");
+                        message.enumType[i] = $root.google.protobuf.EnumDescriptorProto.fromObject(object.enumType[i]);
                     }
                 }
-                if (object.extension_range) {
-                    if (!Array.isArray(object.extension_range))
-                        throw TypeError(".google.protobuf.DescriptorProto.extension_range: array expected");
-                    message.extension_range = [];
-                    for (var i = 0; i < object.extension_range.length; ++i) {
-                        if (typeof object.extension_range[i] !== "object")
-                            throw TypeError(".google.protobuf.DescriptorProto.extension_range: object expected");
-                        message.extension_range[i] = $root.google.protobuf.DescriptorProto.ExtensionRange.fromObject(object.extension_range[i]);
+                if (object.extensionRange) {
+                    if (!Array.isArray(object.extensionRange))
+                        throw TypeError(".google.protobuf.DescriptorProto.extensionRange: array expected");
+                    message.extensionRange = [];
+                    for (var i = 0; i < object.extensionRange.length; ++i) {
+                        if (typeof object.extensionRange[i] !== "object")
+                            throw TypeError(".google.protobuf.DescriptorProto.extensionRange: object expected");
+                        message.extensionRange[i] = $root.google.protobuf.DescriptorProto.ExtensionRange.fromObject(object.extensionRange[i]);
                     }
                 }
-                if (object.oneof_decl) {
-                    if (!Array.isArray(object.oneof_decl))
-                        throw TypeError(".google.protobuf.DescriptorProto.oneof_decl: array expected");
-                    message.oneof_decl = [];
-                    for (var i = 0; i < object.oneof_decl.length; ++i) {
-                        if (typeof object.oneof_decl[i] !== "object")
-                            throw TypeError(".google.protobuf.DescriptorProto.oneof_decl: object expected");
-                        message.oneof_decl[i] = $root.google.protobuf.OneofDescriptorProto.fromObject(object.oneof_decl[i]);
+                if (object.oneofDecl) {
+                    if (!Array.isArray(object.oneofDecl))
+                        throw TypeError(".google.protobuf.DescriptorProto.oneofDecl: array expected");
+                    message.oneofDecl = [];
+                    for (var i = 0; i < object.oneofDecl.length; ++i) {
+                        if (typeof object.oneofDecl[i] !== "object")
+                            throw TypeError(".google.protobuf.DescriptorProto.oneofDecl: object expected");
+                        message.oneofDecl[i] = $root.google.protobuf.OneofDescriptorProto.fromObject(object.oneofDecl[i]);
                     }
                 }
                 if (object.options != null) {
@@ -1774,22 +1774,22 @@ $root.google = (function() {
                         throw TypeError(".google.protobuf.DescriptorProto.options: object expected");
                     message.options = $root.google.protobuf.MessageOptions.fromObject(object.options);
                 }
-                if (object.reserved_range) {
-                    if (!Array.isArray(object.reserved_range))
-                        throw TypeError(".google.protobuf.DescriptorProto.reserved_range: array expected");
-                    message.reserved_range = [];
-                    for (var i = 0; i < object.reserved_range.length; ++i) {
-                        if (typeof object.reserved_range[i] !== "object")
-                            throw TypeError(".google.protobuf.DescriptorProto.reserved_range: object expected");
-                        message.reserved_range[i] = $root.google.protobuf.DescriptorProto.ReservedRange.fromObject(object.reserved_range[i]);
+                if (object.reservedRange) {
+                    if (!Array.isArray(object.reservedRange))
+                        throw TypeError(".google.protobuf.DescriptorProto.reservedRange: array expected");
+                    message.reservedRange = [];
+                    for (var i = 0; i < object.reservedRange.length; ++i) {
+                        if (typeof object.reservedRange[i] !== "object")
+                            throw TypeError(".google.protobuf.DescriptorProto.reservedRange: object expected");
+                        message.reservedRange[i] = $root.google.protobuf.DescriptorProto.ReservedRange.fromObject(object.reservedRange[i]);
                     }
                 }
-                if (object.reserved_name) {
-                    if (!Array.isArray(object.reserved_name))
-                        throw TypeError(".google.protobuf.DescriptorProto.reserved_name: array expected");
-                    message.reserved_name = [];
-                    for (var i = 0; i < object.reserved_name.length; ++i)
-                        message.reserved_name[i] = String(object.reserved_name[i]);
+                if (object.reservedName) {
+                    if (!Array.isArray(object.reservedName))
+                        throw TypeError(".google.protobuf.DescriptorProto.reservedName: array expected");
+                    message.reservedName = [];
+                    for (var i = 0; i < object.reservedName.length; ++i)
+                        message.reservedName[i] = String(object.reservedName[i]);
                 }
                 return message;
             };
@@ -1809,13 +1809,13 @@ $root.google = (function() {
                 var object = {};
                 if (options.arrays || options.defaults) {
                     object.field = [];
-                    object.nested_type = [];
-                    object.enum_type = [];
-                    object.extension_range = [];
+                    object.nestedType = [];
+                    object.enumType = [];
+                    object.extensionRange = [];
                     object.extension = [];
-                    object.oneof_decl = [];
-                    object.reserved_range = [];
-                    object.reserved_name = [];
+                    object.oneofDecl = [];
+                    object.reservedRange = [];
+                    object.reservedName = [];
                 }
                 if (options.defaults) {
                     object.name = "";
@@ -1828,20 +1828,20 @@ $root.google = (function() {
                     for (var j = 0; j < message.field.length; ++j)
                         object.field[j] = $root.google.protobuf.FieldDescriptorProto.toObject(message.field[j], options);
                 }
-                if (message.nested_type && message.nested_type.length) {
-                    object.nested_type = [];
-                    for (var j = 0; j < message.nested_type.length; ++j)
-                        object.nested_type[j] = $root.google.protobuf.DescriptorProto.toObject(message.nested_type[j], options);
+                if (message.nestedType && message.nestedType.length) {
+                    object.nestedType = [];
+                    for (var j = 0; j < message.nestedType.length; ++j)
+                        object.nestedType[j] = $root.google.protobuf.DescriptorProto.toObject(message.nestedType[j], options);
                 }
-                if (message.enum_type && message.enum_type.length) {
-                    object.enum_type = [];
-                    for (var j = 0; j < message.enum_type.length; ++j)
-                        object.enum_type[j] = $root.google.protobuf.EnumDescriptorProto.toObject(message.enum_type[j], options);
+                if (message.enumType && message.enumType.length) {
+                    object.enumType = [];
+                    for (var j = 0; j < message.enumType.length; ++j)
+                        object.enumType[j] = $root.google.protobuf.EnumDescriptorProto.toObject(message.enumType[j], options);
                 }
-                if (message.extension_range && message.extension_range.length) {
-                    object.extension_range = [];
-                    for (var j = 0; j < message.extension_range.length; ++j)
-                        object.extension_range[j] = $root.google.protobuf.DescriptorProto.ExtensionRange.toObject(message.extension_range[j], options);
+                if (message.extensionRange && message.extensionRange.length) {
+                    object.extensionRange = [];
+                    for (var j = 0; j < message.extensionRange.length; ++j)
+                        object.extensionRange[j] = $root.google.protobuf.DescriptorProto.ExtensionRange.toObject(message.extensionRange[j], options);
                 }
                 if (message.extension && message.extension.length) {
                     object.extension = [];
@@ -1850,20 +1850,20 @@ $root.google = (function() {
                 }
                 if (message.options != null && message.hasOwnProperty("options"))
                     object.options = $root.google.protobuf.MessageOptions.toObject(message.options, options);
-                if (message.oneof_decl && message.oneof_decl.length) {
-                    object.oneof_decl = [];
-                    for (var j = 0; j < message.oneof_decl.length; ++j)
-                        object.oneof_decl[j] = $root.google.protobuf.OneofDescriptorProto.toObject(message.oneof_decl[j], options);
+                if (message.oneofDecl && message.oneofDecl.length) {
+                    object.oneofDecl = [];
+                    for (var j = 0; j < message.oneofDecl.length; ++j)
+                        object.oneofDecl[j] = $root.google.protobuf.OneofDescriptorProto.toObject(message.oneofDecl[j], options);
                 }
-                if (message.reserved_range && message.reserved_range.length) {
-                    object.reserved_range = [];
-                    for (var j = 0; j < message.reserved_range.length; ++j)
-                        object.reserved_range[j] = $root.google.protobuf.DescriptorProto.ReservedRange.toObject(message.reserved_range[j], options);
+                if (message.reservedRange && message.reservedRange.length) {
+                    object.reservedRange = [];
+                    for (var j = 0; j < message.reservedRange.length; ++j)
+                        object.reservedRange[j] = $root.google.protobuf.DescriptorProto.ReservedRange.toObject(message.reservedRange[j], options);
                 }
-                if (message.reserved_name && message.reserved_name.length) {
-                    object.reserved_name = [];
-                    for (var j = 0; j < message.reserved_name.length; ++j)
-                        object.reserved_name[j] = message.reserved_name[j];
+                if (message.reservedName && message.reservedName.length) {
+                    object.reservedName = [];
+                    for (var j = 0; j < message.reservedName.length; ++j)
+                        object.reservedName[j] = message.reservedName[j];
                 }
                 return object;
             };
@@ -2312,11 +2312,11 @@ $root.google = (function() {
              * @property {number|null} [number] FieldDescriptorProto number
              * @property {google.protobuf.FieldDescriptorProto.Label|null} [label] FieldDescriptorProto label
              * @property {google.protobuf.FieldDescriptorProto.Type|null} [type] FieldDescriptorProto type
-             * @property {string|null} [type_name] FieldDescriptorProto type_name
+             * @property {string|null} [typeName] FieldDescriptorProto typeName
              * @property {string|null} [extendee] FieldDescriptorProto extendee
-             * @property {string|null} [default_value] FieldDescriptorProto default_value
-             * @property {number|null} [oneof_index] FieldDescriptorProto oneof_index
-             * @property {string|null} [json_name] FieldDescriptorProto json_name
+             * @property {string|null} [defaultValue] FieldDescriptorProto defaultValue
+             * @property {number|null} [oneofIndex] FieldDescriptorProto oneofIndex
+             * @property {string|null} [jsonName] FieldDescriptorProto jsonName
              * @property {google.protobuf.IFieldOptions|null} [options] FieldDescriptorProto options
              */
 
@@ -2368,12 +2368,12 @@ $root.google = (function() {
             FieldDescriptorProto.prototype.type = 1;
 
             /**
-             * FieldDescriptorProto type_name.
-             * @member {string} type_name
+             * FieldDescriptorProto typeName.
+             * @member {string} typeName
              * @memberof google.protobuf.FieldDescriptorProto
              * @instance
              */
-            FieldDescriptorProto.prototype.type_name = "";
+            FieldDescriptorProto.prototype.typeName = "";
 
             /**
              * FieldDescriptorProto extendee.
@@ -2384,28 +2384,28 @@ $root.google = (function() {
             FieldDescriptorProto.prototype.extendee = "";
 
             /**
-             * FieldDescriptorProto default_value.
-             * @member {string} default_value
+             * FieldDescriptorProto defaultValue.
+             * @member {string} defaultValue
              * @memberof google.protobuf.FieldDescriptorProto
              * @instance
              */
-            FieldDescriptorProto.prototype.default_value = "";
+            FieldDescriptorProto.prototype.defaultValue = "";
 
             /**
-             * FieldDescriptorProto oneof_index.
-             * @member {number} oneof_index
+             * FieldDescriptorProto oneofIndex.
+             * @member {number} oneofIndex
              * @memberof google.protobuf.FieldDescriptorProto
              * @instance
              */
-            FieldDescriptorProto.prototype.oneof_index = 0;
+            FieldDescriptorProto.prototype.oneofIndex = 0;
 
             /**
-             * FieldDescriptorProto json_name.
-             * @member {string} json_name
+             * FieldDescriptorProto jsonName.
+             * @member {string} jsonName
              * @memberof google.protobuf.FieldDescriptorProto
              * @instance
              */
-            FieldDescriptorProto.prototype.json_name = "";
+            FieldDescriptorProto.prototype.jsonName = "";
 
             /**
              * FieldDescriptorProto options.
@@ -2449,16 +2449,16 @@ $root.google = (function() {
                     writer.uint32(/* id 4, wireType 0 =*/32).int32(message.label);
                 if (message.type != null && Object.hasOwnProperty.call(message, "type"))
                     writer.uint32(/* id 5, wireType 0 =*/40).int32(message.type);
-                if (message.type_name != null && Object.hasOwnProperty.call(message, "type_name"))
-                    writer.uint32(/* id 6, wireType 2 =*/50).string(message.type_name);
-                if (message.default_value != null && Object.hasOwnProperty.call(message, "default_value"))
-                    writer.uint32(/* id 7, wireType 2 =*/58).string(message.default_value);
+                if (message.typeName != null && Object.hasOwnProperty.call(message, "typeName"))
+                    writer.uint32(/* id 6, wireType 2 =*/50).string(message.typeName);
+                if (message.defaultValue != null && Object.hasOwnProperty.call(message, "defaultValue"))
+                    writer.uint32(/* id 7, wireType 2 =*/58).string(message.defaultValue);
                 if (message.options != null && Object.hasOwnProperty.call(message, "options"))
                     $root.google.protobuf.FieldOptions.encode(message.options, writer.uint32(/* id 8, wireType 2 =*/66).fork()).ldelim();
-                if (message.oneof_index != null && Object.hasOwnProperty.call(message, "oneof_index"))
-                    writer.uint32(/* id 9, wireType 0 =*/72).int32(message.oneof_index);
-                if (message.json_name != null && Object.hasOwnProperty.call(message, "json_name"))
-                    writer.uint32(/* id 10, wireType 2 =*/82).string(message.json_name);
+                if (message.oneofIndex != null && Object.hasOwnProperty.call(message, "oneofIndex"))
+                    writer.uint32(/* id 9, wireType 0 =*/72).int32(message.oneofIndex);
+                if (message.jsonName != null && Object.hasOwnProperty.call(message, "jsonName"))
+                    writer.uint32(/* id 10, wireType 2 =*/82).string(message.jsonName);
                 return writer;
             };
 
@@ -2506,19 +2506,19 @@ $root.google = (function() {
                         message.type = reader.int32();
                         break;
                     case 6:
-                        message.type_name = reader.string();
+                        message.typeName = reader.string();
                         break;
                     case 2:
                         message.extendee = reader.string();
                         break;
                     case 7:
-                        message.default_value = reader.string();
+                        message.defaultValue = reader.string();
                         break;
                     case 9:
-                        message.oneof_index = reader.int32();
+                        message.oneofIndex = reader.int32();
                         break;
                     case 10:
-                        message.json_name = reader.string();
+                        message.jsonName = reader.string();
                         break;
                     case 8:
                         message.options = $root.google.protobuf.FieldOptions.decode(reader, reader.uint32());
@@ -2597,21 +2597,21 @@ $root.google = (function() {
                     case 18:
                         break;
                     }
-                if (message.type_name != null && message.hasOwnProperty("type_name"))
-                    if (!$util.isString(message.type_name))
-                        return "type_name: string expected";
+                if (message.typeName != null && message.hasOwnProperty("typeName"))
+                    if (!$util.isString(message.typeName))
+                        return "typeName: string expected";
                 if (message.extendee != null && message.hasOwnProperty("extendee"))
                     if (!$util.isString(message.extendee))
                         return "extendee: string expected";
-                if (message.default_value != null && message.hasOwnProperty("default_value"))
-                    if (!$util.isString(message.default_value))
-                        return "default_value: string expected";
-                if (message.oneof_index != null && message.hasOwnProperty("oneof_index"))
-                    if (!$util.isInteger(message.oneof_index))
-                        return "oneof_index: integer expected";
-                if (message.json_name != null && message.hasOwnProperty("json_name"))
-                    if (!$util.isString(message.json_name))
-                        return "json_name: string expected";
+                if (message.defaultValue != null && message.hasOwnProperty("defaultValue"))
+                    if (!$util.isString(message.defaultValue))
+                        return "defaultValue: string expected";
+                if (message.oneofIndex != null && message.hasOwnProperty("oneofIndex"))
+                    if (!$util.isInteger(message.oneofIndex))
+                        return "oneofIndex: integer expected";
+                if (message.jsonName != null && message.hasOwnProperty("jsonName"))
+                    if (!$util.isString(message.jsonName))
+                        return "jsonName: string expected";
                 if (message.options != null && message.hasOwnProperty("options")) {
                     var error = $root.google.protobuf.FieldOptions.verify(message.options);
                     if (error)
@@ -2724,16 +2724,16 @@ $root.google = (function() {
                     message.type = 18;
                     break;
                 }
-                if (object.type_name != null)
-                    message.type_name = String(object.type_name);
+                if (object.typeName != null)
+                    message.typeName = String(object.typeName);
                 if (object.extendee != null)
                     message.extendee = String(object.extendee);
-                if (object.default_value != null)
-                    message.default_value = String(object.default_value);
-                if (object.oneof_index != null)
-                    message.oneof_index = object.oneof_index | 0;
-                if (object.json_name != null)
-                    message.json_name = String(object.json_name);
+                if (object.defaultValue != null)
+                    message.defaultValue = String(object.defaultValue);
+                if (object.oneofIndex != null)
+                    message.oneofIndex = object.oneofIndex | 0;
+                if (object.jsonName != null)
+                    message.jsonName = String(object.jsonName);
                 if (object.options != null) {
                     if (typeof object.options !== "object")
                         throw TypeError(".google.protobuf.FieldDescriptorProto.options: object expected");
@@ -2761,11 +2761,11 @@ $root.google = (function() {
                     object.number = 0;
                     object.label = options.enums === String ? "LABEL_OPTIONAL" : 1;
                     object.type = options.enums === String ? "TYPE_DOUBLE" : 1;
-                    object.type_name = "";
-                    object.default_value = "";
+                    object.typeName = "";
+                    object.defaultValue = "";
                     object.options = null;
-                    object.oneof_index = 0;
-                    object.json_name = "";
+                    object.oneofIndex = 0;
+                    object.jsonName = "";
                 }
                 if (message.name != null && message.hasOwnProperty("name"))
                     object.name = message.name;
@@ -2777,16 +2777,16 @@ $root.google = (function() {
                     object.label = options.enums === String ? $root.google.protobuf.FieldDescriptorProto.Label[message.label] : message.label;
                 if (message.type != null && message.hasOwnProperty("type"))
                     object.type = options.enums === String ? $root.google.protobuf.FieldDescriptorProto.Type[message.type] : message.type;
-                if (message.type_name != null && message.hasOwnProperty("type_name"))
-                    object.type_name = message.type_name;
-                if (message.default_value != null && message.hasOwnProperty("default_value"))
-                    object.default_value = message.default_value;
+                if (message.typeName != null && message.hasOwnProperty("typeName"))
+                    object.typeName = message.typeName;
+                if (message.defaultValue != null && message.hasOwnProperty("defaultValue"))
+                    object.defaultValue = message.defaultValue;
                 if (message.options != null && message.hasOwnProperty("options"))
                     object.options = $root.google.protobuf.FieldOptions.toObject(message.options, options);
-                if (message.oneof_index != null && message.hasOwnProperty("oneof_index"))
-                    object.oneof_index = message.oneof_index;
-                if (message.json_name != null && message.hasOwnProperty("json_name"))
-                    object.json_name = message.json_name;
+                if (message.oneofIndex != null && message.hasOwnProperty("oneofIndex"))
+                    object.oneofIndex = message.oneofIndex;
+                if (message.jsonName != null && message.hasOwnProperty("jsonName"))
+                    object.jsonName = message.jsonName;
                 return object;
             };
 
@@ -3843,11 +3843,11 @@ $root.google = (function() {
              * @memberof google.protobuf
              * @interface IMethodDescriptorProto
              * @property {string|null} [name] MethodDescriptorProto name
-             * @property {string|null} [input_type] MethodDescriptorProto input_type
-             * @property {string|null} [output_type] MethodDescriptorProto output_type
+             * @property {string|null} [inputType] MethodDescriptorProto inputType
+             * @property {string|null} [outputType] MethodDescriptorProto outputType
              * @property {google.protobuf.IMethodOptions|null} [options] MethodDescriptorProto options
-             * @property {boolean|null} [client_streaming] MethodDescriptorProto client_streaming
-             * @property {boolean|null} [server_streaming] MethodDescriptorProto server_streaming
+             * @property {boolean|null} [clientStreaming] MethodDescriptorProto clientStreaming
+             * @property {boolean|null} [serverStreaming] MethodDescriptorProto serverStreaming
              */
 
             /**
@@ -3874,20 +3874,20 @@ $root.google = (function() {
             MethodDescriptorProto.prototype.name = "";
 
             /**
-             * MethodDescriptorProto input_type.
-             * @member {string} input_type
+             * MethodDescriptorProto inputType.
+             * @member {string} inputType
              * @memberof google.protobuf.MethodDescriptorProto
              * @instance
              */
-            MethodDescriptorProto.prototype.input_type = "";
+            MethodDescriptorProto.prototype.inputType = "";
 
             /**
-             * MethodDescriptorProto output_type.
-             * @member {string} output_type
+             * MethodDescriptorProto outputType.
+             * @member {string} outputType
              * @memberof google.protobuf.MethodDescriptorProto
              * @instance
              */
-            MethodDescriptorProto.prototype.output_type = "";
+            MethodDescriptorProto.prototype.outputType = "";
 
             /**
              * MethodDescriptorProto options.
@@ -3898,20 +3898,20 @@ $root.google = (function() {
             MethodDescriptorProto.prototype.options = null;
 
             /**
-             * MethodDescriptorProto client_streaming.
-             * @member {boolean} client_streaming
+             * MethodDescriptorProto clientStreaming.
+             * @member {boolean} clientStreaming
              * @memberof google.protobuf.MethodDescriptorProto
              * @instance
              */
-            MethodDescriptorProto.prototype.client_streaming = false;
+            MethodDescriptorProto.prototype.clientStreaming = false;
 
             /**
-             * MethodDescriptorProto server_streaming.
-             * @member {boolean} server_streaming
+             * MethodDescriptorProto serverStreaming.
+             * @member {boolean} serverStreaming
              * @memberof google.protobuf.MethodDescriptorProto
              * @instance
              */
-            MethodDescriptorProto.prototype.server_streaming = false;
+            MethodDescriptorProto.prototype.serverStreaming = false;
 
             /**
              * Creates a new MethodDescriptorProto instance using the specified properties.
@@ -3939,16 +3939,16 @@ $root.google = (function() {
                     writer = $Writer.create();
                 if (message.name != null && Object.hasOwnProperty.call(message, "name"))
                     writer.uint32(/* id 1, wireType 2 =*/10).string(message.name);
-                if (message.input_type != null && Object.hasOwnProperty.call(message, "input_type"))
-                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.input_type);
-                if (message.output_type != null && Object.hasOwnProperty.call(message, "output_type"))
-                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.output_type);
+                if (message.inputType != null && Object.hasOwnProperty.call(message, "inputType"))
+                    writer.uint32(/* id 2, wireType 2 =*/18).string(message.inputType);
+                if (message.outputType != null && Object.hasOwnProperty.call(message, "outputType"))
+                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.outputType);
                 if (message.options != null && Object.hasOwnProperty.call(message, "options"))
                     $root.google.protobuf.MethodOptions.encode(message.options, writer.uint32(/* id 4, wireType 2 =*/34).fork()).ldelim();
-                if (message.client_streaming != null && Object.hasOwnProperty.call(message, "client_streaming"))
-                    writer.uint32(/* id 5, wireType 0 =*/40).bool(message.client_streaming);
-                if (message.server_streaming != null && Object.hasOwnProperty.call(message, "server_streaming"))
-                    writer.uint32(/* id 6, wireType 0 =*/48).bool(message.server_streaming);
+                if (message.clientStreaming != null && Object.hasOwnProperty.call(message, "clientStreaming"))
+                    writer.uint32(/* id 5, wireType 0 =*/40).bool(message.clientStreaming);
+                if (message.serverStreaming != null && Object.hasOwnProperty.call(message, "serverStreaming"))
+                    writer.uint32(/* id 6, wireType 0 =*/48).bool(message.serverStreaming);
                 return writer;
             };
 
@@ -3987,19 +3987,19 @@ $root.google = (function() {
                         message.name = reader.string();
                         break;
                     case 2:
-                        message.input_type = reader.string();
+                        message.inputType = reader.string();
                         break;
                     case 3:
-                        message.output_type = reader.string();
+                        message.outputType = reader.string();
                         break;
                     case 4:
                         message.options = $root.google.protobuf.MethodOptions.decode(reader, reader.uint32());
                         break;
                     case 5:
-                        message.client_streaming = reader.bool();
+                        message.clientStreaming = reader.bool();
                         break;
                     case 6:
-                        message.server_streaming = reader.bool();
+                        message.serverStreaming = reader.bool();
                         break;
                     default:
                         reader.skipType(tag & 7);
@@ -4039,23 +4039,23 @@ $root.google = (function() {
                 if (message.name != null && message.hasOwnProperty("name"))
                     if (!$util.isString(message.name))
                         return "name: string expected";
-                if (message.input_type != null && message.hasOwnProperty("input_type"))
-                    if (!$util.isString(message.input_type))
-                        return "input_type: string expected";
-                if (message.output_type != null && message.hasOwnProperty("output_type"))
-                    if (!$util.isString(message.output_type))
-                        return "output_type: string expected";
+                if (message.inputType != null && message.hasOwnProperty("inputType"))
+                    if (!$util.isString(message.inputType))
+                        return "inputType: string expected";
+                if (message.outputType != null && message.hasOwnProperty("outputType"))
+                    if (!$util.isString(message.outputType))
+                        return "outputType: string expected";
                 if (message.options != null && message.hasOwnProperty("options")) {
                     var error = $root.google.protobuf.MethodOptions.verify(message.options);
                     if (error)
                         return "options." + error;
                 }
-                if (message.client_streaming != null && message.hasOwnProperty("client_streaming"))
-                    if (typeof message.client_streaming !== "boolean")
-                        return "client_streaming: boolean expected";
-                if (message.server_streaming != null && message.hasOwnProperty("server_streaming"))
-                    if (typeof message.server_streaming !== "boolean")
-                        return "server_streaming: boolean expected";
+                if (message.clientStreaming != null && message.hasOwnProperty("clientStreaming"))
+                    if (typeof message.clientStreaming !== "boolean")
+                        return "clientStreaming: boolean expected";
+                if (message.serverStreaming != null && message.hasOwnProperty("serverStreaming"))
+                    if (typeof message.serverStreaming !== "boolean")
+                        return "serverStreaming: boolean expected";
                 return null;
             };
 
@@ -4073,19 +4073,19 @@ $root.google = (function() {
                 var message = new $root.google.protobuf.MethodDescriptorProto();
                 if (object.name != null)
                     message.name = String(object.name);
-                if (object.input_type != null)
-                    message.input_type = String(object.input_type);
-                if (object.output_type != null)
-                    message.output_type = String(object.output_type);
+                if (object.inputType != null)
+                    message.inputType = String(object.inputType);
+                if (object.outputType != null)
+                    message.outputType = String(object.outputType);
                 if (object.options != null) {
                     if (typeof object.options !== "object")
                         throw TypeError(".google.protobuf.MethodDescriptorProto.options: object expected");
                     message.options = $root.google.protobuf.MethodOptions.fromObject(object.options);
                 }
-                if (object.client_streaming != null)
-                    message.client_streaming = Boolean(object.client_streaming);
-                if (object.server_streaming != null)
-                    message.server_streaming = Boolean(object.server_streaming);
+                if (object.clientStreaming != null)
+                    message.clientStreaming = Boolean(object.clientStreaming);
+                if (object.serverStreaming != null)
+                    message.serverStreaming = Boolean(object.serverStreaming);
                 return message;
             };
 
@@ -4104,24 +4104,24 @@ $root.google = (function() {
                 var object = {};
                 if (options.defaults) {
                     object.name = "";
-                    object.input_type = "";
-                    object.output_type = "";
+                    object.inputType = "";
+                    object.outputType = "";
                     object.options = null;
-                    object.client_streaming = false;
-                    object.server_streaming = false;
+                    object.clientStreaming = false;
+                    object.serverStreaming = false;
                 }
                 if (message.name != null && message.hasOwnProperty("name"))
                     object.name = message.name;
-                if (message.input_type != null && message.hasOwnProperty("input_type"))
-                    object.input_type = message.input_type;
-                if (message.output_type != null && message.hasOwnProperty("output_type"))
-                    object.output_type = message.output_type;
+                if (message.inputType != null && message.hasOwnProperty("inputType"))
+                    object.inputType = message.inputType;
+                if (message.outputType != null && message.hasOwnProperty("outputType"))
+                    object.outputType = message.outputType;
                 if (message.options != null && message.hasOwnProperty("options"))
                     object.options = $root.google.protobuf.MethodOptions.toObject(message.options, options);
-                if (message.client_streaming != null && message.hasOwnProperty("client_streaming"))
-                    object.client_streaming = message.client_streaming;
-                if (message.server_streaming != null && message.hasOwnProperty("server_streaming"))
-                    object.server_streaming = message.server_streaming;
+                if (message.clientStreaming != null && message.hasOwnProperty("clientStreaming"))
+                    object.clientStreaming = message.clientStreaming;
+                if (message.serverStreaming != null && message.hasOwnProperty("serverStreaming"))
+                    object.serverStreaming = message.serverStreaming;
                 return object;
             };
 
@@ -4145,21 +4145,21 @@ $root.google = (function() {
              * Properties of a FileOptions.
              * @memberof google.protobuf
              * @interface IFileOptions
-             * @property {string|null} [java_package] FileOptions java_package
-             * @property {string|null} [java_outer_classname] FileOptions java_outer_classname
-             * @property {boolean|null} [java_multiple_files] FileOptions java_multiple_files
-             * @property {boolean|null} [java_generate_equals_and_hash] FileOptions java_generate_equals_and_hash
-             * @property {boolean|null} [java_string_check_utf8] FileOptions java_string_check_utf8
-             * @property {google.protobuf.FileOptions.OptimizeMode|null} [optimize_for] FileOptions optimize_for
-             * @property {string|null} [go_package] FileOptions go_package
-             * @property {boolean|null} [cc_generic_services] FileOptions cc_generic_services
-             * @property {boolean|null} [java_generic_services] FileOptions java_generic_services
-             * @property {boolean|null} [py_generic_services] FileOptions py_generic_services
+             * @property {string|null} [javaPackage] FileOptions javaPackage
+             * @property {string|null} [javaOuterClassname] FileOptions javaOuterClassname
+             * @property {boolean|null} [javaMultipleFiles] FileOptions javaMultipleFiles
+             * @property {boolean|null} [javaGenerateEqualsAndHash] FileOptions javaGenerateEqualsAndHash
+             * @property {boolean|null} [javaStringCheckUtf8] FileOptions javaStringCheckUtf8
+             * @property {google.protobuf.FileOptions.OptimizeMode|null} [optimizeFor] FileOptions optimizeFor
+             * @property {string|null} [goPackage] FileOptions goPackage
+             * @property {boolean|null} [ccGenericServices] FileOptions ccGenericServices
+             * @property {boolean|null} [javaGenericServices] FileOptions javaGenericServices
+             * @property {boolean|null} [pyGenericServices] FileOptions pyGenericServices
              * @property {boolean|null} [deprecated] FileOptions deprecated
-             * @property {boolean|null} [cc_enable_arenas] FileOptions cc_enable_arenas
-             * @property {string|null} [objc_class_prefix] FileOptions objc_class_prefix
-             * @property {string|null} [csharp_namespace] FileOptions csharp_namespace
-             * @property {Array.<google.protobuf.IUninterpretedOption>|null} [uninterpreted_option] FileOptions uninterpreted_option
+             * @property {boolean|null} [ccEnableArenas] FileOptions ccEnableArenas
+             * @property {string|null} [objcClassPrefix] FileOptions objcClassPrefix
+             * @property {string|null} [csharpNamespace] FileOptions csharpNamespace
+             * @property {Array.<google.protobuf.IUninterpretedOption>|null} [uninterpretedOption] FileOptions uninterpretedOption
              */
 
             /**
@@ -4171,7 +4171,7 @@ $root.google = (function() {
              * @param {google.protobuf.IFileOptions=} [properties] Properties to set
              */
             function FileOptions(properties) {
-                this.uninterpreted_option = [];
+                this.uninterpretedOption = [];
                 if (properties)
                     for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                         if (properties[keys[i]] != null)
@@ -4179,84 +4179,84 @@ $root.google = (function() {
             }
 
             /**
-             * FileOptions java_package.
-             * @member {string} java_package
+             * FileOptions javaPackage.
+             * @member {string} javaPackage
              * @memberof google.protobuf.FileOptions
              * @instance
              */
-            FileOptions.prototype.java_package = "";
+            FileOptions.prototype.javaPackage = "";
 
             /**
-             * FileOptions java_outer_classname.
-             * @member {string} java_outer_classname
+             * FileOptions javaOuterClassname.
+             * @member {string} javaOuterClassname
              * @memberof google.protobuf.FileOptions
              * @instance
              */
-            FileOptions.prototype.java_outer_classname = "";
+            FileOptions.prototype.javaOuterClassname = "";
 
             /**
-             * FileOptions java_multiple_files.
-             * @member {boolean} java_multiple_files
+             * FileOptions javaMultipleFiles.
+             * @member {boolean} javaMultipleFiles
              * @memberof google.protobuf.FileOptions
              * @instance
              */
-            FileOptions.prototype.java_multiple_files = false;
+            FileOptions.prototype.javaMultipleFiles = false;
 
             /**
-             * FileOptions java_generate_equals_and_hash.
-             * @member {boolean} java_generate_equals_and_hash
+             * FileOptions javaGenerateEqualsAndHash.
+             * @member {boolean} javaGenerateEqualsAndHash
              * @memberof google.protobuf.FileOptions
              * @instance
              */
-            FileOptions.prototype.java_generate_equals_and_hash = false;
+            FileOptions.prototype.javaGenerateEqualsAndHash = false;
 
             /**
-             * FileOptions java_string_check_utf8.
-             * @member {boolean} java_string_check_utf8
+             * FileOptions javaStringCheckUtf8.
+             * @member {boolean} javaStringCheckUtf8
              * @memberof google.protobuf.FileOptions
              * @instance
              */
-            FileOptions.prototype.java_string_check_utf8 = false;
+            FileOptions.prototype.javaStringCheckUtf8 = false;
 
             /**
-             * FileOptions optimize_for.
-             * @member {google.protobuf.FileOptions.OptimizeMode} optimize_for
+             * FileOptions optimizeFor.
+             * @member {google.protobuf.FileOptions.OptimizeMode} optimizeFor
              * @memberof google.protobuf.FileOptions
              * @instance
              */
-            FileOptions.prototype.optimize_for = 1;
+            FileOptions.prototype.optimizeFor = 1;
 
             /**
-             * FileOptions go_package.
-             * @member {string} go_package
+             * FileOptions goPackage.
+             * @member {string} goPackage
              * @memberof google.protobuf.FileOptions
              * @instance
              */
-            FileOptions.prototype.go_package = "";
+            FileOptions.prototype.goPackage = "";
 
             /**
-             * FileOptions cc_generic_services.
-             * @member {boolean} cc_generic_services
+             * FileOptions ccGenericServices.
+             * @member {boolean} ccGenericServices
              * @memberof google.protobuf.FileOptions
              * @instance
              */
-            FileOptions.prototype.cc_generic_services = false;
+            FileOptions.prototype.ccGenericServices = false;
 
             /**
-             * FileOptions java_generic_services.
-             * @member {boolean} java_generic_services
+             * FileOptions javaGenericServices.
+             * @member {boolean} javaGenericServices
              * @memberof google.protobuf.FileOptions
              * @instance
              */
-            FileOptions.prototype.java_generic_services = false;
+            FileOptions.prototype.javaGenericServices = false;
 
             /**
-             * FileOptions py_generic_services.
-             * @member {boolean} py_generic_services
+             * FileOptions pyGenericServices.
+             * @member {boolean} pyGenericServices
              * @memberof google.protobuf.FileOptions
              * @instance
              */
-            FileOptions.prototype.py_generic_services = false;
+            FileOptions.prototype.pyGenericServices = false;
 
             /**
              * FileOptions deprecated.
@@ -4267,36 +4267,36 @@ $root.google = (function() {
             FileOptions.prototype.deprecated = false;
 
             /**
-             * FileOptions cc_enable_arenas.
-             * @member {boolean} cc_enable_arenas
+             * FileOptions ccEnableArenas.
+             * @member {boolean} ccEnableArenas
              * @memberof google.protobuf.FileOptions
              * @instance
              */
-            FileOptions.prototype.cc_enable_arenas = false;
+            FileOptions.prototype.ccEnableArenas = false;
 
             /**
-             * FileOptions objc_class_prefix.
-             * @member {string} objc_class_prefix
+             * FileOptions objcClassPrefix.
+             * @member {string} objcClassPrefix
              * @memberof google.protobuf.FileOptions
              * @instance
              */
-            FileOptions.prototype.objc_class_prefix = "";
+            FileOptions.prototype.objcClassPrefix = "";
 
             /**
-             * FileOptions csharp_namespace.
-             * @member {string} csharp_namespace
+             * FileOptions csharpNamespace.
+             * @member {string} csharpNamespace
              * @memberof google.protobuf.FileOptions
              * @instance
              */
-            FileOptions.prototype.csharp_namespace = "";
+            FileOptions.prototype.csharpNamespace = "";
 
             /**
-             * FileOptions uninterpreted_option.
-             * @member {Array.<google.protobuf.IUninterpretedOption>} uninterpreted_option
+             * FileOptions uninterpretedOption.
+             * @member {Array.<google.protobuf.IUninterpretedOption>} uninterpretedOption
              * @memberof google.protobuf.FileOptions
              * @instance
              */
-            FileOptions.prototype.uninterpreted_option = $util.emptyArray;
+            FileOptions.prototype.uninterpretedOption = $util.emptyArray;
 
             /**
              * Creates a new FileOptions instance using the specified properties.
@@ -4322,37 +4322,37 @@ $root.google = (function() {
             FileOptions.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.java_package != null && Object.hasOwnProperty.call(message, "java_package"))
-                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.java_package);
-                if (message.java_outer_classname != null && Object.hasOwnProperty.call(message, "java_outer_classname"))
-                    writer.uint32(/* id 8, wireType 2 =*/66).string(message.java_outer_classname);
-                if (message.optimize_for != null && Object.hasOwnProperty.call(message, "optimize_for"))
-                    writer.uint32(/* id 9, wireType 0 =*/72).int32(message.optimize_for);
-                if (message.java_multiple_files != null && Object.hasOwnProperty.call(message, "java_multiple_files"))
-                    writer.uint32(/* id 10, wireType 0 =*/80).bool(message.java_multiple_files);
-                if (message.go_package != null && Object.hasOwnProperty.call(message, "go_package"))
-                    writer.uint32(/* id 11, wireType 2 =*/90).string(message.go_package);
-                if (message.cc_generic_services != null && Object.hasOwnProperty.call(message, "cc_generic_services"))
-                    writer.uint32(/* id 16, wireType 0 =*/128).bool(message.cc_generic_services);
-                if (message.java_generic_services != null && Object.hasOwnProperty.call(message, "java_generic_services"))
-                    writer.uint32(/* id 17, wireType 0 =*/136).bool(message.java_generic_services);
-                if (message.py_generic_services != null && Object.hasOwnProperty.call(message, "py_generic_services"))
-                    writer.uint32(/* id 18, wireType 0 =*/144).bool(message.py_generic_services);
-                if (message.java_generate_equals_and_hash != null && Object.hasOwnProperty.call(message, "java_generate_equals_and_hash"))
-                    writer.uint32(/* id 20, wireType 0 =*/160).bool(message.java_generate_equals_and_hash);
+                if (message.javaPackage != null && Object.hasOwnProperty.call(message, "javaPackage"))
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.javaPackage);
+                if (message.javaOuterClassname != null && Object.hasOwnProperty.call(message, "javaOuterClassname"))
+                    writer.uint32(/* id 8, wireType 2 =*/66).string(message.javaOuterClassname);
+                if (message.optimizeFor != null && Object.hasOwnProperty.call(message, "optimizeFor"))
+                    writer.uint32(/* id 9, wireType 0 =*/72).int32(message.optimizeFor);
+                if (message.javaMultipleFiles != null && Object.hasOwnProperty.call(message, "javaMultipleFiles"))
+                    writer.uint32(/* id 10, wireType 0 =*/80).bool(message.javaMultipleFiles);
+                if (message.goPackage != null && Object.hasOwnProperty.call(message, "goPackage"))
+                    writer.uint32(/* id 11, wireType 2 =*/90).string(message.goPackage);
+                if (message.ccGenericServices != null && Object.hasOwnProperty.call(message, "ccGenericServices"))
+                    writer.uint32(/* id 16, wireType 0 =*/128).bool(message.ccGenericServices);
+                if (message.javaGenericServices != null && Object.hasOwnProperty.call(message, "javaGenericServices"))
+                    writer.uint32(/* id 17, wireType 0 =*/136).bool(message.javaGenericServices);
+                if (message.pyGenericServices != null && Object.hasOwnProperty.call(message, "pyGenericServices"))
+                    writer.uint32(/* id 18, wireType 0 =*/144).bool(message.pyGenericServices);
+                if (message.javaGenerateEqualsAndHash != null && Object.hasOwnProperty.call(message, "javaGenerateEqualsAndHash"))
+                    writer.uint32(/* id 20, wireType 0 =*/160).bool(message.javaGenerateEqualsAndHash);
                 if (message.deprecated != null && Object.hasOwnProperty.call(message, "deprecated"))
                     writer.uint32(/* id 23, wireType 0 =*/184).bool(message.deprecated);
-                if (message.java_string_check_utf8 != null && Object.hasOwnProperty.call(message, "java_string_check_utf8"))
-                    writer.uint32(/* id 27, wireType 0 =*/216).bool(message.java_string_check_utf8);
-                if (message.cc_enable_arenas != null && Object.hasOwnProperty.call(message, "cc_enable_arenas"))
-                    writer.uint32(/* id 31, wireType 0 =*/248).bool(message.cc_enable_arenas);
-                if (message.objc_class_prefix != null && Object.hasOwnProperty.call(message, "objc_class_prefix"))
-                    writer.uint32(/* id 36, wireType 2 =*/290).string(message.objc_class_prefix);
-                if (message.csharp_namespace != null && Object.hasOwnProperty.call(message, "csharp_namespace"))
-                    writer.uint32(/* id 37, wireType 2 =*/298).string(message.csharp_namespace);
-                if (message.uninterpreted_option != null && message.uninterpreted_option.length)
-                    for (var i = 0; i < message.uninterpreted_option.length; ++i)
-                        $root.google.protobuf.UninterpretedOption.encode(message.uninterpreted_option[i], writer.uint32(/* id 999, wireType 2 =*/7994).fork()).ldelim();
+                if (message.javaStringCheckUtf8 != null && Object.hasOwnProperty.call(message, "javaStringCheckUtf8"))
+                    writer.uint32(/* id 27, wireType 0 =*/216).bool(message.javaStringCheckUtf8);
+                if (message.ccEnableArenas != null && Object.hasOwnProperty.call(message, "ccEnableArenas"))
+                    writer.uint32(/* id 31, wireType 0 =*/248).bool(message.ccEnableArenas);
+                if (message.objcClassPrefix != null && Object.hasOwnProperty.call(message, "objcClassPrefix"))
+                    writer.uint32(/* id 36, wireType 2 =*/290).string(message.objcClassPrefix);
+                if (message.csharpNamespace != null && Object.hasOwnProperty.call(message, "csharpNamespace"))
+                    writer.uint32(/* id 37, wireType 2 =*/298).string(message.csharpNamespace);
+                if (message.uninterpretedOption != null && message.uninterpretedOption.length)
+                    for (var i = 0; i < message.uninterpretedOption.length; ++i)
+                        $root.google.protobuf.UninterpretedOption.encode(message.uninterpretedOption[i], writer.uint32(/* id 999, wireType 2 =*/7994).fork()).ldelim();
                 return writer;
             };
 
@@ -4388,51 +4388,51 @@ $root.google = (function() {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
                     case 1:
-                        message.java_package = reader.string();
+                        message.javaPackage = reader.string();
                         break;
                     case 8:
-                        message.java_outer_classname = reader.string();
+                        message.javaOuterClassname = reader.string();
                         break;
                     case 10:
-                        message.java_multiple_files = reader.bool();
+                        message.javaMultipleFiles = reader.bool();
                         break;
                     case 20:
-                        message.java_generate_equals_and_hash = reader.bool();
+                        message.javaGenerateEqualsAndHash = reader.bool();
                         break;
                     case 27:
-                        message.java_string_check_utf8 = reader.bool();
+                        message.javaStringCheckUtf8 = reader.bool();
                         break;
                     case 9:
-                        message.optimize_for = reader.int32();
+                        message.optimizeFor = reader.int32();
                         break;
                     case 11:
-                        message.go_package = reader.string();
+                        message.goPackage = reader.string();
                         break;
                     case 16:
-                        message.cc_generic_services = reader.bool();
+                        message.ccGenericServices = reader.bool();
                         break;
                     case 17:
-                        message.java_generic_services = reader.bool();
+                        message.javaGenericServices = reader.bool();
                         break;
                     case 18:
-                        message.py_generic_services = reader.bool();
+                        message.pyGenericServices = reader.bool();
                         break;
                     case 23:
                         message.deprecated = reader.bool();
                         break;
                     case 31:
-                        message.cc_enable_arenas = reader.bool();
+                        message.ccEnableArenas = reader.bool();
                         break;
                     case 36:
-                        message.objc_class_prefix = reader.string();
+                        message.objcClassPrefix = reader.string();
                         break;
                     case 37:
-                        message.csharp_namespace = reader.string();
+                        message.csharpNamespace = reader.string();
                         break;
                     case 999:
-                        if (!(message.uninterpreted_option && message.uninterpreted_option.length))
-                            message.uninterpreted_option = [];
-                        message.uninterpreted_option.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
+                        if (!(message.uninterpretedOption && message.uninterpretedOption.length))
+                            message.uninterpretedOption = [];
+                        message.uninterpretedOption.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
                         break;
                     default:
                         reader.skipType(tag & 7);
@@ -4469,61 +4469,61 @@ $root.google = (function() {
             FileOptions.verify = function verify(message) {
                 if (typeof message !== "object" || message === null)
                     return "object expected";
-                if (message.java_package != null && message.hasOwnProperty("java_package"))
-                    if (!$util.isString(message.java_package))
-                        return "java_package: string expected";
-                if (message.java_outer_classname != null && message.hasOwnProperty("java_outer_classname"))
-                    if (!$util.isString(message.java_outer_classname))
-                        return "java_outer_classname: string expected";
-                if (message.java_multiple_files != null && message.hasOwnProperty("java_multiple_files"))
-                    if (typeof message.java_multiple_files !== "boolean")
-                        return "java_multiple_files: boolean expected";
-                if (message.java_generate_equals_and_hash != null && message.hasOwnProperty("java_generate_equals_and_hash"))
-                    if (typeof message.java_generate_equals_and_hash !== "boolean")
-                        return "java_generate_equals_and_hash: boolean expected";
-                if (message.java_string_check_utf8 != null && message.hasOwnProperty("java_string_check_utf8"))
-                    if (typeof message.java_string_check_utf8 !== "boolean")
-                        return "java_string_check_utf8: boolean expected";
-                if (message.optimize_for != null && message.hasOwnProperty("optimize_for"))
-                    switch (message.optimize_for) {
+                if (message.javaPackage != null && message.hasOwnProperty("javaPackage"))
+                    if (!$util.isString(message.javaPackage))
+                        return "javaPackage: string expected";
+                if (message.javaOuterClassname != null && message.hasOwnProperty("javaOuterClassname"))
+                    if (!$util.isString(message.javaOuterClassname))
+                        return "javaOuterClassname: string expected";
+                if (message.javaMultipleFiles != null && message.hasOwnProperty("javaMultipleFiles"))
+                    if (typeof message.javaMultipleFiles !== "boolean")
+                        return "javaMultipleFiles: boolean expected";
+                if (message.javaGenerateEqualsAndHash != null && message.hasOwnProperty("javaGenerateEqualsAndHash"))
+                    if (typeof message.javaGenerateEqualsAndHash !== "boolean")
+                        return "javaGenerateEqualsAndHash: boolean expected";
+                if (message.javaStringCheckUtf8 != null && message.hasOwnProperty("javaStringCheckUtf8"))
+                    if (typeof message.javaStringCheckUtf8 !== "boolean")
+                        return "javaStringCheckUtf8: boolean expected";
+                if (message.optimizeFor != null && message.hasOwnProperty("optimizeFor"))
+                    switch (message.optimizeFor) {
                     default:
-                        return "optimize_for: enum value expected";
+                        return "optimizeFor: enum value expected";
                     case 1:
                     case 2:
                     case 3:
                         break;
                     }
-                if (message.go_package != null && message.hasOwnProperty("go_package"))
-                    if (!$util.isString(message.go_package))
-                        return "go_package: string expected";
-                if (message.cc_generic_services != null && message.hasOwnProperty("cc_generic_services"))
-                    if (typeof message.cc_generic_services !== "boolean")
-                        return "cc_generic_services: boolean expected";
-                if (message.java_generic_services != null && message.hasOwnProperty("java_generic_services"))
-                    if (typeof message.java_generic_services !== "boolean")
-                        return "java_generic_services: boolean expected";
-                if (message.py_generic_services != null && message.hasOwnProperty("py_generic_services"))
-                    if (typeof message.py_generic_services !== "boolean")
-                        return "py_generic_services: boolean expected";
+                if (message.goPackage != null && message.hasOwnProperty("goPackage"))
+                    if (!$util.isString(message.goPackage))
+                        return "goPackage: string expected";
+                if (message.ccGenericServices != null && message.hasOwnProperty("ccGenericServices"))
+                    if (typeof message.ccGenericServices !== "boolean")
+                        return "ccGenericServices: boolean expected";
+                if (message.javaGenericServices != null && message.hasOwnProperty("javaGenericServices"))
+                    if (typeof message.javaGenericServices !== "boolean")
+                        return "javaGenericServices: boolean expected";
+                if (message.pyGenericServices != null && message.hasOwnProperty("pyGenericServices"))
+                    if (typeof message.pyGenericServices !== "boolean")
+                        return "pyGenericServices: boolean expected";
                 if (message.deprecated != null && message.hasOwnProperty("deprecated"))
                     if (typeof message.deprecated !== "boolean")
                         return "deprecated: boolean expected";
-                if (message.cc_enable_arenas != null && message.hasOwnProperty("cc_enable_arenas"))
-                    if (typeof message.cc_enable_arenas !== "boolean")
-                        return "cc_enable_arenas: boolean expected";
-                if (message.objc_class_prefix != null && message.hasOwnProperty("objc_class_prefix"))
-                    if (!$util.isString(message.objc_class_prefix))
-                        return "objc_class_prefix: string expected";
-                if (message.csharp_namespace != null && message.hasOwnProperty("csharp_namespace"))
-                    if (!$util.isString(message.csharp_namespace))
-                        return "csharp_namespace: string expected";
-                if (message.uninterpreted_option != null && message.hasOwnProperty("uninterpreted_option")) {
-                    if (!Array.isArray(message.uninterpreted_option))
-                        return "uninterpreted_option: array expected";
-                    for (var i = 0; i < message.uninterpreted_option.length; ++i) {
-                        var error = $root.google.protobuf.UninterpretedOption.verify(message.uninterpreted_option[i]);
+                if (message.ccEnableArenas != null && message.hasOwnProperty("ccEnableArenas"))
+                    if (typeof message.ccEnableArenas !== "boolean")
+                        return "ccEnableArenas: boolean expected";
+                if (message.objcClassPrefix != null && message.hasOwnProperty("objcClassPrefix"))
+                    if (!$util.isString(message.objcClassPrefix))
+                        return "objcClassPrefix: string expected";
+                if (message.csharpNamespace != null && message.hasOwnProperty("csharpNamespace"))
+                    if (!$util.isString(message.csharpNamespace))
+                        return "csharpNamespace: string expected";
+                if (message.uninterpretedOption != null && message.hasOwnProperty("uninterpretedOption")) {
+                    if (!Array.isArray(message.uninterpretedOption))
+                        return "uninterpretedOption: array expected";
+                    for (var i = 0; i < message.uninterpretedOption.length; ++i) {
+                        var error = $root.google.protobuf.UninterpretedOption.verify(message.uninterpretedOption[i]);
                         if (error)
-                            return "uninterpreted_option." + error;
+                            return "uninterpretedOption." + error;
                     }
                 }
                 return null;
@@ -4541,54 +4541,54 @@ $root.google = (function() {
                 if (object instanceof $root.google.protobuf.FileOptions)
                     return object;
                 var message = new $root.google.protobuf.FileOptions();
-                if (object.java_package != null)
-                    message.java_package = String(object.java_package);
-                if (object.java_outer_classname != null)
-                    message.java_outer_classname = String(object.java_outer_classname);
-                if (object.java_multiple_files != null)
-                    message.java_multiple_files = Boolean(object.java_multiple_files);
-                if (object.java_generate_equals_and_hash != null)
-                    message.java_generate_equals_and_hash = Boolean(object.java_generate_equals_and_hash);
-                if (object.java_string_check_utf8 != null)
-                    message.java_string_check_utf8 = Boolean(object.java_string_check_utf8);
-                switch (object.optimize_for) {
+                if (object.javaPackage != null)
+                    message.javaPackage = String(object.javaPackage);
+                if (object.javaOuterClassname != null)
+                    message.javaOuterClassname = String(object.javaOuterClassname);
+                if (object.javaMultipleFiles != null)
+                    message.javaMultipleFiles = Boolean(object.javaMultipleFiles);
+                if (object.javaGenerateEqualsAndHash != null)
+                    message.javaGenerateEqualsAndHash = Boolean(object.javaGenerateEqualsAndHash);
+                if (object.javaStringCheckUtf8 != null)
+                    message.javaStringCheckUtf8 = Boolean(object.javaStringCheckUtf8);
+                switch (object.optimizeFor) {
                 case "SPEED":
                 case 1:
-                    message.optimize_for = 1;
+                    message.optimizeFor = 1;
                     break;
                 case "CODE_SIZE":
                 case 2:
-                    message.optimize_for = 2;
+                    message.optimizeFor = 2;
                     break;
                 case "LITE_RUNTIME":
                 case 3:
-                    message.optimize_for = 3;
+                    message.optimizeFor = 3;
                     break;
                 }
-                if (object.go_package != null)
-                    message.go_package = String(object.go_package);
-                if (object.cc_generic_services != null)
-                    message.cc_generic_services = Boolean(object.cc_generic_services);
-                if (object.java_generic_services != null)
-                    message.java_generic_services = Boolean(object.java_generic_services);
-                if (object.py_generic_services != null)
-                    message.py_generic_services = Boolean(object.py_generic_services);
+                if (object.goPackage != null)
+                    message.goPackage = String(object.goPackage);
+                if (object.ccGenericServices != null)
+                    message.ccGenericServices = Boolean(object.ccGenericServices);
+                if (object.javaGenericServices != null)
+                    message.javaGenericServices = Boolean(object.javaGenericServices);
+                if (object.pyGenericServices != null)
+                    message.pyGenericServices = Boolean(object.pyGenericServices);
                 if (object.deprecated != null)
                     message.deprecated = Boolean(object.deprecated);
-                if (object.cc_enable_arenas != null)
-                    message.cc_enable_arenas = Boolean(object.cc_enable_arenas);
-                if (object.objc_class_prefix != null)
-                    message.objc_class_prefix = String(object.objc_class_prefix);
-                if (object.csharp_namespace != null)
-                    message.csharp_namespace = String(object.csharp_namespace);
-                if (object.uninterpreted_option) {
-                    if (!Array.isArray(object.uninterpreted_option))
-                        throw TypeError(".google.protobuf.FileOptions.uninterpreted_option: array expected");
-                    message.uninterpreted_option = [];
-                    for (var i = 0; i < object.uninterpreted_option.length; ++i) {
-                        if (typeof object.uninterpreted_option[i] !== "object")
-                            throw TypeError(".google.protobuf.FileOptions.uninterpreted_option: object expected");
-                        message.uninterpreted_option[i] = $root.google.protobuf.UninterpretedOption.fromObject(object.uninterpreted_option[i]);
+                if (object.ccEnableArenas != null)
+                    message.ccEnableArenas = Boolean(object.ccEnableArenas);
+                if (object.objcClassPrefix != null)
+                    message.objcClassPrefix = String(object.objcClassPrefix);
+                if (object.csharpNamespace != null)
+                    message.csharpNamespace = String(object.csharpNamespace);
+                if (object.uninterpretedOption) {
+                    if (!Array.isArray(object.uninterpretedOption))
+                        throw TypeError(".google.protobuf.FileOptions.uninterpretedOption: array expected");
+                    message.uninterpretedOption = [];
+                    for (var i = 0; i < object.uninterpretedOption.length; ++i) {
+                        if (typeof object.uninterpretedOption[i] !== "object")
+                            throw TypeError(".google.protobuf.FileOptions.uninterpretedOption: object expected");
+                        message.uninterpretedOption[i] = $root.google.protobuf.UninterpretedOption.fromObject(object.uninterpretedOption[i]);
                     }
                 }
                 return message;
@@ -4608,55 +4608,55 @@ $root.google = (function() {
                     options = {};
                 var object = {};
                 if (options.arrays || options.defaults)
-                    object.uninterpreted_option = [];
+                    object.uninterpretedOption = [];
                 if (options.defaults) {
-                    object.java_package = "";
-                    object.java_outer_classname = "";
-                    object.optimize_for = options.enums === String ? "SPEED" : 1;
-                    object.java_multiple_files = false;
-                    object.go_package = "";
-                    object.cc_generic_services = false;
-                    object.java_generic_services = false;
-                    object.py_generic_services = false;
-                    object.java_generate_equals_and_hash = false;
+                    object.javaPackage = "";
+                    object.javaOuterClassname = "";
+                    object.optimizeFor = options.enums === String ? "SPEED" : 1;
+                    object.javaMultipleFiles = false;
+                    object.goPackage = "";
+                    object.ccGenericServices = false;
+                    object.javaGenericServices = false;
+                    object.pyGenericServices = false;
+                    object.javaGenerateEqualsAndHash = false;
                     object.deprecated = false;
-                    object.java_string_check_utf8 = false;
-                    object.cc_enable_arenas = false;
-                    object.objc_class_prefix = "";
-                    object.csharp_namespace = "";
+                    object.javaStringCheckUtf8 = false;
+                    object.ccEnableArenas = false;
+                    object.objcClassPrefix = "";
+                    object.csharpNamespace = "";
                 }
-                if (message.java_package != null && message.hasOwnProperty("java_package"))
-                    object.java_package = message.java_package;
-                if (message.java_outer_classname != null && message.hasOwnProperty("java_outer_classname"))
-                    object.java_outer_classname = message.java_outer_classname;
-                if (message.optimize_for != null && message.hasOwnProperty("optimize_for"))
-                    object.optimize_for = options.enums === String ? $root.google.protobuf.FileOptions.OptimizeMode[message.optimize_for] : message.optimize_for;
-                if (message.java_multiple_files != null && message.hasOwnProperty("java_multiple_files"))
-                    object.java_multiple_files = message.java_multiple_files;
-                if (message.go_package != null && message.hasOwnProperty("go_package"))
-                    object.go_package = message.go_package;
-                if (message.cc_generic_services != null && message.hasOwnProperty("cc_generic_services"))
-                    object.cc_generic_services = message.cc_generic_services;
-                if (message.java_generic_services != null && message.hasOwnProperty("java_generic_services"))
-                    object.java_generic_services = message.java_generic_services;
-                if (message.py_generic_services != null && message.hasOwnProperty("py_generic_services"))
-                    object.py_generic_services = message.py_generic_services;
-                if (message.java_generate_equals_and_hash != null && message.hasOwnProperty("java_generate_equals_and_hash"))
-                    object.java_generate_equals_and_hash = message.java_generate_equals_and_hash;
+                if (message.javaPackage != null && message.hasOwnProperty("javaPackage"))
+                    object.javaPackage = message.javaPackage;
+                if (message.javaOuterClassname != null && message.hasOwnProperty("javaOuterClassname"))
+                    object.javaOuterClassname = message.javaOuterClassname;
+                if (message.optimizeFor != null && message.hasOwnProperty("optimizeFor"))
+                    object.optimizeFor = options.enums === String ? $root.google.protobuf.FileOptions.OptimizeMode[message.optimizeFor] : message.optimizeFor;
+                if (message.javaMultipleFiles != null && message.hasOwnProperty("javaMultipleFiles"))
+                    object.javaMultipleFiles = message.javaMultipleFiles;
+                if (message.goPackage != null && message.hasOwnProperty("goPackage"))
+                    object.goPackage = message.goPackage;
+                if (message.ccGenericServices != null && message.hasOwnProperty("ccGenericServices"))
+                    object.ccGenericServices = message.ccGenericServices;
+                if (message.javaGenericServices != null && message.hasOwnProperty("javaGenericServices"))
+                    object.javaGenericServices = message.javaGenericServices;
+                if (message.pyGenericServices != null && message.hasOwnProperty("pyGenericServices"))
+                    object.pyGenericServices = message.pyGenericServices;
+                if (message.javaGenerateEqualsAndHash != null && message.hasOwnProperty("javaGenerateEqualsAndHash"))
+                    object.javaGenerateEqualsAndHash = message.javaGenerateEqualsAndHash;
                 if (message.deprecated != null && message.hasOwnProperty("deprecated"))
                     object.deprecated = message.deprecated;
-                if (message.java_string_check_utf8 != null && message.hasOwnProperty("java_string_check_utf8"))
-                    object.java_string_check_utf8 = message.java_string_check_utf8;
-                if (message.cc_enable_arenas != null && message.hasOwnProperty("cc_enable_arenas"))
-                    object.cc_enable_arenas = message.cc_enable_arenas;
-                if (message.objc_class_prefix != null && message.hasOwnProperty("objc_class_prefix"))
-                    object.objc_class_prefix = message.objc_class_prefix;
-                if (message.csharp_namespace != null && message.hasOwnProperty("csharp_namespace"))
-                    object.csharp_namespace = message.csharp_namespace;
-                if (message.uninterpreted_option && message.uninterpreted_option.length) {
-                    object.uninterpreted_option = [];
-                    for (var j = 0; j < message.uninterpreted_option.length; ++j)
-                        object.uninterpreted_option[j] = $root.google.protobuf.UninterpretedOption.toObject(message.uninterpreted_option[j], options);
+                if (message.javaStringCheckUtf8 != null && message.hasOwnProperty("javaStringCheckUtf8"))
+                    object.javaStringCheckUtf8 = message.javaStringCheckUtf8;
+                if (message.ccEnableArenas != null && message.hasOwnProperty("ccEnableArenas"))
+                    object.ccEnableArenas = message.ccEnableArenas;
+                if (message.objcClassPrefix != null && message.hasOwnProperty("objcClassPrefix"))
+                    object.objcClassPrefix = message.objcClassPrefix;
+                if (message.csharpNamespace != null && message.hasOwnProperty("csharpNamespace"))
+                    object.csharpNamespace = message.csharpNamespace;
+                if (message.uninterpretedOption && message.uninterpretedOption.length) {
+                    object.uninterpretedOption = [];
+                    for (var j = 0; j < message.uninterpretedOption.length; ++j)
+                        object.uninterpretedOption[j] = $root.google.protobuf.UninterpretedOption.toObject(message.uninterpretedOption[j], options);
                 }
                 return object;
             };
@@ -4697,11 +4697,11 @@ $root.google = (function() {
              * Properties of a MessageOptions.
              * @memberof google.protobuf
              * @interface IMessageOptions
-             * @property {boolean|null} [message_set_wire_format] MessageOptions message_set_wire_format
-             * @property {boolean|null} [no_standard_descriptor_accessor] MessageOptions no_standard_descriptor_accessor
+             * @property {boolean|null} [messageSetWireFormat] MessageOptions messageSetWireFormat
+             * @property {boolean|null} [noStandardDescriptorAccessor] MessageOptions noStandardDescriptorAccessor
              * @property {boolean|null} [deprecated] MessageOptions deprecated
-             * @property {boolean|null} [map_entry] MessageOptions map_entry
-             * @property {Array.<google.protobuf.IUninterpretedOption>|null} [uninterpreted_option] MessageOptions uninterpreted_option
+             * @property {boolean|null} [mapEntry] MessageOptions mapEntry
+             * @property {Array.<google.protobuf.IUninterpretedOption>|null} [uninterpretedOption] MessageOptions uninterpretedOption
              * @property {number|null} [".message.CmdID"] MessageOptions .message.CmdID
              * @property {Direction|null} [".message.Sender"] MessageOptions .message.Sender
              */
@@ -4715,7 +4715,7 @@ $root.google = (function() {
              * @param {google.protobuf.IMessageOptions=} [properties] Properties to set
              */
             function MessageOptions(properties) {
-                this.uninterpreted_option = [];
+                this.uninterpretedOption = [];
                 if (properties)
                     for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                         if (properties[keys[i]] != null)
@@ -4723,20 +4723,20 @@ $root.google = (function() {
             }
 
             /**
-             * MessageOptions message_set_wire_format.
-             * @member {boolean} message_set_wire_format
+             * MessageOptions messageSetWireFormat.
+             * @member {boolean} messageSetWireFormat
              * @memberof google.protobuf.MessageOptions
              * @instance
              */
-            MessageOptions.prototype.message_set_wire_format = false;
+            MessageOptions.prototype.messageSetWireFormat = false;
 
             /**
-             * MessageOptions no_standard_descriptor_accessor.
-             * @member {boolean} no_standard_descriptor_accessor
+             * MessageOptions noStandardDescriptorAccessor.
+             * @member {boolean} noStandardDescriptorAccessor
              * @memberof google.protobuf.MessageOptions
              * @instance
              */
-            MessageOptions.prototype.no_standard_descriptor_accessor = false;
+            MessageOptions.prototype.noStandardDescriptorAccessor = false;
 
             /**
              * MessageOptions deprecated.
@@ -4747,20 +4747,20 @@ $root.google = (function() {
             MessageOptions.prototype.deprecated = false;
 
             /**
-             * MessageOptions map_entry.
-             * @member {boolean} map_entry
+             * MessageOptions mapEntry.
+             * @member {boolean} mapEntry
              * @memberof google.protobuf.MessageOptions
              * @instance
              */
-            MessageOptions.prototype.map_entry = false;
+            MessageOptions.prototype.mapEntry = false;
 
             /**
-             * MessageOptions uninterpreted_option.
-             * @member {Array.<google.protobuf.IUninterpretedOption>} uninterpreted_option
+             * MessageOptions uninterpretedOption.
+             * @member {Array.<google.protobuf.IUninterpretedOption>} uninterpretedOption
              * @memberof google.protobuf.MessageOptions
              * @instance
              */
-            MessageOptions.prototype.uninterpreted_option = $util.emptyArray;
+            MessageOptions.prototype.uninterpretedOption = $util.emptyArray;
 
             /**
              * MessageOptions .message.CmdID.
@@ -4802,17 +4802,17 @@ $root.google = (function() {
             MessageOptions.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.message_set_wire_format != null && Object.hasOwnProperty.call(message, "message_set_wire_format"))
-                    writer.uint32(/* id 1, wireType 0 =*/8).bool(message.message_set_wire_format);
-                if (message.no_standard_descriptor_accessor != null && Object.hasOwnProperty.call(message, "no_standard_descriptor_accessor"))
-                    writer.uint32(/* id 2, wireType 0 =*/16).bool(message.no_standard_descriptor_accessor);
+                if (message.messageSetWireFormat != null && Object.hasOwnProperty.call(message, "messageSetWireFormat"))
+                    writer.uint32(/* id 1, wireType 0 =*/8).bool(message.messageSetWireFormat);
+                if (message.noStandardDescriptorAccessor != null && Object.hasOwnProperty.call(message, "noStandardDescriptorAccessor"))
+                    writer.uint32(/* id 2, wireType 0 =*/16).bool(message.noStandardDescriptorAccessor);
                 if (message.deprecated != null && Object.hasOwnProperty.call(message, "deprecated"))
                     writer.uint32(/* id 3, wireType 0 =*/24).bool(message.deprecated);
-                if (message.map_entry != null && Object.hasOwnProperty.call(message, "map_entry"))
-                    writer.uint32(/* id 7, wireType 0 =*/56).bool(message.map_entry);
-                if (message.uninterpreted_option != null && message.uninterpreted_option.length)
-                    for (var i = 0; i < message.uninterpreted_option.length; ++i)
-                        $root.google.protobuf.UninterpretedOption.encode(message.uninterpreted_option[i], writer.uint32(/* id 999, wireType 2 =*/7994).fork()).ldelim();
+                if (message.mapEntry != null && Object.hasOwnProperty.call(message, "mapEntry"))
+                    writer.uint32(/* id 7, wireType 0 =*/56).bool(message.mapEntry);
+                if (message.uninterpretedOption != null && message.uninterpretedOption.length)
+                    for (var i = 0; i < message.uninterpretedOption.length; ++i)
+                        $root.google.protobuf.UninterpretedOption.encode(message.uninterpretedOption[i], writer.uint32(/* id 999, wireType 2 =*/7994).fork()).ldelim();
                 if (message[".message.CmdID"] != null && Object.hasOwnProperty.call(message, ".message.CmdID"))
                     writer.uint32(/* id 50000, wireType 0 =*/400000).int32(message[".message.CmdID"]);
                 if (message[".message.Sender"] != null && Object.hasOwnProperty.call(message, ".message.Sender"))
@@ -4852,21 +4852,21 @@ $root.google = (function() {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
                     case 1:
-                        message.message_set_wire_format = reader.bool();
+                        message.messageSetWireFormat = reader.bool();
                         break;
                     case 2:
-                        message.no_standard_descriptor_accessor = reader.bool();
+                        message.noStandardDescriptorAccessor = reader.bool();
                         break;
                     case 3:
                         message.deprecated = reader.bool();
                         break;
                     case 7:
-                        message.map_entry = reader.bool();
+                        message.mapEntry = reader.bool();
                         break;
                     case 999:
-                        if (!(message.uninterpreted_option && message.uninterpreted_option.length))
-                            message.uninterpreted_option = [];
-                        message.uninterpreted_option.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
+                        if (!(message.uninterpretedOption && message.uninterpretedOption.length))
+                            message.uninterpretedOption = [];
+                        message.uninterpretedOption.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
                         break;
                     case 50000:
                         message[".message.CmdID"] = reader.int32();
@@ -4909,25 +4909,25 @@ $root.google = (function() {
             MessageOptions.verify = function verify(message) {
                 if (typeof message !== "object" || message === null)
                     return "object expected";
-                if (message.message_set_wire_format != null && message.hasOwnProperty("message_set_wire_format"))
-                    if (typeof message.message_set_wire_format !== "boolean")
-                        return "message_set_wire_format: boolean expected";
-                if (message.no_standard_descriptor_accessor != null && message.hasOwnProperty("no_standard_descriptor_accessor"))
-                    if (typeof message.no_standard_descriptor_accessor !== "boolean")
-                        return "no_standard_descriptor_accessor: boolean expected";
+                if (message.messageSetWireFormat != null && message.hasOwnProperty("messageSetWireFormat"))
+                    if (typeof message.messageSetWireFormat !== "boolean")
+                        return "messageSetWireFormat: boolean expected";
+                if (message.noStandardDescriptorAccessor != null && message.hasOwnProperty("noStandardDescriptorAccessor"))
+                    if (typeof message.noStandardDescriptorAccessor !== "boolean")
+                        return "noStandardDescriptorAccessor: boolean expected";
                 if (message.deprecated != null && message.hasOwnProperty("deprecated"))
                     if (typeof message.deprecated !== "boolean")
                         return "deprecated: boolean expected";
-                if (message.map_entry != null && message.hasOwnProperty("map_entry"))
-                    if (typeof message.map_entry !== "boolean")
-                        return "map_entry: boolean expected";
-                if (message.uninterpreted_option != null && message.hasOwnProperty("uninterpreted_option")) {
-                    if (!Array.isArray(message.uninterpreted_option))
-                        return "uninterpreted_option: array expected";
-                    for (var i = 0; i < message.uninterpreted_option.length; ++i) {
-                        var error = $root.google.protobuf.UninterpretedOption.verify(message.uninterpreted_option[i]);
+                if (message.mapEntry != null && message.hasOwnProperty("mapEntry"))
+                    if (typeof message.mapEntry !== "boolean")
+                        return "mapEntry: boolean expected";
+                if (message.uninterpretedOption != null && message.hasOwnProperty("uninterpretedOption")) {
+                    if (!Array.isArray(message.uninterpretedOption))
+                        return "uninterpretedOption: array expected";
+                    for (var i = 0; i < message.uninterpretedOption.length; ++i) {
+                        var error = $root.google.protobuf.UninterpretedOption.verify(message.uninterpretedOption[i]);
                         if (error)
-                            return "uninterpreted_option." + error;
+                            return "uninterpretedOption." + error;
                     }
                 }
                 if (message[".message.CmdID"] != null && message.hasOwnProperty(".message.CmdID"))
@@ -4957,22 +4957,22 @@ $root.google = (function() {
                 if (object instanceof $root.google.protobuf.MessageOptions)
                     return object;
                 var message = new $root.google.protobuf.MessageOptions();
-                if (object.message_set_wire_format != null)
-                    message.message_set_wire_format = Boolean(object.message_set_wire_format);
-                if (object.no_standard_descriptor_accessor != null)
-                    message.no_standard_descriptor_accessor = Boolean(object.no_standard_descriptor_accessor);
+                if (object.messageSetWireFormat != null)
+                    message.messageSetWireFormat = Boolean(object.messageSetWireFormat);
+                if (object.noStandardDescriptorAccessor != null)
+                    message.noStandardDescriptorAccessor = Boolean(object.noStandardDescriptorAccessor);
                 if (object.deprecated != null)
                     message.deprecated = Boolean(object.deprecated);
-                if (object.map_entry != null)
-                    message.map_entry = Boolean(object.map_entry);
-                if (object.uninterpreted_option) {
-                    if (!Array.isArray(object.uninterpreted_option))
-                        throw TypeError(".google.protobuf.MessageOptions.uninterpreted_option: array expected");
-                    message.uninterpreted_option = [];
-                    for (var i = 0; i < object.uninterpreted_option.length; ++i) {
-                        if (typeof object.uninterpreted_option[i] !== "object")
-                            throw TypeError(".google.protobuf.MessageOptions.uninterpreted_option: object expected");
-                        message.uninterpreted_option[i] = $root.google.protobuf.UninterpretedOption.fromObject(object.uninterpreted_option[i]);
+                if (object.mapEntry != null)
+                    message.mapEntry = Boolean(object.mapEntry);
+                if (object.uninterpretedOption) {
+                    if (!Array.isArray(object.uninterpretedOption))
+                        throw TypeError(".google.protobuf.MessageOptions.uninterpretedOption: array expected");
+                    message.uninterpretedOption = [];
+                    for (var i = 0; i < object.uninterpretedOption.length; ++i) {
+                        if (typeof object.uninterpretedOption[i] !== "object")
+                            throw TypeError(".google.protobuf.MessageOptions.uninterpretedOption: object expected");
+                        message.uninterpretedOption[i] = $root.google.protobuf.UninterpretedOption.fromObject(object.uninterpretedOption[i]);
                     }
                 }
                 if (object[".message.CmdID"] != null)
@@ -5008,27 +5008,27 @@ $root.google = (function() {
                     options = {};
                 var object = {};
                 if (options.arrays || options.defaults)
-                    object.uninterpreted_option = [];
+                    object.uninterpretedOption = [];
                 if (options.defaults) {
-                    object.message_set_wire_format = false;
-                    object.no_standard_descriptor_accessor = false;
+                    object.messageSetWireFormat = false;
+                    object.noStandardDescriptorAccessor = false;
                     object.deprecated = false;
-                    object.map_entry = false;
+                    object.mapEntry = false;
                     object[".message.CmdID"] = 0;
                     object[".message.Sender"] = options.enums === String ? "CLIENT" : 0;
                 }
-                if (message.message_set_wire_format != null && message.hasOwnProperty("message_set_wire_format"))
-                    object.message_set_wire_format = message.message_set_wire_format;
-                if (message.no_standard_descriptor_accessor != null && message.hasOwnProperty("no_standard_descriptor_accessor"))
-                    object.no_standard_descriptor_accessor = message.no_standard_descriptor_accessor;
+                if (message.messageSetWireFormat != null && message.hasOwnProperty("messageSetWireFormat"))
+                    object.messageSetWireFormat = message.messageSetWireFormat;
+                if (message.noStandardDescriptorAccessor != null && message.hasOwnProperty("noStandardDescriptorAccessor"))
+                    object.noStandardDescriptorAccessor = message.noStandardDescriptorAccessor;
                 if (message.deprecated != null && message.hasOwnProperty("deprecated"))
                     object.deprecated = message.deprecated;
-                if (message.map_entry != null && message.hasOwnProperty("map_entry"))
-                    object.map_entry = message.map_entry;
-                if (message.uninterpreted_option && message.uninterpreted_option.length) {
-                    object.uninterpreted_option = [];
-                    for (var j = 0; j < message.uninterpreted_option.length; ++j)
-                        object.uninterpreted_option[j] = $root.google.protobuf.UninterpretedOption.toObject(message.uninterpreted_option[j], options);
+                if (message.mapEntry != null && message.hasOwnProperty("mapEntry"))
+                    object.mapEntry = message.mapEntry;
+                if (message.uninterpretedOption && message.uninterpretedOption.length) {
+                    object.uninterpretedOption = [];
+                    for (var j = 0; j < message.uninterpretedOption.length; ++j)
+                        object.uninterpretedOption[j] = $root.google.protobuf.UninterpretedOption.toObject(message.uninterpretedOption[j], options);
                 }
                 if (message[".message.CmdID"] != null && message.hasOwnProperty(".message.CmdID"))
                     object[".message.CmdID"] = message[".message.CmdID"];
@@ -5063,7 +5063,7 @@ $root.google = (function() {
              * @property {boolean|null} [lazy] FieldOptions lazy
              * @property {boolean|null} [deprecated] FieldOptions deprecated
              * @property {boolean|null} [weak] FieldOptions weak
-             * @property {Array.<google.protobuf.IUninterpretedOption>|null} [uninterpreted_option] FieldOptions uninterpreted_option
+             * @property {Array.<google.protobuf.IUninterpretedOption>|null} [uninterpretedOption] FieldOptions uninterpretedOption
              */
 
             /**
@@ -5075,7 +5075,7 @@ $root.google = (function() {
              * @param {google.protobuf.IFieldOptions=} [properties] Properties to set
              */
             function FieldOptions(properties) {
-                this.uninterpreted_option = [];
+                this.uninterpretedOption = [];
                 if (properties)
                     for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                         if (properties[keys[i]] != null)
@@ -5131,12 +5131,12 @@ $root.google = (function() {
             FieldOptions.prototype.weak = false;
 
             /**
-             * FieldOptions uninterpreted_option.
-             * @member {Array.<google.protobuf.IUninterpretedOption>} uninterpreted_option
+             * FieldOptions uninterpretedOption.
+             * @member {Array.<google.protobuf.IUninterpretedOption>} uninterpretedOption
              * @memberof google.protobuf.FieldOptions
              * @instance
              */
-            FieldOptions.prototype.uninterpreted_option = $util.emptyArray;
+            FieldOptions.prototype.uninterpretedOption = $util.emptyArray;
 
             /**
              * Creates a new FieldOptions instance using the specified properties.
@@ -5174,9 +5174,9 @@ $root.google = (function() {
                     writer.uint32(/* id 6, wireType 0 =*/48).int32(message.jstype);
                 if (message.weak != null && Object.hasOwnProperty.call(message, "weak"))
                     writer.uint32(/* id 10, wireType 0 =*/80).bool(message.weak);
-                if (message.uninterpreted_option != null && message.uninterpreted_option.length)
-                    for (var i = 0; i < message.uninterpreted_option.length; ++i)
-                        $root.google.protobuf.UninterpretedOption.encode(message.uninterpreted_option[i], writer.uint32(/* id 999, wireType 2 =*/7994).fork()).ldelim();
+                if (message.uninterpretedOption != null && message.uninterpretedOption.length)
+                    for (var i = 0; i < message.uninterpretedOption.length; ++i)
+                        $root.google.protobuf.UninterpretedOption.encode(message.uninterpretedOption[i], writer.uint32(/* id 999, wireType 2 =*/7994).fork()).ldelim();
                 return writer;
             };
 
@@ -5230,9 +5230,9 @@ $root.google = (function() {
                         message.weak = reader.bool();
                         break;
                     case 999:
-                        if (!(message.uninterpreted_option && message.uninterpreted_option.length))
-                            message.uninterpreted_option = [];
-                        message.uninterpreted_option.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
+                        if (!(message.uninterpretedOption && message.uninterpretedOption.length))
+                            message.uninterpretedOption = [];
+                        message.uninterpretedOption.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
                         break;
                     default:
                         reader.skipType(tag & 7);
@@ -5299,13 +5299,13 @@ $root.google = (function() {
                 if (message.weak != null && message.hasOwnProperty("weak"))
                     if (typeof message.weak !== "boolean")
                         return "weak: boolean expected";
-                if (message.uninterpreted_option != null && message.hasOwnProperty("uninterpreted_option")) {
-                    if (!Array.isArray(message.uninterpreted_option))
-                        return "uninterpreted_option: array expected";
-                    for (var i = 0; i < message.uninterpreted_option.length; ++i) {
-                        var error = $root.google.protobuf.UninterpretedOption.verify(message.uninterpreted_option[i]);
+                if (message.uninterpretedOption != null && message.hasOwnProperty("uninterpretedOption")) {
+                    if (!Array.isArray(message.uninterpretedOption))
+                        return "uninterpretedOption: array expected";
+                    for (var i = 0; i < message.uninterpretedOption.length; ++i) {
+                        var error = $root.google.protobuf.UninterpretedOption.verify(message.uninterpretedOption[i]);
                         if (error)
-                            return "uninterpreted_option." + error;
+                            return "uninterpretedOption." + error;
                     }
                 }
                 return null;
@@ -5359,14 +5359,14 @@ $root.google = (function() {
                     message.deprecated = Boolean(object.deprecated);
                 if (object.weak != null)
                     message.weak = Boolean(object.weak);
-                if (object.uninterpreted_option) {
-                    if (!Array.isArray(object.uninterpreted_option))
-                        throw TypeError(".google.protobuf.FieldOptions.uninterpreted_option: array expected");
-                    message.uninterpreted_option = [];
-                    for (var i = 0; i < object.uninterpreted_option.length; ++i) {
-                        if (typeof object.uninterpreted_option[i] !== "object")
-                            throw TypeError(".google.protobuf.FieldOptions.uninterpreted_option: object expected");
-                        message.uninterpreted_option[i] = $root.google.protobuf.UninterpretedOption.fromObject(object.uninterpreted_option[i]);
+                if (object.uninterpretedOption) {
+                    if (!Array.isArray(object.uninterpretedOption))
+                        throw TypeError(".google.protobuf.FieldOptions.uninterpretedOption: array expected");
+                    message.uninterpretedOption = [];
+                    for (var i = 0; i < object.uninterpretedOption.length; ++i) {
+                        if (typeof object.uninterpretedOption[i] !== "object")
+                            throw TypeError(".google.protobuf.FieldOptions.uninterpretedOption: object expected");
+                        message.uninterpretedOption[i] = $root.google.protobuf.UninterpretedOption.fromObject(object.uninterpretedOption[i]);
                     }
                 }
                 return message;
@@ -5386,7 +5386,7 @@ $root.google = (function() {
                     options = {};
                 var object = {};
                 if (options.arrays || options.defaults)
-                    object.uninterpreted_option = [];
+                    object.uninterpretedOption = [];
                 if (options.defaults) {
                     object.ctype = options.enums === String ? "STRING" : 0;
                     object.packed = false;
@@ -5407,10 +5407,10 @@ $root.google = (function() {
                     object.jstype = options.enums === String ? $root.google.protobuf.FieldOptions.JSType[message.jstype] : message.jstype;
                 if (message.weak != null && message.hasOwnProperty("weak"))
                     object.weak = message.weak;
-                if (message.uninterpreted_option && message.uninterpreted_option.length) {
-                    object.uninterpreted_option = [];
-                    for (var j = 0; j < message.uninterpreted_option.length; ++j)
-                        object.uninterpreted_option[j] = $root.google.protobuf.UninterpretedOption.toObject(message.uninterpreted_option[j], options);
+                if (message.uninterpretedOption && message.uninterpretedOption.length) {
+                    object.uninterpretedOption = [];
+                    for (var j = 0; j < message.uninterpretedOption.length; ++j)
+                        object.uninterpretedOption[j] = $root.google.protobuf.UninterpretedOption.toObject(message.uninterpretedOption[j], options);
                 }
                 return object;
             };
@@ -5467,7 +5467,7 @@ $root.google = (function() {
              * Properties of an OneofOptions.
              * @memberof google.protobuf
              * @interface IOneofOptions
-             * @property {Array.<google.protobuf.IUninterpretedOption>|null} [uninterpreted_option] OneofOptions uninterpreted_option
+             * @property {Array.<google.protobuf.IUninterpretedOption>|null} [uninterpretedOption] OneofOptions uninterpretedOption
              */
 
             /**
@@ -5479,7 +5479,7 @@ $root.google = (function() {
              * @param {google.protobuf.IOneofOptions=} [properties] Properties to set
              */
             function OneofOptions(properties) {
-                this.uninterpreted_option = [];
+                this.uninterpretedOption = [];
                 if (properties)
                     for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                         if (properties[keys[i]] != null)
@@ -5487,12 +5487,12 @@ $root.google = (function() {
             }
 
             /**
-             * OneofOptions uninterpreted_option.
-             * @member {Array.<google.protobuf.IUninterpretedOption>} uninterpreted_option
+             * OneofOptions uninterpretedOption.
+             * @member {Array.<google.protobuf.IUninterpretedOption>} uninterpretedOption
              * @memberof google.protobuf.OneofOptions
              * @instance
              */
-            OneofOptions.prototype.uninterpreted_option = $util.emptyArray;
+            OneofOptions.prototype.uninterpretedOption = $util.emptyArray;
 
             /**
              * Creates a new OneofOptions instance using the specified properties.
@@ -5518,9 +5518,9 @@ $root.google = (function() {
             OneofOptions.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.uninterpreted_option != null && message.uninterpreted_option.length)
-                    for (var i = 0; i < message.uninterpreted_option.length; ++i)
-                        $root.google.protobuf.UninterpretedOption.encode(message.uninterpreted_option[i], writer.uint32(/* id 999, wireType 2 =*/7994).fork()).ldelim();
+                if (message.uninterpretedOption != null && message.uninterpretedOption.length)
+                    for (var i = 0; i < message.uninterpretedOption.length; ++i)
+                        $root.google.protobuf.UninterpretedOption.encode(message.uninterpretedOption[i], writer.uint32(/* id 999, wireType 2 =*/7994).fork()).ldelim();
                 return writer;
             };
 
@@ -5556,9 +5556,9 @@ $root.google = (function() {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
                     case 999:
-                        if (!(message.uninterpreted_option && message.uninterpreted_option.length))
-                            message.uninterpreted_option = [];
-                        message.uninterpreted_option.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
+                        if (!(message.uninterpretedOption && message.uninterpretedOption.length))
+                            message.uninterpretedOption = [];
+                        message.uninterpretedOption.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
                         break;
                     default:
                         reader.skipType(tag & 7);
@@ -5595,13 +5595,13 @@ $root.google = (function() {
             OneofOptions.verify = function verify(message) {
                 if (typeof message !== "object" || message === null)
                     return "object expected";
-                if (message.uninterpreted_option != null && message.hasOwnProperty("uninterpreted_option")) {
-                    if (!Array.isArray(message.uninterpreted_option))
-                        return "uninterpreted_option: array expected";
-                    for (var i = 0; i < message.uninterpreted_option.length; ++i) {
-                        var error = $root.google.protobuf.UninterpretedOption.verify(message.uninterpreted_option[i]);
+                if (message.uninterpretedOption != null && message.hasOwnProperty("uninterpretedOption")) {
+                    if (!Array.isArray(message.uninterpretedOption))
+                        return "uninterpretedOption: array expected";
+                    for (var i = 0; i < message.uninterpretedOption.length; ++i) {
+                        var error = $root.google.protobuf.UninterpretedOption.verify(message.uninterpretedOption[i]);
                         if (error)
-                            return "uninterpreted_option." + error;
+                            return "uninterpretedOption." + error;
                     }
                 }
                 return null;
@@ -5619,14 +5619,14 @@ $root.google = (function() {
                 if (object instanceof $root.google.protobuf.OneofOptions)
                     return object;
                 var message = new $root.google.protobuf.OneofOptions();
-                if (object.uninterpreted_option) {
-                    if (!Array.isArray(object.uninterpreted_option))
-                        throw TypeError(".google.protobuf.OneofOptions.uninterpreted_option: array expected");
-                    message.uninterpreted_option = [];
-                    for (var i = 0; i < object.uninterpreted_option.length; ++i) {
-                        if (typeof object.uninterpreted_option[i] !== "object")
-                            throw TypeError(".google.protobuf.OneofOptions.uninterpreted_option: object expected");
-                        message.uninterpreted_option[i] = $root.google.protobuf.UninterpretedOption.fromObject(object.uninterpreted_option[i]);
+                if (object.uninterpretedOption) {
+                    if (!Array.isArray(object.uninterpretedOption))
+                        throw TypeError(".google.protobuf.OneofOptions.uninterpretedOption: array expected");
+                    message.uninterpretedOption = [];
+                    for (var i = 0; i < object.uninterpretedOption.length; ++i) {
+                        if (typeof object.uninterpretedOption[i] !== "object")
+                            throw TypeError(".google.protobuf.OneofOptions.uninterpretedOption: object expected");
+                        message.uninterpretedOption[i] = $root.google.protobuf.UninterpretedOption.fromObject(object.uninterpretedOption[i]);
                     }
                 }
                 return message;
@@ -5646,11 +5646,11 @@ $root.google = (function() {
                     options = {};
                 var object = {};
                 if (options.arrays || options.defaults)
-                    object.uninterpreted_option = [];
-                if (message.uninterpreted_option && message.uninterpreted_option.length) {
-                    object.uninterpreted_option = [];
-                    for (var j = 0; j < message.uninterpreted_option.length; ++j)
-                        object.uninterpreted_option[j] = $root.google.protobuf.UninterpretedOption.toObject(message.uninterpreted_option[j], options);
+                    object.uninterpretedOption = [];
+                if (message.uninterpretedOption && message.uninterpretedOption.length) {
+                    object.uninterpretedOption = [];
+                    for (var j = 0; j < message.uninterpretedOption.length; ++j)
+                        object.uninterpretedOption[j] = $root.google.protobuf.UninterpretedOption.toObject(message.uninterpretedOption[j], options);
                 }
                 return object;
             };
@@ -5675,9 +5675,9 @@ $root.google = (function() {
              * Properties of an EnumOptions.
              * @memberof google.protobuf
              * @interface IEnumOptions
-             * @property {boolean|null} [allow_alias] EnumOptions allow_alias
+             * @property {boolean|null} [allowAlias] EnumOptions allowAlias
              * @property {boolean|null} [deprecated] EnumOptions deprecated
-             * @property {Array.<google.protobuf.IUninterpretedOption>|null} [uninterpreted_option] EnumOptions uninterpreted_option
+             * @property {Array.<google.protobuf.IUninterpretedOption>|null} [uninterpretedOption] EnumOptions uninterpretedOption
              */
 
             /**
@@ -5689,7 +5689,7 @@ $root.google = (function() {
              * @param {google.protobuf.IEnumOptions=} [properties] Properties to set
              */
             function EnumOptions(properties) {
-                this.uninterpreted_option = [];
+                this.uninterpretedOption = [];
                 if (properties)
                     for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                         if (properties[keys[i]] != null)
@@ -5697,12 +5697,12 @@ $root.google = (function() {
             }
 
             /**
-             * EnumOptions allow_alias.
-             * @member {boolean} allow_alias
+             * EnumOptions allowAlias.
+             * @member {boolean} allowAlias
              * @memberof google.protobuf.EnumOptions
              * @instance
              */
-            EnumOptions.prototype.allow_alias = false;
+            EnumOptions.prototype.allowAlias = false;
 
             /**
              * EnumOptions deprecated.
@@ -5713,12 +5713,12 @@ $root.google = (function() {
             EnumOptions.prototype.deprecated = false;
 
             /**
-             * EnumOptions uninterpreted_option.
-             * @member {Array.<google.protobuf.IUninterpretedOption>} uninterpreted_option
+             * EnumOptions uninterpretedOption.
+             * @member {Array.<google.protobuf.IUninterpretedOption>} uninterpretedOption
              * @memberof google.protobuf.EnumOptions
              * @instance
              */
-            EnumOptions.prototype.uninterpreted_option = $util.emptyArray;
+            EnumOptions.prototype.uninterpretedOption = $util.emptyArray;
 
             /**
              * Creates a new EnumOptions instance using the specified properties.
@@ -5744,13 +5744,13 @@ $root.google = (function() {
             EnumOptions.encode = function encode(message, writer) {
                 if (!writer)
                     writer = $Writer.create();
-                if (message.allow_alias != null && Object.hasOwnProperty.call(message, "allow_alias"))
-                    writer.uint32(/* id 2, wireType 0 =*/16).bool(message.allow_alias);
+                if (message.allowAlias != null && Object.hasOwnProperty.call(message, "allowAlias"))
+                    writer.uint32(/* id 2, wireType 0 =*/16).bool(message.allowAlias);
                 if (message.deprecated != null && Object.hasOwnProperty.call(message, "deprecated"))
                     writer.uint32(/* id 3, wireType 0 =*/24).bool(message.deprecated);
-                if (message.uninterpreted_option != null && message.uninterpreted_option.length)
-                    for (var i = 0; i < message.uninterpreted_option.length; ++i)
-                        $root.google.protobuf.UninterpretedOption.encode(message.uninterpreted_option[i], writer.uint32(/* id 999, wireType 2 =*/7994).fork()).ldelim();
+                if (message.uninterpretedOption != null && message.uninterpretedOption.length)
+                    for (var i = 0; i < message.uninterpretedOption.length; ++i)
+                        $root.google.protobuf.UninterpretedOption.encode(message.uninterpretedOption[i], writer.uint32(/* id 999, wireType 2 =*/7994).fork()).ldelim();
                 return writer;
             };
 
@@ -5786,15 +5786,15 @@ $root.google = (function() {
                     var tag = reader.uint32();
                     switch (tag >>> 3) {
                     case 2:
-                        message.allow_alias = reader.bool();
+                        message.allowAlias = reader.bool();
                         break;
                     case 3:
                         message.deprecated = reader.bool();
                         break;
                     case 999:
-                        if (!(message.uninterpreted_option && message.uninterpreted_option.length))
-                            message.uninterpreted_option = [];
-                        message.uninterpreted_option.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
+                        if (!(message.uninterpretedOption && message.uninterpretedOption.length))
+                            message.uninterpretedOption = [];
+                        message.uninterpretedOption.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
                         break;
                     default:
                         reader.skipType(tag & 7);
@@ -5831,19 +5831,19 @@ $root.google = (function() {
             EnumOptions.verify = function verify(message) {
                 if (typeof message !== "object" || message === null)
                     return "object expected";
-                if (message.allow_alias != null && message.hasOwnProperty("allow_alias"))
-                    if (typeof message.allow_alias !== "boolean")
-                        return "allow_alias: boolean expected";
+                if (message.allowAlias != null && message.hasOwnProperty("allowAlias"))
+                    if (typeof message.allowAlias !== "boolean")
+                        return "allowAlias: boolean expected";
                 if (message.deprecated != null && message.hasOwnProperty("deprecated"))
                     if (typeof message.deprecated !== "boolean")
                         return "deprecated: boolean expected";
-                if (message.uninterpreted_option != null && message.hasOwnProperty("uninterpreted_option")) {
-                    if (!Array.isArray(message.uninterpreted_option))
-                        return "uninterpreted_option: array expected";
-                    for (var i = 0; i < message.uninterpreted_option.length; ++i) {
-                        var error = $root.google.protobuf.UninterpretedOption.verify(message.uninterpreted_option[i]);
+                if (message.uninterpretedOption != null && message.hasOwnProperty("uninterpretedOption")) {
+                    if (!Array.isArray(message.uninterpretedOption))
+                        return "uninterpretedOption: array expected";
+                    for (var i = 0; i < message.uninterpretedOption.length; ++i) {
+                        var error = $root.google.protobuf.UninterpretedOption.verify(message.uninterpretedOption[i]);
                         if (error)
-                            return "uninterpreted_option." + error;
+                            return "uninterpretedOption." + error;
                     }
                 }
                 return null;
@@ -5861,18 +5861,18 @@ $root.google = (function() {
                 if (object instanceof $root.google.protobuf.EnumOptions)
                     return object;
                 var message = new $root.google.protobuf.EnumOptions();
-                if (object.allow_alias != null)
-                    message.allow_alias = Boolean(object.allow_alias);
+                if (object.allowAlias != null)
+                    message.allowAlias = Boolean(object.allowAlias);
                 if (object.deprecated != null)
                     message.deprecated = Boolean(object.deprecated);
-                if (object.uninterpreted_option) {
-                    if (!Array.isArray(object.uninterpreted_option))
-                        throw TypeError(".google.protobuf.EnumOptions.uninterpreted_option: array expected");
-                    message.uninterpreted_option = [];
-                    for (var i = 0; i < object.uninterpreted_option.length; ++i) {
-                        if (typeof object.uninterpreted_option[i] !== "object")
-                            throw TypeError(".google.protobuf.EnumOptions.uninterpreted_option: object expected");
-                        message.uninterpreted_option[i] = $root.google.protobuf.UninterpretedOption.fromObject(object.uninterpreted_option[i]);
+                if (object.uninterpretedOption) {
+                    if (!Array.isArray(object.uninterpretedOption))
+                        throw TypeError(".google.protobuf.EnumOptions.uninterpretedOption: array expected");
+                    message.uninterpretedOption = [];
+                    for (var i = 0; i < object.uninterpretedOption.length; ++i) {
+                        if (typeof object.uninterpretedOption[i] !== "object")
+                            throw TypeError(".google.protobuf.EnumOptions.uninterpretedOption: object expected");
+                        message.uninterpretedOption[i] = $root.google.protobuf.UninterpretedOption.fromObject(object.uninterpretedOption[i]);
                     }
                 }
                 return message;
@@ -5892,19 +5892,19 @@ $root.google = (function() {
                     options = {};
                 var object = {};
                 if (options.arrays || options.defaults)
-                    object.uninterpreted_option = [];
+                    object.uninterpretedOption = [];
                 if (options.defaults) {
-                    object.allow_alias = false;
+                    object.allowAlias = false;
                     object.deprecated = false;
                 }
-                if (message.allow_alias != null && message.hasOwnProperty("allow_alias"))
-                    object.allow_alias = message.allow_alias;
+                if (message.allowAlias != null && message.hasOwnProperty("allowAlias"))
+                    object.allowAlias = message.allowAlias;
                 if (message.deprecated != null && message.hasOwnProperty("deprecated"))
                     object.deprecated = message.deprecated;
-                if (message.uninterpreted_option && message.uninterpreted_option.length) {
-                    object.uninterpreted_option = [];
-                    for (var j = 0; j < message.uninterpreted_option.length; ++j)
-                        object.uninterpreted_option[j] = $root.google.protobuf.UninterpretedOption.toObject(message.uninterpreted_option[j], options);
+                if (message.uninterpretedOption && message.uninterpretedOption.length) {
+                    object.uninterpretedOption = [];
+                    for (var j = 0; j < message.uninterpretedOption.length; ++j)
+                        object.uninterpretedOption[j] = $root.google.protobuf.UninterpretedOption.toObject(message.uninterpretedOption[j], options);
                 }
                 return object;
             };
@@ -5930,7 +5930,7 @@ $root.google = (function() {
              * @memberof google.protobuf
              * @interface IEnumValueOptions
              * @property {boolean|null} [deprecated] EnumValueOptions deprecated
-             * @property {Array.<google.protobuf.IUninterpretedOption>|null} [uninterpreted_option] EnumValueOptions uninterpreted_option
+             * @property {Array.<google.protobuf.IUninterpretedOption>|null} [uninterpretedOption] EnumValueOptions uninterpretedOption
              */
 
             /**
@@ -5942,7 +5942,7 @@ $root.google = (function() {
              * @param {google.protobuf.IEnumValueOptions=} [properties] Properties to set
              */
             function EnumValueOptions(properties) {
-                this.uninterpreted_option = [];
+                this.uninterpretedOption = [];
                 if (properties)
                     for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                         if (properties[keys[i]] != null)
@@ -5958,12 +5958,12 @@ $root.google = (function() {
             EnumValueOptions.prototype.deprecated = false;
 
             /**
-             * EnumValueOptions uninterpreted_option.
-             * @member {Array.<google.protobuf.IUninterpretedOption>} uninterpreted_option
+             * EnumValueOptions uninterpretedOption.
+             * @member {Array.<google.protobuf.IUninterpretedOption>} uninterpretedOption
              * @memberof google.protobuf.EnumValueOptions
              * @instance
              */
-            EnumValueOptions.prototype.uninterpreted_option = $util.emptyArray;
+            EnumValueOptions.prototype.uninterpretedOption = $util.emptyArray;
 
             /**
              * Creates a new EnumValueOptions instance using the specified properties.
@@ -5991,9 +5991,9 @@ $root.google = (function() {
                     writer = $Writer.create();
                 if (message.deprecated != null && Object.hasOwnProperty.call(message, "deprecated"))
                     writer.uint32(/* id 1, wireType 0 =*/8).bool(message.deprecated);
-                if (message.uninterpreted_option != null && message.uninterpreted_option.length)
-                    for (var i = 0; i < message.uninterpreted_option.length; ++i)
-                        $root.google.protobuf.UninterpretedOption.encode(message.uninterpreted_option[i], writer.uint32(/* id 999, wireType 2 =*/7994).fork()).ldelim();
+                if (message.uninterpretedOption != null && message.uninterpretedOption.length)
+                    for (var i = 0; i < message.uninterpretedOption.length; ++i)
+                        $root.google.protobuf.UninterpretedOption.encode(message.uninterpretedOption[i], writer.uint32(/* id 999, wireType 2 =*/7994).fork()).ldelim();
                 return writer;
             };
 
@@ -6032,9 +6032,9 @@ $root.google = (function() {
                         message.deprecated = reader.bool();
                         break;
                     case 999:
-                        if (!(message.uninterpreted_option && message.uninterpreted_option.length))
-                            message.uninterpreted_option = [];
-                        message.uninterpreted_option.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
+                        if (!(message.uninterpretedOption && message.uninterpretedOption.length))
+                            message.uninterpretedOption = [];
+                        message.uninterpretedOption.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
                         break;
                     default:
                         reader.skipType(tag & 7);
@@ -6074,13 +6074,13 @@ $root.google = (function() {
                 if (message.deprecated != null && message.hasOwnProperty("deprecated"))
                     if (typeof message.deprecated !== "boolean")
                         return "deprecated: boolean expected";
-                if (message.uninterpreted_option != null && message.hasOwnProperty("uninterpreted_option")) {
-                    if (!Array.isArray(message.uninterpreted_option))
-                        return "uninterpreted_option: array expected";
-                    for (var i = 0; i < message.uninterpreted_option.length; ++i) {
-                        var error = $root.google.protobuf.UninterpretedOption.verify(message.uninterpreted_option[i]);
+                if (message.uninterpretedOption != null && message.hasOwnProperty("uninterpretedOption")) {
+                    if (!Array.isArray(message.uninterpretedOption))
+                        return "uninterpretedOption: array expected";
+                    for (var i = 0; i < message.uninterpretedOption.length; ++i) {
+                        var error = $root.google.protobuf.UninterpretedOption.verify(message.uninterpretedOption[i]);
                         if (error)
-                            return "uninterpreted_option." + error;
+                            return "uninterpretedOption." + error;
                     }
                 }
                 return null;
@@ -6100,14 +6100,14 @@ $root.google = (function() {
                 var message = new $root.google.protobuf.EnumValueOptions();
                 if (object.deprecated != null)
                     message.deprecated = Boolean(object.deprecated);
-                if (object.uninterpreted_option) {
-                    if (!Array.isArray(object.uninterpreted_option))
-                        throw TypeError(".google.protobuf.EnumValueOptions.uninterpreted_option: array expected");
-                    message.uninterpreted_option = [];
-                    for (var i = 0; i < object.uninterpreted_option.length; ++i) {
-                        if (typeof object.uninterpreted_option[i] !== "object")
-                            throw TypeError(".google.protobuf.EnumValueOptions.uninterpreted_option: object expected");
-                        message.uninterpreted_option[i] = $root.google.protobuf.UninterpretedOption.fromObject(object.uninterpreted_option[i]);
+                if (object.uninterpretedOption) {
+                    if (!Array.isArray(object.uninterpretedOption))
+                        throw TypeError(".google.protobuf.EnumValueOptions.uninterpretedOption: array expected");
+                    message.uninterpretedOption = [];
+                    for (var i = 0; i < object.uninterpretedOption.length; ++i) {
+                        if (typeof object.uninterpretedOption[i] !== "object")
+                            throw TypeError(".google.protobuf.EnumValueOptions.uninterpretedOption: object expected");
+                        message.uninterpretedOption[i] = $root.google.protobuf.UninterpretedOption.fromObject(object.uninterpretedOption[i]);
                     }
                 }
                 return message;
@@ -6127,15 +6127,15 @@ $root.google = (function() {
                     options = {};
                 var object = {};
                 if (options.arrays || options.defaults)
-                    object.uninterpreted_option = [];
+                    object.uninterpretedOption = [];
                 if (options.defaults)
                     object.deprecated = false;
                 if (message.deprecated != null && message.hasOwnProperty("deprecated"))
                     object.deprecated = message.deprecated;
-                if (message.uninterpreted_option && message.uninterpreted_option.length) {
-                    object.uninterpreted_option = [];
-                    for (var j = 0; j < message.uninterpreted_option.length; ++j)
-                        object.uninterpreted_option[j] = $root.google.protobuf.UninterpretedOption.toObject(message.uninterpreted_option[j], options);
+                if (message.uninterpretedOption && message.uninterpretedOption.length) {
+                    object.uninterpretedOption = [];
+                    for (var j = 0; j < message.uninterpretedOption.length; ++j)
+                        object.uninterpretedOption[j] = $root.google.protobuf.UninterpretedOption.toObject(message.uninterpretedOption[j], options);
                 }
                 return object;
             };
@@ -6161,7 +6161,7 @@ $root.google = (function() {
              * @memberof google.protobuf
              * @interface IServiceOptions
              * @property {boolean|null} [deprecated] ServiceOptions deprecated
-             * @property {Array.<google.protobuf.IUninterpretedOption>|null} [uninterpreted_option] ServiceOptions uninterpreted_option
+             * @property {Array.<google.protobuf.IUninterpretedOption>|null} [uninterpretedOption] ServiceOptions uninterpretedOption
              */
 
             /**
@@ -6173,7 +6173,7 @@ $root.google = (function() {
              * @param {google.protobuf.IServiceOptions=} [properties] Properties to set
              */
             function ServiceOptions(properties) {
-                this.uninterpreted_option = [];
+                this.uninterpretedOption = [];
                 if (properties)
                     for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                         if (properties[keys[i]] != null)
@@ -6189,12 +6189,12 @@ $root.google = (function() {
             ServiceOptions.prototype.deprecated = false;
 
             /**
-             * ServiceOptions uninterpreted_option.
-             * @member {Array.<google.protobuf.IUninterpretedOption>} uninterpreted_option
+             * ServiceOptions uninterpretedOption.
+             * @member {Array.<google.protobuf.IUninterpretedOption>} uninterpretedOption
              * @memberof google.protobuf.ServiceOptions
              * @instance
              */
-            ServiceOptions.prototype.uninterpreted_option = $util.emptyArray;
+            ServiceOptions.prototype.uninterpretedOption = $util.emptyArray;
 
             /**
              * Creates a new ServiceOptions instance using the specified properties.
@@ -6222,9 +6222,9 @@ $root.google = (function() {
                     writer = $Writer.create();
                 if (message.deprecated != null && Object.hasOwnProperty.call(message, "deprecated"))
                     writer.uint32(/* id 33, wireType 0 =*/264).bool(message.deprecated);
-                if (message.uninterpreted_option != null && message.uninterpreted_option.length)
-                    for (var i = 0; i < message.uninterpreted_option.length; ++i)
-                        $root.google.protobuf.UninterpretedOption.encode(message.uninterpreted_option[i], writer.uint32(/* id 999, wireType 2 =*/7994).fork()).ldelim();
+                if (message.uninterpretedOption != null && message.uninterpretedOption.length)
+                    for (var i = 0; i < message.uninterpretedOption.length; ++i)
+                        $root.google.protobuf.UninterpretedOption.encode(message.uninterpretedOption[i], writer.uint32(/* id 999, wireType 2 =*/7994).fork()).ldelim();
                 return writer;
             };
 
@@ -6263,9 +6263,9 @@ $root.google = (function() {
                         message.deprecated = reader.bool();
                         break;
                     case 999:
-                        if (!(message.uninterpreted_option && message.uninterpreted_option.length))
-                            message.uninterpreted_option = [];
-                        message.uninterpreted_option.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
+                        if (!(message.uninterpretedOption && message.uninterpretedOption.length))
+                            message.uninterpretedOption = [];
+                        message.uninterpretedOption.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
                         break;
                     default:
                         reader.skipType(tag & 7);
@@ -6305,13 +6305,13 @@ $root.google = (function() {
                 if (message.deprecated != null && message.hasOwnProperty("deprecated"))
                     if (typeof message.deprecated !== "boolean")
                         return "deprecated: boolean expected";
-                if (message.uninterpreted_option != null && message.hasOwnProperty("uninterpreted_option")) {
-                    if (!Array.isArray(message.uninterpreted_option))
-                        return "uninterpreted_option: array expected";
-                    for (var i = 0; i < message.uninterpreted_option.length; ++i) {
-                        var error = $root.google.protobuf.UninterpretedOption.verify(message.uninterpreted_option[i]);
+                if (message.uninterpretedOption != null && message.hasOwnProperty("uninterpretedOption")) {
+                    if (!Array.isArray(message.uninterpretedOption))
+                        return "uninterpretedOption: array expected";
+                    for (var i = 0; i < message.uninterpretedOption.length; ++i) {
+                        var error = $root.google.protobuf.UninterpretedOption.verify(message.uninterpretedOption[i]);
                         if (error)
-                            return "uninterpreted_option." + error;
+                            return "uninterpretedOption." + error;
                     }
                 }
                 return null;
@@ -6331,14 +6331,14 @@ $root.google = (function() {
                 var message = new $root.google.protobuf.ServiceOptions();
                 if (object.deprecated != null)
                     message.deprecated = Boolean(object.deprecated);
-                if (object.uninterpreted_option) {
-                    if (!Array.isArray(object.uninterpreted_option))
-                        throw TypeError(".google.protobuf.ServiceOptions.uninterpreted_option: array expected");
-                    message.uninterpreted_option = [];
-                    for (var i = 0; i < object.uninterpreted_option.length; ++i) {
-                        if (typeof object.uninterpreted_option[i] !== "object")
-                            throw TypeError(".google.protobuf.ServiceOptions.uninterpreted_option: object expected");
-                        message.uninterpreted_option[i] = $root.google.protobuf.UninterpretedOption.fromObject(object.uninterpreted_option[i]);
+                if (object.uninterpretedOption) {
+                    if (!Array.isArray(object.uninterpretedOption))
+                        throw TypeError(".google.protobuf.ServiceOptions.uninterpretedOption: array expected");
+                    message.uninterpretedOption = [];
+                    for (var i = 0; i < object.uninterpretedOption.length; ++i) {
+                        if (typeof object.uninterpretedOption[i] !== "object")
+                            throw TypeError(".google.protobuf.ServiceOptions.uninterpretedOption: object expected");
+                        message.uninterpretedOption[i] = $root.google.protobuf.UninterpretedOption.fromObject(object.uninterpretedOption[i]);
                     }
                 }
                 return message;
@@ -6358,15 +6358,15 @@ $root.google = (function() {
                     options = {};
                 var object = {};
                 if (options.arrays || options.defaults)
-                    object.uninterpreted_option = [];
+                    object.uninterpretedOption = [];
                 if (options.defaults)
                     object.deprecated = false;
                 if (message.deprecated != null && message.hasOwnProperty("deprecated"))
                     object.deprecated = message.deprecated;
-                if (message.uninterpreted_option && message.uninterpreted_option.length) {
-                    object.uninterpreted_option = [];
-                    for (var j = 0; j < message.uninterpreted_option.length; ++j)
-                        object.uninterpreted_option[j] = $root.google.protobuf.UninterpretedOption.toObject(message.uninterpreted_option[j], options);
+                if (message.uninterpretedOption && message.uninterpretedOption.length) {
+                    object.uninterpretedOption = [];
+                    for (var j = 0; j < message.uninterpretedOption.length; ++j)
+                        object.uninterpretedOption[j] = $root.google.protobuf.UninterpretedOption.toObject(message.uninterpretedOption[j], options);
                 }
                 return object;
             };
@@ -6392,7 +6392,7 @@ $root.google = (function() {
              * @memberof google.protobuf
              * @interface IMethodOptions
              * @property {boolean|null} [deprecated] MethodOptions deprecated
-             * @property {Array.<google.protobuf.IUninterpretedOption>|null} [uninterpreted_option] MethodOptions uninterpreted_option
+             * @property {Array.<google.protobuf.IUninterpretedOption>|null} [uninterpretedOption] MethodOptions uninterpretedOption
              * @property {number|null} [".method.CmdID"] MethodOptions .method.CmdID
              * @property {Direction|null} [".method.Sender"] MethodOptions .method.Sender
              */
@@ -6406,7 +6406,7 @@ $root.google = (function() {
              * @param {google.protobuf.IMethodOptions=} [properties] Properties to set
              */
             function MethodOptions(properties) {
-                this.uninterpreted_option = [];
+                this.uninterpretedOption = [];
                 if (properties)
                     for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                         if (properties[keys[i]] != null)
@@ -6422,12 +6422,12 @@ $root.google = (function() {
             MethodOptions.prototype.deprecated = false;
 
             /**
-             * MethodOptions uninterpreted_option.
-             * @member {Array.<google.protobuf.IUninterpretedOption>} uninterpreted_option
+             * MethodOptions uninterpretedOption.
+             * @member {Array.<google.protobuf.IUninterpretedOption>} uninterpretedOption
              * @memberof google.protobuf.MethodOptions
              * @instance
              */
-            MethodOptions.prototype.uninterpreted_option = $util.emptyArray;
+            MethodOptions.prototype.uninterpretedOption = $util.emptyArray;
 
             /**
              * MethodOptions .method.CmdID.
@@ -6471,9 +6471,9 @@ $root.google = (function() {
                     writer = $Writer.create();
                 if (message.deprecated != null && Object.hasOwnProperty.call(message, "deprecated"))
                     writer.uint32(/* id 33, wireType 0 =*/264).bool(message.deprecated);
-                if (message.uninterpreted_option != null && message.uninterpreted_option.length)
-                    for (var i = 0; i < message.uninterpreted_option.length; ++i)
-                        $root.google.protobuf.UninterpretedOption.encode(message.uninterpreted_option[i], writer.uint32(/* id 999, wireType 2 =*/7994).fork()).ldelim();
+                if (message.uninterpretedOption != null && message.uninterpretedOption.length)
+                    for (var i = 0; i < message.uninterpretedOption.length; ++i)
+                        $root.google.protobuf.UninterpretedOption.encode(message.uninterpretedOption[i], writer.uint32(/* id 999, wireType 2 =*/7994).fork()).ldelim();
                 if (message[".method.CmdID"] != null && Object.hasOwnProperty.call(message, ".method.CmdID"))
                     writer.uint32(/* id 50000, wireType 0 =*/400000).int32(message[".method.CmdID"]);
                 if (message[".method.Sender"] != null && Object.hasOwnProperty.call(message, ".method.Sender"))
@@ -6516,9 +6516,9 @@ $root.google = (function() {
                         message.deprecated = reader.bool();
                         break;
                     case 999:
-                        if (!(message.uninterpreted_option && message.uninterpreted_option.length))
-                            message.uninterpreted_option = [];
-                        message.uninterpreted_option.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
+                        if (!(message.uninterpretedOption && message.uninterpretedOption.length))
+                            message.uninterpretedOption = [];
+                        message.uninterpretedOption.push($root.google.protobuf.UninterpretedOption.decode(reader, reader.uint32()));
                         break;
                     case 50000:
                         message[".method.CmdID"] = reader.int32();
@@ -6564,13 +6564,13 @@ $root.google = (function() {
                 if (message.deprecated != null && message.hasOwnProperty("deprecated"))
                     if (typeof message.deprecated !== "boolean")
                         return "deprecated: boolean expected";
-                if (message.uninterpreted_option != null && message.hasOwnProperty("uninterpreted_option")) {
-                    if (!Array.isArray(message.uninterpreted_option))
-                        return "uninterpreted_option: array expected";
-                    for (var i = 0; i < message.uninterpreted_option.length; ++i) {
-                        var error = $root.google.protobuf.UninterpretedOption.verify(message.uninterpreted_option[i]);
+                if (message.uninterpretedOption != null && message.hasOwnProperty("uninterpretedOption")) {
+                    if (!Array.isArray(message.uninterpretedOption))
+                        return "uninterpretedOption: array expected";
+                    for (var i = 0; i < message.uninterpretedOption.length; ++i) {
+                        var error = $root.google.protobuf.UninterpretedOption.verify(message.uninterpretedOption[i]);
                         if (error)
-                            return "uninterpreted_option." + error;
+                            return "uninterpretedOption." + error;
                     }
                 }
                 if (message[".method.CmdID"] != null && message.hasOwnProperty(".method.CmdID"))
@@ -6602,14 +6602,14 @@ $root.google = (function() {
                 var message = new $root.google.protobuf.MethodOptions();
                 if (object.deprecated != null)
                     message.deprecated = Boolean(object.deprecated);
-                if (object.uninterpreted_option) {
-                    if (!Array.isArray(object.uninterpreted_option))
-                        throw TypeError(".google.protobuf.MethodOptions.uninterpreted_option: array expected");
-                    message.uninterpreted_option = [];
-                    for (var i = 0; i < object.uninterpreted_option.length; ++i) {
-                        if (typeof object.uninterpreted_option[i] !== "object")
-                            throw TypeError(".google.protobuf.MethodOptions.uninterpreted_option: object expected");
-                        message.uninterpreted_option[i] = $root.google.protobuf.UninterpretedOption.fromObject(object.uninterpreted_option[i]);
+                if (object.uninterpretedOption) {
+                    if (!Array.isArray(object.uninterpretedOption))
+                        throw TypeError(".google.protobuf.MethodOptions.uninterpretedOption: array expected");
+                    message.uninterpretedOption = [];
+                    for (var i = 0; i < object.uninterpretedOption.length; ++i) {
+                        if (typeof object.uninterpretedOption[i] !== "object")
+                            throw TypeError(".google.protobuf.MethodOptions.uninterpretedOption: object expected");
+                        message.uninterpretedOption[i] = $root.google.protobuf.UninterpretedOption.fromObject(object.uninterpretedOption[i]);
                     }
                 }
                 if (object[".method.CmdID"] != null)
@@ -6645,7 +6645,7 @@ $root.google = (function() {
                     options = {};
                 var object = {};
                 if (options.arrays || options.defaults)
-                    object.uninterpreted_option = [];
+                    object.uninterpretedOption = [];
                 if (options.defaults) {
                     object.deprecated = false;
                     object[".method.CmdID"] = 0;
@@ -6653,10 +6653,10 @@ $root.google = (function() {
                 }
                 if (message.deprecated != null && message.hasOwnProperty("deprecated"))
                     object.deprecated = message.deprecated;
-                if (message.uninterpreted_option && message.uninterpreted_option.length) {
-                    object.uninterpreted_option = [];
-                    for (var j = 0; j < message.uninterpreted_option.length; ++j)
-                        object.uninterpreted_option[j] = $root.google.protobuf.UninterpretedOption.toObject(message.uninterpreted_option[j], options);
+                if (message.uninterpretedOption && message.uninterpretedOption.length) {
+                    object.uninterpretedOption = [];
+                    for (var j = 0; j < message.uninterpretedOption.length; ++j)
+                        object.uninterpretedOption[j] = $root.google.protobuf.UninterpretedOption.toObject(message.uninterpretedOption[j], options);
                 }
                 if (message[".method.CmdID"] != null && message.hasOwnProperty(".method.CmdID"))
                     object[".method.CmdID"] = message[".method.CmdID"];
@@ -6686,12 +6686,12 @@ $root.google = (function() {
              * @memberof google.protobuf
              * @interface IUninterpretedOption
              * @property {Array.<google.protobuf.UninterpretedOption.INamePart>|null} [name] UninterpretedOption name
-             * @property {string|null} [identifier_value] UninterpretedOption identifier_value
-             * @property {number|Long|null} [positive_int_value] UninterpretedOption positive_int_value
-             * @property {number|Long|null} [negative_int_value] UninterpretedOption negative_int_value
-             * @property {number|null} [double_value] UninterpretedOption double_value
-             * @property {Uint8Array|null} [string_value] UninterpretedOption string_value
-             * @property {string|null} [aggregate_value] UninterpretedOption aggregate_value
+             * @property {string|null} [identifierValue] UninterpretedOption identifierValue
+             * @property {number|Long|null} [positiveIntValue] UninterpretedOption positiveIntValue
+             * @property {number|Long|null} [negativeIntValue] UninterpretedOption negativeIntValue
+             * @property {number|null} [doubleValue] UninterpretedOption doubleValue
+             * @property {Uint8Array|null} [stringValue] UninterpretedOption stringValue
+             * @property {string|null} [aggregateValue] UninterpretedOption aggregateValue
              */
 
             /**
@@ -6719,52 +6719,52 @@ $root.google = (function() {
             UninterpretedOption.prototype.name = $util.emptyArray;
 
             /**
-             * UninterpretedOption identifier_value.
-             * @member {string} identifier_value
+             * UninterpretedOption identifierValue.
+             * @member {string} identifierValue
              * @memberof google.protobuf.UninterpretedOption
              * @instance
              */
-            UninterpretedOption.prototype.identifier_value = "";
+            UninterpretedOption.prototype.identifierValue = "";
 
             /**
-             * UninterpretedOption positive_int_value.
-             * @member {number|Long} positive_int_value
+             * UninterpretedOption positiveIntValue.
+             * @member {number|Long} positiveIntValue
              * @memberof google.protobuf.UninterpretedOption
              * @instance
              */
-            UninterpretedOption.prototype.positive_int_value = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
+            UninterpretedOption.prototype.positiveIntValue = $util.Long ? $util.Long.fromBits(0,0,true) : 0;
 
             /**
-             * UninterpretedOption negative_int_value.
-             * @member {number|Long} negative_int_value
+             * UninterpretedOption negativeIntValue.
+             * @member {number|Long} negativeIntValue
              * @memberof google.protobuf.UninterpretedOption
              * @instance
              */
-            UninterpretedOption.prototype.negative_int_value = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+            UninterpretedOption.prototype.negativeIntValue = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
 
             /**
-             * UninterpretedOption double_value.
-             * @member {number} double_value
+             * UninterpretedOption doubleValue.
+             * @member {number} doubleValue
              * @memberof google.protobuf.UninterpretedOption
              * @instance
              */
-            UninterpretedOption.prototype.double_value = 0;
+            UninterpretedOption.prototype.doubleValue = 0;
 
             /**
-             * UninterpretedOption string_value.
-             * @member {Uint8Array} string_value
+             * UninterpretedOption stringValue.
+             * @member {Uint8Array} stringValue
              * @memberof google.protobuf.UninterpretedOption
              * @instance
              */
-            UninterpretedOption.prototype.string_value = $util.newBuffer([]);
+            UninterpretedOption.prototype.stringValue = $util.newBuffer([]);
 
             /**
-             * UninterpretedOption aggregate_value.
-             * @member {string} aggregate_value
+             * UninterpretedOption aggregateValue.
+             * @member {string} aggregateValue
              * @memberof google.protobuf.UninterpretedOption
              * @instance
              */
-            UninterpretedOption.prototype.aggregate_value = "";
+            UninterpretedOption.prototype.aggregateValue = "";
 
             /**
              * Creates a new UninterpretedOption instance using the specified properties.
@@ -6793,18 +6793,18 @@ $root.google = (function() {
                 if (message.name != null && message.name.length)
                     for (var i = 0; i < message.name.length; ++i)
                         $root.google.protobuf.UninterpretedOption.NamePart.encode(message.name[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
-                if (message.identifier_value != null && Object.hasOwnProperty.call(message, "identifier_value"))
-                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.identifier_value);
-                if (message.positive_int_value != null && Object.hasOwnProperty.call(message, "positive_int_value"))
-                    writer.uint32(/* id 4, wireType 0 =*/32).uint64(message.positive_int_value);
-                if (message.negative_int_value != null && Object.hasOwnProperty.call(message, "negative_int_value"))
-                    writer.uint32(/* id 5, wireType 0 =*/40).int64(message.negative_int_value);
-                if (message.double_value != null && Object.hasOwnProperty.call(message, "double_value"))
-                    writer.uint32(/* id 6, wireType 1 =*/49).double(message.double_value);
-                if (message.string_value != null && Object.hasOwnProperty.call(message, "string_value"))
-                    writer.uint32(/* id 7, wireType 2 =*/58).bytes(message.string_value);
-                if (message.aggregate_value != null && Object.hasOwnProperty.call(message, "aggregate_value"))
-                    writer.uint32(/* id 8, wireType 2 =*/66).string(message.aggregate_value);
+                if (message.identifierValue != null && Object.hasOwnProperty.call(message, "identifierValue"))
+                    writer.uint32(/* id 3, wireType 2 =*/26).string(message.identifierValue);
+                if (message.positiveIntValue != null && Object.hasOwnProperty.call(message, "positiveIntValue"))
+                    writer.uint32(/* id 4, wireType 0 =*/32).uint64(message.positiveIntValue);
+                if (message.negativeIntValue != null && Object.hasOwnProperty.call(message, "negativeIntValue"))
+                    writer.uint32(/* id 5, wireType 0 =*/40).int64(message.negativeIntValue);
+                if (message.doubleValue != null && Object.hasOwnProperty.call(message, "doubleValue"))
+                    writer.uint32(/* id 6, wireType 1 =*/49).double(message.doubleValue);
+                if (message.stringValue != null && Object.hasOwnProperty.call(message, "stringValue"))
+                    writer.uint32(/* id 7, wireType 2 =*/58).bytes(message.stringValue);
+                if (message.aggregateValue != null && Object.hasOwnProperty.call(message, "aggregateValue"))
+                    writer.uint32(/* id 8, wireType 2 =*/66).string(message.aggregateValue);
                 return writer;
             };
 
@@ -6845,22 +6845,22 @@ $root.google = (function() {
                         message.name.push($root.google.protobuf.UninterpretedOption.NamePart.decode(reader, reader.uint32()));
                         break;
                     case 3:
-                        message.identifier_value = reader.string();
+                        message.identifierValue = reader.string();
                         break;
                     case 4:
-                        message.positive_int_value = reader.uint64();
+                        message.positiveIntValue = reader.uint64();
                         break;
                     case 5:
-                        message.negative_int_value = reader.int64();
+                        message.negativeIntValue = reader.int64();
                         break;
                     case 6:
-                        message.double_value = reader.double();
+                        message.doubleValue = reader.double();
                         break;
                     case 7:
-                        message.string_value = reader.bytes();
+                        message.stringValue = reader.bytes();
                         break;
                     case 8:
-                        message.aggregate_value = reader.string();
+                        message.aggregateValue = reader.string();
                         break;
                     default:
                         reader.skipType(tag & 7);
@@ -6906,24 +6906,24 @@ $root.google = (function() {
                             return "name." + error;
                     }
                 }
-                if (message.identifier_value != null && message.hasOwnProperty("identifier_value"))
-                    if (!$util.isString(message.identifier_value))
-                        return "identifier_value: string expected";
-                if (message.positive_int_value != null && message.hasOwnProperty("positive_int_value"))
-                    if (!$util.isInteger(message.positive_int_value) && !(message.positive_int_value && $util.isInteger(message.positive_int_value.low) && $util.isInteger(message.positive_int_value.high)))
-                        return "positive_int_value: integer|Long expected";
-                if (message.negative_int_value != null && message.hasOwnProperty("negative_int_value"))
-                    if (!$util.isInteger(message.negative_int_value) && !(message.negative_int_value && $util.isInteger(message.negative_int_value.low) && $util.isInteger(message.negative_int_value.high)))
-                        return "negative_int_value: integer|Long expected";
-                if (message.double_value != null && message.hasOwnProperty("double_value"))
-                    if (typeof message.double_value !== "number")
-                        return "double_value: number expected";
-                if (message.string_value != null && message.hasOwnProperty("string_value"))
-                    if (!(message.string_value && typeof message.string_value.length === "number" || $util.isString(message.string_value)))
-                        return "string_value: buffer expected";
-                if (message.aggregate_value != null && message.hasOwnProperty("aggregate_value"))
-                    if (!$util.isString(message.aggregate_value))
-                        return "aggregate_value: string expected";
+                if (message.identifierValue != null && message.hasOwnProperty("identifierValue"))
+                    if (!$util.isString(message.identifierValue))
+                        return "identifierValue: string expected";
+                if (message.positiveIntValue != null && message.hasOwnProperty("positiveIntValue"))
+                    if (!$util.isInteger(message.positiveIntValue) && !(message.positiveIntValue && $util.isInteger(message.positiveIntValue.low) && $util.isInteger(message.positiveIntValue.high)))
+                        return "positiveIntValue: integer|Long expected";
+                if (message.negativeIntValue != null && message.hasOwnProperty("negativeIntValue"))
+                    if (!$util.isInteger(message.negativeIntValue) && !(message.negativeIntValue && $util.isInteger(message.negativeIntValue.low) && $util.isInteger(message.negativeIntValue.high)))
+                        return "negativeIntValue: integer|Long expected";
+                if (message.doubleValue != null && message.hasOwnProperty("doubleValue"))
+                    if (typeof message.doubleValue !== "number")
+                        return "doubleValue: number expected";
+                if (message.stringValue != null && message.hasOwnProperty("stringValue"))
+                    if (!(message.stringValue && typeof message.stringValue.length === "number" || $util.isString(message.stringValue)))
+                        return "stringValue: buffer expected";
+                if (message.aggregateValue != null && message.hasOwnProperty("aggregateValue"))
+                    if (!$util.isString(message.aggregateValue))
+                        return "aggregateValue: string expected";
                 return null;
             };
 
@@ -6949,35 +6949,35 @@ $root.google = (function() {
                         message.name[i] = $root.google.protobuf.UninterpretedOption.NamePart.fromObject(object.name[i]);
                     }
                 }
-                if (object.identifier_value != null)
-                    message.identifier_value = String(object.identifier_value);
-                if (object.positive_int_value != null)
+                if (object.identifierValue != null)
+                    message.identifierValue = String(object.identifierValue);
+                if (object.positiveIntValue != null)
                     if ($util.Long)
-                        (message.positive_int_value = $util.Long.fromValue(object.positive_int_value)).unsigned = true;
-                    else if (typeof object.positive_int_value === "string")
-                        message.positive_int_value = parseInt(object.positive_int_value, 10);
-                    else if (typeof object.positive_int_value === "number")
-                        message.positive_int_value = object.positive_int_value;
-                    else if (typeof object.positive_int_value === "object")
-                        message.positive_int_value = new $util.LongBits(object.positive_int_value.low >>> 0, object.positive_int_value.high >>> 0).toNumber(true);
-                if (object.negative_int_value != null)
+                        (message.positiveIntValue = $util.Long.fromValue(object.positiveIntValue)).unsigned = true;
+                    else if (typeof object.positiveIntValue === "string")
+                        message.positiveIntValue = parseInt(object.positiveIntValue, 10);
+                    else if (typeof object.positiveIntValue === "number")
+                        message.positiveIntValue = object.positiveIntValue;
+                    else if (typeof object.positiveIntValue === "object")
+                        message.positiveIntValue = new $util.LongBits(object.positiveIntValue.low >>> 0, object.positiveIntValue.high >>> 0).toNumber(true);
+                if (object.negativeIntValue != null)
                     if ($util.Long)
-                        (message.negative_int_value = $util.Long.fromValue(object.negative_int_value)).unsigned = false;
-                    else if (typeof object.negative_int_value === "string")
-                        message.negative_int_value = parseInt(object.negative_int_value, 10);
-                    else if (typeof object.negative_int_value === "number")
-                        message.negative_int_value = object.negative_int_value;
-                    else if (typeof object.negative_int_value === "object")
-                        message.negative_int_value = new $util.LongBits(object.negative_int_value.low >>> 0, object.negative_int_value.high >>> 0).toNumber();
-                if (object.double_value != null)
-                    message.double_value = Number(object.double_value);
-                if (object.string_value != null)
-                    if (typeof object.string_value === "string")
-                        $util.base64.decode(object.string_value, message.string_value = $util.newBuffer($util.base64.length(object.string_value)), 0);
-                    else if (object.string_value.length)
-                        message.string_value = object.string_value;
-                if (object.aggregate_value != null)
-                    message.aggregate_value = String(object.aggregate_value);
+                        (message.negativeIntValue = $util.Long.fromValue(object.negativeIntValue)).unsigned = false;
+                    else if (typeof object.negativeIntValue === "string")
+                        message.negativeIntValue = parseInt(object.negativeIntValue, 10);
+                    else if (typeof object.negativeIntValue === "number")
+                        message.negativeIntValue = object.negativeIntValue;
+                    else if (typeof object.negativeIntValue === "object")
+                        message.negativeIntValue = new $util.LongBits(object.negativeIntValue.low >>> 0, object.negativeIntValue.high >>> 0).toNumber();
+                if (object.doubleValue != null)
+                    message.doubleValue = Number(object.doubleValue);
+                if (object.stringValue != null)
+                    if (typeof object.stringValue === "string")
+                        $util.base64.decode(object.stringValue, message.stringValue = $util.newBuffer($util.base64.length(object.stringValue)), 0);
+                    else if (object.stringValue.length)
+                        message.stringValue = object.stringValue;
+                if (object.aggregateValue != null)
+                    message.aggregateValue = String(object.aggregateValue);
                 return message;
             };
 
@@ -6997,50 +6997,50 @@ $root.google = (function() {
                 if (options.arrays || options.defaults)
                     object.name = [];
                 if (options.defaults) {
-                    object.identifier_value = "";
+                    object.identifierValue = "";
                     if ($util.Long) {
                         var long = new $util.Long(0, 0, true);
-                        object.positive_int_value = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                        object.positiveIntValue = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
                     } else
-                        object.positive_int_value = options.longs === String ? "0" : 0;
+                        object.positiveIntValue = options.longs === String ? "0" : 0;
                     if ($util.Long) {
                         var long = new $util.Long(0, 0, false);
-                        object.negative_int_value = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                        object.negativeIntValue = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
                     } else
-                        object.negative_int_value = options.longs === String ? "0" : 0;
-                    object.double_value = 0;
+                        object.negativeIntValue = options.longs === String ? "0" : 0;
+                    object.doubleValue = 0;
                     if (options.bytes === String)
-                        object.string_value = "";
+                        object.stringValue = "";
                     else {
-                        object.string_value = [];
+                        object.stringValue = [];
                         if (options.bytes !== Array)
-                            object.string_value = $util.newBuffer(object.string_value);
+                            object.stringValue = $util.newBuffer(object.stringValue);
                     }
-                    object.aggregate_value = "";
+                    object.aggregateValue = "";
                 }
                 if (message.name && message.name.length) {
                     object.name = [];
                     for (var j = 0; j < message.name.length; ++j)
                         object.name[j] = $root.google.protobuf.UninterpretedOption.NamePart.toObject(message.name[j], options);
                 }
-                if (message.identifier_value != null && message.hasOwnProperty("identifier_value"))
-                    object.identifier_value = message.identifier_value;
-                if (message.positive_int_value != null && message.hasOwnProperty("positive_int_value"))
-                    if (typeof message.positive_int_value === "number")
-                        object.positive_int_value = options.longs === String ? String(message.positive_int_value) : message.positive_int_value;
+                if (message.identifierValue != null && message.hasOwnProperty("identifierValue"))
+                    object.identifierValue = message.identifierValue;
+                if (message.positiveIntValue != null && message.hasOwnProperty("positiveIntValue"))
+                    if (typeof message.positiveIntValue === "number")
+                        object.positiveIntValue = options.longs === String ? String(message.positiveIntValue) : message.positiveIntValue;
                     else
-                        object.positive_int_value = options.longs === String ? $util.Long.prototype.toString.call(message.positive_int_value) : options.longs === Number ? new $util.LongBits(message.positive_int_value.low >>> 0, message.positive_int_value.high >>> 0).toNumber(true) : message.positive_int_value;
-                if (message.negative_int_value != null && message.hasOwnProperty("negative_int_value"))
-                    if (typeof message.negative_int_value === "number")
-                        object.negative_int_value = options.longs === String ? String(message.negative_int_value) : message.negative_int_value;
+                        object.positiveIntValue = options.longs === String ? $util.Long.prototype.toString.call(message.positiveIntValue) : options.longs === Number ? new $util.LongBits(message.positiveIntValue.low >>> 0, message.positiveIntValue.high >>> 0).toNumber(true) : message.positiveIntValue;
+                if (message.negativeIntValue != null && message.hasOwnProperty("negativeIntValue"))
+                    if (typeof message.negativeIntValue === "number")
+                        object.negativeIntValue = options.longs === String ? String(message.negativeIntValue) : message.negativeIntValue;
                     else
-                        object.negative_int_value = options.longs === String ? $util.Long.prototype.toString.call(message.negative_int_value) : options.longs === Number ? new $util.LongBits(message.negative_int_value.low >>> 0, message.negative_int_value.high >>> 0).toNumber() : message.negative_int_value;
-                if (message.double_value != null && message.hasOwnProperty("double_value"))
-                    object.double_value = options.json && !isFinite(message.double_value) ? String(message.double_value) : message.double_value;
-                if (message.string_value != null && message.hasOwnProperty("string_value"))
-                    object.string_value = options.bytes === String ? $util.base64.encode(message.string_value, 0, message.string_value.length) : options.bytes === Array ? Array.prototype.slice.call(message.string_value) : message.string_value;
-                if (message.aggregate_value != null && message.hasOwnProperty("aggregate_value"))
-                    object.aggregate_value = message.aggregate_value;
+                        object.negativeIntValue = options.longs === String ? $util.Long.prototype.toString.call(message.negativeIntValue) : options.longs === Number ? new $util.LongBits(message.negativeIntValue.low >>> 0, message.negativeIntValue.high >>> 0).toNumber() : message.negativeIntValue;
+                if (message.doubleValue != null && message.hasOwnProperty("doubleValue"))
+                    object.doubleValue = options.json && !isFinite(message.doubleValue) ? String(message.doubleValue) : message.doubleValue;
+                if (message.stringValue != null && message.hasOwnProperty("stringValue"))
+                    object.stringValue = options.bytes === String ? $util.base64.encode(message.stringValue, 0, message.stringValue.length) : options.bytes === Array ? Array.prototype.slice.call(message.stringValue) : message.stringValue;
+                if (message.aggregateValue != null && message.hasOwnProperty("aggregateValue"))
+                    object.aggregateValue = message.aggregateValue;
                 return object;
             };
 
@@ -7061,8 +7061,8 @@ $root.google = (function() {
                  * Properties of a NamePart.
                  * @memberof google.protobuf.UninterpretedOption
                  * @interface INamePart
-                 * @property {string} name_part NamePart name_part
-                 * @property {boolean} is_extension NamePart is_extension
+                 * @property {string} namePart NamePart namePart
+                 * @property {boolean} isExtension NamePart isExtension
                  */
 
                 /**
@@ -7081,20 +7081,20 @@ $root.google = (function() {
                 }
 
                 /**
-                 * NamePart name_part.
-                 * @member {string} name_part
+                 * NamePart namePart.
+                 * @member {string} namePart
                  * @memberof google.protobuf.UninterpretedOption.NamePart
                  * @instance
                  */
-                NamePart.prototype.name_part = "";
+                NamePart.prototype.namePart = "";
 
                 /**
-                 * NamePart is_extension.
-                 * @member {boolean} is_extension
+                 * NamePart isExtension.
+                 * @member {boolean} isExtension
                  * @memberof google.protobuf.UninterpretedOption.NamePart
                  * @instance
                  */
-                NamePart.prototype.is_extension = false;
+                NamePart.prototype.isExtension = false;
 
                 /**
                  * Creates a new NamePart instance using the specified properties.
@@ -7120,8 +7120,8 @@ $root.google = (function() {
                 NamePart.encode = function encode(message, writer) {
                     if (!writer)
                         writer = $Writer.create();
-                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.name_part);
-                    writer.uint32(/* id 2, wireType 0 =*/16).bool(message.is_extension);
+                    writer.uint32(/* id 1, wireType 2 =*/10).string(message.namePart);
+                    writer.uint32(/* id 2, wireType 0 =*/16).bool(message.isExtension);
                     return writer;
                 };
 
@@ -7157,20 +7157,20 @@ $root.google = (function() {
                         var tag = reader.uint32();
                         switch (tag >>> 3) {
                         case 1:
-                            message.name_part = reader.string();
+                            message.namePart = reader.string();
                             break;
                         case 2:
-                            message.is_extension = reader.bool();
+                            message.isExtension = reader.bool();
                             break;
                         default:
                             reader.skipType(tag & 7);
                             break;
                         }
                     }
-                    if (!message.hasOwnProperty("name_part"))
-                        throw $util.ProtocolError("missing required 'name_part'", { instance: message });
-                    if (!message.hasOwnProperty("is_extension"))
-                        throw $util.ProtocolError("missing required 'is_extension'", { instance: message });
+                    if (!message.hasOwnProperty("namePart"))
+                        throw $util.ProtocolError("missing required 'namePart'", { instance: message });
+                    if (!message.hasOwnProperty("isExtension"))
+                        throw $util.ProtocolError("missing required 'isExtension'", { instance: message });
                     return message;
                 };
 
@@ -7201,10 +7201,10 @@ $root.google = (function() {
                 NamePart.verify = function verify(message) {
                     if (typeof message !== "object" || message === null)
                         return "object expected";
-                    if (!$util.isString(message.name_part))
-                        return "name_part: string expected";
-                    if (typeof message.is_extension !== "boolean")
-                        return "is_extension: boolean expected";
+                    if (!$util.isString(message.namePart))
+                        return "namePart: string expected";
+                    if (typeof message.isExtension !== "boolean")
+                        return "isExtension: boolean expected";
                     return null;
                 };
 
@@ -7220,10 +7220,10 @@ $root.google = (function() {
                     if (object instanceof $root.google.protobuf.UninterpretedOption.NamePart)
                         return object;
                     var message = new $root.google.protobuf.UninterpretedOption.NamePart();
-                    if (object.name_part != null)
-                        message.name_part = String(object.name_part);
-                    if (object.is_extension != null)
-                        message.is_extension = Boolean(object.is_extension);
+                    if (object.namePart != null)
+                        message.namePart = String(object.namePart);
+                    if (object.isExtension != null)
+                        message.isExtension = Boolean(object.isExtension);
                     return message;
                 };
 
@@ -7241,13 +7241,13 @@ $root.google = (function() {
                         options = {};
                     var object = {};
                     if (options.defaults) {
-                        object.name_part = "";
-                        object.is_extension = false;
+                        object.namePart = "";
+                        object.isExtension = false;
                     }
-                    if (message.name_part != null && message.hasOwnProperty("name_part"))
-                        object.name_part = message.name_part;
-                    if (message.is_extension != null && message.hasOwnProperty("is_extension"))
-                        object.is_extension = message.is_extension;
+                    if (message.namePart != null && message.hasOwnProperty("namePart"))
+                        object.namePart = message.namePart;
+                    if (message.isExtension != null && message.hasOwnProperty("isExtension"))
+                        object.isExtension = message.isExtension;
                     return object;
                 };
 
@@ -7481,9 +7481,9 @@ $root.google = (function() {
                  * @interface ILocation
                  * @property {Array.<number>|null} [path] Location path
                  * @property {Array.<number>|null} [span] Location span
-                 * @property {string|null} [leading_comments] Location leading_comments
-                 * @property {string|null} [trailing_comments] Location trailing_comments
-                 * @property {Array.<string>|null} [leading_detached_comments] Location leading_detached_comments
+                 * @property {string|null} [leadingComments] Location leadingComments
+                 * @property {string|null} [trailingComments] Location trailingComments
+                 * @property {Array.<string>|null} [leadingDetachedComments] Location leadingDetachedComments
                  */
 
                 /**
@@ -7497,7 +7497,7 @@ $root.google = (function() {
                 function Location(properties) {
                     this.path = [];
                     this.span = [];
-                    this.leading_detached_comments = [];
+                    this.leadingDetachedComments = [];
                     if (properties)
                         for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
                             if (properties[keys[i]] != null)
@@ -7521,28 +7521,28 @@ $root.google = (function() {
                 Location.prototype.span = $util.emptyArray;
 
                 /**
-                 * Location leading_comments.
-                 * @member {string} leading_comments
+                 * Location leadingComments.
+                 * @member {string} leadingComments
                  * @memberof google.protobuf.SourceCodeInfo.Location
                  * @instance
                  */
-                Location.prototype.leading_comments = "";
+                Location.prototype.leadingComments = "";
 
                 /**
-                 * Location trailing_comments.
-                 * @member {string} trailing_comments
+                 * Location trailingComments.
+                 * @member {string} trailingComments
                  * @memberof google.protobuf.SourceCodeInfo.Location
                  * @instance
                  */
-                Location.prototype.trailing_comments = "";
+                Location.prototype.trailingComments = "";
 
                 /**
-                 * Location leading_detached_comments.
-                 * @member {Array.<string>} leading_detached_comments
+                 * Location leadingDetachedComments.
+                 * @member {Array.<string>} leadingDetachedComments
                  * @memberof google.protobuf.SourceCodeInfo.Location
                  * @instance
                  */
-                Location.prototype.leading_detached_comments = $util.emptyArray;
+                Location.prototype.leadingDetachedComments = $util.emptyArray;
 
                 /**
                  * Creates a new Location instance using the specified properties.
@@ -7580,13 +7580,13 @@ $root.google = (function() {
                             writer.int32(message.span[i]);
                         writer.ldelim();
                     }
-                    if (message.leading_comments != null && Object.hasOwnProperty.call(message, "leading_comments"))
-                        writer.uint32(/* id 3, wireType 2 =*/26).string(message.leading_comments);
-                    if (message.trailing_comments != null && Object.hasOwnProperty.call(message, "trailing_comments"))
-                        writer.uint32(/* id 4, wireType 2 =*/34).string(message.trailing_comments);
-                    if (message.leading_detached_comments != null && message.leading_detached_comments.length)
-                        for (var i = 0; i < message.leading_detached_comments.length; ++i)
-                            writer.uint32(/* id 6, wireType 2 =*/50).string(message.leading_detached_comments[i]);
+                    if (message.leadingComments != null && Object.hasOwnProperty.call(message, "leadingComments"))
+                        writer.uint32(/* id 3, wireType 2 =*/26).string(message.leadingComments);
+                    if (message.trailingComments != null && Object.hasOwnProperty.call(message, "trailingComments"))
+                        writer.uint32(/* id 4, wireType 2 =*/34).string(message.trailingComments);
+                    if (message.leadingDetachedComments != null && message.leadingDetachedComments.length)
+                        for (var i = 0; i < message.leadingDetachedComments.length; ++i)
+                            writer.uint32(/* id 6, wireType 2 =*/50).string(message.leadingDetachedComments[i]);
                     return writer;
                 };
 
@@ -7642,15 +7642,15 @@ $root.google = (function() {
                                 message.span.push(reader.int32());
                             break;
                         case 3:
-                            message.leading_comments = reader.string();
+                            message.leadingComments = reader.string();
                             break;
                         case 4:
-                            message.trailing_comments = reader.string();
+                            message.trailingComments = reader.string();
                             break;
                         case 6:
-                            if (!(message.leading_detached_comments && message.leading_detached_comments.length))
-                                message.leading_detached_comments = [];
-                            message.leading_detached_comments.push(reader.string());
+                            if (!(message.leadingDetachedComments && message.leadingDetachedComments.length))
+                                message.leadingDetachedComments = [];
+                            message.leadingDetachedComments.push(reader.string());
                             break;
                         default:
                             reader.skipType(tag & 7);
@@ -7701,18 +7701,18 @@ $root.google = (function() {
                             if (!$util.isInteger(message.span[i]))
                                 return "span: integer[] expected";
                     }
-                    if (message.leading_comments != null && message.hasOwnProperty("leading_comments"))
-                        if (!$util.isString(message.leading_comments))
-                            return "leading_comments: string expected";
-                    if (message.trailing_comments != null && message.hasOwnProperty("trailing_comments"))
-                        if (!$util.isString(message.trailing_comments))
-                            return "trailing_comments: string expected";
-                    if (message.leading_detached_comments != null && message.hasOwnProperty("leading_detached_comments")) {
-                        if (!Array.isArray(message.leading_detached_comments))
-                            return "leading_detached_comments: array expected";
-                        for (var i = 0; i < message.leading_detached_comments.length; ++i)
-                            if (!$util.isString(message.leading_detached_comments[i]))
-                                return "leading_detached_comments: string[] expected";
+                    if (message.leadingComments != null && message.hasOwnProperty("leadingComments"))
+                        if (!$util.isString(message.leadingComments))
+                            return "leadingComments: string expected";
+                    if (message.trailingComments != null && message.hasOwnProperty("trailingComments"))
+                        if (!$util.isString(message.trailingComments))
+                            return "trailingComments: string expected";
+                    if (message.leadingDetachedComments != null && message.hasOwnProperty("leadingDetachedComments")) {
+                        if (!Array.isArray(message.leadingDetachedComments))
+                            return "leadingDetachedComments: array expected";
+                        for (var i = 0; i < message.leadingDetachedComments.length; ++i)
+                            if (!$util.isString(message.leadingDetachedComments[i]))
+                                return "leadingDetachedComments: string[] expected";
                     }
                     return null;
                 };
@@ -7743,16 +7743,16 @@ $root.google = (function() {
                         for (var i = 0; i < object.span.length; ++i)
                             message.span[i] = object.span[i] | 0;
                     }
-                    if (object.leading_comments != null)
-                        message.leading_comments = String(object.leading_comments);
-                    if (object.trailing_comments != null)
-                        message.trailing_comments = String(object.trailing_comments);
-                    if (object.leading_detached_comments) {
-                        if (!Array.isArray(object.leading_detached_comments))
-                            throw TypeError(".google.protobuf.SourceCodeInfo.Location.leading_detached_comments: array expected");
-                        message.leading_detached_comments = [];
-                        for (var i = 0; i < object.leading_detached_comments.length; ++i)
-                            message.leading_detached_comments[i] = String(object.leading_detached_comments[i]);
+                    if (object.leadingComments != null)
+                        message.leadingComments = String(object.leadingComments);
+                    if (object.trailingComments != null)
+                        message.trailingComments = String(object.trailingComments);
+                    if (object.leadingDetachedComments) {
+                        if (!Array.isArray(object.leadingDetachedComments))
+                            throw TypeError(".google.protobuf.SourceCodeInfo.Location.leadingDetachedComments: array expected");
+                        message.leadingDetachedComments = [];
+                        for (var i = 0; i < object.leadingDetachedComments.length; ++i)
+                            message.leadingDetachedComments[i] = String(object.leadingDetachedComments[i]);
                     }
                     return message;
                 };
@@ -7773,11 +7773,11 @@ $root.google = (function() {
                     if (options.arrays || options.defaults) {
                         object.path = [];
                         object.span = [];
-                        object.leading_detached_comments = [];
+                        object.leadingDetachedComments = [];
                     }
                     if (options.defaults) {
-                        object.leading_comments = "";
-                        object.trailing_comments = "";
+                        object.leadingComments = "";
+                        object.trailingComments = "";
                     }
                     if (message.path && message.path.length) {
                         object.path = [];
@@ -7789,14 +7789,14 @@ $root.google = (function() {
                         for (var j = 0; j < message.span.length; ++j)
                             object.span[j] = message.span[j];
                     }
-                    if (message.leading_comments != null && message.hasOwnProperty("leading_comments"))
-                        object.leading_comments = message.leading_comments;
-                    if (message.trailing_comments != null && message.hasOwnProperty("trailing_comments"))
-                        object.trailing_comments = message.trailing_comments;
-                    if (message.leading_detached_comments && message.leading_detached_comments.length) {
-                        object.leading_detached_comments = [];
-                        for (var j = 0; j < message.leading_detached_comments.length; ++j)
-                            object.leading_detached_comments[j] = message.leading_detached_comments[j];
+                    if (message.leadingComments != null && message.hasOwnProperty("leadingComments"))
+                        object.leadingComments = message.leadingComments;
+                    if (message.trailingComments != null && message.hasOwnProperty("trailingComments"))
+                        object.trailingComments = message.trailingComments;
+                    if (message.leadingDetachedComments && message.leadingDetachedComments.length) {
+                        object.leadingDetachedComments = [];
+                        for (var j = 0; j < message.leadingDetachedComments.length; ++j)
+                            object.leadingDetachedComments[j] = message.leadingDetachedComments[j];
                     }
                     return object;
                 };
@@ -8030,7 +8030,7 @@ $root.google = (function() {
                  * @memberof google.protobuf.GeneratedCodeInfo
                  * @interface IAnnotation
                  * @property {Array.<number>|null} [path] Annotation path
-                 * @property {string|null} [source_file] Annotation source_file
+                 * @property {string|null} [sourceFile] Annotation sourceFile
                  * @property {number|null} [begin] Annotation begin
                  * @property {number|null} [end] Annotation end
                  */
@@ -8060,12 +8060,12 @@ $root.google = (function() {
                 Annotation.prototype.path = $util.emptyArray;
 
                 /**
-                 * Annotation source_file.
-                 * @member {string} source_file
+                 * Annotation sourceFile.
+                 * @member {string} sourceFile
                  * @memberof google.protobuf.GeneratedCodeInfo.Annotation
                  * @instance
                  */
-                Annotation.prototype.source_file = "";
+                Annotation.prototype.sourceFile = "";
 
                 /**
                  * Annotation begin.
@@ -8113,8 +8113,8 @@ $root.google = (function() {
                             writer.int32(message.path[i]);
                         writer.ldelim();
                     }
-                    if (message.source_file != null && Object.hasOwnProperty.call(message, "source_file"))
-                        writer.uint32(/* id 2, wireType 2 =*/18).string(message.source_file);
+                    if (message.sourceFile != null && Object.hasOwnProperty.call(message, "sourceFile"))
+                        writer.uint32(/* id 2, wireType 2 =*/18).string(message.sourceFile);
                     if (message.begin != null && Object.hasOwnProperty.call(message, "begin"))
                         writer.uint32(/* id 3, wireType 0 =*/24).int32(message.begin);
                     if (message.end != null && Object.hasOwnProperty.call(message, "end"))
@@ -8164,7 +8164,7 @@ $root.google = (function() {
                                 message.path.push(reader.int32());
                             break;
                         case 2:
-                            message.source_file = reader.string();
+                            message.sourceFile = reader.string();
                             break;
                         case 3:
                             message.begin = reader.int32();
@@ -8214,9 +8214,9 @@ $root.google = (function() {
                             if (!$util.isInteger(message.path[i]))
                                 return "path: integer[] expected";
                     }
-                    if (message.source_file != null && message.hasOwnProperty("source_file"))
-                        if (!$util.isString(message.source_file))
-                            return "source_file: string expected";
+                    if (message.sourceFile != null && message.hasOwnProperty("sourceFile"))
+                        if (!$util.isString(message.sourceFile))
+                            return "sourceFile: string expected";
                     if (message.begin != null && message.hasOwnProperty("begin"))
                         if (!$util.isInteger(message.begin))
                             return "begin: integer expected";
@@ -8245,8 +8245,8 @@ $root.google = (function() {
                         for (var i = 0; i < object.path.length; ++i)
                             message.path[i] = object.path[i] | 0;
                     }
-                    if (object.source_file != null)
-                        message.source_file = String(object.source_file);
+                    if (object.sourceFile != null)
+                        message.sourceFile = String(object.sourceFile);
                     if (object.begin != null)
                         message.begin = object.begin | 0;
                     if (object.end != null)
@@ -8270,7 +8270,7 @@ $root.google = (function() {
                     if (options.arrays || options.defaults)
                         object.path = [];
                     if (options.defaults) {
-                        object.source_file = "";
+                        object.sourceFile = "";
                         object.begin = 0;
                         object.end = 0;
                     }
@@ -8279,8 +8279,8 @@ $root.google = (function() {
                         for (var j = 0; j < message.path.length; ++j)
                             object.path[j] = message.path[j];
                     }
-                    if (message.source_file != null && message.hasOwnProperty("source_file"))
-                        object.source_file = message.source_file;
+                    if (message.sourceFile != null && message.hasOwnProperty("sourceFile"))
+                        object.sourceFile = message.sourceFile;
                     if (message.begin != null && message.hasOwnProperty("begin"))
                         object.begin = message.begin;
                     if (message.end != null && message.hasOwnProperty("end"))

@@ -24,6 +24,9 @@ class BuffReflectionHelper {
         BuffReflectionHelper.reflection = new BuffReflection();
 
         BuffReflectionHelper.HandleGeneric(Root);
+
+        BuffReflectionHelper.reflection.Headers = Root.lookupType(".core.Headers") as any;
+        console.log(BuffReflectionHelper.reflection.Headers);
     }
 
     private static HandleGeneric: (reflection: ReflectionObject) => void = reflection => {
@@ -57,15 +60,22 @@ class BuffReflectionHelper {
 
             if (direction === Direction.CLIENT || direction === Direction.BOTH)
             {
+                BuffReflectionHelper.reflection.DispatchTypes.set(GetType(LookupObject(t.fullName, Buffs)), t);
+                BuffReflectionHelper.reflection.DispatchTypesToId.set(t?.ctor, mid);
+                BuffReflectionHelper.reflection.DispatchTypesToId.set(GetType(LookupObject(t.fullName, Buffs)), mid);
+
                 if (!BuffReflectionHelper.reflection.DispatchTypesById.hasOwnProperty(mid))
                 {
                     BuffReflectionHelper.reflection.DispatchTypesById[mid] = t;
-                    BuffReflectionHelper.reflection.DispatchTypes.set(GetType(LookupObject(t.fullName, Buffs)), t);
                 } else {
                     console.error(`Cannot register [${t.fullName}]: \"(message.CmdID)\" ${mid} is already registered to [${BuffReflectionHelper.reflection.DispatchTypesById[mid].fullName}].`);
                 }
             }
         }
+
+        const hasData = t.fieldsArray.length > 0;
+        BuffReflectionHelper.reflection.HasData.set(t?.ctor, hasData);
+        BuffReflectionHelper.reflection.HasData.set(GetType(LookupObject(t.fullName, Buffs)), hasData);
 
         BuffReflectionHelper.LoadNested(t);
     }
@@ -74,11 +84,14 @@ class BuffReflectionHelper {
         if (!BuffReflectionHelper.IsMethod(method))
             return false;
 
-        const direction = BuffReflectionHelper.ParseDirection(method.getOption("(method.Sender)"));
-        if (direction !== Buffs.Direction.CLIENT && direction !== Buffs.Direction.BOTH)
-            return false;
-
         const mid = method.getOption("(method.CmdID)");
+        const direction = BuffReflectionHelper.ParseDirection(method.getOption("(method.Sender)"));
+
+        BuffReflectionHelper.reflection.MethodDataRequestId.set(method.resolvedRequestType?.ctor as Function, mid);
+        BuffReflectionHelper.reflection.MethodDataResponseId.set(method.resolvedResponseType?.ctor as Function, mid);
+        BuffReflectionHelper.reflection.MethodDataRequestId.set(GetType(LookupObject(method.resolvedRequestType?.fullName as string, Buffs)), mid);
+        BuffReflectionHelper.reflection.MethodDataResponseId.set(GetType(LookupObject(method.resolvedResponseType?.fullName as string, Buffs)), mid);
+
         if (BuffReflectionHelper.reflection.MethodById.hasOwnProperty(mid))
         {
             console.error(`Cannot register [${method.fullName}]: \"(method.CmdID)\" ${mid} is already registered to [${BuffReflectionHelper.reflection.MethodById[mid].fullName}].`);
@@ -86,6 +99,12 @@ class BuffReflectionHelper {
         }
 
         BuffReflectionHelper.reflection.MethodById[mid] = method;
+
+        BuffReflectionHelper.reflection.MethodDataRequest[mid] = method.resolvedRequestType as any;
+        BuffReflectionHelper.reflection.MethodDataResponse[mid] = method.resolvedResponseType as any;
+
+        if (direction !== Buffs.Direction.CLIENT && direction !== Buffs.Direction.BOTH)
+            return false;
 
         return true;
     }

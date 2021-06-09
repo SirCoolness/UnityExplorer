@@ -319,17 +319,17 @@ export namespace google {
             /** FileDescriptorProto dependency */
             dependency?: (string[]|null);
 
-            /** FileDescriptorProto public_dependency */
-            public_dependency?: (number[]|null);
+            /** FileDescriptorProto publicDependency */
+            publicDependency?: (number[]|null);
 
-            /** FileDescriptorProto weak_dependency */
-            weak_dependency?: (number[]|null);
+            /** FileDescriptorProto weakDependency */
+            weakDependency?: (number[]|null);
 
-            /** FileDescriptorProto message_type */
-            message_type?: (google.protobuf.IDescriptorProto[]|null);
+            /** FileDescriptorProto messageType */
+            messageType?: (google.protobuf.IDescriptorProto[]|null);
 
-            /** FileDescriptorProto enum_type */
-            enum_type?: (google.protobuf.IEnumDescriptorProto[]|null);
+            /** FileDescriptorProto enumType */
+            enumType?: (google.protobuf.IEnumDescriptorProto[]|null);
 
             /** FileDescriptorProto service */
             service?: (google.protobuf.IServiceDescriptorProto[]|null);
@@ -340,8 +340,8 @@ export namespace google {
             /** FileDescriptorProto options */
             options?: (google.protobuf.IFileOptions|null);
 
-            /** FileDescriptorProto source_code_info */
-            source_code_info?: (google.protobuf.ISourceCodeInfo|null);
+            /** FileDescriptorProto sourceCodeInfo */
+            sourceCodeInfo?: (google.protobuf.ISourceCodeInfo|null);
 
             /** FileDescriptorProto syntax */
             syntax?: (string|null);
@@ -365,17 +365,17 @@ export namespace google {
             /** FileDescriptorProto dependency. */
             public dependency: string[];
 
-            /** FileDescriptorProto public_dependency. */
-            public public_dependency: number[];
+            /** FileDescriptorProto publicDependency. */
+            public publicDependency: number[];
 
-            /** FileDescriptorProto weak_dependency. */
-            public weak_dependency: number[];
+            /** FileDescriptorProto weakDependency. */
+            public weakDependency: number[];
 
-            /** FileDescriptorProto message_type. */
-            public message_type: google.protobuf.IDescriptorProto[];
+            /** FileDescriptorProto messageType. */
+            public messageType: google.protobuf.IDescriptorProto[];
 
-            /** FileDescriptorProto enum_type. */
-            public enum_type: google.protobuf.IEnumDescriptorProto[];
+            /** FileDescriptorProto enumType. */
+            public enumType: google.protobuf.IEnumDescriptorProto[];
 
             /** FileDescriptorProto service. */
             public service: google.protobuf.IServiceDescriptorProto[];
@@ -386,8 +386,8 @@ export namespace google {
             /** FileDescriptorProto options. */
             public options?: (google.protobuf.IFileOptions|null);
 
-            /** FileDescriptorProto source_code_info. */
-            public source_code_info?: (google.protobuf.ISourceCodeInfo|null);
+            /** FileDescriptorProto sourceCodeInfo. */
+            public sourceCodeInfo?: (google.protobuf.ISourceCodeInfo|null);
 
             /** FileDescriptorProto syntax. */
             public syntax: string;
@@ -475,26 +475,26 @@ export namespace google {
             /** DescriptorProto extension */
             extension?: (google.protobuf.IFieldDescriptorProto[]|null);
 
-            /** DescriptorProto nested_type */
-            nested_type?: (google.protobuf.IDescriptorProto[]|null);
+            /** DescriptorProto nestedType */
+            nestedType?: (google.protobuf.IDescriptorProto[]|null);
 
-            /** DescriptorProto enum_type */
-            enum_type?: (google.protobuf.IEnumDescriptorProto[]|null);
+            /** DescriptorProto enumType */
+            enumType?: (google.protobuf.IEnumDescriptorProto[]|null);
 
-            /** DescriptorProto extension_range */
-            extension_range?: (google.protobuf.DescriptorProto.IExtensionRange[]|null);
+            /** DescriptorProto extensionRange */
+            extensionRange?: (google.protobuf.DescriptorProto.IExtensionRange[]|null);
 
-            /** DescriptorProto oneof_decl */
-            oneof_decl?: (google.protobuf.IOneofDescriptorProto[]|null);
+            /** DescriptorProto oneofDecl */
+            oneofDecl?: (google.protobuf.IOneofDescriptorProto[]|null);
 
             /** DescriptorProto options */
             options?: (google.protobuf.IMessageOptions|null);
 
-            /** DescriptorProto reserved_range */
-            reserved_range?: (google.protobuf.DescriptorProto.IReservedRange[]|null);
+            /** DescriptorProto reservedRange */
+            reservedRange?: (google.protobuf.DescriptorProto.IReservedRange[]|null);
 
-            /** DescriptorProto reserved_name */
-            reserved_name?: (string[]|null);
+            /** DescriptorProto reservedName */
+            reservedName?: (string[]|null);
         }
 
         /** Represents a DescriptorProto. */
@@ -515,26 +515,26 @@ export namespace google {
             /** DescriptorProto extension. */
             public extension: google.protobuf.IFieldDescriptorProto[];
 
-            /** DescriptorProto nested_type. */
-            public nested_type: google.protobuf.IDescriptorProto[];
+            /** DescriptorProto nestedType. */
+            public nestedType: google.protobuf.IDescriptorProto[];
 
-            /** DescriptorProto enum_type. */
-            public enum_type: google.protobuf.IEnumDescriptorProto[];
+            /** DescriptorProto enumType. */
+            public enumType: google.protobuf.IEnumDescriptorProto[];
 
-            /** DescriptorProto extension_range. */
-            public extension_range: google.protobuf.DescriptorProto.IExtensionRange[];
+            /** DescriptorProto extensionRange. */
+            public extensionRange: google.protobuf.DescriptorProto.IExtensionRange[];
 
-            /** DescriptorProto oneof_decl. */
-            public oneof_decl: google.protobuf.IOneofDescriptorProto[];
+            /** DescriptorProto oneofDecl. */
+            public oneofDecl: google.protobuf.IOneofDescriptorProto[];
 
             /** DescriptorProto options. */
             public options?: (google.protobuf.IMessageOptions|null);
 
-            /** DescriptorProto reserved_range. */
-            public reserved_range: google.protobuf.DescriptorProto.IReservedRange[];
+            /** DescriptorProto reservedRange. */
+            public reservedRange: google.protobuf.DescriptorProto.IReservedRange[];
 
-            /** DescriptorProto reserved_name. */
-            public reserved_name: string[];
+            /** DescriptorProto reservedName. */
+            public reservedName: string[];
 
             /**
              * Creates a new DescriptorProto instance using the specified properties.
@@ -817,20 +817,20 @@ export namespace google {
             /** FieldDescriptorProto type */
             type?: (google.protobuf.FieldDescriptorProto.Type|null);
 
-            /** FieldDescriptorProto type_name */
-            type_name?: (string|null);
+            /** FieldDescriptorProto typeName */
+            typeName?: (string|null);
 
             /** FieldDescriptorProto extendee */
             extendee?: (string|null);
 
-            /** FieldDescriptorProto default_value */
-            default_value?: (string|null);
+            /** FieldDescriptorProto defaultValue */
+            defaultValue?: (string|null);
 
-            /** FieldDescriptorProto oneof_index */
-            oneof_index?: (number|null);
+            /** FieldDescriptorProto oneofIndex */
+            oneofIndex?: (number|null);
 
-            /** FieldDescriptorProto json_name */
-            json_name?: (string|null);
+            /** FieldDescriptorProto jsonName */
+            jsonName?: (string|null);
 
             /** FieldDescriptorProto options */
             options?: (google.protobuf.IFieldOptions|null);
@@ -857,20 +857,20 @@ export namespace google {
             /** FieldDescriptorProto type. */
             public type: google.protobuf.FieldDescriptorProto.Type;
 
-            /** FieldDescriptorProto type_name. */
-            public type_name: string;
+            /** FieldDescriptorProto typeName. */
+            public typeName: string;
 
             /** FieldDescriptorProto extendee. */
             public extendee: string;
 
-            /** FieldDescriptorProto default_value. */
-            public default_value: string;
+            /** FieldDescriptorProto defaultValue. */
+            public defaultValue: string;
 
-            /** FieldDescriptorProto oneof_index. */
-            public oneof_index: number;
+            /** FieldDescriptorProto oneofIndex. */
+            public oneofIndex: number;
 
-            /** FieldDescriptorProto json_name. */
-            public json_name: string;
+            /** FieldDescriptorProto jsonName. */
+            public jsonName: string;
 
             /** FieldDescriptorProto options. */
             public options?: (google.protobuf.IFieldOptions|null);
@@ -1386,20 +1386,20 @@ export namespace google {
             /** MethodDescriptorProto name */
             name?: (string|null);
 
-            /** MethodDescriptorProto input_type */
-            input_type?: (string|null);
+            /** MethodDescriptorProto inputType */
+            inputType?: (string|null);
 
-            /** MethodDescriptorProto output_type */
-            output_type?: (string|null);
+            /** MethodDescriptorProto outputType */
+            outputType?: (string|null);
 
             /** MethodDescriptorProto options */
             options?: (google.protobuf.IMethodOptions|null);
 
-            /** MethodDescriptorProto client_streaming */
-            client_streaming?: (boolean|null);
+            /** MethodDescriptorProto clientStreaming */
+            clientStreaming?: (boolean|null);
 
-            /** MethodDescriptorProto server_streaming */
-            server_streaming?: (boolean|null);
+            /** MethodDescriptorProto serverStreaming */
+            serverStreaming?: (boolean|null);
         }
 
         /** Represents a MethodDescriptorProto. */
@@ -1414,20 +1414,20 @@ export namespace google {
             /** MethodDescriptorProto name. */
             public name: string;
 
-            /** MethodDescriptorProto input_type. */
-            public input_type: string;
+            /** MethodDescriptorProto inputType. */
+            public inputType: string;
 
-            /** MethodDescriptorProto output_type. */
-            public output_type: string;
+            /** MethodDescriptorProto outputType. */
+            public outputType: string;
 
             /** MethodDescriptorProto options. */
             public options?: (google.protobuf.IMethodOptions|null);
 
-            /** MethodDescriptorProto client_streaming. */
-            public client_streaming: boolean;
+            /** MethodDescriptorProto clientStreaming. */
+            public clientStreaming: boolean;
 
-            /** MethodDescriptorProto server_streaming. */
-            public server_streaming: boolean;
+            /** MethodDescriptorProto serverStreaming. */
+            public serverStreaming: boolean;
 
             /**
              * Creates a new MethodDescriptorProto instance using the specified properties.
@@ -1503,50 +1503,50 @@ export namespace google {
         /** Properties of a FileOptions. */
         interface IFileOptions {
 
-            /** FileOptions java_package */
-            java_package?: (string|null);
+            /** FileOptions javaPackage */
+            javaPackage?: (string|null);
 
-            /** FileOptions java_outer_classname */
-            java_outer_classname?: (string|null);
+            /** FileOptions javaOuterClassname */
+            javaOuterClassname?: (string|null);
 
-            /** FileOptions java_multiple_files */
-            java_multiple_files?: (boolean|null);
+            /** FileOptions javaMultipleFiles */
+            javaMultipleFiles?: (boolean|null);
 
-            /** FileOptions java_generate_equals_and_hash */
-            java_generate_equals_and_hash?: (boolean|null);
+            /** FileOptions javaGenerateEqualsAndHash */
+            javaGenerateEqualsAndHash?: (boolean|null);
 
-            /** FileOptions java_string_check_utf8 */
-            java_string_check_utf8?: (boolean|null);
+            /** FileOptions javaStringCheckUtf8 */
+            javaStringCheckUtf8?: (boolean|null);
 
-            /** FileOptions optimize_for */
-            optimize_for?: (google.protobuf.FileOptions.OptimizeMode|null);
+            /** FileOptions optimizeFor */
+            optimizeFor?: (google.protobuf.FileOptions.OptimizeMode|null);
 
-            /** FileOptions go_package */
-            go_package?: (string|null);
+            /** FileOptions goPackage */
+            goPackage?: (string|null);
 
-            /** FileOptions cc_generic_services */
-            cc_generic_services?: (boolean|null);
+            /** FileOptions ccGenericServices */
+            ccGenericServices?: (boolean|null);
 
-            /** FileOptions java_generic_services */
-            java_generic_services?: (boolean|null);
+            /** FileOptions javaGenericServices */
+            javaGenericServices?: (boolean|null);
 
-            /** FileOptions py_generic_services */
-            py_generic_services?: (boolean|null);
+            /** FileOptions pyGenericServices */
+            pyGenericServices?: (boolean|null);
 
             /** FileOptions deprecated */
             deprecated?: (boolean|null);
 
-            /** FileOptions cc_enable_arenas */
-            cc_enable_arenas?: (boolean|null);
+            /** FileOptions ccEnableArenas */
+            ccEnableArenas?: (boolean|null);
 
-            /** FileOptions objc_class_prefix */
-            objc_class_prefix?: (string|null);
+            /** FileOptions objcClassPrefix */
+            objcClassPrefix?: (string|null);
 
-            /** FileOptions csharp_namespace */
-            csharp_namespace?: (string|null);
+            /** FileOptions csharpNamespace */
+            csharpNamespace?: (string|null);
 
-            /** FileOptions uninterpreted_option */
-            uninterpreted_option?: (google.protobuf.IUninterpretedOption[]|null);
+            /** FileOptions uninterpretedOption */
+            uninterpretedOption?: (google.protobuf.IUninterpretedOption[]|null);
         }
 
         /** Represents a FileOptions. */
@@ -1558,50 +1558,50 @@ export namespace google {
              */
             constructor(properties?: google.protobuf.IFileOptions);
 
-            /** FileOptions java_package. */
-            public java_package: string;
+            /** FileOptions javaPackage. */
+            public javaPackage: string;
 
-            /** FileOptions java_outer_classname. */
-            public java_outer_classname: string;
+            /** FileOptions javaOuterClassname. */
+            public javaOuterClassname: string;
 
-            /** FileOptions java_multiple_files. */
-            public java_multiple_files: boolean;
+            /** FileOptions javaMultipleFiles. */
+            public javaMultipleFiles: boolean;
 
-            /** FileOptions java_generate_equals_and_hash. */
-            public java_generate_equals_and_hash: boolean;
+            /** FileOptions javaGenerateEqualsAndHash. */
+            public javaGenerateEqualsAndHash: boolean;
 
-            /** FileOptions java_string_check_utf8. */
-            public java_string_check_utf8: boolean;
+            /** FileOptions javaStringCheckUtf8. */
+            public javaStringCheckUtf8: boolean;
 
-            /** FileOptions optimize_for. */
-            public optimize_for: google.protobuf.FileOptions.OptimizeMode;
+            /** FileOptions optimizeFor. */
+            public optimizeFor: google.protobuf.FileOptions.OptimizeMode;
 
-            /** FileOptions go_package. */
-            public go_package: string;
+            /** FileOptions goPackage. */
+            public goPackage: string;
 
-            /** FileOptions cc_generic_services. */
-            public cc_generic_services: boolean;
+            /** FileOptions ccGenericServices. */
+            public ccGenericServices: boolean;
 
-            /** FileOptions java_generic_services. */
-            public java_generic_services: boolean;
+            /** FileOptions javaGenericServices. */
+            public javaGenericServices: boolean;
 
-            /** FileOptions py_generic_services. */
-            public py_generic_services: boolean;
+            /** FileOptions pyGenericServices. */
+            public pyGenericServices: boolean;
 
             /** FileOptions deprecated. */
             public deprecated: boolean;
 
-            /** FileOptions cc_enable_arenas. */
-            public cc_enable_arenas: boolean;
+            /** FileOptions ccEnableArenas. */
+            public ccEnableArenas: boolean;
 
-            /** FileOptions objc_class_prefix. */
-            public objc_class_prefix: string;
+            /** FileOptions objcClassPrefix. */
+            public objcClassPrefix: string;
 
-            /** FileOptions csharp_namespace. */
-            public csharp_namespace: string;
+            /** FileOptions csharpNamespace. */
+            public csharpNamespace: string;
 
-            /** FileOptions uninterpreted_option. */
-            public uninterpreted_option: google.protobuf.IUninterpretedOption[];
+            /** FileOptions uninterpretedOption. */
+            public uninterpretedOption: google.protobuf.IUninterpretedOption[];
 
             /**
              * Creates a new FileOptions instance using the specified properties.
@@ -1687,20 +1687,20 @@ export namespace google {
         /** Properties of a MessageOptions. */
         interface IMessageOptions {
 
-            /** MessageOptions message_set_wire_format */
-            message_set_wire_format?: (boolean|null);
+            /** MessageOptions messageSetWireFormat */
+            messageSetWireFormat?: (boolean|null);
 
-            /** MessageOptions no_standard_descriptor_accessor */
-            no_standard_descriptor_accessor?: (boolean|null);
+            /** MessageOptions noStandardDescriptorAccessor */
+            noStandardDescriptorAccessor?: (boolean|null);
 
             /** MessageOptions deprecated */
             deprecated?: (boolean|null);
 
-            /** MessageOptions map_entry */
-            map_entry?: (boolean|null);
+            /** MessageOptions mapEntry */
+            mapEntry?: (boolean|null);
 
-            /** MessageOptions uninterpreted_option */
-            uninterpreted_option?: (google.protobuf.IUninterpretedOption[]|null);
+            /** MessageOptions uninterpretedOption */
+            uninterpretedOption?: (google.protobuf.IUninterpretedOption[]|null);
 
             /** MessageOptions .message.CmdID */
             ".message.CmdID"?: (number|null);
@@ -1718,20 +1718,20 @@ export namespace google {
              */
             constructor(properties?: google.protobuf.IMessageOptions);
 
-            /** MessageOptions message_set_wire_format. */
-            public message_set_wire_format: boolean;
+            /** MessageOptions messageSetWireFormat. */
+            public messageSetWireFormat: boolean;
 
-            /** MessageOptions no_standard_descriptor_accessor. */
-            public no_standard_descriptor_accessor: boolean;
+            /** MessageOptions noStandardDescriptorAccessor. */
+            public noStandardDescriptorAccessor: boolean;
 
             /** MessageOptions deprecated. */
             public deprecated: boolean;
 
-            /** MessageOptions map_entry. */
-            public map_entry: boolean;
+            /** MessageOptions mapEntry. */
+            public mapEntry: boolean;
 
-            /** MessageOptions uninterpreted_option. */
-            public uninterpreted_option: google.protobuf.IUninterpretedOption[];
+            /** MessageOptions uninterpretedOption. */
+            public uninterpretedOption: google.protobuf.IUninterpretedOption[];
 
             /**
              * Creates a new MessageOptions instance using the specified properties.
@@ -1825,8 +1825,8 @@ export namespace google {
             /** FieldOptions weak */
             weak?: (boolean|null);
 
-            /** FieldOptions uninterpreted_option */
-            uninterpreted_option?: (google.protobuf.IUninterpretedOption[]|null);
+            /** FieldOptions uninterpretedOption */
+            uninterpretedOption?: (google.protobuf.IUninterpretedOption[]|null);
         }
 
         /** Represents a FieldOptions. */
@@ -1856,8 +1856,8 @@ export namespace google {
             /** FieldOptions weak. */
             public weak: boolean;
 
-            /** FieldOptions uninterpreted_option. */
-            public uninterpreted_option: google.protobuf.IUninterpretedOption[];
+            /** FieldOptions uninterpretedOption. */
+            public uninterpretedOption: google.protobuf.IUninterpretedOption[];
 
             /**
              * Creates a new FieldOptions instance using the specified properties.
@@ -1950,8 +1950,8 @@ export namespace google {
         /** Properties of an OneofOptions. */
         interface IOneofOptions {
 
-            /** OneofOptions uninterpreted_option */
-            uninterpreted_option?: (google.protobuf.IUninterpretedOption[]|null);
+            /** OneofOptions uninterpretedOption */
+            uninterpretedOption?: (google.protobuf.IUninterpretedOption[]|null);
         }
 
         /** Represents an OneofOptions. */
@@ -1963,8 +1963,8 @@ export namespace google {
              */
             constructor(properties?: google.protobuf.IOneofOptions);
 
-            /** OneofOptions uninterpreted_option. */
-            public uninterpreted_option: google.protobuf.IUninterpretedOption[];
+            /** OneofOptions uninterpretedOption. */
+            public uninterpretedOption: google.protobuf.IUninterpretedOption[];
 
             /**
              * Creates a new OneofOptions instance using the specified properties.
@@ -2040,14 +2040,14 @@ export namespace google {
         /** Properties of an EnumOptions. */
         interface IEnumOptions {
 
-            /** EnumOptions allow_alias */
-            allow_alias?: (boolean|null);
+            /** EnumOptions allowAlias */
+            allowAlias?: (boolean|null);
 
             /** EnumOptions deprecated */
             deprecated?: (boolean|null);
 
-            /** EnumOptions uninterpreted_option */
-            uninterpreted_option?: (google.protobuf.IUninterpretedOption[]|null);
+            /** EnumOptions uninterpretedOption */
+            uninterpretedOption?: (google.protobuf.IUninterpretedOption[]|null);
         }
 
         /** Represents an EnumOptions. */
@@ -2059,14 +2059,14 @@ export namespace google {
              */
             constructor(properties?: google.protobuf.IEnumOptions);
 
-            /** EnumOptions allow_alias. */
-            public allow_alias: boolean;
+            /** EnumOptions allowAlias. */
+            public allowAlias: boolean;
 
             /** EnumOptions deprecated. */
             public deprecated: boolean;
 
-            /** EnumOptions uninterpreted_option. */
-            public uninterpreted_option: google.protobuf.IUninterpretedOption[];
+            /** EnumOptions uninterpretedOption. */
+            public uninterpretedOption: google.protobuf.IUninterpretedOption[];
 
             /**
              * Creates a new EnumOptions instance using the specified properties.
@@ -2145,8 +2145,8 @@ export namespace google {
             /** EnumValueOptions deprecated */
             deprecated?: (boolean|null);
 
-            /** EnumValueOptions uninterpreted_option */
-            uninterpreted_option?: (google.protobuf.IUninterpretedOption[]|null);
+            /** EnumValueOptions uninterpretedOption */
+            uninterpretedOption?: (google.protobuf.IUninterpretedOption[]|null);
         }
 
         /** Represents an EnumValueOptions. */
@@ -2161,8 +2161,8 @@ export namespace google {
             /** EnumValueOptions deprecated. */
             public deprecated: boolean;
 
-            /** EnumValueOptions uninterpreted_option. */
-            public uninterpreted_option: google.protobuf.IUninterpretedOption[];
+            /** EnumValueOptions uninterpretedOption. */
+            public uninterpretedOption: google.protobuf.IUninterpretedOption[];
 
             /**
              * Creates a new EnumValueOptions instance using the specified properties.
@@ -2241,8 +2241,8 @@ export namespace google {
             /** ServiceOptions deprecated */
             deprecated?: (boolean|null);
 
-            /** ServiceOptions uninterpreted_option */
-            uninterpreted_option?: (google.protobuf.IUninterpretedOption[]|null);
+            /** ServiceOptions uninterpretedOption */
+            uninterpretedOption?: (google.protobuf.IUninterpretedOption[]|null);
         }
 
         /** Represents a ServiceOptions. */
@@ -2257,8 +2257,8 @@ export namespace google {
             /** ServiceOptions deprecated. */
             public deprecated: boolean;
 
-            /** ServiceOptions uninterpreted_option. */
-            public uninterpreted_option: google.protobuf.IUninterpretedOption[];
+            /** ServiceOptions uninterpretedOption. */
+            public uninterpretedOption: google.protobuf.IUninterpretedOption[];
 
             /**
              * Creates a new ServiceOptions instance using the specified properties.
@@ -2337,8 +2337,8 @@ export namespace google {
             /** MethodOptions deprecated */
             deprecated?: (boolean|null);
 
-            /** MethodOptions uninterpreted_option */
-            uninterpreted_option?: (google.protobuf.IUninterpretedOption[]|null);
+            /** MethodOptions uninterpretedOption */
+            uninterpretedOption?: (google.protobuf.IUninterpretedOption[]|null);
 
             /** MethodOptions .method.CmdID */
             ".method.CmdID"?: (number|null);
@@ -2359,8 +2359,8 @@ export namespace google {
             /** MethodOptions deprecated. */
             public deprecated: boolean;
 
-            /** MethodOptions uninterpreted_option. */
-            public uninterpreted_option: google.protobuf.IUninterpretedOption[];
+            /** MethodOptions uninterpretedOption. */
+            public uninterpretedOption: google.protobuf.IUninterpretedOption[];
 
             /**
              * Creates a new MethodOptions instance using the specified properties.
@@ -2439,23 +2439,23 @@ export namespace google {
             /** UninterpretedOption name */
             name?: (google.protobuf.UninterpretedOption.INamePart[]|null);
 
-            /** UninterpretedOption identifier_value */
-            identifier_value?: (string|null);
+            /** UninterpretedOption identifierValue */
+            identifierValue?: (string|null);
 
-            /** UninterpretedOption positive_int_value */
-            positive_int_value?: (number|Long|null);
+            /** UninterpretedOption positiveIntValue */
+            positiveIntValue?: (number|Long|null);
 
-            /** UninterpretedOption negative_int_value */
-            negative_int_value?: (number|Long|null);
+            /** UninterpretedOption negativeIntValue */
+            negativeIntValue?: (number|Long|null);
 
-            /** UninterpretedOption double_value */
-            double_value?: (number|null);
+            /** UninterpretedOption doubleValue */
+            doubleValue?: (number|null);
 
-            /** UninterpretedOption string_value */
-            string_value?: (Uint8Array|null);
+            /** UninterpretedOption stringValue */
+            stringValue?: (Uint8Array|null);
 
-            /** UninterpretedOption aggregate_value */
-            aggregate_value?: (string|null);
+            /** UninterpretedOption aggregateValue */
+            aggregateValue?: (string|null);
         }
 
         /** Represents an UninterpretedOption. */
@@ -2470,23 +2470,23 @@ export namespace google {
             /** UninterpretedOption name. */
             public name: google.protobuf.UninterpretedOption.INamePart[];
 
-            /** UninterpretedOption identifier_value. */
-            public identifier_value: string;
+            /** UninterpretedOption identifierValue. */
+            public identifierValue: string;
 
-            /** UninterpretedOption positive_int_value. */
-            public positive_int_value: (number|Long);
+            /** UninterpretedOption positiveIntValue. */
+            public positiveIntValue: (number|Long);
 
-            /** UninterpretedOption negative_int_value. */
-            public negative_int_value: (number|Long);
+            /** UninterpretedOption negativeIntValue. */
+            public negativeIntValue: (number|Long);
 
-            /** UninterpretedOption double_value. */
-            public double_value: number;
+            /** UninterpretedOption doubleValue. */
+            public doubleValue: number;
 
-            /** UninterpretedOption string_value. */
-            public string_value: Uint8Array;
+            /** UninterpretedOption stringValue. */
+            public stringValue: Uint8Array;
 
-            /** UninterpretedOption aggregate_value. */
-            public aggregate_value: string;
+            /** UninterpretedOption aggregateValue. */
+            public aggregateValue: string;
 
             /**
              * Creates a new UninterpretedOption instance using the specified properties.
@@ -2564,11 +2564,11 @@ export namespace google {
             /** Properties of a NamePart. */
             interface INamePart {
 
-                /** NamePart name_part */
-                name_part: string;
+                /** NamePart namePart */
+                namePart: string;
 
-                /** NamePart is_extension */
-                is_extension: boolean;
+                /** NamePart isExtension */
+                isExtension: boolean;
             }
 
             /** Represents a NamePart. */
@@ -2580,11 +2580,11 @@ export namespace google {
                  */
                 constructor(properties?: google.protobuf.UninterpretedOption.INamePart);
 
-                /** NamePart name_part. */
-                public name_part: string;
+                /** NamePart namePart. */
+                public namePart: string;
 
-                /** NamePart is_extension. */
-                public is_extension: boolean;
+                /** NamePart isExtension. */
+                public isExtension: boolean;
 
                 /**
                  * Creates a new NamePart instance using the specified properties.
@@ -2759,14 +2759,14 @@ export namespace google {
                 /** Location span */
                 span?: (number[]|null);
 
-                /** Location leading_comments */
-                leading_comments?: (string|null);
+                /** Location leadingComments */
+                leadingComments?: (string|null);
 
-                /** Location trailing_comments */
-                trailing_comments?: (string|null);
+                /** Location trailingComments */
+                trailingComments?: (string|null);
 
-                /** Location leading_detached_comments */
-                leading_detached_comments?: (string[]|null);
+                /** Location leadingDetachedComments */
+                leadingDetachedComments?: (string[]|null);
             }
 
             /** Represents a Location. */
@@ -2784,14 +2784,14 @@ export namespace google {
                 /** Location span. */
                 public span: number[];
 
-                /** Location leading_comments. */
-                public leading_comments: string;
+                /** Location leadingComments. */
+                public leadingComments: string;
 
-                /** Location trailing_comments. */
-                public trailing_comments: string;
+                /** Location trailingComments. */
+                public trailingComments: string;
 
-                /** Location leading_detached_comments. */
-                public leading_detached_comments: string[];
+                /** Location leadingDetachedComments. */
+                public leadingDetachedComments: string[];
 
                 /**
                  * Creates a new Location instance using the specified properties.
@@ -2963,8 +2963,8 @@ export namespace google {
                 /** Annotation path */
                 path?: (number[]|null);
 
-                /** Annotation source_file */
-                source_file?: (string|null);
+                /** Annotation sourceFile */
+                sourceFile?: (string|null);
 
                 /** Annotation begin */
                 begin?: (number|null);
@@ -2985,8 +2985,8 @@ export namespace google {
                 /** Annotation path. */
                 public path: number[];
 
-                /** Annotation source_file. */
-                public source_file: string;
+                /** Annotation sourceFile. */
+                public sourceFile: string;
 
                 /** Annotation begin. */
                 public begin: number;
