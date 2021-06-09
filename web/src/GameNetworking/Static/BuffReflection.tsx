@@ -23,14 +23,12 @@ class BuffReflectionHelper {
         BuffReflectionHelper.isLoaded = true;
         BuffReflectionHelper.reflection = new BuffReflection();
 
-        BuffReflectionHelper.HandleGeneric(Root);
-
         BuffReflectionHelper.reflection.Headers = Root.lookupType(".core.Headers") as any;
-        console.log(BuffReflectionHelper.reflection.Headers);
+
+        BuffReflectionHelper.HandleGeneric(Root);
     }
 
     private static HandleGeneric: (reflection: ReflectionObject) => void = reflection => {
-        console.log(reflection)
         if (reflection instanceof Type)
             BuffReflectionHelper.HandleType(reflection);
         else if (reflection instanceof Service)
@@ -86,6 +84,8 @@ class BuffReflectionHelper {
 
         const mid = method.getOption("(method.CmdID)");
         const direction = BuffReflectionHelper.ParseDirection(method.getOption("(method.Sender)"));
+
+        method.resolve();
 
         BuffReflectionHelper.reflection.MethodDataRequestId.set(method.resolvedRequestType?.ctor as Function, mid);
         BuffReflectionHelper.reflection.MethodDataResponseId.set(method.resolvedResponseType?.ctor as Function, mid);

@@ -1,4 +1,4 @@
-import {Service, Method, Type} from "protobufjs";
+import {Service, Method, Type, Message} from "protobufjs";
 import {core, Scene} from "../../generated/Buffs";
 
 export class BuffReflection {
@@ -17,5 +17,6 @@ export class BuffReflection {
 
     public readonly HasData: Map<Function, boolean> = new Map<Function, boolean>();
 
-    public Headers: typeof core.Headers = core.Headers;
+    //@ts-ignore
+    public Headers: Type;
 }

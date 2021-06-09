@@ -2,17 +2,16 @@ import { GameNetworking } from "../GameNetworking";
 import { core} from "../../generated/Buffs";
 import BuffReflection from "../Static/BuffReflection";
 import {MessageParser} from "./MessageParser";
-import {Message, Type, Writer} from "protobufjs";
-import {GetType} from "../../Util/GetType";
+import {Message, Writer} from "protobufjs";
 
 export class MessageHelper {
     private networking: GameNetworking;
-    private headers: core.Headers;
+    private headers: Message & core.IHeaders;
 
     constructor(gameNetworking: GameNetworking) {
         this.networking = gameNetworking;
 
-        this.headers = new BuffReflection.Headers();
+        this.headers = new BuffReflection.Headers.ctor() as Message & core.IHeaders;
 
         console.log(BuffReflection)
     }
@@ -24,7 +23,13 @@ export class MessageHelper {
         if (!parsed)
             return console.error("Failed to parse message.");
 
-        // route message
+        // debug message
+
+        const headers = parsed[0];
+        if (headers.RPC)
+            await this.networking.rpc.HandleRPC(...parsed);
+        else
+            await this.networking.rpc.HandleDispatch(...parsed);
     }
 
     public SendMessage: (buff: Message, rpcDetails?: core.RPCDetails) => void = (buff, rpcDetails) => {
@@ -34,7 +39,11 @@ export class MessageHelper {
         BuffReflection.Headers.encodeDelimited(this.headers, writer);
 
         if (this.headers.HasData) {
-            buff.$type.encode(buff, writer);
+            if (buff instanceof Message)
+                buff.$type.encode(buff, writer);
+            else
+                //@ts-ignore
+                buff.__proto__.encode(buff, writer);
         }
 
         const res = writer.finish();
