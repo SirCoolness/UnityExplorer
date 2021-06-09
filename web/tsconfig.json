@@ -34,7 +34,6 @@
     "noEmit": true
   },
   "include": [
-    "./src/**/*",
-    "../web_protocol"
+    "./src/**/*"
   ]
 }

@@ -1,0 +1,28 @@
+﻿syntax = "proto3";
+
+import "core/options.proto";
+
+message Transform {
+  int32 instanceID = 1;
+  int32 root = 2;
+  string name = 3;
+}
+
+message SceneFindRequest {
+  string path = 1;
+}
+
+message SceneFindResponse {
+  repeated Transform children = 1;
+}
+
+service Scene {
+  rpc SceneFind(SceneFindRequest) returns (Transform) {
+      option (method.CmdID) = 1;
+      option (method.Sender) = CLIENT;
+  };
+  rpc SceneFindChildren(SceneFindRequest) returns (SceneFindResponse) {
+    option (method.CmdID) = 2;
+    option (method.Sender) = CLIENT;
+  };
+}

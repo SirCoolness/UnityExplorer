@@ -1,5 +1,4 @@
 import {SignalManager} from "./SignalManager";
-import {AnyProto} from "../generated/ProtobufCommon";
 import {SignalAction} from "../types/utils";
 import {TrackerOrigin} from "./SignalHandler";
 
@@ -15,7 +14,7 @@ export class SignalStore {
     }
 
     // tracker should only be a server tracker
-    public SignalReceived: (buff: AnyProto, tracker?: number) => void = (buff, tracker) => {
+    public SignalReceived: (buff: any, tracker?: number) => void = (buff, tracker) => {
         const isTracked = tracker !== undefined;
 
         if (!this.listeners.has(buff.constructor))
@@ -30,7 +29,7 @@ export class SignalStore {
                     if (!this.manager.handle)
                         throw new Error("Missing handle");
 
-                    this.manager.handle.SendMutation((data as unknown) as AnyProto, (tracker as unknown) as number, TrackerOrigin.Server);
+                    this.manager.handle.SendMutation((data as unknown) as any, (tracker as unknown) as number, TrackerOrigin.Server);
                 })
         });
     }

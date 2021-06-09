@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 
+import './generated/Reflection';
+import './generated/Buffs';
+
 import {Main} from "./Components/Main/Main";
 import {DriversAdapter} from "./Components/Drivers/DriversAdapter";
 

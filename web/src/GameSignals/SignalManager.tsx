@@ -1,5 +1,5 @@
 import {State, Store} from "../Store";
-import {AnyProto} from "../generated/ProtobufCommon";
+// import {AnyProto} from "../generated/ProtobufCommon";
 import {SignalHandler, TrackerOrigin} from "./SignalHandler";
 import {MutationManager} from "./MutationManager";
 import {SignalStore} from "./SignalStore";
@@ -48,14 +48,14 @@ export class SignalManager {
         this.isDisposing = false;
     }
 
-    public Dispatch: (buff: AnyProto) => void = buff => {
+    public Dispatch: (buff: any) => void = buff => {
         if (!this.handle)
             throw new Error("Handle inactive");
 
         this.handle.SendMessage(buff);
     }
 
-    public Mutation: <TRequest extends AnyProto, TResponse extends AnyProto>(buff: TRequest) => Promise<TResponse> = async buff => {
+    public Mutation: <TRequest extends any, TResponse extends any>(buff: TRequest) => Promise<TResponse> = async buff => {
         return new Promise((resolve, reject) => {
             if (!this.handle)
                 return reject("Handle inactive");
@@ -85,7 +85,7 @@ export class SignalManager {
         });
     }
 
-    private HandleMutationResponse: (buff: AnyProto, tracker: number, origin: TrackerOrigin) => void = (buff, tracker, origin) => {
+    private HandleMutationResponse: (buff: any, tracker: number, origin: TrackerOrigin) => void = (buff, tracker, origin) => {
         if (origin === TrackerOrigin.Client)
         {
             if (!this.mutationManager.isAvailable(tracker))

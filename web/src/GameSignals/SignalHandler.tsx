@@ -2,7 +2,6 @@ import {SignalManager} from "./SignalManager";
 import {Dispatch} from "../types/utils";
 import {TryConnecting} from "../Store/Modules/GameConnection/AsyncActions";
 import {State} from "../Store";
-import {AnyProto, ProtocolAttribute, Protomap} from "../generated/ProtobufCommon";
 import {Reader, Writer} from "protobufjs";
 import {Debug} from "./Debug";
 
@@ -13,8 +12,8 @@ export enum TrackerOrigin {
 }
 
 interface Handlers {
-    OnMutationReceived: (buff: AnyProto, tracker: number, origin: TrackerOrigin) => void,
-    OnSignalReceived: (buff: AnyProto) => void
+    OnMutationReceived: (buff: any, tracker: number, origin: TrackerOrigin) => void,
+    OnSignalReceived: (buff: any) => void
 }
 
 export class SignalHandler implements Handlers {
@@ -67,11 +66,11 @@ export class SignalHandler implements Handlers {
         await this.manager.DisposeHandle();
     }
 
-    public SendMessage: (buff: AnyProto) => void = buff => {
+    public SendMessage: (buff: any) => void = buff => {
         this.Internal_SendMessage(buff);
     }
 
-    public SendMutation: (buff: AnyProto, tracker: number, origin: TrackerOrigin) => void = (buff, tracker, origin) => {
+    public SendMutation: (buff: any, tracker: number, origin: TrackerOrigin) => void = (buff, tracker, origin) => {
         this.Internal_SendMessage(buff, tracker, origin);
     }
 
@@ -84,7 +83,8 @@ export class SignalHandler implements Handlers {
 
         const commandId = reader.sfixed32();
 
-        const commandInfo = Protomap.ProtocolAttributes.get(Protomap.Forward[commandId]);
+        const commandInfo = undefined;
+        // const commandInfo = Protomap.ProtocolAttributes.get(Protomap.Forward[commandId]);
         if (!commandInfo)
             throw new Error("Invalid message from server");
 
@@ -93,6 +93,7 @@ export class SignalHandler implements Handlers {
         const tracker = hasTracker ? reader.sfixed32() : 0;
         const hasData = reader.bool();
 
+        //@ts-ignore
         const message = (commandInfo.Klass as any).decode(reader);
 
         // console.log(`${commandId} ${hasTracker} ${TrackerOrigin[origin]} ${tracker} ${hasData}`)
@@ -103,7 +104,7 @@ export class SignalHandler implements Handlers {
             return this.OnSignalReceived(message)
     }
 
-    private Internal_SendMessage: (buff: AnyProto, tracker?: number, origin?: TrackerOrigin) => void = (buff, tracker, origin) => {
+    private Internal_SendMessage: (buff: any, tracker?: number, origin?: TrackerOrigin) => void = (buff, tracker, origin) => {
         if (!this.ws)
             throw new Error("Invalid Socket");
 
@@ -134,10 +135,11 @@ export class SignalHandler implements Handlers {
         console.log("SENDING", Debug.DebugBuff(res));
     }
 
-    private static ResolveBuffId: (buff: AnyProto) => ProtocolAttribute | undefined = buff => {
-        return Protomap.ProtocolAttributes.get(buff.constructor);
+    private static ResolveBuffId: (buff: any) => any | undefined = buff => {
+        // return Protomap.ProtocolAttributes.get(buff.constructor);
+        return
     }
 
-    OnMutationReceived: (buff: AnyProto, tracker: number, origin: TrackerOrigin) => void = () => {}
-    OnSignalReceived: (buff: AnyProto) => void = () => {}
+    OnMutationReceived: (buff: any, tracker: number, origin: TrackerOrigin) => void = () => {}
+    OnSignalReceived: (buff: any) => void = () => {}
 }

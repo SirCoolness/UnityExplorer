@@ -1,0 +1,13 @@
+﻿syntax = "proto3";
+package core;
+
+message RPCDetails {
+  sfixed32 Tracker = 1;
+  bool IsResponse = 2;
+}
+
+message Headers {
+  sfixed32 CmdID = 1;
+  bool HasData = 2;
+  optional RPCDetails RPC = 3;
+}

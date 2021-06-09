@@ -3,6 +3,10 @@ const path = require('path');
 const fs = require('fs');
 const jsdoc2md = require('jsdoc-to-markdown');
 
+const protobuf = require("protobufjs");
+const pbjs = require("protobufjs/cli/pbjs");
+const asyncCli = require("./loaders/async_cli");
+
 const pbjsLoader = require('./loaders/pbjs');
 const pbtsLoader = require('./loaders/pbts');
 
@@ -89,6 +93,9 @@ const writeGeneratedTypes = (outputDir, generatedTypes) => {
                 if (!genType.schema.nested.hasOwnProperty(mType.name))
                     continue;
 
+                if (!genType.schema.nested[mType.name].hasOwnProperty("options"))
+                    continue;
+
                 mappedIds.push({
                     type: mType,
                     schema: genType.schema.nested[mType.name]
@@ -134,42 +141,57 @@ export class Protomap {
 
     const generatedTypes = [];
 
-    for (const spath of entryFiles) {
-        const contents = fs.readFileSync(spath);
-        const js = await pbjsLoader(contents, ['-t', 'static-module', '-w', 'commonjs', '-']);
+    // for (const spath of entryFiles) {
+    //     const contents = fs.readFileSync(spath);
+    //     const js = await pbjsLoader(contents, ['-t', 'static-module', '-w', 'commonjs', '-']);
+    //
+    //     const reqScheme = JSON.parse(await pbjsLoader(contents, ['-t', 'json', '-']));
+    //     requestSchema.push(reqScheme);
+    //
+    //     const ts = await pbtsLoader(js);
+    //
+    //     const baseName = path.basename(spath).split('.').slice(0, -1).join('.')
+    //     const relPath = path.dirname(path.relative(protodir, spath));
+    //     const outputDirRel = path.resolve(outputDir, relPath);
+    //     const outputFile = path.resolve(outputDirRel, baseName)
+    //     if (!fs.existsSync(outputDirRel))
+    //         fs.mkdirSync(outputDirRel, { recursive: true });
+    //
+    //     const genTypes = {
+    //         ...generateTypes(outputFile, js),
+    //         schema: reqScheme
+    //     };
+    //     generatedTypes.push(genTypes);
+    //
+    //     fs.writeFileSync(outputFile + ".js", js);
+    //     fs.writeFileSync(outputFile + ".d.ts", ts);
+    // }
+    //
+    // fs.writeFileSync(path.resolve(outputDir, "RequestSchema.tsx"), `export const RequestSchema = ${JSON.stringify(
+    //     requestSchema.reduce((add, item) => ({
+    //         ...add,
+    //         ...item.nested
+    //     }), {}),
+    //     undefined,
+    //     "\t"
+    // )};`);
+    //
+    // writeGeneratedTypes(outputDir, generatedTypes);
 
-        const reqScheme = JSON.parse(await pbjsLoader(contents, ['-t', 'json', '-']));
-        requestSchema.push(reqScheme);
+    const outputFile = path.resolve(outputDir, "Buffs");
+    const outputFileTs = path.resolve(outputDir, "Reflection");
 
-        const ts = await pbtsLoader(js);
+    const js = await asyncCli(pbjs.main, ['-t', 'static-module', '-w', 'commonjs', '--keep-case', ...entryFiles]);
+    const ts = await pbtsLoader(js);
 
-        const baseName = path.basename(spath).split('.').slice(0, -1).join('.')
-        const relPath = path.dirname(path.relative(protodir, spath));
-        const outputDirRel = path.resolve(outputDir, relPath);
-        const outputFile = path.resolve(outputDirRel, baseName)
-        if (!fs.existsSync(outputDirRel))
-            fs.mkdirSync(outputDirRel, { recursive: true });
+    const js_json = await asyncCli(pbjs.main, ['-t', 'json-module', '-w', 'commonjs', ...entryFiles]);
+    const ts_json = await pbtsLoader(js_json);
 
-        const genTypes = {
-            ...generateTypes(outputFile, js),
-            schema: reqScheme
-        };
-        generatedTypes.push(genTypes);
+    fs.writeFileSync(outputFile + ".js", js);
+    fs.writeFileSync(outputFile + ".d.ts", ts);
 
-        fs.writeFileSync(outputFile + ".js", js);
-        fs.writeFileSync(outputFile + ".d.ts", ts);
-    }
-
-    fs.writeFileSync(path.resolve(outputDir, "RequestSchema.tsx"), `export const RequestSchema = ${JSON.stringify(
-        requestSchema.reduce((add, item) => ({
-            ...add,
-            ...item.nested
-        }), {}),
-        undefined,
-        "\t"
-    )};`);
-
-    writeGeneratedTypes(outputDir, generatedTypes);
+    fs.writeFileSync(outputFileTs + ".js", js_json);
+    fs.writeFileSync(outputFileTs + ".d.ts", ts_json);
 
     process.exit(0);
     return undefined

@@ -1,0 +1,14 @@
+﻿syntax = "proto3";
+import "google/protobuf/descriptor.proto";
+package method;
+
+enum Direction {
+  CLIENT = 0;
+  SERVER = 1;
+  BOTH   = 2;
+}
+
+extend google.protobuf.MethodOptions {  
+  int32 CmdID = 50000;
+  Direction Sender = 50001;
+}

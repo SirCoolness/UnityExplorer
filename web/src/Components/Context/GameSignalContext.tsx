@@ -1,19 +1,18 @@
 import React, {useCallback, useEffect, useMemo} from "react";
-import {useGameConnectionContext} from "../Context/Redux/GameConnection";
 import {useStore} from "react-redux";
-import {SignalManager} from "../../GameSignals/SignalManager";
+import { GameNetworking } from "../../GameNetworking/GameNetworking";
 import {State, Store} from "../../Store";
 
-type GameSignalContext = {
-    value: SignalManager
+type GameContext = {
+    value: GameNetworking
 };
 
-const Context = React.createContext<GameSignalContext | void>(undefined);
+const Context = React.createContext<GameContext | void>(undefined);
 
 export const GameSignalContextProvider: React.FC = props => {
     const store = useStore<State>();
 
-    const signalProvider = useMemo(() => new SignalManager(store as Store<State>), []);
+    const signalProvider = useMemo(() => new GameNetworking(store as Store<State>), [store]);
 
     const main = useCallback(async () => {
         await signalProvider.Connect("ws://127.0.0.1:6126");
@@ -28,4 +27,4 @@ export const GameSignalContextProvider: React.FC = props => {
     </Context.Provider>;
 };
 
-export const useGameSignal: () => SignalManager = () => (React.useContext(Context) as GameSignalContext).value;
+export const useGameSignal: () => GameNetworking = () => (React.useContext(Context) as GameContext).value;

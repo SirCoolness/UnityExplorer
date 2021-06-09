@@ -1,6 +1,6 @@
 const pbjs = require('protobufjs/cli/pbjs');
 
-module.exports = function (source, args) {
+module.exports = async function (source, args) {
     return new Promise((resolve, reject) => {
         const srcListenData = [...process.stdin.listeners("data")]
         const srcListenEnd = [...process.stdin.listeners("end")]

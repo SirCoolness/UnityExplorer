@@ -1,0 +1,5 @@
+﻿syntax = "proto3";
+
+import public "core/options/message.proto";
+import public "core/options/service.proto";
+import public "core/options/method.proto";
