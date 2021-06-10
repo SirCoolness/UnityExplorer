@@ -2,6 +2,8 @@
 
 import "core/options.proto";
 
+package game;
+
 message Transform {
   int32 instanceID = 1;
   int32 root = 2;

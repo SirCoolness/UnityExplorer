@@ -3068,403 +3068,438 @@ export namespace google {
     }
 }
 
-/** Represents a Transform. */
-export class Transform implements ITransform {
+/** Namespace game. */
+export namespace game {
 
-    /**
-     * Constructs a new Transform.
-     * @param [properties] Properties to set
-     */
-    constructor(properties?: ITransform);
+    /** Properties of a Transform. */
+    interface ITransform {
 
-    /** Transform instanceID. */
-    public instanceID: number;
+        /** Transform instanceID */
+        instanceID?: (number|null);
 
-    /** Transform root. */
-    public root: number;
+        /** Transform root */
+        root?: (number|null);
 
-    /** Transform name. */
-    public name: string;
+        /** Transform name */
+        name?: (string|null);
+    }
 
-    /**
-     * Creates a new Transform instance using the specified properties.
-     * @param [properties] Properties to set
-     * @returns Transform instance
-     */
-    public static create(properties?: ITransform): Transform;
+    /** Represents a Transform. */
+    class Transform implements ITransform {
 
-    /**
-     * Encodes the specified Transform message. Does not implicitly {@link Transform.verify|verify} messages.
-     * @param message Transform message or plain object to encode
-     * @param [writer] Writer to encode to
-     * @returns Writer
-     */
-    public static encode(message: ITransform, writer?: $protobuf.Writer): $protobuf.Writer;
+        /**
+         * Constructs a new Transform.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: game.ITransform);
 
-    /**
-     * Encodes the specified Transform message, length delimited. Does not implicitly {@link Transform.verify|verify} messages.
-     * @param message Transform message or plain object to encode
-     * @param [writer] Writer to encode to
-     * @returns Writer
-     */
-    public static encodeDelimited(message: ITransform, writer?: $protobuf.Writer): $protobuf.Writer;
+        /** Transform instanceID. */
+        public instanceID: number;
 
-    /**
-     * Decodes a Transform message from the specified reader or buffer.
-     * @param reader Reader or buffer to decode from
-     * @param [length] Message length if known beforehand
-     * @returns Transform
-     * @throws {Error} If the payload is not a reader or valid buffer
-     * @throws {$protobuf.util.ProtocolError} If required fields are missing
-     */
-    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): Transform;
+        /** Transform root. */
+        public root: number;
 
-    /**
-     * Decodes a Transform message from the specified reader or buffer, length delimited.
-     * @param reader Reader or buffer to decode from
-     * @returns Transform
-     * @throws {Error} If the payload is not a reader or valid buffer
-     * @throws {$protobuf.util.ProtocolError} If required fields are missing
-     */
-    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): Transform;
+        /** Transform name. */
+        public name: string;
 
-    /**
-     * Verifies a Transform message.
-     * @param message Plain object to verify
-     * @returns `null` if valid, otherwise the reason why it is not
-     */
-    public static verify(message: { [k: string]: any }): (string|null);
+        /**
+         * Creates a new Transform instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns Transform instance
+         */
+        public static create(properties?: game.ITransform): game.Transform;
 
-    /**
-     * Creates a Transform message from a plain object. Also converts values to their respective internal types.
-     * @param object Plain object
-     * @returns Transform
-     */
-    public static fromObject(object: { [k: string]: any }): Transform;
+        /**
+         * Encodes the specified Transform message. Does not implicitly {@link game.Transform.verify|verify} messages.
+         * @param message Transform message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: game.ITransform, writer?: $protobuf.Writer): $protobuf.Writer;
 
-    /**
-     * Creates a plain object from a Transform message. Also converts values to other types if specified.
-     * @param message Transform
-     * @param [options] Conversion options
-     * @returns Plain object
-     */
-    public static toObject(message: Transform, options?: $protobuf.IConversionOptions): { [k: string]: any };
+        /**
+         * Encodes the specified Transform message, length delimited. Does not implicitly {@link game.Transform.verify|verify} messages.
+         * @param message Transform message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: game.ITransform, writer?: $protobuf.Writer): $protobuf.Writer;
 
-    /**
-     * Converts this Transform to JSON.
-     * @returns JSON object
-     */
-    public toJSON(): { [k: string]: any };
-}
+        /**
+         * Decodes a Transform message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns Transform
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): game.Transform;
 
-/** Represents a SceneFindRequest. */
-export class SceneFindRequest implements ISceneFindRequest {
+        /**
+         * Decodes a Transform message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns Transform
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): game.Transform;
 
-    /**
-     * Constructs a new SceneFindRequest.
-     * @param [properties] Properties to set
-     */
-    constructor(properties?: ISceneFindRequest);
+        /**
+         * Verifies a Transform message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
 
-    /** SceneFindRequest path. */
-    public path: string;
+        /**
+         * Creates a Transform message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns Transform
+         */
+        public static fromObject(object: { [k: string]: any }): game.Transform;
 
-    /**
-     * Creates a new SceneFindRequest instance using the specified properties.
-     * @param [properties] Properties to set
-     * @returns SceneFindRequest instance
-     */
-    public static create(properties?: ISceneFindRequest): SceneFindRequest;
+        /**
+         * Creates a plain object from a Transform message. Also converts values to other types if specified.
+         * @param message Transform
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: game.Transform, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
-    /**
-     * Encodes the specified SceneFindRequest message. Does not implicitly {@link SceneFindRequest.verify|verify} messages.
-     * @param message SceneFindRequest message or plain object to encode
-     * @param [writer] Writer to encode to
-     * @returns Writer
-     */
-    public static encode(message: ISceneFindRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+        /**
+         * Converts this Transform to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
 
-    /**
-     * Encodes the specified SceneFindRequest message, length delimited. Does not implicitly {@link SceneFindRequest.verify|verify} messages.
-     * @param message SceneFindRequest message or plain object to encode
-     * @param [writer] Writer to encode to
-     * @returns Writer
-     */
-    public static encodeDelimited(message: ISceneFindRequest, writer?: $protobuf.Writer): $protobuf.Writer;
+    /** Properties of a SceneFindRequest. */
+    interface ISceneFindRequest {
 
-    /**
-     * Decodes a SceneFindRequest message from the specified reader or buffer.
-     * @param reader Reader or buffer to decode from
-     * @param [length] Message length if known beforehand
-     * @returns SceneFindRequest
-     * @throws {Error} If the payload is not a reader or valid buffer
-     * @throws {$protobuf.util.ProtocolError} If required fields are missing
-     */
-    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): SceneFindRequest;
+        /** SceneFindRequest path */
+        path?: (string|null);
+    }
 
-    /**
-     * Decodes a SceneFindRequest message from the specified reader or buffer, length delimited.
-     * @param reader Reader or buffer to decode from
-     * @returns SceneFindRequest
-     * @throws {Error} If the payload is not a reader or valid buffer
-     * @throws {$protobuf.util.ProtocolError} If required fields are missing
-     */
-    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): SceneFindRequest;
+    /** Represents a SceneFindRequest. */
+    class SceneFindRequest implements ISceneFindRequest {
 
-    /**
-     * Verifies a SceneFindRequest message.
-     * @param message Plain object to verify
-     * @returns `null` if valid, otherwise the reason why it is not
-     */
-    public static verify(message: { [k: string]: any }): (string|null);
+        /**
+         * Constructs a new SceneFindRequest.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: game.ISceneFindRequest);
 
-    /**
-     * Creates a SceneFindRequest message from a plain object. Also converts values to their respective internal types.
-     * @param object Plain object
-     * @returns SceneFindRequest
-     */
-    public static fromObject(object: { [k: string]: any }): SceneFindRequest;
+        /** SceneFindRequest path. */
+        public path: string;
 
-    /**
-     * Creates a plain object from a SceneFindRequest message. Also converts values to other types if specified.
-     * @param message SceneFindRequest
-     * @param [options] Conversion options
-     * @returns Plain object
-     */
-    public static toObject(message: SceneFindRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
+        /**
+         * Creates a new SceneFindRequest instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns SceneFindRequest instance
+         */
+        public static create(properties?: game.ISceneFindRequest): game.SceneFindRequest;
 
-    /**
-     * Converts this SceneFindRequest to JSON.
-     * @returns JSON object
-     */
-    public toJSON(): { [k: string]: any };
-}
+        /**
+         * Encodes the specified SceneFindRequest message. Does not implicitly {@link game.SceneFindRequest.verify|verify} messages.
+         * @param message SceneFindRequest message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: game.ISceneFindRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
-/** Represents a SceneFindResponse. */
-export class SceneFindResponse implements ISceneFindResponse {
+        /**
+         * Encodes the specified SceneFindRequest message, length delimited. Does not implicitly {@link game.SceneFindRequest.verify|verify} messages.
+         * @param message SceneFindRequest message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: game.ISceneFindRequest, writer?: $protobuf.Writer): $protobuf.Writer;
 
-    /**
-     * Constructs a new SceneFindResponse.
-     * @param [properties] Properties to set
-     */
-    constructor(properties?: ISceneFindResponse);
+        /**
+         * Decodes a SceneFindRequest message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns SceneFindRequest
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): game.SceneFindRequest;
 
-    /** SceneFindResponse children. */
-    public children: ITransform[];
+        /**
+         * Decodes a SceneFindRequest message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns SceneFindRequest
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): game.SceneFindRequest;
 
-    /**
-     * Creates a new SceneFindResponse instance using the specified properties.
-     * @param [properties] Properties to set
-     * @returns SceneFindResponse instance
-     */
-    public static create(properties?: ISceneFindResponse): SceneFindResponse;
+        /**
+         * Verifies a SceneFindRequest message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
 
-    /**
-     * Encodes the specified SceneFindResponse message. Does not implicitly {@link SceneFindResponse.verify|verify} messages.
-     * @param message SceneFindResponse message or plain object to encode
-     * @param [writer] Writer to encode to
-     * @returns Writer
-     */
-    public static encode(message: ISceneFindResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+        /**
+         * Creates a SceneFindRequest message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns SceneFindRequest
+         */
+        public static fromObject(object: { [k: string]: any }): game.SceneFindRequest;
 
-    /**
-     * Encodes the specified SceneFindResponse message, length delimited. Does not implicitly {@link SceneFindResponse.verify|verify} messages.
-     * @param message SceneFindResponse message or plain object to encode
-     * @param [writer] Writer to encode to
-     * @returns Writer
-     */
-    public static encodeDelimited(message: ISceneFindResponse, writer?: $protobuf.Writer): $protobuf.Writer;
+        /**
+         * Creates a plain object from a SceneFindRequest message. Also converts values to other types if specified.
+         * @param message SceneFindRequest
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: game.SceneFindRequest, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
-    /**
-     * Decodes a SceneFindResponse message from the specified reader or buffer.
-     * @param reader Reader or buffer to decode from
-     * @param [length] Message length if known beforehand
-     * @returns SceneFindResponse
-     * @throws {Error} If the payload is not a reader or valid buffer
-     * @throws {$protobuf.util.ProtocolError} If required fields are missing
-     */
-    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): SceneFindResponse;
+        /**
+         * Converts this SceneFindRequest to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
 
-    /**
-     * Decodes a SceneFindResponse message from the specified reader or buffer, length delimited.
-     * @param reader Reader or buffer to decode from
-     * @returns SceneFindResponse
-     * @throws {Error} If the payload is not a reader or valid buffer
-     * @throws {$protobuf.util.ProtocolError} If required fields are missing
-     */
-    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): SceneFindResponse;
+    /** Properties of a SceneFindResponse. */
+    interface ISceneFindResponse {
 
-    /**
-     * Verifies a SceneFindResponse message.
-     * @param message Plain object to verify
-     * @returns `null` if valid, otherwise the reason why it is not
-     */
-    public static verify(message: { [k: string]: any }): (string|null);
+        /** SceneFindResponse children */
+        children?: (game.ITransform[]|null);
+    }
 
-    /**
-     * Creates a SceneFindResponse message from a plain object. Also converts values to their respective internal types.
-     * @param object Plain object
-     * @returns SceneFindResponse
-     */
-    public static fromObject(object: { [k: string]: any }): SceneFindResponse;
+    /** Represents a SceneFindResponse. */
+    class SceneFindResponse implements ISceneFindResponse {
 
-    /**
-     * Creates a plain object from a SceneFindResponse message. Also converts values to other types if specified.
-     * @param message SceneFindResponse
-     * @param [options] Conversion options
-     * @returns Plain object
-     */
-    public static toObject(message: SceneFindResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
+        /**
+         * Constructs a new SceneFindResponse.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: game.ISceneFindResponse);
 
-    /**
-     * Converts this SceneFindResponse to JSON.
-     * @returns JSON object
-     */
-    public toJSON(): { [k: string]: any };
-}
+        /** SceneFindResponse children. */
+        public children: game.ITransform[];
 
-/** Represents a Scene */
-export class Scene extends $protobuf.rpc.Service {
+        /**
+         * Creates a new SceneFindResponse instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns SceneFindResponse instance
+         */
+        public static create(properties?: game.ISceneFindResponse): game.SceneFindResponse;
 
-    /**
-     * Constructs a new Scene service.
-     * @param rpcImpl RPC implementation
-     * @param [requestDelimited=false] Whether requests are length-delimited
-     * @param [responseDelimited=false] Whether responses are length-delimited
-     */
-    constructor(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean);
+        /**
+         * Encodes the specified SceneFindResponse message. Does not implicitly {@link game.SceneFindResponse.verify|verify} messages.
+         * @param message SceneFindResponse message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: game.ISceneFindResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
-    /**
-     * Creates new Scene service using the specified rpc implementation.
-     * @param rpcImpl RPC implementation
-     * @param [requestDelimited=false] Whether requests are length-delimited
-     * @param [responseDelimited=false] Whether responses are length-delimited
-     * @returns RPC service. Useful where requests and/or responses are streamed.
-     */
-    public static create(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean): Scene;
+        /**
+         * Encodes the specified SceneFindResponse message, length delimited. Does not implicitly {@link game.SceneFindResponse.verify|verify} messages.
+         * @param message SceneFindResponse message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: game.ISceneFindResponse, writer?: $protobuf.Writer): $protobuf.Writer;
 
-    /**
-     * Calls SceneFind.
-     * @param request SceneFindRequest message or plain object
-     * @param callback Node-style callback called with the error, if any, and Transform
-     */
-    public sceneFind(request: ISceneFindRequest, callback: Scene.SceneFindCallback): void;
+        /**
+         * Decodes a SceneFindResponse message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns SceneFindResponse
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): game.SceneFindResponse;
 
-    /**
-     * Calls SceneFind.
-     * @param request SceneFindRequest message or plain object
-     * @returns Promise
-     */
-    public sceneFind(request: ISceneFindRequest): Promise<Transform>;
+        /**
+         * Decodes a SceneFindResponse message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns SceneFindResponse
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): game.SceneFindResponse;
 
-    /**
-     * Calls SceneFindChildren.
-     * @param request SceneFindRequest message or plain object
-     * @param callback Node-style callback called with the error, if any, and SceneFindResponse
-     */
-    public sceneFindChildren(request: ISceneFindRequest, callback: Scene.SceneFindChildrenCallback): void;
+        /**
+         * Verifies a SceneFindResponse message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
 
-    /**
-     * Calls SceneFindChildren.
-     * @param request SceneFindRequest message or plain object
-     * @returns Promise
-     */
-    public sceneFindChildren(request: ISceneFindRequest): Promise<SceneFindResponse>;
-}
+        /**
+         * Creates a SceneFindResponse message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns SceneFindResponse
+         */
+        public static fromObject(object: { [k: string]: any }): game.SceneFindResponse;
 
-export namespace Scene {
+        /**
+         * Creates a plain object from a SceneFindResponse message. Also converts values to other types if specified.
+         * @param message SceneFindResponse
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: game.SceneFindResponse, options?: $protobuf.IConversionOptions): { [k: string]: any };
 
-    /**
-     * Callback as used by {@link Scene#sceneFind}.
-     * @param error Error, if any
-     * @param [response] Transform
-     */
-    type SceneFindCallback = (error: (Error|null), response?: Transform) => void;
+        /**
+         * Converts this SceneFindResponse to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
 
-    /**
-     * Callback as used by {@link Scene#sceneFindChildren}.
-     * @param error Error, if any
-     * @param [response] SceneFindResponse
-     */
-    type SceneFindChildrenCallback = (error: (Error|null), response?: SceneFindResponse) => void;
-}
+    /** Represents a Scene */
+    class Scene extends $protobuf.rpc.Service {
 
-/** Represents a TestDispatch. */
-export class TestDispatch implements ITestDispatch {
+        /**
+         * Constructs a new Scene service.
+         * @param rpcImpl RPC implementation
+         * @param [requestDelimited=false] Whether requests are length-delimited
+         * @param [responseDelimited=false] Whether responses are length-delimited
+         */
+        constructor(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean);
 
-    /**
-     * Constructs a new TestDispatch.
-     * @param [properties] Properties to set
-     */
-    constructor(properties?: ITestDispatch);
+        /**
+         * Creates new Scene service using the specified rpc implementation.
+         * @param rpcImpl RPC implementation
+         * @param [requestDelimited=false] Whether requests are length-delimited
+         * @param [responseDelimited=false] Whether responses are length-delimited
+         * @returns RPC service. Useful where requests and/or responses are streamed.
+         */
+        public static create(rpcImpl: $protobuf.RPCImpl, requestDelimited?: boolean, responseDelimited?: boolean): Scene;
 
-    /**
-     * Creates a new TestDispatch instance using the specified properties.
-     * @param [properties] Properties to set
-     * @returns TestDispatch instance
-     */
-    public static create(properties?: ITestDispatch): TestDispatch;
+        /**
+         * Calls SceneFind.
+         * @param request SceneFindRequest message or plain object
+         * @param callback Node-style callback called with the error, if any, and Transform
+         */
+        public sceneFind(request: game.ISceneFindRequest, callback: game.Scene.SceneFindCallback): void;
 
-    /**
-     * Encodes the specified TestDispatch message. Does not implicitly {@link TestDispatch.verify|verify} messages.
-     * @param message TestDispatch message or plain object to encode
-     * @param [writer] Writer to encode to
-     * @returns Writer
-     */
-    public static encode(message: ITestDispatch, writer?: $protobuf.Writer): $protobuf.Writer;
+        /**
+         * Calls SceneFind.
+         * @param request SceneFindRequest message or plain object
+         * @returns Promise
+         */
+        public sceneFind(request: game.ISceneFindRequest): Promise<game.Transform>;
 
-    /**
-     * Encodes the specified TestDispatch message, length delimited. Does not implicitly {@link TestDispatch.verify|verify} messages.
-     * @param message TestDispatch message or plain object to encode
-     * @param [writer] Writer to encode to
-     * @returns Writer
-     */
-    public static encodeDelimited(message: ITestDispatch, writer?: $protobuf.Writer): $protobuf.Writer;
+        /**
+         * Calls SceneFindChildren.
+         * @param request SceneFindRequest message or plain object
+         * @param callback Node-style callback called with the error, if any, and SceneFindResponse
+         */
+        public sceneFindChildren(request: game.ISceneFindRequest, callback: game.Scene.SceneFindChildrenCallback): void;
 
-    /**
-     * Decodes a TestDispatch message from the specified reader or buffer.
-     * @param reader Reader or buffer to decode from
-     * @param [length] Message length if known beforehand
-     * @returns TestDispatch
-     * @throws {Error} If the payload is not a reader or valid buffer
-     * @throws {$protobuf.util.ProtocolError} If required fields are missing
-     */
-    public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): TestDispatch;
+        /**
+         * Calls SceneFindChildren.
+         * @param request SceneFindRequest message or plain object
+         * @returns Promise
+         */
+        public sceneFindChildren(request: game.ISceneFindRequest): Promise<game.SceneFindResponse>;
+    }
 
-    /**
-     * Decodes a TestDispatch message from the specified reader or buffer, length delimited.
-     * @param reader Reader or buffer to decode from
-     * @returns TestDispatch
-     * @throws {Error} If the payload is not a reader or valid buffer
-     * @throws {$protobuf.util.ProtocolError} If required fields are missing
-     */
-    public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): TestDispatch;
+    namespace Scene {
 
-    /**
-     * Verifies a TestDispatch message.
-     * @param message Plain object to verify
-     * @returns `null` if valid, otherwise the reason why it is not
-     */
-    public static verify(message: { [k: string]: any }): (string|null);
+        /**
+         * Callback as used by {@link game.Scene#sceneFind}.
+         * @param error Error, if any
+         * @param [response] Transform
+         */
+        type SceneFindCallback = (error: (Error|null), response?: game.Transform) => void;
 
-    /**
-     * Creates a TestDispatch message from a plain object. Also converts values to their respective internal types.
-     * @param object Plain object
-     * @returns TestDispatch
-     */
-    public static fromObject(object: { [k: string]: any }): TestDispatch;
+        /**
+         * Callback as used by {@link game.Scene#sceneFindChildren}.
+         * @param error Error, if any
+         * @param [response] SceneFindResponse
+         */
+        type SceneFindChildrenCallback = (error: (Error|null), response?: game.SceneFindResponse) => void;
+    }
 
-    /**
-     * Creates a plain object from a TestDispatch message. Also converts values to other types if specified.
-     * @param message TestDispatch
-     * @param [options] Conversion options
-     * @returns Plain object
-     */
-    public static toObject(message: TestDispatch, options?: $protobuf.IConversionOptions): { [k: string]: any };
+    /** Properties of a TestDispatch. */
+    interface ITestDispatch {
+    }
 
-    /**
-     * Converts this TestDispatch to JSON.
-     * @returns JSON object
-     */
-    public toJSON(): { [k: string]: any };
+    /** Represents a TestDispatch. */
+    class TestDispatch implements ITestDispatch {
+
+        /**
+         * Constructs a new TestDispatch.
+         * @param [properties] Properties to set
+         */
+        constructor(properties?: game.ITestDispatch);
+
+        /**
+         * Creates a new TestDispatch instance using the specified properties.
+         * @param [properties] Properties to set
+         * @returns TestDispatch instance
+         */
+        public static create(properties?: game.ITestDispatch): game.TestDispatch;
+
+        /**
+         * Encodes the specified TestDispatch message. Does not implicitly {@link game.TestDispatch.verify|verify} messages.
+         * @param message TestDispatch message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encode(message: game.ITestDispatch, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Encodes the specified TestDispatch message, length delimited. Does not implicitly {@link game.TestDispatch.verify|verify} messages.
+         * @param message TestDispatch message or plain object to encode
+         * @param [writer] Writer to encode to
+         * @returns Writer
+         */
+        public static encodeDelimited(message: game.ITestDispatch, writer?: $protobuf.Writer): $protobuf.Writer;
+
+        /**
+         * Decodes a TestDispatch message from the specified reader or buffer.
+         * @param reader Reader or buffer to decode from
+         * @param [length] Message length if known beforehand
+         * @returns TestDispatch
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decode(reader: ($protobuf.Reader|Uint8Array), length?: number): game.TestDispatch;
+
+        /**
+         * Decodes a TestDispatch message from the specified reader or buffer, length delimited.
+         * @param reader Reader or buffer to decode from
+         * @returns TestDispatch
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        public static decodeDelimited(reader: ($protobuf.Reader|Uint8Array)): game.TestDispatch;
+
+        /**
+         * Verifies a TestDispatch message.
+         * @param message Plain object to verify
+         * @returns `null` if valid, otherwise the reason why it is not
+         */
+        public static verify(message: { [k: string]: any }): (string|null);
+
+        /**
+         * Creates a TestDispatch message from a plain object. Also converts values to their respective internal types.
+         * @param object Plain object
+         * @returns TestDispatch
+         */
+        public static fromObject(object: { [k: string]: any }): game.TestDispatch;
+
+        /**
+         * Creates a plain object from a TestDispatch message. Also converts values to other types if specified.
+         * @param message TestDispatch
+         * @param [options] Conversion options
+         * @returns Plain object
+         */
+        public static toObject(message: game.TestDispatch, options?: $protobuf.IConversionOptions): { [k: string]: any };
+
+        /**
+         * Converts this TestDispatch to JSON.
+         * @returns JSON object
+         */
+        public toJSON(): { [k: string]: any };
+    }
 }

@@ -818,81 +818,85 @@ var $root = ($protobuf.roots["default"] || ($protobuf.roots["default"] = new $pr
     }
   },
   service: {},
-  Transform: {
-    fields: {
-      instanceID: {
-        type: "int32",
-        id: 1
-      },
-      root: {
-        type: "int32",
-        id: 2
-      },
-      name: {
-        type: "string",
-        id: 3
-      }
-    }
-  },
-  SceneFindRequest: {
-    fields: {
-      path: {
-        type: "string",
-        id: 1
-      }
-    }
-  },
-  SceneFindResponse: {
-    fields: {
-      children: {
-        rule: "repeated",
-        type: "Transform",
-        id: 1
-      }
-    }
-  },
-  Scene: {
-    methods: {
-      SceneFind: {
-        requestType: "SceneFindRequest",
-        responseType: "Transform",
-        options: {
-          "(method.CmdID)": 1,
-          "(method.Sender)": "CLIENT"
-        },
-        parsedOptions: [
-          {
-            "(method.CmdID)": 1
+  game: {
+    nested: {
+      Transform: {
+        fields: {
+          instanceID: {
+            type: "int32",
+            id: 1
           },
-          {
-            "(method.Sender)": "CLIENT"
-          }
-        ]
-      },
-      SceneFindChildren: {
-        requestType: "SceneFindRequest",
-        responseType: "SceneFindResponse",
-        options: {
-          "(method.CmdID)": 2,
-          "(method.Sender)": "CLIENT"
-        },
-        parsedOptions: [
-          {
-            "(method.CmdID)": 2
+          root: {
+            type: "int32",
+            id: 2
           },
-          {
-            "(method.Sender)": "CLIENT"
+          name: {
+            type: "string",
+            id: 3
           }
-        ]
+        }
+      },
+      SceneFindRequest: {
+        fields: {
+          path: {
+            type: "string",
+            id: 1
+          }
+        }
+      },
+      SceneFindResponse: {
+        fields: {
+          children: {
+            rule: "repeated",
+            type: "Transform",
+            id: 1
+          }
+        }
+      },
+      Scene: {
+        methods: {
+          SceneFind: {
+            requestType: "SceneFindRequest",
+            responseType: "Transform",
+            options: {
+              "(method.CmdID)": 1,
+              "(method.Sender)": "CLIENT"
+            },
+            parsedOptions: [
+              {
+                "(method.CmdID)": 1
+              },
+              {
+                "(method.Sender)": "CLIENT"
+              }
+            ]
+          },
+          SceneFindChildren: {
+            requestType: "SceneFindRequest",
+            responseType: "SceneFindResponse",
+            options: {
+              "(method.CmdID)": 2,
+              "(method.Sender)": "CLIENT"
+            },
+            parsedOptions: [
+              {
+                "(method.CmdID)": 2
+              },
+              {
+                "(method.Sender)": "CLIENT"
+              }
+            ]
+          }
+        }
+      },
+      TestDispatch: {
+        options: {
+          "(message.CmdID)": 1,
+          "(message.Sender)": "CLIENT"
+        },
+        fields: {}
       }
     }
-  },
-  TestDispatch: {
-    options: {
-      "(message.CmdID)": 1,
-      "(message.Sender)": "CLIENT"
-    },
-    fields: {}
   }
 });
 

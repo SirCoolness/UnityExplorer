@@ -1,8 +1,3 @@
-/*eslint-disable block-scoped-var, id-length, no-control-regex, no-magic-numbers, no-prototype-builtins, no-redeclare, no-shadow, no-var, sort-vars*/
-"use strict";
-
-var $protobuf = require("protobufjs/minimal");
-
 // Common aliases
 var $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.util;
 
@@ -8335,892 +8330,902 @@ $root.service = (function() {
     return service;
 })();
 
-$root.Transform = (function() {
+$root.game = (function() {
 
     /**
-     * Properties of a Transform.
-     * @exports ITransform
-     * @interface ITransform
-     * @property {number|null} [instanceID] Transform instanceID
-     * @property {number|null} [root] Transform root
-     * @property {string|null} [name] Transform name
+     * Namespace game.
+     * @exports game
+     * @namespace
      */
+    var game = {};
 
-    /**
-     * Constructs a new Transform.
-     * @exports Transform
-     * @classdesc Represents a Transform.
-     * @implements ITransform
-     * @constructor
-     * @param {ITransform=} [properties] Properties to set
-     */
-    function Transform(properties) {
-        if (properties)
-            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                if (properties[keys[i]] != null)
-                    this[keys[i]] = properties[keys[i]];
-    }
+    game.Transform = (function() {
 
-    /**
-     * Transform instanceID.
-     * @member {number} instanceID
-     * @memberof Transform
-     * @instance
-     */
-    Transform.prototype.instanceID = 0;
+        /**
+         * Properties of a Transform.
+         * @memberof game
+         * @interface ITransform
+         * @property {number|null} [instanceID] Transform instanceID
+         * @property {number|null} [root] Transform root
+         * @property {string|null} [name] Transform name
+         */
 
-    /**
-     * Transform root.
-     * @member {number} root
-     * @memberof Transform
-     * @instance
-     */
-    Transform.prototype.root = 0;
-
-    /**
-     * Transform name.
-     * @member {string} name
-     * @memberof Transform
-     * @instance
-     */
-    Transform.prototype.name = "";
-
-    /**
-     * Creates a new Transform instance using the specified properties.
-     * @function create
-     * @memberof Transform
-     * @static
-     * @param {ITransform=} [properties] Properties to set
-     * @returns {Transform} Transform instance
-     */
-    Transform.create = function create(properties) {
-        return new Transform(properties);
-    };
-
-    /**
-     * Encodes the specified Transform message. Does not implicitly {@link Transform.verify|verify} messages.
-     * @function encode
-     * @memberof Transform
-     * @static
-     * @param {ITransform} message Transform message or plain object to encode
-     * @param {$protobuf.Writer} [writer] Writer to encode to
-     * @returns {$protobuf.Writer} Writer
-     */
-    Transform.encode = function encode(message, writer) {
-        if (!writer)
-            writer = $Writer.create();
-        if (message.instanceID != null && Object.hasOwnProperty.call(message, "instanceID"))
-            writer.uint32(/* id 1, wireType 0 =*/8).int32(message.instanceID);
-        if (message.root != null && Object.hasOwnProperty.call(message, "root"))
-            writer.uint32(/* id 2, wireType 0 =*/16).int32(message.root);
-        if (message.name != null && Object.hasOwnProperty.call(message, "name"))
-            writer.uint32(/* id 3, wireType 2 =*/26).string(message.name);
-        return writer;
-    };
-
-    /**
-     * Encodes the specified Transform message, length delimited. Does not implicitly {@link Transform.verify|verify} messages.
-     * @function encodeDelimited
-     * @memberof Transform
-     * @static
-     * @param {ITransform} message Transform message or plain object to encode
-     * @param {$protobuf.Writer} [writer] Writer to encode to
-     * @returns {$protobuf.Writer} Writer
-     */
-    Transform.encodeDelimited = function encodeDelimited(message, writer) {
-        return this.encode(message, writer).ldelim();
-    };
-
-    /**
-     * Decodes a Transform message from the specified reader or buffer.
-     * @function decode
-     * @memberof Transform
-     * @static
-     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-     * @param {number} [length] Message length if known beforehand
-     * @returns {Transform} Transform
-     * @throws {Error} If the payload is not a reader or valid buffer
-     * @throws {$protobuf.util.ProtocolError} If required fields are missing
-     */
-    Transform.decode = function decode(reader, length) {
-        if (!(reader instanceof $Reader))
-            reader = $Reader.create(reader);
-        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.Transform();
-        while (reader.pos < end) {
-            var tag = reader.uint32();
-            switch (tag >>> 3) {
-            case 1:
-                message.instanceID = reader.int32();
-                break;
-            case 2:
-                message.root = reader.int32();
-                break;
-            case 3:
-                message.name = reader.string();
-                break;
-            default:
-                reader.skipType(tag & 7);
-                break;
-            }
+        /**
+         * Constructs a new Transform.
+         * @memberof game
+         * @classdesc Represents a Transform.
+         * @implements ITransform
+         * @constructor
+         * @param {game.ITransform=} [properties] Properties to set
+         */
+        function Transform(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
         }
-        return message;
-    };
 
-    /**
-     * Decodes a Transform message from the specified reader or buffer, length delimited.
-     * @function decodeDelimited
-     * @memberof Transform
-     * @static
-     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-     * @returns {Transform} Transform
-     * @throws {Error} If the payload is not a reader or valid buffer
-     * @throws {$protobuf.util.ProtocolError} If required fields are missing
-     */
-    Transform.decodeDelimited = function decodeDelimited(reader) {
-        if (!(reader instanceof $Reader))
-            reader = new $Reader(reader);
-        return this.decode(reader, reader.uint32());
-    };
+        /**
+         * Transform instanceID.
+         * @member {number} instanceID
+         * @memberof game.Transform
+         * @instance
+         */
+        Transform.prototype.instanceID = 0;
 
-    /**
-     * Verifies a Transform message.
-     * @function verify
-     * @memberof Transform
-     * @static
-     * @param {Object.<string,*>} message Plain object to verify
-     * @returns {string|null} `null` if valid, otherwise the reason why it is not
-     */
-    Transform.verify = function verify(message) {
-        if (typeof message !== "object" || message === null)
-            return "object expected";
-        if (message.instanceID != null && message.hasOwnProperty("instanceID"))
-            if (!$util.isInteger(message.instanceID))
-                return "instanceID: integer expected";
-        if (message.root != null && message.hasOwnProperty("root"))
-            if (!$util.isInteger(message.root))
-                return "root: integer expected";
-        if (message.name != null && message.hasOwnProperty("name"))
-            if (!$util.isString(message.name))
-                return "name: string expected";
-        return null;
-    };
+        /**
+         * Transform root.
+         * @member {number} root
+         * @memberof game.Transform
+         * @instance
+         */
+        Transform.prototype.root = 0;
 
-    /**
-     * Creates a Transform message from a plain object. Also converts values to their respective internal types.
-     * @function fromObject
-     * @memberof Transform
-     * @static
-     * @param {Object.<string,*>} object Plain object
-     * @returns {Transform} Transform
-     */
-    Transform.fromObject = function fromObject(object) {
-        if (object instanceof $root.Transform)
+        /**
+         * Transform name.
+         * @member {string} name
+         * @memberof game.Transform
+         * @instance
+         */
+        Transform.prototype.name = "";
+
+        /**
+         * Creates a new Transform instance using the specified properties.
+         * @function create
+         * @memberof game.Transform
+         * @static
+         * @param {game.ITransform=} [properties] Properties to set
+         * @returns {game.Transform} Transform instance
+         */
+        Transform.create = function create(properties) {
+            return new Transform(properties);
+        };
+
+        /**
+         * Encodes the specified Transform message. Does not implicitly {@link game.Transform.verify|verify} messages.
+         * @function encode
+         * @memberof game.Transform
+         * @static
+         * @param {game.ITransform} message Transform message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Transform.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.instanceID != null && Object.hasOwnProperty.call(message, "instanceID"))
+                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.instanceID);
+            if (message.root != null && Object.hasOwnProperty.call(message, "root"))
+                writer.uint32(/* id 2, wireType 0 =*/16).int32(message.root);
+            if (message.name != null && Object.hasOwnProperty.call(message, "name"))
+                writer.uint32(/* id 3, wireType 2 =*/26).string(message.name);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified Transform message, length delimited. Does not implicitly {@link game.Transform.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof game.Transform
+         * @static
+         * @param {game.ITransform} message Transform message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        Transform.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a Transform message from the specified reader or buffer.
+         * @function decode
+         * @memberof game.Transform
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {game.Transform} Transform
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Transform.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.game.Transform();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.instanceID = reader.int32();
+                    break;
+                case 2:
+                    message.root = reader.int32();
+                    break;
+                case 3:
+                    message.name = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a Transform message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof game.Transform
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {game.Transform} Transform
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        Transform.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a Transform message.
+         * @function verify
+         * @memberof game.Transform
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        Transform.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.instanceID != null && message.hasOwnProperty("instanceID"))
+                if (!$util.isInteger(message.instanceID))
+                    return "instanceID: integer expected";
+            if (message.root != null && message.hasOwnProperty("root"))
+                if (!$util.isInteger(message.root))
+                    return "root: integer expected";
+            if (message.name != null && message.hasOwnProperty("name"))
+                if (!$util.isString(message.name))
+                    return "name: string expected";
+            return null;
+        };
+
+        /**
+         * Creates a Transform message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof game.Transform
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {game.Transform} Transform
+         */
+        Transform.fromObject = function fromObject(object) {
+            if (object instanceof $root.game.Transform)
+                return object;
+            var message = new $root.game.Transform();
+            if (object.instanceID != null)
+                message.instanceID = object.instanceID | 0;
+            if (object.root != null)
+                message.root = object.root | 0;
+            if (object.name != null)
+                message.name = String(object.name);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a Transform message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof game.Transform
+         * @static
+         * @param {game.Transform} message Transform
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        Transform.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults) {
+                object.instanceID = 0;
+                object.root = 0;
+                object.name = "";
+            }
+            if (message.instanceID != null && message.hasOwnProperty("instanceID"))
+                object.instanceID = message.instanceID;
+            if (message.root != null && message.hasOwnProperty("root"))
+                object.root = message.root;
+            if (message.name != null && message.hasOwnProperty("name"))
+                object.name = message.name;
             return object;
-        var message = new $root.Transform();
-        if (object.instanceID != null)
-            message.instanceID = object.instanceID | 0;
-        if (object.root != null)
-            message.root = object.root | 0;
-        if (object.name != null)
-            message.name = String(object.name);
-        return message;
-    };
+        };
 
-    /**
-     * Creates a plain object from a Transform message. Also converts values to other types if specified.
-     * @function toObject
-     * @memberof Transform
-     * @static
-     * @param {Transform} message Transform
-     * @param {$protobuf.IConversionOptions} [options] Conversion options
-     * @returns {Object.<string,*>} Plain object
-     */
-    Transform.toObject = function toObject(message, options) {
-        if (!options)
-            options = {};
-        var object = {};
-        if (options.defaults) {
-            object.instanceID = 0;
-            object.root = 0;
-            object.name = "";
+        /**
+         * Converts this Transform to JSON.
+         * @function toJSON
+         * @memberof game.Transform
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        Transform.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return Transform;
+    })();
+
+    game.SceneFindRequest = (function() {
+
+        /**
+         * Properties of a SceneFindRequest.
+         * @memberof game
+         * @interface ISceneFindRequest
+         * @property {string|null} [path] SceneFindRequest path
+         */
+
+        /**
+         * Constructs a new SceneFindRequest.
+         * @memberof game
+         * @classdesc Represents a SceneFindRequest.
+         * @implements ISceneFindRequest
+         * @constructor
+         * @param {game.ISceneFindRequest=} [properties] Properties to set
+         */
+        function SceneFindRequest(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
         }
-        if (message.instanceID != null && message.hasOwnProperty("instanceID"))
-            object.instanceID = message.instanceID;
-        if (message.root != null && message.hasOwnProperty("root"))
-            object.root = message.root;
-        if (message.name != null && message.hasOwnProperty("name"))
-            object.name = message.name;
-        return object;
-    };
 
-    /**
-     * Converts this Transform to JSON.
-     * @function toJSON
-     * @memberof Transform
-     * @instance
-     * @returns {Object.<string,*>} JSON object
-     */
-    Transform.prototype.toJSON = function toJSON() {
-        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-    };
+        /**
+         * SceneFindRequest path.
+         * @member {string} path
+         * @memberof game.SceneFindRequest
+         * @instance
+         */
+        SceneFindRequest.prototype.path = "";
 
-    return Transform;
-})();
+        /**
+         * Creates a new SceneFindRequest instance using the specified properties.
+         * @function create
+         * @memberof game.SceneFindRequest
+         * @static
+         * @param {game.ISceneFindRequest=} [properties] Properties to set
+         * @returns {game.SceneFindRequest} SceneFindRequest instance
+         */
+        SceneFindRequest.create = function create(properties) {
+            return new SceneFindRequest(properties);
+        };
 
-$root.SceneFindRequest = (function() {
+        /**
+         * Encodes the specified SceneFindRequest message. Does not implicitly {@link game.SceneFindRequest.verify|verify} messages.
+         * @function encode
+         * @memberof game.SceneFindRequest
+         * @static
+         * @param {game.ISceneFindRequest} message SceneFindRequest message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        SceneFindRequest.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.path != null && Object.hasOwnProperty.call(message, "path"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.path);
+            return writer;
+        };
 
-    /**
-     * Properties of a SceneFindRequest.
-     * @exports ISceneFindRequest
-     * @interface ISceneFindRequest
-     * @property {string|null} [path] SceneFindRequest path
-     */
+        /**
+         * Encodes the specified SceneFindRequest message, length delimited. Does not implicitly {@link game.SceneFindRequest.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof game.SceneFindRequest
+         * @static
+         * @param {game.ISceneFindRequest} message SceneFindRequest message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        SceneFindRequest.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
 
-    /**
-     * Constructs a new SceneFindRequest.
-     * @exports SceneFindRequest
-     * @classdesc Represents a SceneFindRequest.
-     * @implements ISceneFindRequest
-     * @constructor
-     * @param {ISceneFindRequest=} [properties] Properties to set
-     */
-    function SceneFindRequest(properties) {
-        if (properties)
-            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                if (properties[keys[i]] != null)
-                    this[keys[i]] = properties[keys[i]];
-    }
-
-    /**
-     * SceneFindRequest path.
-     * @member {string} path
-     * @memberof SceneFindRequest
-     * @instance
-     */
-    SceneFindRequest.prototype.path = "";
-
-    /**
-     * Creates a new SceneFindRequest instance using the specified properties.
-     * @function create
-     * @memberof SceneFindRequest
-     * @static
-     * @param {ISceneFindRequest=} [properties] Properties to set
-     * @returns {SceneFindRequest} SceneFindRequest instance
-     */
-    SceneFindRequest.create = function create(properties) {
-        return new SceneFindRequest(properties);
-    };
-
-    /**
-     * Encodes the specified SceneFindRequest message. Does not implicitly {@link SceneFindRequest.verify|verify} messages.
-     * @function encode
-     * @memberof SceneFindRequest
-     * @static
-     * @param {ISceneFindRequest} message SceneFindRequest message or plain object to encode
-     * @param {$protobuf.Writer} [writer] Writer to encode to
-     * @returns {$protobuf.Writer} Writer
-     */
-    SceneFindRequest.encode = function encode(message, writer) {
-        if (!writer)
-            writer = $Writer.create();
-        if (message.path != null && Object.hasOwnProperty.call(message, "path"))
-            writer.uint32(/* id 1, wireType 2 =*/10).string(message.path);
-        return writer;
-    };
-
-    /**
-     * Encodes the specified SceneFindRequest message, length delimited. Does not implicitly {@link SceneFindRequest.verify|verify} messages.
-     * @function encodeDelimited
-     * @memberof SceneFindRequest
-     * @static
-     * @param {ISceneFindRequest} message SceneFindRequest message or plain object to encode
-     * @param {$protobuf.Writer} [writer] Writer to encode to
-     * @returns {$protobuf.Writer} Writer
-     */
-    SceneFindRequest.encodeDelimited = function encodeDelimited(message, writer) {
-        return this.encode(message, writer).ldelim();
-    };
-
-    /**
-     * Decodes a SceneFindRequest message from the specified reader or buffer.
-     * @function decode
-     * @memberof SceneFindRequest
-     * @static
-     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-     * @param {number} [length] Message length if known beforehand
-     * @returns {SceneFindRequest} SceneFindRequest
-     * @throws {Error} If the payload is not a reader or valid buffer
-     * @throws {$protobuf.util.ProtocolError} If required fields are missing
-     */
-    SceneFindRequest.decode = function decode(reader, length) {
-        if (!(reader instanceof $Reader))
-            reader = $Reader.create(reader);
-        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.SceneFindRequest();
-        while (reader.pos < end) {
-            var tag = reader.uint32();
-            switch (tag >>> 3) {
-            case 1:
-                message.path = reader.string();
-                break;
-            default:
-                reader.skipType(tag & 7);
-                break;
+        /**
+         * Decodes a SceneFindRequest message from the specified reader or buffer.
+         * @function decode
+         * @memberof game.SceneFindRequest
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {game.SceneFindRequest} SceneFindRequest
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        SceneFindRequest.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.game.SceneFindRequest();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.path = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
             }
-        }
-        return message;
-    };
+            return message;
+        };
 
-    /**
-     * Decodes a SceneFindRequest message from the specified reader or buffer, length delimited.
-     * @function decodeDelimited
-     * @memberof SceneFindRequest
-     * @static
-     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-     * @returns {SceneFindRequest} SceneFindRequest
-     * @throws {Error} If the payload is not a reader or valid buffer
-     * @throws {$protobuf.util.ProtocolError} If required fields are missing
-     */
-    SceneFindRequest.decodeDelimited = function decodeDelimited(reader) {
-        if (!(reader instanceof $Reader))
-            reader = new $Reader(reader);
-        return this.decode(reader, reader.uint32());
-    };
+        /**
+         * Decodes a SceneFindRequest message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof game.SceneFindRequest
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {game.SceneFindRequest} SceneFindRequest
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        SceneFindRequest.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
 
-    /**
-     * Verifies a SceneFindRequest message.
-     * @function verify
-     * @memberof SceneFindRequest
-     * @static
-     * @param {Object.<string,*>} message Plain object to verify
-     * @returns {string|null} `null` if valid, otherwise the reason why it is not
-     */
-    SceneFindRequest.verify = function verify(message) {
-        if (typeof message !== "object" || message === null)
-            return "object expected";
-        if (message.path != null && message.hasOwnProperty("path"))
-            if (!$util.isString(message.path))
-                return "path: string expected";
-        return null;
-    };
+        /**
+         * Verifies a SceneFindRequest message.
+         * @function verify
+         * @memberof game.SceneFindRequest
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        SceneFindRequest.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.path != null && message.hasOwnProperty("path"))
+                if (!$util.isString(message.path))
+                    return "path: string expected";
+            return null;
+        };
 
-    /**
-     * Creates a SceneFindRequest message from a plain object. Also converts values to their respective internal types.
-     * @function fromObject
-     * @memberof SceneFindRequest
-     * @static
-     * @param {Object.<string,*>} object Plain object
-     * @returns {SceneFindRequest} SceneFindRequest
-     */
-    SceneFindRequest.fromObject = function fromObject(object) {
-        if (object instanceof $root.SceneFindRequest)
+        /**
+         * Creates a SceneFindRequest message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof game.SceneFindRequest
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {game.SceneFindRequest} SceneFindRequest
+         */
+        SceneFindRequest.fromObject = function fromObject(object) {
+            if (object instanceof $root.game.SceneFindRequest)
+                return object;
+            var message = new $root.game.SceneFindRequest();
+            if (object.path != null)
+                message.path = String(object.path);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a SceneFindRequest message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof game.SceneFindRequest
+         * @static
+         * @param {game.SceneFindRequest} message SceneFindRequest
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        SceneFindRequest.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.defaults)
+                object.path = "";
+            if (message.path != null && message.hasOwnProperty("path"))
+                object.path = message.path;
             return object;
-        var message = new $root.SceneFindRequest();
-        if (object.path != null)
-            message.path = String(object.path);
-        return message;
-    };
+        };
 
-    /**
-     * Creates a plain object from a SceneFindRequest message. Also converts values to other types if specified.
-     * @function toObject
-     * @memberof SceneFindRequest
-     * @static
-     * @param {SceneFindRequest} message SceneFindRequest
-     * @param {$protobuf.IConversionOptions} [options] Conversion options
-     * @returns {Object.<string,*>} Plain object
-     */
-    SceneFindRequest.toObject = function toObject(message, options) {
-        if (!options)
-            options = {};
-        var object = {};
-        if (options.defaults)
-            object.path = "";
-        if (message.path != null && message.hasOwnProperty("path"))
-            object.path = message.path;
-        return object;
-    };
+        /**
+         * Converts this SceneFindRequest to JSON.
+         * @function toJSON
+         * @memberof game.SceneFindRequest
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        SceneFindRequest.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
 
-    /**
-     * Converts this SceneFindRequest to JSON.
-     * @function toJSON
-     * @memberof SceneFindRequest
-     * @instance
-     * @returns {Object.<string,*>} JSON object
-     */
-    SceneFindRequest.prototype.toJSON = function toJSON() {
-        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-    };
+        return SceneFindRequest;
+    })();
 
-    return SceneFindRequest;
-})();
+    game.SceneFindResponse = (function() {
 
-$root.SceneFindResponse = (function() {
+        /**
+         * Properties of a SceneFindResponse.
+         * @memberof game
+         * @interface ISceneFindResponse
+         * @property {Array.<game.ITransform>|null} [children] SceneFindResponse children
+         */
 
-    /**
-     * Properties of a SceneFindResponse.
-     * @exports ISceneFindResponse
-     * @interface ISceneFindResponse
-     * @property {Array.<ITransform>|null} [children] SceneFindResponse children
-     */
-
-    /**
-     * Constructs a new SceneFindResponse.
-     * @exports SceneFindResponse
-     * @classdesc Represents a SceneFindResponse.
-     * @implements ISceneFindResponse
-     * @constructor
-     * @param {ISceneFindResponse=} [properties] Properties to set
-     */
-    function SceneFindResponse(properties) {
-        this.children = [];
-        if (properties)
-            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                if (properties[keys[i]] != null)
-                    this[keys[i]] = properties[keys[i]];
-    }
-
-    /**
-     * SceneFindResponse children.
-     * @member {Array.<ITransform>} children
-     * @memberof SceneFindResponse
-     * @instance
-     */
-    SceneFindResponse.prototype.children = $util.emptyArray;
-
-    /**
-     * Creates a new SceneFindResponse instance using the specified properties.
-     * @function create
-     * @memberof SceneFindResponse
-     * @static
-     * @param {ISceneFindResponse=} [properties] Properties to set
-     * @returns {SceneFindResponse} SceneFindResponse instance
-     */
-    SceneFindResponse.create = function create(properties) {
-        return new SceneFindResponse(properties);
-    };
-
-    /**
-     * Encodes the specified SceneFindResponse message. Does not implicitly {@link SceneFindResponse.verify|verify} messages.
-     * @function encode
-     * @memberof SceneFindResponse
-     * @static
-     * @param {ISceneFindResponse} message SceneFindResponse message or plain object to encode
-     * @param {$protobuf.Writer} [writer] Writer to encode to
-     * @returns {$protobuf.Writer} Writer
-     */
-    SceneFindResponse.encode = function encode(message, writer) {
-        if (!writer)
-            writer = $Writer.create();
-        if (message.children != null && message.children.length)
-            for (var i = 0; i < message.children.length; ++i)
-                $root.Transform.encode(message.children[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
-        return writer;
-    };
-
-    /**
-     * Encodes the specified SceneFindResponse message, length delimited. Does not implicitly {@link SceneFindResponse.verify|verify} messages.
-     * @function encodeDelimited
-     * @memberof SceneFindResponse
-     * @static
-     * @param {ISceneFindResponse} message SceneFindResponse message or plain object to encode
-     * @param {$protobuf.Writer} [writer] Writer to encode to
-     * @returns {$protobuf.Writer} Writer
-     */
-    SceneFindResponse.encodeDelimited = function encodeDelimited(message, writer) {
-        return this.encode(message, writer).ldelim();
-    };
-
-    /**
-     * Decodes a SceneFindResponse message from the specified reader or buffer.
-     * @function decode
-     * @memberof SceneFindResponse
-     * @static
-     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-     * @param {number} [length] Message length if known beforehand
-     * @returns {SceneFindResponse} SceneFindResponse
-     * @throws {Error} If the payload is not a reader or valid buffer
-     * @throws {$protobuf.util.ProtocolError} If required fields are missing
-     */
-    SceneFindResponse.decode = function decode(reader, length) {
-        if (!(reader instanceof $Reader))
-            reader = $Reader.create(reader);
-        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.SceneFindResponse();
-        while (reader.pos < end) {
-            var tag = reader.uint32();
-            switch (tag >>> 3) {
-            case 1:
-                if (!(message.children && message.children.length))
-                    message.children = [];
-                message.children.push($root.Transform.decode(reader, reader.uint32()));
-                break;
-            default:
-                reader.skipType(tag & 7);
-                break;
-            }
+        /**
+         * Constructs a new SceneFindResponse.
+         * @memberof game
+         * @classdesc Represents a SceneFindResponse.
+         * @implements ISceneFindResponse
+         * @constructor
+         * @param {game.ISceneFindResponse=} [properties] Properties to set
+         */
+        function SceneFindResponse(properties) {
+            this.children = [];
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
         }
-        return message;
-    };
 
-    /**
-     * Decodes a SceneFindResponse message from the specified reader or buffer, length delimited.
-     * @function decodeDelimited
-     * @memberof SceneFindResponse
-     * @static
-     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-     * @returns {SceneFindResponse} SceneFindResponse
-     * @throws {Error} If the payload is not a reader or valid buffer
-     * @throws {$protobuf.util.ProtocolError} If required fields are missing
-     */
-    SceneFindResponse.decodeDelimited = function decodeDelimited(reader) {
-        if (!(reader instanceof $Reader))
-            reader = new $Reader(reader);
-        return this.decode(reader, reader.uint32());
-    };
+        /**
+         * SceneFindResponse children.
+         * @member {Array.<game.ITransform>} children
+         * @memberof game.SceneFindResponse
+         * @instance
+         */
+        SceneFindResponse.prototype.children = $util.emptyArray;
 
-    /**
-     * Verifies a SceneFindResponse message.
-     * @function verify
-     * @memberof SceneFindResponse
-     * @static
-     * @param {Object.<string,*>} message Plain object to verify
-     * @returns {string|null} `null` if valid, otherwise the reason why it is not
-     */
-    SceneFindResponse.verify = function verify(message) {
-        if (typeof message !== "object" || message === null)
-            return "object expected";
-        if (message.children != null && message.hasOwnProperty("children")) {
-            if (!Array.isArray(message.children))
-                return "children: array expected";
-            for (var i = 0; i < message.children.length; ++i) {
-                var error = $root.Transform.verify(message.children[i]);
-                if (error)
-                    return "children." + error;
+        /**
+         * Creates a new SceneFindResponse instance using the specified properties.
+         * @function create
+         * @memberof game.SceneFindResponse
+         * @static
+         * @param {game.ISceneFindResponse=} [properties] Properties to set
+         * @returns {game.SceneFindResponse} SceneFindResponse instance
+         */
+        SceneFindResponse.create = function create(properties) {
+            return new SceneFindResponse(properties);
+        };
+
+        /**
+         * Encodes the specified SceneFindResponse message. Does not implicitly {@link game.SceneFindResponse.verify|verify} messages.
+         * @function encode
+         * @memberof game.SceneFindResponse
+         * @static
+         * @param {game.ISceneFindResponse} message SceneFindResponse message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        SceneFindResponse.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.children != null && message.children.length)
+                for (var i = 0; i < message.children.length; ++i)
+                    $root.game.Transform.encode(message.children[i], writer.uint32(/* id 1, wireType 2 =*/10).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified SceneFindResponse message, length delimited. Does not implicitly {@link game.SceneFindResponse.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof game.SceneFindResponse
+         * @static
+         * @param {game.ISceneFindResponse} message SceneFindResponse message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        SceneFindResponse.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a SceneFindResponse message from the specified reader or buffer.
+         * @function decode
+         * @memberof game.SceneFindResponse
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {game.SceneFindResponse} SceneFindResponse
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        SceneFindResponse.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.game.SceneFindResponse();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    if (!(message.children && message.children.length))
+                        message.children = [];
+                    message.children.push($root.game.Transform.decode(reader, reader.uint32()));
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
             }
-        }
-        return null;
-    };
+            return message;
+        };
 
-    /**
-     * Creates a SceneFindResponse message from a plain object. Also converts values to their respective internal types.
-     * @function fromObject
-     * @memberof SceneFindResponse
-     * @static
-     * @param {Object.<string,*>} object Plain object
-     * @returns {SceneFindResponse} SceneFindResponse
-     */
-    SceneFindResponse.fromObject = function fromObject(object) {
-        if (object instanceof $root.SceneFindResponse)
+        /**
+         * Decodes a SceneFindResponse message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof game.SceneFindResponse
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {game.SceneFindResponse} SceneFindResponse
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        SceneFindResponse.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a SceneFindResponse message.
+         * @function verify
+         * @memberof game.SceneFindResponse
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        SceneFindResponse.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.children != null && message.hasOwnProperty("children")) {
+                if (!Array.isArray(message.children))
+                    return "children: array expected";
+                for (var i = 0; i < message.children.length; ++i) {
+                    var error = $root.game.Transform.verify(message.children[i]);
+                    if (error)
+                        return "children." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a SceneFindResponse message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof game.SceneFindResponse
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {game.SceneFindResponse} SceneFindResponse
+         */
+        SceneFindResponse.fromObject = function fromObject(object) {
+            if (object instanceof $root.game.SceneFindResponse)
+                return object;
+            var message = new $root.game.SceneFindResponse();
+            if (object.children) {
+                if (!Array.isArray(object.children))
+                    throw TypeError(".game.SceneFindResponse.children: array expected");
+                message.children = [];
+                for (var i = 0; i < object.children.length; ++i) {
+                    if (typeof object.children[i] !== "object")
+                        throw TypeError(".game.SceneFindResponse.children: object expected");
+                    message.children[i] = $root.game.Transform.fromObject(object.children[i]);
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a SceneFindResponse message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof game.SceneFindResponse
+         * @static
+         * @param {game.SceneFindResponse} message SceneFindResponse
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        SceneFindResponse.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            var object = {};
+            if (options.arrays || options.defaults)
+                object.children = [];
+            if (message.children && message.children.length) {
+                object.children = [];
+                for (var j = 0; j < message.children.length; ++j)
+                    object.children[j] = $root.game.Transform.toObject(message.children[j], options);
+            }
             return object;
-        var message = new $root.SceneFindResponse();
-        if (object.children) {
-            if (!Array.isArray(object.children))
-                throw TypeError(".SceneFindResponse.children: array expected");
-            message.children = [];
-            for (var i = 0; i < object.children.length; ++i) {
-                if (typeof object.children[i] !== "object")
-                    throw TypeError(".SceneFindResponse.children: object expected");
-                message.children[i] = $root.Transform.fromObject(object.children[i]);
+        };
+
+        /**
+         * Converts this SceneFindResponse to JSON.
+         * @function toJSON
+         * @memberof game.SceneFindResponse
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        SceneFindResponse.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return SceneFindResponse;
+    })();
+
+    game.Scene = (function() {
+
+        /**
+         * Constructs a new Scene service.
+         * @memberof game
+         * @classdesc Represents a Scene
+         * @extends $protobuf.rpc.Service
+         * @constructor
+         * @param {$protobuf.RPCImpl} rpcImpl RPC implementation
+         * @param {boolean} [requestDelimited=false] Whether requests are length-delimited
+         * @param {boolean} [responseDelimited=false] Whether responses are length-delimited
+         */
+        function Scene(rpcImpl, requestDelimited, responseDelimited) {
+            $protobuf.rpc.Service.call(this, rpcImpl, requestDelimited, responseDelimited);
+        }
+
+        (Scene.prototype = Object.create($protobuf.rpc.Service.prototype)).constructor = Scene;
+
+        /**
+         * Creates new Scene service using the specified rpc implementation.
+         * @function create
+         * @memberof game.Scene
+         * @static
+         * @param {$protobuf.RPCImpl} rpcImpl RPC implementation
+         * @param {boolean} [requestDelimited=false] Whether requests are length-delimited
+         * @param {boolean} [responseDelimited=false] Whether responses are length-delimited
+         * @returns {Scene} RPC service. Useful where requests and/or responses are streamed.
+         */
+        Scene.create = function create(rpcImpl, requestDelimited, responseDelimited) {
+            return new this(rpcImpl, requestDelimited, responseDelimited);
+        };
+
+        /**
+         * Callback as used by {@link game.Scene#sceneFind}.
+         * @memberof game.Scene
+         * @typedef SceneFindCallback
+         * @type {function}
+         * @param {Error|null} error Error, if any
+         * @param {game.Transform} [response] Transform
+         */
+
+        /**
+         * Calls SceneFind.
+         * @function sceneFind
+         * @memberof game.Scene
+         * @instance
+         * @param {game.ISceneFindRequest} request SceneFindRequest message or plain object
+         * @param {game.Scene.SceneFindCallback} callback Node-style callback called with the error, if any, and Transform
+         * @returns {undefined}
+         * @variation 1
+         */
+        Object.defineProperty(Scene.prototype.sceneFind = function sceneFind(request, callback) {
+            return this.rpcCall(sceneFind, $root.game.SceneFindRequest, $root.game.Transform, request, callback);
+        }, "name", { value: "SceneFind" });
+
+        /**
+         * Calls SceneFind.
+         * @function sceneFind
+         * @memberof game.Scene
+         * @instance
+         * @param {game.ISceneFindRequest} request SceneFindRequest message or plain object
+         * @returns {Promise<game.Transform>} Promise
+         * @variation 2
+         */
+
+        /**
+         * Callback as used by {@link game.Scene#sceneFindChildren}.
+         * @memberof game.Scene
+         * @typedef SceneFindChildrenCallback
+         * @type {function}
+         * @param {Error|null} error Error, if any
+         * @param {game.SceneFindResponse} [response] SceneFindResponse
+         */
+
+        /**
+         * Calls SceneFindChildren.
+         * @function sceneFindChildren
+         * @memberof game.Scene
+         * @instance
+         * @param {game.ISceneFindRequest} request SceneFindRequest message or plain object
+         * @param {game.Scene.SceneFindChildrenCallback} callback Node-style callback called with the error, if any, and SceneFindResponse
+         * @returns {undefined}
+         * @variation 1
+         */
+        Object.defineProperty(Scene.prototype.sceneFindChildren = function sceneFindChildren(request, callback) {
+            return this.rpcCall(sceneFindChildren, $root.game.SceneFindRequest, $root.game.SceneFindResponse, request, callback);
+        }, "name", { value: "SceneFindChildren" });
+
+        /**
+         * Calls SceneFindChildren.
+         * @function sceneFindChildren
+         * @memberof game.Scene
+         * @instance
+         * @param {game.ISceneFindRequest} request SceneFindRequest message or plain object
+         * @returns {Promise<game.SceneFindResponse>} Promise
+         * @variation 2
+         */
+
+        return Scene;
+    })();
+
+    game.TestDispatch = (function() {
+
+        /**
+         * Properties of a TestDispatch.
+         * @memberof game
+         * @interface ITestDispatch
+         */
+
+        /**
+         * Constructs a new TestDispatch.
+         * @memberof game
+         * @classdesc Represents a TestDispatch.
+         * @implements ITestDispatch
+         * @constructor
+         * @param {game.ITestDispatch=} [properties] Properties to set
+         */
+        function TestDispatch(properties) {
+            if (properties)
+                for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Creates a new TestDispatch instance using the specified properties.
+         * @function create
+         * @memberof game.TestDispatch
+         * @static
+         * @param {game.ITestDispatch=} [properties] Properties to set
+         * @returns {game.TestDispatch} TestDispatch instance
+         */
+        TestDispatch.create = function create(properties) {
+            return new TestDispatch(properties);
+        };
+
+        /**
+         * Encodes the specified TestDispatch message. Does not implicitly {@link game.TestDispatch.verify|verify} messages.
+         * @function encode
+         * @memberof game.TestDispatch
+         * @static
+         * @param {game.ITestDispatch} message TestDispatch message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        TestDispatch.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified TestDispatch message, length delimited. Does not implicitly {@link game.TestDispatch.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof game.TestDispatch
+         * @static
+         * @param {game.ITestDispatch} message TestDispatch message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        TestDispatch.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a TestDispatch message from the specified reader or buffer.
+         * @function decode
+         * @memberof game.TestDispatch
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {game.TestDispatch} TestDispatch
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        TestDispatch.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            var end = length === undefined ? reader.len : reader.pos + length, message = new $root.game.TestDispatch();
+            while (reader.pos < end) {
+                var tag = reader.uint32();
+                switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
             }
-        }
-        return message;
-    };
+            return message;
+        };
 
-    /**
-     * Creates a plain object from a SceneFindResponse message. Also converts values to other types if specified.
-     * @function toObject
-     * @memberof SceneFindResponse
-     * @static
-     * @param {SceneFindResponse} message SceneFindResponse
-     * @param {$protobuf.IConversionOptions} [options] Conversion options
-     * @returns {Object.<string,*>} Plain object
-     */
-    SceneFindResponse.toObject = function toObject(message, options) {
-        if (!options)
-            options = {};
-        var object = {};
-        if (options.arrays || options.defaults)
-            object.children = [];
-        if (message.children && message.children.length) {
-            object.children = [];
-            for (var j = 0; j < message.children.length; ++j)
-                object.children[j] = $root.Transform.toObject(message.children[j], options);
-        }
-        return object;
-    };
+        /**
+         * Decodes a TestDispatch message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof game.TestDispatch
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {game.TestDispatch} TestDispatch
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        TestDispatch.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
 
-    /**
-     * Converts this SceneFindResponse to JSON.
-     * @function toJSON
-     * @memberof SceneFindResponse
-     * @instance
-     * @returns {Object.<string,*>} JSON object
-     */
-    SceneFindResponse.prototype.toJSON = function toJSON() {
-        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-    };
+        /**
+         * Verifies a TestDispatch message.
+         * @function verify
+         * @memberof game.TestDispatch
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        TestDispatch.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            return null;
+        };
 
-    return SceneFindResponse;
+        /**
+         * Creates a TestDispatch message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof game.TestDispatch
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {game.TestDispatch} TestDispatch
+         */
+        TestDispatch.fromObject = function fromObject(object) {
+            if (object instanceof $root.game.TestDispatch)
+                return object;
+            return new $root.game.TestDispatch();
+        };
+
+        /**
+         * Creates a plain object from a TestDispatch message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof game.TestDispatch
+         * @static
+         * @param {game.TestDispatch} message TestDispatch
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        TestDispatch.toObject = function toObject() {
+            return {};
+        };
+
+        /**
+         * Converts this TestDispatch to JSON.
+         * @function toJSON
+         * @memberof game.TestDispatch
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        TestDispatch.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return TestDispatch;
+    })();
+
+    return game;
 })();
-
-$root.Scene = (function() {
-
-    /**
-     * Constructs a new Scene service.
-     * @exports Scene
-     * @classdesc Represents a Scene
-     * @extends $protobuf.rpc.Service
-     * @constructor
-     * @param {$protobuf.RPCImpl} rpcImpl RPC implementation
-     * @param {boolean} [requestDelimited=false] Whether requests are length-delimited
-     * @param {boolean} [responseDelimited=false] Whether responses are length-delimited
-     */
-    function Scene(rpcImpl, requestDelimited, responseDelimited) {
-        $protobuf.rpc.Service.call(this, rpcImpl, requestDelimited, responseDelimited);
-    }
-
-    (Scene.prototype = Object.create($protobuf.rpc.Service.prototype)).constructor = Scene;
-
-    /**
-     * Creates new Scene service using the specified rpc implementation.
-     * @function create
-     * @memberof Scene
-     * @static
-     * @param {$protobuf.RPCImpl} rpcImpl RPC implementation
-     * @param {boolean} [requestDelimited=false] Whether requests are length-delimited
-     * @param {boolean} [responseDelimited=false] Whether responses are length-delimited
-     * @returns {Scene} RPC service. Useful where requests and/or responses are streamed.
-     */
-    Scene.create = function create(rpcImpl, requestDelimited, responseDelimited) {
-        return new this(rpcImpl, requestDelimited, responseDelimited);
-    };
-
-    /**
-     * Callback as used by {@link Scene#sceneFind}.
-     * @memberof Scene
-     * @typedef SceneFindCallback
-     * @type {function}
-     * @param {Error|null} error Error, if any
-     * @param {Transform} [response] Transform
-     */
-
-    /**
-     * Calls SceneFind.
-     * @function sceneFind
-     * @memberof Scene
-     * @instance
-     * @param {ISceneFindRequest} request SceneFindRequest message or plain object
-     * @param {Scene.SceneFindCallback} callback Node-style callback called with the error, if any, and Transform
-     * @returns {undefined}
-     * @variation 1
-     */
-    Object.defineProperty(Scene.prototype.sceneFind = function sceneFind(request, callback) {
-        return this.rpcCall(sceneFind, $root.SceneFindRequest, $root.Transform, request, callback);
-    }, "name", { value: "SceneFind" });
-
-    /**
-     * Calls SceneFind.
-     * @function sceneFind
-     * @memberof Scene
-     * @instance
-     * @param {ISceneFindRequest} request SceneFindRequest message or plain object
-     * @returns {Promise<Transform>} Promise
-     * @variation 2
-     */
-
-    /**
-     * Callback as used by {@link Scene#sceneFindChildren}.
-     * @memberof Scene
-     * @typedef SceneFindChildrenCallback
-     * @type {function}
-     * @param {Error|null} error Error, if any
-     * @param {SceneFindResponse} [response] SceneFindResponse
-     */
-
-    /**
-     * Calls SceneFindChildren.
-     * @function sceneFindChildren
-     * @memberof Scene
-     * @instance
-     * @param {ISceneFindRequest} request SceneFindRequest message or plain object
-     * @param {Scene.SceneFindChildrenCallback} callback Node-style callback called with the error, if any, and SceneFindResponse
-     * @returns {undefined}
-     * @variation 1
-     */
-    Object.defineProperty(Scene.prototype.sceneFindChildren = function sceneFindChildren(request, callback) {
-        return this.rpcCall(sceneFindChildren, $root.SceneFindRequest, $root.SceneFindResponse, request, callback);
-    }, "name", { value: "SceneFindChildren" });
-
-    /**
-     * Calls SceneFindChildren.
-     * @function sceneFindChildren
-     * @memberof Scene
-     * @instance
-     * @param {ISceneFindRequest} request SceneFindRequest message or plain object
-     * @returns {Promise<SceneFindResponse>} Promise
-     * @variation 2
-     */
-
-    return Scene;
-})();
-
-$root.TestDispatch = (function() {
-
-    /**
-     * Properties of a TestDispatch.
-     * @exports ITestDispatch
-     * @interface ITestDispatch
-     */
-
-    /**
-     * Constructs a new TestDispatch.
-     * @exports TestDispatch
-     * @classdesc Represents a TestDispatch.
-     * @implements ITestDispatch
-     * @constructor
-     * @param {ITestDispatch=} [properties] Properties to set
-     */
-    function TestDispatch(properties) {
-        if (properties)
-            for (var keys = Object.keys(properties), i = 0; i < keys.length; ++i)
-                if (properties[keys[i]] != null)
-                    this[keys[i]] = properties[keys[i]];
-    }
-
-    /**
-     * Creates a new TestDispatch instance using the specified properties.
-     * @function create
-     * @memberof TestDispatch
-     * @static
-     * @param {ITestDispatch=} [properties] Properties to set
-     * @returns {TestDispatch} TestDispatch instance
-     */
-    TestDispatch.create = function create(properties) {
-        return new TestDispatch(properties);
-    };
-
-    /**
-     * Encodes the specified TestDispatch message. Does not implicitly {@link TestDispatch.verify|verify} messages.
-     * @function encode
-     * @memberof TestDispatch
-     * @static
-     * @param {ITestDispatch} message TestDispatch message or plain object to encode
-     * @param {$protobuf.Writer} [writer] Writer to encode to
-     * @returns {$protobuf.Writer} Writer
-     */
-    TestDispatch.encode = function encode(message, writer) {
-        if (!writer)
-            writer = $Writer.create();
-        return writer;
-    };
-
-    /**
-     * Encodes the specified TestDispatch message, length delimited. Does not implicitly {@link TestDispatch.verify|verify} messages.
-     * @function encodeDelimited
-     * @memberof TestDispatch
-     * @static
-     * @param {ITestDispatch} message TestDispatch message or plain object to encode
-     * @param {$protobuf.Writer} [writer] Writer to encode to
-     * @returns {$protobuf.Writer} Writer
-     */
-    TestDispatch.encodeDelimited = function encodeDelimited(message, writer) {
-        return this.encode(message, writer).ldelim();
-    };
-
-    /**
-     * Decodes a TestDispatch message from the specified reader or buffer.
-     * @function decode
-     * @memberof TestDispatch
-     * @static
-     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-     * @param {number} [length] Message length if known beforehand
-     * @returns {TestDispatch} TestDispatch
-     * @throws {Error} If the payload is not a reader or valid buffer
-     * @throws {$protobuf.util.ProtocolError} If required fields are missing
-     */
-    TestDispatch.decode = function decode(reader, length) {
-        if (!(reader instanceof $Reader))
-            reader = $Reader.create(reader);
-        var end = length === undefined ? reader.len : reader.pos + length, message = new $root.TestDispatch();
-        while (reader.pos < end) {
-            var tag = reader.uint32();
-            switch (tag >>> 3) {
-            default:
-                reader.skipType(tag & 7);
-                break;
-            }
-        }
-        return message;
-    };
-
-    /**
-     * Decodes a TestDispatch message from the specified reader or buffer, length delimited.
-     * @function decodeDelimited
-     * @memberof TestDispatch
-     * @static
-     * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
-     * @returns {TestDispatch} TestDispatch
-     * @throws {Error} If the payload is not a reader or valid buffer
-     * @throws {$protobuf.util.ProtocolError} If required fields are missing
-     */
-    TestDispatch.decodeDelimited = function decodeDelimited(reader) {
-        if (!(reader instanceof $Reader))
-            reader = new $Reader(reader);
-        return this.decode(reader, reader.uint32());
-    };
-
-    /**
-     * Verifies a TestDispatch message.
-     * @function verify
-     * @memberof TestDispatch
-     * @static
-     * @param {Object.<string,*>} message Plain object to verify
-     * @returns {string|null} `null` if valid, otherwise the reason why it is not
-     */
-    TestDispatch.verify = function verify(message) {
-        if (typeof message !== "object" || message === null)
-            return "object expected";
-        return null;
-    };
-
-    /**
-     * Creates a TestDispatch message from a plain object. Also converts values to their respective internal types.
-     * @function fromObject
-     * @memberof TestDispatch
-     * @static
-     * @param {Object.<string,*>} object Plain object
-     * @returns {TestDispatch} TestDispatch
-     */
-    TestDispatch.fromObject = function fromObject(object) {
-        if (object instanceof $root.TestDispatch)
-            return object;
-        return new $root.TestDispatch();
-    };
-
-    /**
-     * Creates a plain object from a TestDispatch message. Also converts values to other types if specified.
-     * @function toObject
-     * @memberof TestDispatch
-     * @static
-     * @param {TestDispatch} message TestDispatch
-     * @param {$protobuf.IConversionOptions} [options] Conversion options
-     * @returns {Object.<string,*>} Plain object
-     */
-    TestDispatch.toObject = function toObject() {
-        return {};
-    };
-
-    /**
-     * Converts this TestDispatch to JSON.
-     * @function toJSON
-     * @memberof TestDispatch
-     * @instance
-     * @returns {Object.<string,*>} JSON object
-     */
-    TestDispatch.prototype.toJSON = function toJSON() {
-        return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
-    };
-
-    return TestDispatch;
-})();
-
-module.exports = $root;

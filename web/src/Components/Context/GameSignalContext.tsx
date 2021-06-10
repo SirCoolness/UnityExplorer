@@ -15,7 +15,7 @@ export const GameSignalContextProvider: React.FC = props => {
     const signalProvider = useMemo(() => new GameNetworking(store as Store<State>), [store]);
 
     const main = useCallback(async () => {
-        await signalProvider.Connect("ws://127.0.0.1:6126", true);
+        await signalProvider.Connect("ws://127.0.0.1:6126", false);
     }, [signalProvider]);
 
     useEffect(() => {

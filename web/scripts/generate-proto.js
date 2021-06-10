@@ -5,6 +5,7 @@ const jsdoc2md = require('jsdoc-to-markdown');
 
 const protobuf = require("protobufjs");
 const pbjs = require("protobufjs/cli/pbjs");
+const pbts = require("protobufjs/cli/pbts");
 const asyncCli = require("./loaders/async_cli");
 
 const pbjsLoader = require('./loaders/pbjs');
@@ -181,14 +182,15 @@ export class Protomap {
     const outputFile = path.resolve(outputDir, "Buffs");
     const outputFileTs = path.resolve(outputDir, "Reflection");
 
-    const js = await asyncCli(pbjs.main, ['-t', 'static-module', '-w', 'commonjs', ...entryFiles]);
-    const ts = await pbtsLoader(js);
+    await asyncCli(pbjs.main, ['-t', 'static', '-w', 'commonjs', '-o', outputFile + ".js", ...entryFiles]);
+    await asyncCli(pbts.main, ['-o', outputFile + ".d.ts", outputFile + ".js"]);
+    // const ts = await pbtsLoader(js);
 
-    const js_json = await asyncCli(pbjs.main, ['-t', 'json-module', '-w', 'commonjs', ...entryFiles]);
+    const js_json = await asyncCli(pbjs.main, ['-m', '-t', 'json-module', '-w', 'commonjs', ...entryFiles]);
     const ts_json = await pbtsLoader(js_json);
 
-    fs.writeFileSync(outputFile + ".js", js);
-    fs.writeFileSync(outputFile + ".d.ts", ts);
+    // fs.writeFileSync(outputFile + ".js", js);
+    // fs.writeFileSync(outputFile + ".d.ts", ts);
 
     fs.writeFileSync(outputFileTs + ".js", js_json);
     fs.writeFileSync(outputFileTs + ".d.ts", ts_json);

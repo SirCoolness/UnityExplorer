@@ -39,11 +39,7 @@ export class MessageHelper {
         BuffReflection.Headers.encodeDelimited(this.headers, writer);
 
         if (this.headers.HasData) {
-            if (buff instanceof Message)
-                buff.$type.encode(buff, writer);
-            else
-                //@ts-ignore
-                buff.__proto__.encode(buff, writer);
+            buff.$type.encode(buff, writer);
         }
 
         const res = writer.finish();
