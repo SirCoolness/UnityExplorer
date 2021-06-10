@@ -59,7 +59,10 @@ export const CreateMethodHandle: CreateMethodHandleT = (service, method) => {
     if (!foundService)
         throw new Error("Failed to find service " + service.name);
 
-    const foundMethod = foundService.methods[method as string];
+    let CorrectedMethod = method as string;
+    CorrectedMethod = CorrectedMethod[0].toUpperCase() + CorrectedMethod.slice(1, CorrectedMethod.length);
+
+    const foundMethod = foundService.methods[CorrectedMethod];
     if (!foundMethod)
         throw new Error(`Failed to find ${foundService.fullName}.${method}`);
 

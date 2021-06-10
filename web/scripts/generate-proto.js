@@ -182,7 +182,7 @@ export class Protomap {
     const outputFile = path.resolve(outputDir, "Buffs");
     const outputFileTs = path.resolve(outputDir, "Reflection");
 
-    await asyncCli(pbjs.main, ['-t', 'static', '-w', 'commonjs', '-o', outputFile + ".js", ...entryFiles]);
+    await asyncCli(pbjs.main, ['-t', 'static-module', '-w', 'commonjs', '-o', outputFile + ".js", ...entryFiles]);
     await asyncCli(pbts.main, ['-o', outputFile + ".d.ts", outputFile + ".js"]);
     // const ts = await pbtsLoader(js);
 

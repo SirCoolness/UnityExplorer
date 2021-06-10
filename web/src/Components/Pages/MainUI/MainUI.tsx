@@ -3,6 +3,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core";
 
 import SceneView from "../../Windows/SceneView/SceneView";
+import FPSGraph from "../../Windows/FPSGraph/FPSGraph";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -28,6 +29,7 @@ const MainUI: React.FC = () => {
     return <div className={styles.root}>
         <div className={styles.content}>
             <SceneView />
+            <FPSGraph />
         </div>
     </div>
 }
