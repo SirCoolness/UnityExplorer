@@ -1,24 +1,44 @@
-import {Message, rpc} from 'protobufjs';
+import {Message, rpc, Type} from 'protobufjs';
 import {AnyFunc} from "@treestone/recursive-types";
-import {Unwrap} from "../../types/utils";
+import BuffReflection from "../Static/BuffReflection";
+import {GetType} from "../../Util/GetType";
+import {State} from "../../Store";
+import {Dispatch, DispatchSignal, DispatchSignalMutation, ThenArg, ThunkAction} from "../../types/utils";
+import {core} from "../../generated/Buffs";
+import {GameNetworking} from "../GameNetworking";
 
 type MethodKeys<Service extends rpc.Service> = keyof Omit<Service, keyof rpc.Service>;
 type GetPromise<A> = A extends AnyFunc ? ReturnType<A> extends Promise<any> ? A : never : never;
-type ThenArg<T> = T extends PromiseLike<infer U> ? U : T
 
-type Request<RequestType> = Omit<RequestType, keyof Message> & Message<Omit<RequestType, keyof Message>>;
+type Request<RequestType> = Omit<RequestType, keyof Message>;
 type Response<ResponseType> = Omit<ResponseType, keyof Message>;
 
-export type MethodHandleDetails = {
-    handle: BoundMethodHandle;
-};
+type MethodAction<
+    TSignal extends any[],
+    TReturn,
+    TState = State> =
+    (...args: TSignal) => ReturnType<ThunkAction<TSignal, TReturn, TState>>;
 
-export type BoundMethodHandle = () => void;
+export type MethodHandleDetails<ResponseType extends Message> = [
+    number,                            // method id
+    PreBoundMethodHandle<ResponseType> // handle
+];
 
-// @ts-ignore
-export type MethodHandle<RequestType, ResponseType> = (
-    request: Request<RequestType>
+export type PreBoundMethodHandle<ResponseType extends Message> = (game: GameNetworking) => BoundMethodHandle<ResponseType>;
+
+export type BoundMethodHandle<ResponseType extends Message> = (request: Message) => Promise<ResponseType>;
+
+export type MethodHandleBase<RequestType extends Message, ResponseType extends Message> = (
+    request: Request<RequestType>,
+    game: GameNetworking
 ) => Promise<Response<ResponseType>>;
+
+export type MethodHandle<RequestType extends Message, ResponseType extends Message> =
+    MethodAction<
+        Parameters<MethodHandleBase<RequestType, ResponseType>>,
+        ThenArg<ReturnType<MethodHandleBase<RequestType, ResponseType>>
+    >
+>;
 
 export type CreateMethodHandleT = <
     Service extends typeof rpc.Service,
@@ -27,15 +47,36 @@ export type CreateMethodHandleT = <
     >(
     service: Service,
     method: Method
-) => (handle: MethodHandle<Parameters<PromiseFn>[0], ThenArg<ReturnType<PromiseFn>>>) => MethodHandleDetails;
+) => (handle: MethodHandle<Parameters<PromiseFn>[0], ThenArg<ReturnType<PromiseFn>>>) => MethodHandleDetails<ThenArg<ReturnType<PromiseFn>>>;
+
+const methodOptionKeys = ["(method.CmdID)", "(method.Sender)"];
 
 export const CreateMethodHandle: CreateMethodHandleT = (service, method) => {
-    return handle => {
-        //@ts-ignore
-        const wrapper: BoundMethodHandle = () => handle();
+    const serviceType = GetType(service);
 
-        return {
-            handle: wrapper
-        };
+    const foundService = BuffReflection.Services.get(serviceType);
+
+    if (!foundService)
+        throw new Error("Failed to find service " + service.name);
+
+    const foundMethod = foundService.methods[method as string];
+    if (!foundMethod)
+        throw new Error(`Failed to find ${foundService.fullName}.${method}`);
+
+    for (const key of methodOptionKeys)
+        if (!foundMethod.options?.hasOwnProperty(key))
+            throw new Error(`Missing option ${key} in ${foundMethod.fullName}`);
+
+    const mid: number = foundMethod.getOption("(method.CmdID)");
+
+    return handle => {
+        const wrapper: PreBoundMethodHandle<any> = (game) =>
+            (request) =>
+                handle(request as any, game)(game.store.dispatch, game.store.getState);
+
+        return [
+            mid,
+            wrapper
+        ];
     }
 };

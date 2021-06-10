@@ -44,12 +44,13 @@ export type BoundActionsRecursive<TSource extends UnboundActionsRecursive> = {
     [P in keyof TSource]: TSource[P] extends UnboundActionsRecursive
         ? BoundActionsRecursive<TSource[P]>
         : TSource[P] extends ThunkAction<any, any, any>
-            ? (...args: Parameters<TSource[P]>) => Promise<Unwrap<ReturnType<TSource[P]>>>
+            ? (...args: Parameters<TSource[P]>) => Promise<ThenArg<ReturnType<TSource[P]>>>
             : TSource[P] extends ActionCreator
                 ? (...args: Parameters<TSource[P]>) => void
                 : any;
 };
 
+type ThenArg<T> = T extends PromiseLike<infer U> ? U : T;
 export type PlaceholderType<TValue, TKey = "DEFAULT"> = TValue;
 
 export type ReplacePlaceholders<TSource extends object, TPlaceholders extends PlaceholderType<any>, TReplaceWith> =

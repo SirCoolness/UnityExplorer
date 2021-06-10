@@ -35,6 +35,8 @@ export class GameNetworking {
     private TryConnecting: (ip: string) => Promise<boolean> = ip => this.connection.Connect(ip);
 
     private Bind: () => void = () => {
+        this.rpc.bindings.Bind();
+
         this.connection.OnMessage = this.message.OnMessage;
         this.message['InternalSend'] = (e) => this.connection.SendMessage(e);
     }

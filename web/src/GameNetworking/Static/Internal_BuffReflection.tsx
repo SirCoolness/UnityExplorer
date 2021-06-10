@@ -1,5 +1,4 @@
-import {Service, Method, Type, Message} from "protobufjs";
-import {core, Scene} from "../../generated/Buffs";
+import {Service, Method, Type} from "protobufjs";
 
 export class BuffReflection {
     public readonly Services: Map<Function, Service> = new Map<Function, Service>();
