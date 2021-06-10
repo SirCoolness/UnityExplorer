@@ -1,7 +1,8 @@
 import React from "react";
 
 import MainUI from "../Pages/MainUI/MainUI";
-import {makeStyles} from "@material-ui/core";
+import {AppBar, makeStyles, Typography} from "@material-ui/core";
+import Toolbar from "../Modules/Toolbar/Toolbar";
 
 const useStyles = makeStyles((theme) => ({
     "@global": {
@@ -27,6 +28,9 @@ const useStyles = makeStyles((theme) => ({
 export const Main: React.FC = () => {
     const styles = useStyles();
     return <div className={styles.root}>
+        <AppBar position="relative">
+            <Toolbar />
+        </AppBar>
         <MainUI />
     </div>
 }
