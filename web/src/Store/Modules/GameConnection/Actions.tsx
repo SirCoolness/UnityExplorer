@@ -1,4 +1,4 @@
-import { createAsyncAction } from 'typesafe-actions';
+import {createAction, createAsyncAction} from 'typesafe-actions';
 import { FlattenObject } from '@treestone/recursive-types';
 
 export const Actions = {
@@ -6,7 +6,8 @@ export const Actions = {
         'GAME_CONNECTION/CONNECT/REQUEST',
         'GAME_CONNECTION/CONNECT/SUCCESS',
         'GAME_CONNECTION/CONNECT/FAILURE'
-    )<string, WebSocket, Error>()
+    )<string, WebSocket, Error>(),
+    Disconnected: createAction('GAME_CONNECTION/DISCONNECTED')()
 };
 
 export type Actions = ReturnType<FlattenObject<typeof Actions>>;

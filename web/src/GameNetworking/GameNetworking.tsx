@@ -2,6 +2,7 @@ import { State, Store } from "../Store";
 import { ConnectionHelper } from "./ConnectionHelper";
 import { MessageHelper } from "./Message/MessageHelper";
 import { RPCHelper } from "./RPC/RPCHelper";
+import {Sleep} from "../Util/Sleep";
 
 export class GameNetworking {
     public store: Store<State>;
@@ -17,10 +18,21 @@ export class GameNetworking {
         this.connection = new ConnectionHelper(this);
     }
 
-    public Connect: (ip: string) => Promise<void> = (ip) => {
+    public Connect: (ip: string, retry?: boolean) => Promise<void> = async (ip, retry) => {
         this.Bind();
-        return this.connection.Connect(ip);
+        this.connection.ShouldReconnect = !!retry;
+
+        let lastResponse = false;
+
+        do {
+            lastResponse = await this.TryConnecting(ip);
+
+            if (retry && !lastResponse)
+                await Sleep(10000);
+        } while (retry && !lastResponse);
     }
+
+    private TryConnecting: (ip: string) => Promise<boolean> = ip => this.connection.Connect(ip);
 
     private Bind: () => void = () => {
         this.connection.OnMessage = this.message.OnMessage;
