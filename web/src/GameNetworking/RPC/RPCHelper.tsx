@@ -20,11 +20,11 @@ export class RPCHelper {
             // handle client rpc response
         } else {
             // server sent rpc
-            const buff: Message = undefined; //get buff
-
-            // mutate RPC to skip recreating obj
-            rpc.IsResponse = true;
-            this.networking.message.SendMessage(buff, rpc);
+            // const buff: Message = undefined; //get buff
+            //
+            // // mutate RPC to skip recreating obj
+            // rpc.IsResponse = true;
+            // this.networking.message.SendMessage(buff, rpc);
         }
     }
 

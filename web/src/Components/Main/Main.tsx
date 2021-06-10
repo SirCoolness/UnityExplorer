@@ -1,6 +1,8 @@
 import React from "react";
 
-import styles from './Main.scss';
+import {MainUI} from "../Pages/MainUI";
+import {makeStyles} from "@material-ui/core";
+
 // import {PingRequest, PingResponse} from "../../generated/bi/ping";
 // import {useGameConnectionContext} from "../Context/Redux/GameConnection";
 // import {useGameSignal} from "../Context/GameSignalContext";
@@ -45,8 +47,21 @@ import styles from './Main.scss';
 //     </div>;
 // }
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+        width: "100%",
+        minHeight: "100%",
+        display: "flex",
+        flexFlow: "column",
+        "& > *": {
+            flexShrink: 0
+        }
+    }
+}))
+
 export const Main: React.FC = () => {
+    const styles = useStyles();
     return <div className={styles.root}>
-        main
+        <MainUI />
     </div>
 }
