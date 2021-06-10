@@ -1,6 +1,12 @@
-import React from "react";
+import React, {useMemo} from "react";
 import {Rnd} from "react-rnd";
 import {makeStyles, Paper, useTheme} from "@material-ui/core";
+import {WindowComponent} from "../../../types/windows/Window";
+import { Props as RNDProps } from "react-rnd";
+
+type Props = {
+    window: WindowComponent;
+};
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -18,19 +24,25 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-export const WindowBase: React.FC = props => {
+const WindowBase: React.FC<Props> = props => {
     const theme = useTheme();
     const styles = useStyles();
+
+    const defaultSize = useMemo<RNDProps['default']>(() => {
+        const baseUnit = theme.spacing(6);
+
+        return {
+            x: 0,
+            y: 0,
+            width: (props.window.defaultSize?.width || 4) * baseUnit,
+            height: (props.window.defaultSize?.height || 4) * baseUnit,
+        };
+    }, [theme.spacing, props.window]);
 
     return <Rnd
         className={styles.root}
         bounds="parent"
-        default={{
-            height: theme.spacing(24),
-            width: theme.spacing(24),
-            x: 0,
-            y: 0
-        }}
+        default={defaultSize}
         dragGrid={[theme.spacing(6), theme.spacing(6)]}
         resizeGrid={[theme.spacing(6), theme.spacing(6)]}
     >
@@ -39,3 +51,5 @@ export const WindowBase: React.FC = props => {
         </Paper>
     </Rnd>;
 }
+
+export default WindowBase;

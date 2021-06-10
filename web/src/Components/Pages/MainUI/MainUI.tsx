@@ -1,9 +1,8 @@
 import React from "react";
 
-import {Rnd} from "react-rnd";
+import { makeStyles } from "@material-ui/core";
 
-import {makeStyles, Paper, useTheme} from "@material-ui/core";
-import {WindowBase} from "../../Modules/WindowBase/WindowBase";
+import SceneView from "../../Windows/SceneView/SceneView";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -23,12 +22,14 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export const MainUI: React.FC = () => {
+const MainUI: React.FC = () => {
     const styles = useStyles();
 
     return <div className={styles.root}>
         <div className={styles.content}>
-            {[0, 1].map(item => <WindowBase key={item}>{item}</WindowBase>)}
+            <SceneView />
         </div>
     </div>
 }
+
+export default MainUI;
