@@ -45,6 +45,11 @@ class BuffReflectionHelper {
         const methods = service.methodsArray.filter(BuffReflectionHelper.HandleMethod);
         if (methods.length) {
             BuffReflectionHelper.reflection.Services.set(GetType(LookupObject(service.fullName, Buffs)), service);
+
+            const midMap: Record<string, number> = {};
+
+            BuffReflectionHelper.reflection.ServiceMID.set(GetType(LookupObject(service.fullName, Buffs)), midMap);
+            BuffReflectionHelper.reflection.ServiceMID.set(service.fullName, midMap);
         }
 
         BuffReflectionHelper.LoadNested(service);
