@@ -28,8 +28,6 @@ const MainUI: React.FC = () => {
 
     return <div className={styles.root}>
         <div className={styles.content}>
-            <SceneView />
-            <FPSGraph />
         </div>
     </div>
 }

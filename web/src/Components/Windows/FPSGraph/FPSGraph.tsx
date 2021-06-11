@@ -21,7 +21,8 @@ const useStyles = makeStyles((theme) => ({
         boxSizing: "border-box",
         width: "100%",
         height: "100%",
-        flexGrow: 1
+        flexGrow: 1,
+        overflow: "hidden"
     },
     title: {
         ...theme.typography.subtitle2
