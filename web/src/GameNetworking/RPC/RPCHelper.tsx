@@ -1,6 +1,6 @@
 import { GameNetworking } from "../GameNetworking";
 import {core} from "../../generated/Buffs";
-import {Message, Type} from "protobufjs";
+import {Message} from "protobufjs";
 import {RPCTracker} from "./RPCTracker";
 import {RPCBindings} from "./RPCBindings";
 import {BoundDispatchHandle, BoundMethodHandle} from "../Utils/CreateMethodHandle";
@@ -21,11 +21,12 @@ export class RPCHelper {
         const rpc = headers.RPC as core.RPCDetails;
 
         if (rpc.IsResponse) {
-            // handle client rpc response
+            // server responded to rpc
+            this.tracking.OnTrackerResponse(headers, details);
         } else {
             // server sent rpc
             const buff = await this.ResolveResponse(this.bindings.BoundMethods, headers, details); //get buff
-            if (!buff)
+            if (!buff) // TODO: support optional responses
                 return;
 
             // mutate RPC to skip recreating obj
