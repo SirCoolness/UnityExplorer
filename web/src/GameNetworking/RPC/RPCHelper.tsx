@@ -3,6 +3,7 @@ import {core} from "../../generated/Buffs";
 import {Message, Type} from "protobufjs";
 import {RPCTracker} from "./RPCTracker";
 import {RPCBindings} from "./RPCBindings";
+import {BoundDispatchHandle, BoundMethodHandle} from "../Utils/CreateMethodHandle";
 
 export class RPCHelper {
     private networking: GameNetworking;
@@ -23,16 +24,32 @@ export class RPCHelper {
             // handle client rpc response
         } else {
             // server sent rpc
-            // const buff: Message = undefined; //get buff
-            //
-            // // mutate RPC to skip recreating obj
-            // rpc.IsResponse = true;
-            // this.networking.message.SendMessage(buff, rpc);
+            const buff = await this.ResolveResponse(this.bindings.BoundMethods, headers, details); //get buff
+            if (!buff)
+                return;
+
+            // mutate RPC to skip recreating obj
+            rpc.IsResponse = true;
+            this.networking.message.SendMessageID(headers.CmdID as number, buff, rpc);
         }
     }
 
     public HandleDispatch: (headers: Message & core.IHeaders, details?: Message) => Promise<void> = async (headers, details) => {
+        // server sent message without expecting a response
+        await this.ResolveResponse(this.bindings.BoundMethods, headers, details);
+    }
 
+    private ResolveResponse: (
+        bindings: Record<number, BoundMethodHandle<any> | BoundDispatchHandle>,
+        headers: Message & core.IHeaders,
+        details?: Message) =>
+            Promise<Message | undefined> =
+        async (bindings, headers, details) => {
+        const binding = bindings[headers.CmdID as number];
+        if (!binding)
+            return undefined;
+
+        return await binding(details);
     }
 }
 

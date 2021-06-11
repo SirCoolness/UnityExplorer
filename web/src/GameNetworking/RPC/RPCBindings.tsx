@@ -4,14 +4,15 @@ import {BoundMethodHandle, MethodHandleDetails} from "../Utils/CreateMethodHandl
 
 export class RPCBindings {
     private networking: GameNetworking;
-    public BoundMessages: Record<number, BoundMethodHandle<any>> = {};
+    public BoundMethods: Record<number, BoundMethodHandle<any>> = {};
+    public BoundDispatch: Record<number, BoundMethodHandle<any>> = {};
 
     constructor(gameNetworking: GameNetworking) {
         this.networking = gameNetworking;
     }
 
     public Bind: () => void = () => {
-        this.BoundMessages = {};
+        this.BoundMethods = {};
 
         this.RecursivelyBind(Handles, "Handles");
     }
@@ -26,9 +27,9 @@ export class RPCBindings {
 
         const [mid, preBound] = (value as unknown) as MethodHandleDetails<any>;
 
-        if (this.BoundMessages.hasOwnProperty(mid))
+        if (this.BoundMethods.hasOwnProperty(mid))
             return console.error(`[${recursionDebug}] Cannot bind since already has been bound.`, value);
 
-        this.BoundMessages[mid] = preBound(this.networking);
+        this.BoundMethods[mid] = preBound(this.networking);
     }
 }

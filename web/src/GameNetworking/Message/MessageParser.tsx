@@ -1,5 +1,5 @@
 import {core} from "../../generated/Buffs";
-import {Message, Reader, Type} from "protobufjs";
+import {Message, Reader, rpc, Type} from "protobufjs";
 import BuffReflection from "../Static/BuffReflection";
 import {GetType} from "../../Util/GetType";
 
@@ -53,7 +53,26 @@ export class MessageParser {
         if (cmdID === undefined)
             throw new Error("Cannot resolve CmdID");
 
+        MessageParser.InternalMutateHeadersID(buffType, headers, cmdID, rpcDetails);
+    }
+
+    public static MutateHeadersID: (headers: Message & core.IHeaders, CmdID: number, rpcDetails?: core.RPCDetails) => void = (headers, CmdID, rpcDetails) => {
+        let buffType: Type | undefined = undefined;
+
+        if (!rpcDetails) {
+            buffType = BuffReflection.DispatchTypesById[CmdID];
+        } else {
+            if (!rpcDetails.IsResponse)
+                buffType = BuffReflection.MethodDataRequest[CmdID];
+            else
+                buffType = BuffReflection.MethodDataResponse[CmdID];
+        }
+
+        MessageParser.InternalMutateHeadersID(GetType(buffType), headers, CmdID, rpcDetails);
+    }
+
+    private static InternalMutateHeadersID: (type: Function, headers: Message & core.IHeaders, CmdID: number, rpcDetails?: core.RPCDetails) => void = (t, headers, CmdID, rpcDetails) => {
         headers.RPC = rpcDetails;
-        headers.HasData = !!BuffReflection.HasData.get(buffType);
+        headers.HasData = !!BuffReflection.HasData.get(t);
     }
 }

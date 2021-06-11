@@ -26,11 +26,12 @@ export type MethodHandleDetails<ResponseType extends Message> = [
 
 export type PreBoundMethodHandle<ResponseType extends Message> = (game: GameNetworking) => BoundMethodHandle<ResponseType>;
 
-export type BoundMethodHandle<ResponseType extends Message> = (request: Message) => Promise<ResponseType>;
+export type BoundMethodHandle<ResponseType extends Message> = (request?: Message) => Promise<ResponseType>;
+export type BoundDispatchHandle = (request?: Message) => Promise<void>;
 
 export type MethodHandleBase<RequestType extends Message, ResponseType extends Message> = (
-    request: Request<RequestType>,
-    game: GameNetworking
+    game: GameNetworking,
+    request?: Request<RequestType>
 ) => Promise<Response<ResponseType>>;
 
 export type MethodHandle<RequestType extends Message, ResponseType extends Message> =
@@ -75,7 +76,7 @@ export const CreateMethodHandle: CreateMethodHandleT = (service, method) => {
     return handle => {
         const wrapper: PreBoundMethodHandle<any> = (game) =>
             (request) =>
-                handle(request as any, game)(game.store.dispatch, game.store.getState);
+                handle(game, request as any)(game.store.dispatch, game.store.getState);
 
         return [
             mid,

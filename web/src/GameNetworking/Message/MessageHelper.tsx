@@ -33,12 +33,20 @@ export class MessageHelper {
     }
 
     public SendMessage: (buff: Message, rpcDetails?: core.RPCDetails) => void = (buff, rpcDetails) => {
+        MessageParser.MutateHeaders(this.headers, buff, rpcDetails);
+        this.InternalSendMessage(this.headers, buff);
+    }
+
+    public SendMessageID: (CmdID: number, buff: Message, rpcDetails?: core.RPCDetails) => void = (CmdID, buff, rpcDetails) => {
+        MessageParser.MutateHeadersID(this.headers, CmdID, rpcDetails);
+        this.InternalSendMessage(this.headers, buff);
+    }
+
+    private InternalSendMessage: (headers: core.IHeaders, buff: Message) => void = (headers, buff) => {
         const writer = new Writer();
 
-        MessageParser.MutateHeaders(this.headers, buff, rpcDetails);
-        BuffReflection.Headers.encodeDelimited(this.headers, writer);
-
-        if (this.headers.HasData) {
+        BuffReflection.Headers.encodeDelimited(headers, writer);
+        if (headers.HasData) {
             buff.$type.encode(buff, writer);
         }
 
