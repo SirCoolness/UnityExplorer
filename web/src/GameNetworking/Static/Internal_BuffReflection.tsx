@@ -1,6 +1,7 @@
-import {Service, Method, Type} from "protobufjs";
+import {Service, Method, Type, rpc} from "protobufjs";
 
 export class BuffReflection {
+    public readonly ServiceList: [Service, typeof rpc.Service][] = [];
     public readonly Services: Map<Function, Service> = new Map<Function, Service>();
     public readonly ServiceMID: Map<Function | string, Record<string, number>> = new Map<Function | string, Record<string, number>>();
 

@@ -27,6 +27,7 @@ export type MethodHandleDetails<ResponseType extends Message> = [
 export type PreBoundMethodHandle<ResponseType extends Message> = (game: GameNetworking) => BoundMethodHandle<ResponseType>;
 
 export type BoundMethodHandle<ResponseType extends Message> = (request?: Message) => Promise<ResponseType>;
+// implement me
 export type BoundDispatchHandle = (request?: Message) => Promise<void>;
 
 export type MethodHandleBase<RequestType extends Message, ResponseType extends Message> = (

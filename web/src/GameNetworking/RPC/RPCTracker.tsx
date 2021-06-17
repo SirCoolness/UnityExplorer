@@ -1,7 +1,7 @@
 import {core} from "../../generated/Buffs";
 import {Message} from "protobufjs";
 
-type Binding = (headers: core.IHeaders, buff?: Message) => void;
+type Binding = (headers: Message & core.IHeaders, buff?: Message) => void;
 
 export class RPCTracker {
     private Trackers: Record<number, Binding> = {};

@@ -53,6 +53,10 @@ export class RPCHelper {
 
         return await binding(details);
     }
+
+    public Bind: () => void = () => {
+        this.implementation.BindServices();
+    }
 }
 
 

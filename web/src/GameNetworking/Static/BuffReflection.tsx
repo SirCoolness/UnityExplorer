@@ -2,7 +2,7 @@ import '../../generated/Reflection';
 import * as Buffs from '../../generated/Buffs';
 import {Direction} from '../../generated/Buffs';
 
-import pbjs, {Method, Namespace, NamespaceBase, ReflectionObject, roots, Service, Type} from 'protobufjs';
+import pbjs, {Method, Namespace, NamespaceBase, ReflectionObject, roots, rpc, Service, Type} from 'protobufjs';
 import {LookupObject} from "../../Util/LookupObject";
 import {BuffReflection} from "./Internal_BuffReflection";
 import {GetType} from "../../Util/GetType";
@@ -44,12 +44,15 @@ class BuffReflectionHelper {
     private static HandleService: (service: Service) => void = service => {
         const methods = service.methodsArray.filter(BuffReflectionHelper.HandleMethod);
         if (methods.length) {
-            BuffReflectionHelper.reflection.Services.set(GetType(LookupObject(service.fullName, Buffs)), service);
+            const staticVersion = LookupObject(service.fullName, Buffs);
+            BuffReflectionHelper.reflection.Services.set(GetType(staticVersion), service);
 
             const midMap: Record<string, number> = {};
 
-            BuffReflectionHelper.reflection.ServiceMID.set(GetType(LookupObject(service.fullName, Buffs)), midMap);
+            BuffReflectionHelper.reflection.ServiceMID.set(GetType(staticVersion), midMap);
             BuffReflectionHelper.reflection.ServiceMID.set(service.fullName, midMap);
+
+            BuffReflectionHelper.reflection.ServiceList.push([service, staticVersion as typeof rpc.Service]);
         }
 
         BuffReflectionHelper.LoadNested(service);

@@ -39,5 +39,6 @@ export class GameNetworking {
 
         this.connection.OnMessage = this.message.OnMessage;
         this.message['InternalSend'] = (e) => this.connection.SendMessage(e);
+        this.rpc.Bind();
     }
 }
